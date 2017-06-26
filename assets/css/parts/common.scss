@@ -1,0 +1,255 @@
+body {
+  font-family: $font;
+  background-color: $background-color;
+}
+.container {
+  width: 100%;
+  max-width: $container-width + 30px;
+}
+
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  &:focus {
+    outline: 0 !important;
+    text-decoration: none;
+  }
+}
+
+button, .slick-slide {
+  &:focus {
+    outline: 0 !important;
+  }
+}
+article {
+  &:focus {
+    outline: 0 !important;
+  }
+}
+
+.btn {
+  &-green {
+    background: $primary-color;
+    color: #fff;
+    border: 1px solid $primary-color;
+
+    &:hover, &:focus {
+      background: darken($primary-color, 10%);
+      border-color: darken($primary-color, 10%);
+      color: #fff;
+    }
+  }
+  &-primary {
+    background: $second-color;
+    color: $text-color;
+    border: 1px solid $second-color;
+    font-weight: bold;
+
+    &:hover, &:focus {
+      background: darken($second-color, 10%);
+      border-color: darken($second-color, 10%);
+      color: #fff;
+    }
+  }
+}
+
+.heading {
+  font-size: 30px;
+  font-weight: bold;
+  color: $text-color;
+  margin-bottom: 45px;
+}
+
+.show_more {
+  border-top: 1px solid $text-color;
+  text-align: center;
+    margin-top: 50px;
+  .btn {
+    color: $text-color;
+    background: #fff;
+    border: 1px solid $text-color;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 1.2;
+    border-radius: 0 0 3px 3px;
+    padding: 5px 15px 10px 15px;
+    position: relative;
+    top: -1px;
+    border-top: none;
+    display: inline-block;
+    &:hover {
+      background: darken(#fff, 2%);
+    }
+    &.collapsed {
+      i {
+        transform: rotate(0deg);
+      }
+    }
+    i {
+      margin: 0 0 0 7px;
+      display: inline-block;
+      transform: rotate(180deg);
+    }
+  }
+}
+
+
+.slick-arrow {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  top: 50%;
+  margin-top: -11px;
+  z-index: 1;
+  background: none;
+  border: none;
+
+  &.slick-prev {
+    left: 15px;
+    &:hover {
+      .icon {
+        background-position: -25px -141px;
+      }
+    }
+  }
+  &.slick-next {
+    right: 15px;
+    &:hover {
+      .icon {
+        background-position: -40px -141px;
+      }
+    }
+  }
+}
+
+div.loading {
+  position: relative;
+  &:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.44);
+    z-index: 10;
+  }
+  > .spinner {
+    z-index: 20;
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -5px 0 0 -8px;
+  }
+}
+.spinner {
+  display: none;
+  width: 16px;
+  height: 11px;
+  background: #d1d1d1;
+}
+
+.nomargin {
+  margin: 0 !important;
+}
+
+.modal-backdrop.in {
+  opacity: 0.4;
+}
+span {
+  &.error {
+    color: #9c0000 !important;
+    font-size:13px !important;
+  }
+  &.req {
+    color: $second-color !important;
+    font-size:13px !important;
+  }
+}
+
+.label-alert {
+  color: #ff0000 !important;
+}
+
+input[type=text], input[type=tel], input[type=email], input[type=password], textarea {
+  &.form-control {
+    background: #fcfcfc;
+    border: 1px solid #cfcfcf;
+    border-radius: 1px;
+    box-shadow: none;
+    &:focus {
+      background: #fff;
+      border: 1px solid #abc5e3;
+      box-shadow: none;
+    }
+    &.is_required {
+      border: 1px solid #9c0000;
+    }
+  }
+}
+blockquote {
+  color: #0da99f;
+  font-size: 15px;
+  margin: 0 0 15px -10px;
+  padding: 0 10px;
+  position: relative;
+  border: none;
+  background: none;
+
+  &:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 5px;
+    width: 2px;
+    height: 60%;
+    background: #0da99f;
+  }
+}
+.col-xs-15,
+.col-sm-15,
+.col-md-15,
+.col-lg-15 {
+  position: relative;
+  min-height: 1px;
+  padding-right: 10px;
+  padding-left: 10px;
+}
+.col-xs-15 {
+  width: 20%;
+  float: left;
+}
+@media (min-width: 768px) {
+  .col-sm-15 {
+    width: 20%;
+    float: left;
+  }
+}
+@media (min-width: 992px) {
+  .col-md-15 {
+    width: 20%;
+    float: left;
+  }
+}
+@media (min-width: 1200px) {
+  .col-lg-15 {
+    width: 20%;
+    float: left;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .heading {
+    font-size: 24px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .heading {
+    font-size: 18px;
+  }
+}

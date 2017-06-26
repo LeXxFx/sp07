@@ -1,0 +1,265 @@
+#wrapper {
+  .inner {
+    order: 2;
+    @include flexbox();
+    align-content: stretch;
+    position: relative;
+    #sidebar {
+      order: 1;
+      @include flex(1 0 240px);
+      margin: 0 20px 40px 0;
+    }
+    #content {
+      margin: 0 0 40px 0;
+      order: 2;
+      @include flex(1 1 100%);
+      max-width: 100%;
+    }
+  }
+}
+
+#breadcumbs {
+  font-size: 20px;
+  color: #757579;
+  padding: 10px;
+  margin: 0 0 20px 0;
+  border-top: 1px solid #e5e5e5;
+  border-bottom: 1px solid #e5e5e5;
+  a {
+    font-size: 20px;
+    color: $text-color;
+    text-decoration: underline;
+    &:hover {
+      text-decoration: none;
+    }
+    i {
+      margin-right: 5px;
+    }
+    &.current {
+      text-decoration: underline;
+    }
+  }
+  .sep {
+    position:relative;
+    margin: 0 5px;
+  }
+}
+
+#content {
+  .page-heading {
+    font-size: 25px;
+    font-weight: bold;
+    line-height: 1;
+    text-transform: uppercase;
+    padding: 0;
+    margin: 0 0 25px 0;
+  }
+  .catalog {
+    .catalog__list {
+      .catalog__item {
+        width: 25%;
+      }
+    }
+  }
+}
+
+.category__post {
+  margin-bottom: 40px;
+}
+
+.hints {
+  position: absolute;
+  top: calc(100% - 5px);
+  left: calc(100% + 5px);
+  z-index: 101;
+  display: none;
+  > div {
+    background: #fff;
+    border: 1px solid #eaeaea;
+    text-align: left;
+    position: relative;
+    padding: 2px 5px;
+    font-size: 15px;
+    font-weight: normal;
+    color: $text-color;
+    display: inline-block;
+    white-space: normal;
+  }
+  &.right {
+    left: auto;
+    right: 0;
+    top: calc(100% + 7px);
+  }
+}
+.show-tooltip {
+  position: relative;
+}
+
+.panel-sport {
+  padding: 20px 95px 20px 15px;
+  background: #fff;
+  border-radius: 5px;
+  position: relative;
+  min-height: 120px;
+  &__heading {
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 1.2;
+    color: $second-color;
+    margin: 0 0 20px 0;
+  }
+  &__close {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 80px;
+    text-align: center;
+    opacity: 1;
+    border: none;
+    padding: 0;
+    transition: 0.5s;
+    background: #eaeaea;
+    border-radius: 0 4px 4px 0;
+    &:hover {
+      > span {
+        border-color: $second-color;
+        color: $second-color;
+      }
+    }
+    > span {
+      display: inline-block;
+      width: 28px;
+      height: 28px;
+      border: 2px solid $text-color;
+      border-radius: 50%;
+      font-size: 22px;
+      line-height: 1;
+      font-weight: bold;
+      text-align: center;
+      padding: 0px 0;
+    }
+    .hints {
+      top: 50%;
+      left: 50%;
+      margin: 20px 0 0 -37px;
+      > div {
+        width: 70px;
+      }
+    }
+  }
+}
+
+.post-not-found {
+  border-bottom: 1px solid #e5e5e5;
+  margin-bottom: 25px;
+  font-size: 18px;
+  .img {
+    float: left;
+    margin: 0 70px 0 0;
+  }
+  p {
+    margin-bottom: 20px;
+    &.info {
+      color: $second-color;
+      font-size: 22px;
+      font-weight: bold;
+    }
+    a {
+      color: $second-color;
+      text-decoration: underline;
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+
+}
+.popular-list {
+  .heading {
+    font-size: 25px;
+    color: $second-color;
+    margin-bottom: 25px;
+  }
+  .catalog {
+    .catalog__list {
+      .catalog__item {
+        width: 25%;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 992px) {
+  #wrapper {
+    .inner {
+      display: block;
+      #sidebar {
+        margin: 0 0 40px 0;
+      }
+      #content {
+        display: block;
+      }
+    }
+  }
+
+  #breadcumbs {
+    font-size: 13px;
+    a {
+      font-size: 13px;
+    }
+  }
+
+  #content {
+    .page-heading {
+      font-size: 18px;
+    }
+
+    .catalog {
+      .catalog__list {
+        .catalog__item {
+          width: 33%;
+        }
+      }
+    }
+  }
+
+  .hints {
+    > div {
+      font-size: 12px;
+    }
+  }
+  .panel-sport {
+    padding: 20px 50px 20px 15px;
+    &__heading {
+      font-size: 18px;
+    }
+    &__close {
+      width: 40px;
+    }
+  }
+}
+
+@media screen and (max-width: 767px) {
+  #content {
+    .catalog {
+      .catalog__list {
+        .catalog__item {
+          width: 50%;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 480px) {
+  #content {
+    .catalog {
+      .catalog__list {
+        .catalog__item {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
