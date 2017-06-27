@@ -28,7 +28,7 @@ $this->setFrameMode(true);
 <div>
 <div>
 <!-- /Костыль -->
-<section class="testimonials">
+<!--<section class="testimonials">
         <div class="container">
             <div class="heading">Покупатели о нас</div>
             <div class="testimonials__list">
@@ -65,7 +65,7 @@ $this->setFrameMode(true);
                 <a href="#" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" data-target="#modal_add_review">Оставить свой отзыв о магазине</a>
             </div>
         </div>
-    </section>
+    </section>-->
 
 
 <div class="container">

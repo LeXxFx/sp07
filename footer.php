@@ -34,45 +34,7 @@
 	//	Array("MODE"=>"html")
 	//);?>
 
-	<section class="testimonials">
-        <div class="container">
-            <div class="heading">Покупатели о нас</div>
-            <div class="testimonials__list">
-                <div class="item">
-                    <div class="title">
-                        <span><i class="fa fa-thumbs-o-up"></i></span>
-                        Обалденный, самый лучший интернет-магазин
-                    </div>
-                    <div class="short">
-                        Обалденный, самый лучший интернет-магазин, интересный сайт! Уже больше года покупаю одежду только там – не нужно тратить время на походы по магазинам
-                    </div>
-                    <div class="meta">
-                        <a class="meta__comments">1 Комментарий</a>
-                        <span class="meta__date">13.01.2017г.</span>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="title">
-                        <span><i class="fa fa-thumbs-o-up"></i></span>
-                        Обалденный, самый лучший интернет-магазин
-                    </div>
-                    <div class="short">
-                        Обалденный, самый лучший интернет-магазин, интересный сайт! Уже больше года покупаю одежду только там – не нужно тратить время на походы по магазинам
-                    </div>
-                    <div class="meta">
-                        <a class="meta__comments">1 Комментарий</a>
-                        <span class="meta__date">13.01.2017г.</span>
-                    </div>
-                </div>
-            </div>
-            <div class="testimonials__bottom">
-                <a class="testimonials__button-next"><span>Показать следующий отзыв</span>
-                    <i class="fa fa-angle-right"></i></a>
-                <a href="#" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" data-target="#modal_add_review">Оставить свой отзыв о магазине</a>
-            </div>
-        </div>
-    </section> 
-    <div class="container">
+	    <div class="container">
         <section id="advants">
             <div class="heading">Наши преимущества</div>
             <div class="advants__list clearfix">
@@ -143,7 +105,7 @@
                         <ul class="navi">
                             <li><a href="/delivery_pay/">Доставка и оплата</a></li>
                             <li><a href="/return-exchange/">Гарантия и возврат</a></li>
-                            <li><a href="#">Обратная связь</a></li>
+                            <!--<li><a href="#">Обратная связь</a></li>-->
                         </ul>
                     </div>
                     <div class="col-md-6">
@@ -205,8 +167,14 @@
                 </div>
                 <div class="col-md-5">
                     <div class="copyright">
-                        <p>© Интернет-магазин спортивных товаров и инвентаря, 2016 г.</p>
-                        Сегодня наш сайт посмотрели <img src="<?=SITE_TEMPLATE_PATH?>/demo/stat.png" alt=""/> посетителей.
+                        <p>© Интернет-магазин спортивных товаров и инвентаря, 2017 г.</p>
+                        Сегодня наш сайт посмотрели <!--<img src="<?//=SITE_TEMPLATE_PATH?>/demo/stat.png" alt=""/>-->
+						<!-- Yandex.Metrika informer -->
+						<a href="https://metrika.yandex.ru/stat/?id=19622830&amp;from=informer"
+						target="_blank" rel="nofollow"><img src="https://informer.yandex.ru/informer/19622830/1_0_2020ECFF_0000CCFF_1_pageviews"
+						style="width:80px; height:15px; border:0;" alt="Яндекс.Метрика" title="Яндекс.Метрика: данные за сегодня (просмотры)" /></a>
+						<!-- /Yandex.Metrika informer -->
+						посетителей.
                     </div>
                 </div>
             </div>
@@ -387,6 +355,36 @@
             </div>
         </div>
     </div>
+	<!-- Yandex.Metrika counter -->
+						<script type="text/javascript">
+							(function (d, w, c) {
+								(w[c] = w[c] || []).push(function() {
+									try {
+										w.yaCounter19622830 = new Ya.Metrika({
+											id:19622830,
+											clickmap:true,
+											trackLinks:true,
+											accurateTrackBounce:true,
+											webvisor:true,
+											ecommerce:"dataLayerSp07"
+										});
+									} catch(e) { }
+								});
+
+								var n = d.getElementsByTagName("script")[0],
+									s = d.createElement("script"),
+									f = function () { n.parentNode.insertBefore(s, n); };
+								s.type = "text/javascript";
+								s.async = true;
+								s.src = "https://mc.yandex.ru/metrika/watch.js";
+
+								if (w.opera == "[object Opera]") {
+									d.addEventListener("DOMContentLoaded", f, false);
+								} else { f(); }
+							})(document, window, "yandex_metrika_callbacks");
+						</script>
+						<noscript><div><img src="https://mc.yandex.ru/watch/19622830" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+						<!-- /Yandex.Metrika counter -->
 
 
     <script src="<?=SITE_TEMPLATE_PATH?>/assets/plugins/bootstrap/js/bootstrap.min.js"></script>

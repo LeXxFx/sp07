@@ -101,10 +101,10 @@ $this->addExternalJS("/bitrix/templates/sp07restail/js/filter.js");
 			</div>
 		</form>
 </div>
-<div class="link-propose">
+<!--<div class="link-propose">
     <a class="btn" href="#" data-dismiss="modal" data-toggle="modal" data-target="#modal_callback">Нет нужного товара?</a>
 </div>
-<!--<div class="widget widget-discont">
+<div class="widget widget-discont">
     <a href=""><img src="/bitrix/templates/sp07restail/demo/discont.png" alt=""></a>
 </div>
 <div class="widget widget-delivary">
