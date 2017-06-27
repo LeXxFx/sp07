@@ -1054,6 +1054,9 @@ blockquote {
       font-size: 16px;
       color: #fff;
       position: relative; }
+	  #option_panel .option-panel__cart a {
+        color: #fff;
+        text-decoration: underline; }
       #option_panel .option-panel__cart:before {
         content: "";
         height: 38px;
@@ -1079,16 +1082,14 @@ blockquote {
           text-decoration: underline; }
         #option_panel .option-panel__cart .cart-link:hover .lbl-cart {
           text-decoration: none; }
-        #option_panel .option-panel__cart .cart-link .num {
-          display: inline-block;
-          margin: 0 20px;
-          padding: 4px 10px;
-          border-radius: 50%;
-          line-height: 1.3;
-          font-weight: bold;
-          background: #ef8701;
-          text-decoration: none;
-          text-align: center; }
+        #option_panel .option-panel__cart .num {
+        display: inline-block;
+        margin: 0 20px;
+        padding: 4px 10px;
+        border-radius: 50%;
+        line-height: 1.3;
+        font-weight: bold;
+        background: #ef8701; }
       #option_panel .option-panel__cart .sum {
         line-height: 1.6; }
         #option_panel .option-panel__cart .sum b {
