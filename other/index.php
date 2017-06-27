@@ -442,7 +442,7 @@ $APPLICATION->SetTitle("Sport07");
 	false
 );?>
     </section>
-    <section class="testimonials nomargin">
+    <!--<section class="testimonials nomargin">
         <div class="container">
             <div class="testimonials__list">
                 <div class="item">
@@ -478,6 +478,6 @@ $APPLICATION->SetTitle("Sport07");
                 <a href="#" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" data-target="#modal_add_review">Оставить свой отзыв о магазине</a>
             </div>
         </div>
-    </section>
+    </section>-->
 
 <?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
