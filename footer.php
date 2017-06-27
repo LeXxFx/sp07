@@ -142,7 +142,7 @@
                         <div class="head">Помощь покупателю</div>
                         <ul class="navi">
                             <li><a href="/delivery_pay/">Доставка и оплата</a></li>
-                            <li><a href="/guarantee/">Гарантия и возврат</a></li>
+                            <li><a href="/return-exchange/">Гарантия и возврат</a></li>
                             <li><a href="#">Обратная связь</a></li>
                         </ul>
                     </div>
@@ -185,10 +185,10 @@
                     <div class="col-md-6">
                         <div class="head">Способы оплаты</div>
                         <div class="payemts-list">
-                            <a href="#"><img src="<?=SITE_TEMPLATE_PATH?>/assets/images/payment1.png" alt=""/></a>
-                            <a href="#"><img src="<?=SITE_TEMPLATE_PATH?>/assets/images/payment2.png" alt=""/></a>
-                            <a href="#"><img src="<?=SITE_TEMPLATE_PATH?>/assets/images/payment3.png" alt=""/></a>
-                            <a href="#"><img src="<?=SITE_TEMPLATE_PATH?>/assets/images/payment4.png" alt=""/></a>
+                            <a href="/delivery_pay"><img src="<?=SITE_TEMPLATE_PATH?>/assets/images/payment1.png" alt=""/></a>
+                            <a href="/delivery_pay"><img src="<?=SITE_TEMPLATE_PATH?>/assets/images/payment2.png" alt=""/></a>
+                            <a href="/delivery_pay"><img src="<?=SITE_TEMPLATE_PATH?>/assets/images/payment3.png" alt=""/></a>
+                            <a href="/delivery_pay"><img src="<?=SITE_TEMPLATE_PATH?>/assets/images/payment4.png" alt=""/></a>
                             <p>
                                 <a href="/delivery_pay/" class="link-all">Посмотреть все способы</a>
                             </p>
