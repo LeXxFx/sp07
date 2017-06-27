@@ -82,22 +82,6 @@ if (!empty($arElements) && is_array($arElements))
 	else
 		$arParams["PAGE_ELEMENT_COUNT"] = $num;
 ?>
-<div class="catalog-top">
-	<div class="sort-product">
-		<p class="title">Сортировка:</p>
-		<a href="<?=generate_url("price", $order, $sort);?>" class="<?if($order == "price") echo "active";?><?if($order == "price" && $sort == "desc") echo " sort-top";?>"><span>Цена</span></a>
-		<a href="<?=generate_url("rating", $order, $sort);?>" class="<?if($order == "rating") echo "active";?><?if($order == "rating" && $sort == "desc") echo " sort-top";?>"><span>Рейтинг</span></a>
-		<a href="<?=generate_url("new", $order, $sort);?>" class="<?if($order == "new") echo "active";?><?if($order == "new" && $sort == "desc") echo " sort-top";?>"><span>Новизна</span></a>
-	</div>
-	<div class="amount-on-page">
-		<p class="title">Показывать по:</p>
-		<a href="<?=add_params_to_url(array("num" => "25"))?>"<?if($num == "25") echo 'class="active"';?>><span>25</span></a>
-		<a href="<?=add_params_to_url(array("num" => "35"))?>"<?if($num == "35") echo 'class="active"';?>><span>35</span></a>
-		<a href="<?=add_params_to_url(array("num" => "95"))?>"<?if($num == "95") echo 'class="active"';?>><span>95</span></a>
-		<a href="<?=add_params_to_url(array("num" => "all"))?>"<?if($num == "all") echo 'class="active"';?>><span>Все</span></a>
-	</div>
-</div>
-	
 	<?
 	global $searchFilter;
 	$searchFilter = array(
@@ -105,7 +89,7 @@ if (!empty($arElements) && is_array($arElements))
 	);
 	$APPLICATION->IncludeComponent(
 		"bitrix:catalog.section",
-		"",
+		"sp07restail",
 		array(
 			"IBLOCK_TYPE" => $arParams["IBLOCK_TYPE"],
 			"IBLOCK_ID" => $arParams["IBLOCK_ID"],
@@ -114,10 +98,12 @@ if (!empty($arElements) && is_array($arElements))
 			"PAGE_ELEMENT_COUNT" => $arParams["PAGE_ELEMENT_COUNT"],
 			"PRICE_CODE" => $arParams["PRICE_CODE"],
 			"OFFERS_PROPERTY_CODE" => $arParams["OFFERS_PROPERTY_CODE"],
+			"OFFERS_CART_PROPERTIES" => $arParams["OFFERS_CART_PROPERTIES"],
 			"SET_TITLE" => "N",
 			"SHOW_ALL_WO_SECTION" => "Y",
 			'PRODUCT_DISPLAY_MODE' => "Y",
 			"FILTER_NAME" => "searchFilter",
+			"PAGER_TEMPLATE" => "sp07restail",
 			"SECTION_TITLE" => "Результаты поиска для \"" . $_GET["q"] . "\""
 		),
 		$component
