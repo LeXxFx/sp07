@@ -29,7 +29,9 @@ $this->addExternalJS("/bitrix/templates/sp07restail/js/other.js");
 		$('.widget.widget-filters').hide();
 	</script>
 <?endif;?>
-
+<?
+if (!empty($arResult['ITEMS']))
+{?>
                     <div class="page-heading"><?=$arResult['SECTION_NAME_MAIN']?></div>
                     <div class="product-filter">
 	                    <div style="display: none;">
@@ -270,18 +272,32 @@ foreach ($arResult['ITEMS'] as $key => $arItem)
 	                                                <img src="<? echo $arItem['PREVIEW_PICTURE']['SRC']; ?>" alt=""/>
 	                                            </a>
 	                                        </div>
-                                        <?else:?>
+                                        <?elseif (!empty($arItem['DETAIL_PICTURE'])):?>
 	                                       <div class="item current">
 	                                            <a onclick="return false;" href="<? echo $arItem['DETAIL_PICTURE']['SRC']; ?>" data-preview="<? echo $arItem['DETAIL_PICTURE']['SRC']; ?>" data-source="image">
 	                                                <img src="<? echo $arItem['DETAIL_PICTURE']['SRC']; ?>" alt=""/>
 	                                            </a>
 	                                        </div>
                                         <?endif;?>
+                                        <?foreach($arItem['PROPERTIES']['MORE_PHOTO']['VALUE'] as $image): $photo = CFile::GetFileArray($image);?>
+                                                <div class="item">
+	                                            <a onclick="return false;" href="<? echo $photo['SRC']; ?>" data-preview="<? echo $photo['SRC']; ?>" data-source="image">
+	                                                <img src="<? echo $photo['SRC']; ?>" alt=""/>
+	                                            </a>
+	                                        </div>
+                                        <?endforeach;?>
+                                        <? //print_r($arItem['PROPERTIES']['MORE_PHOTO']);?>
                                     </div>
                                     <div class="image__preview">
-                                        <a href="<? echo $arItem['DETAIL_PICTURE']['SRC']; ?>" class="MagicZoomPlus" rel="preload-selectors-small:false;preload-selectors-big:false;initialize-on:mouseover;smoothing-speed:70;fps:40;selectors-effect:false;show-title:false;loading-msg:Загрузка...;background-opacity:10;zoom-width:420;zoom-height:420;zoom-distance:5;hint-text:;selectors-class:current;buttons:hide;caption-source:span;">
+                                    <?if (!empty($arItem['PREVIEW_PICTURE'])):?>
+                                        <a href="<? echo $arItem['PREVIEW_PICTURE']['SRC']; ?>" class="MagicZoomPlus" rel="preload-selectors-small:false;preload-selectors-big:false;initialize-on:mouseover;smoothing-speed:70;fps:40;selectors-effect:false;show-title:false;loading-msg:Загрузка...;background-opacity:10;zoom-width:420;zoom-height:420;zoom-distance:5;hint-text:;selectors-class:current;buttons:hide;caption-source:span;">
+                                            <img src="<? echo $arItem['PREVIEW_PICTURE']['SRC']; ?>" alt=""/>
+                                        </a>
+                                    <?else:?>
+                                        <a href="<? echo $arItem['DETAIL_PICTURE']['SRC']; ?>"  class="MagicZoomPlus" rel="preload-selectors-small:false;preload-selectors-big:false;initialize-on:mouseover;smoothing-speed:70;fps:40;selectors-effect:false;show-title:false;loading-msg:Загрузка...;background-opacity:10;zoom-width:420;zoom-height:420;zoom-distance:5;hint-text:;selectors-class:current;buttons:hide;caption-source:span;">
                                             <img src="<? echo $arItem['DETAIL_PICTURE']['SRC']; ?>" alt=""/>
                                         </a>
+                                    <?endif;?>
                                     </div>
 									<?if($arItem["PROPERTIES"]["PRODUCT_OF_THE_DAY"]["VALUE"] == "Y"):?>
                                     <div class="item__stick item__stick-profit">
@@ -1058,11 +1074,12 @@ BX.message({
 </script>
 
     <!-- start: SCRIPTS REQUIRED FOR THIS PAGE ONLY -->
-    <script src="<?=SITE_TEMPLATE_PATH?>/assets/plugins/magiczoomplus/magiczoomplus.js" type="text/javascript"></script>
+<!--    <script src="<?=SITE_TEMPLATE_PATH?>/assets/plugins/magiczoomplus/magiczoomplus.js" type="text/javascript"></script>-->
     <!-- end: SCRIPTS REQUIRED FOR THIS PAGE ONLY -->
 <?
 	if ($arParams["DISPLAY_BOTTOM_PAGER"])
 	{
 		?><? echo $arResult["NAV_STRING"]; ?><?
 	}
+}
 }

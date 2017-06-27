@@ -118,11 +118,29 @@ $this->addExternalJS("/bitrix/templates/sp07restail/js/other.js");
                                                 ?>
                                         </div>
                                         <div class="image__preview">
-                                            <a id="gallery" href="<? echo $arResult['PREVIEW_PICTURE']['SRC']; ?>" class="MagicZoomPlus" rel="preload-selectors-small:false;preload-selectors-big:false;initialize-on:mouseover;smoothing-speed:70;fps:40;selectors-effect:false;show-title:false;loading-msg:Загрузка...;background-opacity:10;zoom-width:420;zoom-height:420;zoom-distance:5;hint-text:;selectors-class:current;buttons:hide;caption-source:span;">
-                                                <img src="<? echo $arResult['PREVIEW_PICTURE']['SRC']; ?>" alt=""/>
-                                            </a>
+                                            <?/*if (!empty($arResult['PREVIEW_PICTURE'])):?>
+                                                <a href="<? echo $arResult['PREVIEW_PICTURE']['SRC']; ?>" class="MagicZoomPlus" rel="preload-selectors-small:false;preload-selectors-big:false;initialize-on:mouseover;smoothing-speed:70;fps:40;selectors-effect:false;show-title:false;loading-msg:Загрузка...;background-opacity:10;zoom-width:420;zoom-height:420;zoom-distance:5;hint-text:;selectors-class:current;buttons:hide;caption-source:span;">
+                                                    <img src="<? echo $arResult['PREVIEW_PICTURE']['SRC']; ?>" alt=""/>
+                                                </a>
+                                            <?else:?>
+                                                <a href="<? echo $arResult['DETAIL_PICTURE']['SRC']; ?>"  class="MagicZoomPlus" rel="preload-selectors-small:false;preload-selectors-big:false;initialize-on:mouseover;smoothing-speed:70;fps:40;selectors-effect:false;show-title:false;loading-msg:Загрузка...;background-opacity:10;zoom-width:420;zoom-height:420;zoom-distance:5;hint-text:;selectors-class:current;buttons:hide;caption-source:span;">
+                                                    <img src="<? echo $arResult['DETAIL_PICTURE']['SRC']; ?>" alt=""/>
+                                                </a>
+                                            <?endif;*/?>
+                                            <?if(count($arResult['OFFERS'])>0):?>
+                                                <a id="gallery" href="<? echo $arResult['MORE_PHOTO'][0]['SRC']; ?>" class="MagicZoomPlus" rel="preload-selectors-small:false;preload-selectors-big:false;initialize-on:mouseover;smoothing-speed:70;fps:40;selectors-effect:false;show-title:false;loading-msg:Загрузка...;background-opacity:10;zoom-width:420;zoom-height:420;zoom-distance:5;hint-text:;selectors-class:current;buttons:hide;caption-source:span;">
+                                                    <img src="<? echo $arResult['MORE_PHOTO'][0]['SRC']; ?>" alt=""/>
+                                                </a>
+<!--                                                <a id="gallery" href="<? echo $arResult['OFFERS'][0]['DETAIL_PICTURE']['SRC']; ?>" class="MagicZoomPlus" rel="preload-selectors-small:false;preload-selectors-big:false;initialize-on:mouseover;smoothing-speed:70;fps:40;selectors-effect:false;show-title:false;loading-msg:Загрузка...;background-opacity:10;zoom-width:420;zoom-height:420;zoom-distance:5;hint-text:;selectors-class:current;buttons:hide;caption-source:span;">
+                                                    <img src="<? echo $arResult['OFFERS'][0]['DETAIL_PICTURE']['SRC']; ?>" alt=""/>
+                                                </a>-->
+                                            <?else:?>
+                                                <a id="gallery" href="<? echo $arResult['DETAIL_PICTURE']['SRC']; ?>" class="MagicZoomPlus" rel="preload-selectors-small:false;preload-selectors-big:false;initialize-on:mouseover;smoothing-speed:70;fps:40;selectors-effect:false;show-title:false;loading-msg:Загрузка...;background-opacity:10;zoom-width:420;zoom-height:420;zoom-distance:5;hint-text:;selectors-class:current;buttons:hide;caption-source:span;">
+                                                    <img src="<? echo $arResult['DETAIL_PICTURE']['SRC']; ?>" alt=""/>
+                                                </a>
+                                            <?endif;?>
                                         </div>
-
+<? // print_r($arResult['MORE_PHOTO']);?>
                                         <div class="item__stick item__stick-profit">
                                             <span class="num"><i class="fa fa-star-o"></i></span>
                                             Выгода <b>2017</b>
@@ -159,7 +177,7 @@ $this->addExternalJS("/bitrix/templates/sp07restail/js/other.js");
                                                 unset($useVoteRating);
                                                 ?>
                                         </div>
-                                        <?
+                                        <? //                                                print_r($arResult);
 if (isset($arResult['OFFERS']) && !empty($arResult['OFFERS']) && !empty($arResult['OFFERS_PROP']))
 {
     $arSkuProps = array();

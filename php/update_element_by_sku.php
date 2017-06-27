@@ -85,6 +85,7 @@ foreach($res as $i) {
 				}
 			}
 			 $arResult['debug'][]=$arFields;
+			 $arResult['DETAIL_PICTURE']=CFile::GetPath($arFields['DETAIL_PICTURE']);
 		}
 	}
 }

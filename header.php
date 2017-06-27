@@ -9,7 +9,7 @@ CJSCore::Init(array("jquery"));
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><?$APPLICATION->ShowTitle()?></title>
-
+<!--<script src="<?=SITE_TEMPLATE_PATH?>/js/magiczoomplus.js"></script>-->
     <?$APPLICATION->ShowHead();?>
 
     <link rel="shortcut icon" href="<?=SITE_TEMPLATE_PATH?>/assets/images/favicon.png">

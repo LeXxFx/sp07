@@ -545,7 +545,7 @@
     <script src="<?=SITE_TEMPLATE_PATH?>/assets/js/default.js"></script>
     <script src="<?=SITE_TEMPLATE_PATH?>/assets/js/index.js"></script>
     <script src="<?=SITE_TEMPLATE_PATH?>/assets/js/shop.js"></script>
-
+<script src="<?=SITE_TEMPLATE_PATH?>/assets/plugins/magiczoomplus/magiczoomplus.js" type="text/javascript"></script>
     <script>
        $(document).ready(function ($) {
            Main.init();
