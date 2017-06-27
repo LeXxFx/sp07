@@ -678,7 +678,20 @@ $(function() {
 	};
 
 	reset.call(marquee.find("div"));
-
+        
+        $(".imgs-list").on('hover, click','.item a', function(){
+//            console.log('qweqwe');
+            var preview = $(this).parent().parent().parent().parent().next();
+            var href = $(this).attr('href');
+            var src = $(this).find('img').attr('src');
+//            console.log(preview.find('a'));
+//            console.log(href);
+//            console.log(src);
+            preview.find('a').attr('href',href);
+            preview.find('img').attr('src',src);
+            MagicZoomPlus.refresh()
+            return false;
+        })
 });
 	var q = new Date;
 	var year = q.getFullYear();

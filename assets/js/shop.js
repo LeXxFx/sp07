@@ -219,10 +219,15 @@ var Shop = function () {
 			return false;
 		});
 	};
-
+	//Правки от верстальщика
 	var stickInfoPanel = function() {
-		$('.product-single .item__panel').stick_in_parent();
+		if (!isMobile && $(window).width() > 768)
+			$('.product-single .item__panel').stick_in_parent();
 	};
+	//конец
+	//var stickInfoPanel = function() {
+		//$('.product-single .item__panel').stick_in_parent();
+	//};
 
 	var complectSlick = function() {
 		var complectList = $("#complect .catalog__list");

@@ -50,20 +50,26 @@ foreach($res as $i) {
 
 		$arResult['debug'][]=$discountPrice;
 		$arResult["price_id"] = $arPrice["ID"];
-		$arSelect = Array("*");
+		$arSelect = Array("*","PROPERTY_MORE_PHOTO");
 		$arFilter = Array("IBLOCK_ID" => 10, "ID" => $arElement["ID"]);
 		$res = CIBlockElement::GetList(Array(), $arFilter, false, false, $arSelect);
 		while($ob = $res->GetNextElement()) {
 			$arFields = $ob->GetFields();
+			$arProps = $ob->GetProperties();
 			if($arFields["DETAIL_PICTURE"]) {
 				$arResult["section_image"] = CFile::ResizeImageGet($arFields['DETAIL_PICTURE'], array('width' => 192, 'height' => 191), BX_RESIZE_IMAGE_PROPORTIONAL_ALT)["src"];
 				$arResult["tmp_photo_detail_small"] = CFile::ResizeImageGet($arFields['DETAIL_PICTURE'], array('width' => 84, 'height' => 84), BX_RESIZE_IMAGE_PROPORTIONAL_ALT)["src"];
 				$arResult["tmp_photo_detail_full"] = CFile::GetPath($arFields['DETAIL_PICTURE']);
 			}
-			if($arFields["PROPERTY_MORE_PHOTO_VALUE"]) {
-				$arResult["tmp_photos_small"][] = CFile::ResizeImageGet($arFields['PROPERTY_MORE_PHOTO_VALUE'], array('width' => 84, 'height' => 84), BX_RESIZE_IMAGE_PROPORTIONAL_ALT)["src"];
-				$arResult["tmp_photos_full"][] = CFile::GetPath($arFields['PROPERTY_MORE_PHOTO_VALUE']);
-			}
+//			if($arFields["PROPERTY_MORE_PHOTO_VALUE"]) {
+//				$arResult["tmp_photos_small"][] = CFile::ResizeImageGet($arFields['PROPERTY_MORE_PHOTO_VALUE'], array('width' => 84, 'height' => 84), BX_RESIZE_IMAGE_PROPORTIONAL_ALT)["src"];
+//				$arResult["tmp_photos_full"][] = CFile::GetPath($arFields['PROPERTY_MORE_PHOTO_VALUE']);
+//			}
+                        $arResult['MORE_PHOTO'] = $arProps['MORE_PHOTO'];
+                        foreach($arProps['MORE_PHOTO']['VALUE'] as $ph){
+				$arResult["tmp_photos_small"][] = CFile::ResizeImageGet($ph, array('width' => 84, 'height' => 84), BX_RESIZE_IMAGE_PROPORTIONAL_ALT)["src"];
+				$arResult["tmp_photos_full"][] = CFile::GetPath($ph);
+                        }
 			if($arResult["tmp_photo_detail_small"] || $arResult["tmp_photos_small"]) {
 				$arResult["photos_small"] = array();
 				$arResult["photos_full"] = array();
@@ -86,6 +92,7 @@ foreach($res as $i) {
 			}
 			 $arResult['debug'][]=$arFields;
 			 $arResult['DETAIL_PICTURE']=CFile::GetPath($arFields['DETAIL_PICTURE']);
+//			 $arResult['PROPERTIES']=CFile::GetPath($arFields['DETAIL_PICTURE']);
 		}
 	}
 }
