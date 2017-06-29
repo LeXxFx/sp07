@@ -2547,9 +2547,11 @@ window.JCCatalogElement.prototype.Compare = function()
 			case 1://product
 			case 2://set
 				compareLink = this.compareData.compareUrl.replace('#ID#', this.product.id.toString());
+				//console.log("Это простой продукт");
 				break;
 			case 3://sku
 				compareLink = this.compareData.compareUrl.replace('#ID#', this.offers[this.offerNum].ID);
+				//console.log("Это товар с торговыми");
 				break;
 		}
 		compareParams = {
@@ -2646,9 +2648,11 @@ window.JCCatalogElement.prototype.InitBasketUrl = function()
 		case 1://product
 		case 2://set
 			this.basketUrl = this.basketUrl.replace('#ID#', this.product.id.toString());
+			console.log("Это простой товар");
 			break;
 		case 3://sku
 			this.basketUrl = this.basketUrl.replace('#ID#', this.offers[this.offerNum].ID);
+			console.log("Это товар с торговыми");
 			break;
 	}
 	this.basketParams = {

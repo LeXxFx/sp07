@@ -503,3 +503,43 @@ BX.message({
 	SITE_ID: '<? echo SITE_ID; ?>'
 });
 </script>
+<script>
+var urlHash = window.location.hash;
+urlHash=urlHash.replace('#','');
+if(urlHash == ''){
+window.dataLayerSp07 = window.dataLayerSp07 || [];
+dataLayerSp07.push({
+	"ecommerce": {
+		"currencyCode": "RUB",
+		"detail": {
+			"products": [
+			{
+				"id": "<?=$arResult["ID"]?>",
+				"name" : "<?=$arResult["NAME"]?>",
+				"price":"<?=$arResult["MIN_PRICE"]["VALUE"]?>",
+				"category":"<?=$arResult["SECTION"]["NAME"]?>"
+			},
+			]
+		}
+	}
+});
+}else{
+window.dataLayerSp07 = window.dataLayerSp07 || [];
+dataLayerSp07.push({
+	"ecommerce": {
+		"currencyCode": "RUB",
+		"detail": {
+			"products": [
+			{
+				"id": urlHash,
+				"name" : "<?=$arResult["NAME"]?>",
+				"price":"<?=$arResult["MIN_PRICE"]["VALUE"]?>",
+				"category":"<?=$arResult["SECTION"]["NAME"]?>"
+			},
+			]
+		}
+	}
+});
+}
+console.log("yaViewGoSucces");
+</script>
