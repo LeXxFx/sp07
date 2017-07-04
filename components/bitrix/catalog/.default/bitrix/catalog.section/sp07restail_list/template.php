@@ -263,7 +263,7 @@ foreach ($arResult['ITEMS'] as $key => $arItem)
 	$time = mb_strimwidth($result, 0, 5);
 	?>
 	<div class="product-list__item product__item" id="<? echo $strMainID; ?>">
-	<div class="item__wrap" id="product_container">
+	<div class="item__wrap item_<?=$arItem['ID']?>" id="product_container" data-id="<?=$arItem['ID']?>" data-tree='<?= json_encode($arItem['JS_OFFERS'])?>'>
                                 <div class="item__image">
                                     <div class="imgs-list">
                                     	<?if (!empty($arItem['PREVIEW_PICTURE'])):?>

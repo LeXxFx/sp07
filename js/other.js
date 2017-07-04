@@ -1,23 +1,10 @@
-function print_r(arr, level) {
-    var print_red_text = "";
-    if(!level) level = 0;
-    var level_padding = "";
-    for(var j=0; j<level+1; j++) level_padding += "    ";
-    if(typeof(arr) == 'object') {
-        for(var item in arr) {
-            var value = arr[item];
-            if(typeof(value) == 'object') {
-                print_red_text += level_padding + "'" + item + "' :\n";
-                print_red_text += print_r(value,level+1);
-		} 
-            else 
-                print_red_text += level_padding + "'" + item + "' => \"" + value + "\"\n";
-        }
-    } 
-
-    else  print_red_text = "===>"+arr+"<===("+typeof(arr)+")";
-    return print_red_text;
-}
+var ObjSIze = function(obj) {
+    var size = 0, key;
+    for (key in obj) {
+        if (obj.hasOwnProperty(key)) size++;
+    }
+    return size;
+};
 $(function() {
     // $('.checkout_payment').click();		
 
@@ -94,7 +81,8 @@ $(function() {
         var prop = $(this);
         prop.siblings().removeClass("active");
         prop.addClass("active");
-        update_by_sku(prop.closest('#product_container'));
+        let element_block = prop.closest('#product_container');
+        update_by_sku(element_block);
         prop.closest('.product__item').find('.item__input-counter .count').attr('max', prop.data('prop-maxcount'));
         prop.closest('.product-single').find('.item__input-counter .count').attr('max', prop.data('prop-maxcount'));
 
@@ -102,16 +90,57 @@ $(function() {
     });
 		
     function update_by_sku(element_block) {
-        //element_block_selector = "#" + element_block_id;
-        //var element_block = $(element_block_selector);
+        let tree = element_block.data('tree'), prod_id = element_block.data('id'),ind;
+        for(ind in tree){}
+        if(ObjSIze(tree[ind].TREE)>1){
+            //get the largest param
+            let max_vals = 0, max_id = 0, pblocks = element_block.find('.prop')
+            $.each(pblocks,function(){
+                let vals = $(this).find('.value').length;
+                if(vals > max_vals){
+                    max_vals = vals;
+                    max_id = $(this).closest('.prop').data('prop-id')
+                }
+            })
+            //hide all params, without maxparam
+            $.each(pblocks,function(){
+                if($(this).closest('.prop').data('prop-id')!==max_id){
+                    $(this).find('.value').hide();
+                }
+            })
+            //show params, what are compared to max_param
+            for(var i in tree){
+                var subtree = tree[i].TREE
+                if($(".item_"+prod_id+" [data-onevalue="+subtree['PROP_'+max_id]+"]").hasClass('active')){//if max_prop isactive
+                    for(var j in subtree){
+                        if(j !== 'PROP_'+max_id){//if not largest
+                            $(".item_"+prod_id+" [data-onevalue="+subtree[j]+"]").show()
+                        }
+                    }
+                }
+            }
+            //
+            $.each(pblocks,function(){
+                if($(this).closest('.prop').data('prop-id')!==max_id){
+                    if($(this).find('.value.active').is(':hidden') || !$(this).find('.value.active').length){
+                        $(this).find('.value.active').removeClass('active');
+                        $.each($(this).find('.value'),function(){
+                            if($(this).is(':visible')){
+                               $(this) .addClass('active');return;
+                            }
+                        })
+                    }
+                }
+            })
+        }
         var active_props = {};
         element_block.find(" .sku_props .sku_prop").each(function () {
             active_props[$(this).data("prop-id")] = $(this).find(".sku_prop_value.active").data("value-id");
         });
-		
         var data_to_send = {};
         data_to_send["props"] = active_props;
         data_to_send["element_id"] = element_block.find(".sku_props .sku_prop").data("element-id");
+
         $.ajax({
             url: "/bitrix/templates/sp07restail/php/update_element_by_sku.php",
             data: data_to_send,
@@ -453,14 +482,17 @@ $(window).load(function(){
 */
 	$(".addtobasket").on("click", function(event) {
 		event.preventDefault();
-		
 		var active_props = [];
 		$(this).closest('#product_container').find(".sku_prop").each(function() {
+		console.log($(this).find(".name").text().replace(":", ""))
+		console.log($(this).find(".sku_prop_value.active").data("value"))
+                    if(typeof $(this).find(".sku_prop_value.active").data("value")!=="undefined"){
 			active_prop = {}
 			active_prop["NAME"] = $(this).find(".name").text().replace(":", "");
 			active_prop["CODE"] = $(this).data("prop-code");
 			active_prop["VALUE"] = $(this).find(".sku_prop_value.active").data("value");
 			active_props.push(active_prop);
+                    }
 		});
 		
 		var data_to_send = {};
@@ -470,8 +502,6 @@ $(window).load(function(){
 		data_to_send["amount"] = $(this).attr("data-amount");
 		
 		var button = $(this);
-		console.log($(this).attr("data-name"));
-		console.log(print_r(data_to_send));
 		
 		$.ajax({
 			url: "/bitrix/templates/sp07restail/php/add_to_cart.php",

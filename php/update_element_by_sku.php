@@ -50,7 +50,7 @@ foreach($res as $i) {
 
 		$arResult['debug'][]=$discountPrice;
 		$arResult["price_id"] = $arPrice["ID"];
-		$arSelect = Array("*","PROPERTY_MORE_PHOTO");
+		$arSelect = Array("*","PROPERTY_MORE_PHOTO","PROPERTY_CML2_LINK");
 		$arFilter = Array("IBLOCK_ID" => 10, "ID" => $arElement["ID"]);
 		$res = CIBlockElement::GetList(Array(), $arFilter, false, false, $arSelect);
 		while($ob = $res->GetNextElement()) {
@@ -66,6 +66,7 @@ foreach($res as $i) {
 //				$arResult["tmp_photos_full"][] = CFile::GetPath($arFields['PROPERTY_MORE_PHOTO_VALUE']);
 //			}
                         $arResult['MORE_PHOTO'] = $arProps['MORE_PHOTO'];
+                        $arResult['PARENT_ID'] = $arProps['CML2_LINK']['VALUE'];
                         foreach($arProps['MORE_PHOTO']['VALUE'] as $ph){
 				$arResult["tmp_photos_small"][] = CFile::ResizeImageGet($ph, array('width' => 84, 'height' => 84), BX_RESIZE_IMAGE_PROPORTIONAL_ALT)["src"];
 				$arResult["tmp_photos_full"][] = CFile::GetPath($ph);

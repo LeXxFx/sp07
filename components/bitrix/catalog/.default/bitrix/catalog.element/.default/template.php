@@ -96,7 +96,7 @@ $this->addExternalJS("/bitrix/templates/sp07restail/js/other.js");
 ?>
             <div class="inner product-item">
                 <div id="content" role="main">
-                    <div class="product-single clearfix" id="product_container">
+                    <div class="product-single clearfix  item_<?=$arResult['ID']?>" id="product_container" data-id="<?=$arResult['ID']?>" data-tree='<?= json_encode($arResult['JS_OFFERS'])?>'>
                         <div class="product-single__body">
                             <div class="product-list__item product__item">
                                 <div class="item__wrap">
@@ -503,43 +503,4 @@ BX.message({
 	SITE_ID: '<? echo SITE_ID; ?>'
 });
 </script>
-<script>
-var urlHash = window.location.hash;
-urlHash=urlHash.replace('#','');
-if(urlHash == ''){
-window.dataLayerSp07 = window.dataLayerSp07 || [];
-dataLayerSp07.push({
-	"ecommerce": {
-		"currencyCode": "RUB",
-		"detail": {
-			"products": [
-			{
-				"id": "<?=$arResult["ID"]?>",
-				"name" : "<?=$arResult["NAME"]?>",
-				"price":"<?=$arResult["MIN_PRICE"]["VALUE"]?>",
-				"category":"<?=$arResult["SECTION"]["NAME"]?>"
-			},
-			]
-		}
-	}
-});
-}else{
-window.dataLayerSp07 = window.dataLayerSp07 || [];
-dataLayerSp07.push({
-	"ecommerce": {
-		"currencyCode": "RUB",
-		"detail": {
-			"products": [
-			{
-				"id": urlHash,
-				"name" : "<?=$arResult["NAME"]?>",
-				"price":"<?=$arResult["MIN_PRICE"]["VALUE"]?>",
-				"category":"<?=$arResult["SECTION"]["NAME"]?>"
-			},
-			]
-		}
-	}
-});
-}
-console.log("yaViewGoSucces");
-</script>
+<?debug($arResult['JS_OFFERS'])?>

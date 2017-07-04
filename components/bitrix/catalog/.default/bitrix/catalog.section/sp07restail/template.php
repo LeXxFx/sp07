@@ -258,7 +258,7 @@ foreach ($arResult['ITEMS'] as $key => $arItem)
 	$time = mb_strimwidth($result, 0, 5);
 	?>
 	<div class="product-grid__item product__item" id="<? echo $strMainID; ?>">
-	<div class="item__wrap" id="product_container" data-block-type="catalog">
+            <div class="item__wrap item_<?=$arItem['ID']?>" id="product_container" data-block-type="catalog" data-id="<?=$arItem['ID']?>" data-tree='<?= json_encode($arItem['JS_OFFERS'])?>'>
 								<?if($arItem["PROPERTIES"]["PRODUCT_OF_THE_DAY"]["VALUE"] == "Y"):?>
                                 <div class="item__stick item__stick-profit">
                                     <span class="num"><i class="fa fa-star-o"></i></span>
@@ -362,6 +362,7 @@ foreach ($arResult['ITEMS'] as $key => $arItem)
 												// echo str_replace(array('#ITEM#_prop_', '#WIDTH#', '#ELEMENT_ID#'), array($arItemIDs['PROP'], 'auto', $arItem['ID']), $valueItem);
 												echo str_replace(array('#ITEM#_prop_', '#WIDTH#', '#ELEMENT_ID#', '#MAX_QUANTITY#'), array($arItemIDs['PROP'], 'auto', $arItem['ID'],trim($arItem['OFFERS'][$PropIndex]['CATALOG_QUANTITY'])), $valueItem);
 												$PropIndex++;
+//                                                                                        debug($valueItem);
 											}
 											unset($value, $valueItem);
 											echo str_replace('#ITEM#_prop_', $arItemIDs['PROP'], $rowTemplate['FINISH']), '</div>';
@@ -415,6 +416,7 @@ BX.message({
 	SITE_ID: '<? echo SITE_ID; ?>'
 });
 </script>
+<?debug($arResult['ITEMS'][0]['JS_OFFERS'])?>
 <?
 	if ($arParams["DISPLAY_BOTTOM_PAGER"])
 	{
