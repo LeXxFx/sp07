@@ -326,6 +326,20 @@
       }
     }
   }
+  .item__image {
+    @include flex(0 0 520px);
+    .image__preview {
+      width: 450px;
+      height: 380px;
+      min-height: 380px;
+      img {
+        max-width: 100%;
+        max-height: 100%;
+        width: auto;
+        height: auto;
+      }
+    }
+  }
 }
 
 .product-complect {
@@ -386,7 +400,9 @@
     }
   }
 }
-@media screen and (max-width: 992px) {
+
+
+@media screen and (max-width: 1170px) {
   .product-single {
     display: block;
 
@@ -397,8 +413,39 @@
     &__body {
       .product__item {
         .item__wrap {
+          flex-wrap: wrap;
+          border: none;
+          .item__image {
+            border: 1px solid #e5e5e5;
+          }
+          .item__info {
+            margin-right: 0;
+          }
           .item__panel {
             display: block;
+            width: 100%;
+            border: 1px solid #e5e5e5;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+@media screen and (max-width: 992px) {
+  .product-single {
+    &__body {
+      .product__item {
+        .item__wrap {
+          .item__image {
+            @include flex(0 0 380px);
+            align-self: flex-start;
+            .image__preview {
+              width: 310px;
+              height: 220px;
+              min-height: 220px;
+            }
           }
         }
       }
@@ -455,7 +502,7 @@
           .item__info {
             order: 1;
             margin: 0;
-            padding: 0 10px 10px;
+            padding: 0 0 10px 0;
             width: 100%;
             min-width: 100%;
             display: block;
@@ -474,7 +521,8 @@
               width: auto;
               display: block;
               margin: 0 70px 0 0;
-              height: auto;
+              height: 180px;
+              min-height: 180px;
             }
           }
           .item__panel {
@@ -482,14 +530,25 @@
             width: 100%;
             min-width: 100%;
             border-top: 1px solid #e5e5e5;
-            border-left: none;
+            padding: 10px 0;
             > div {
-              max-width: 320px;
+              max-width: 220px;
               &.item__delivary {
-                max-width: 100%;
+                display: none;
               }
             }
           }
+        }
+      }
+    }
+    .user-activity {
+      .product-reviews .panel-pager .col-button {
+        margin: 0;
+        padding: 10px 0;
+        text-align: center;
+        .btn {
+          float: none;
+          margin: 0 auto;
         }
       }
     }
