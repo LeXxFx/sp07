@@ -1,0 +1,1 @@
+<img src="/bitrix/templates/sport07/images/logo-footer.png" alt="">

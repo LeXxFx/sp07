@@ -217,15 +217,12 @@ $(window).load(function(){
 		
         
         update_by_sku("oneElement");
-
 		 $(".cnt_item").on("click", function(){
 		
-
 			update_by_sku($(this).parent().parent().attr("id"));
 		});
 		
 		function update_by_sku(element_block_id) {
-
 			element_block_selector = "#" + element_block_id;
 			var element_block = $(element_block_selector);
 			var active_props = {};
@@ -239,12 +236,9 @@ $(window).load(function(){
 				data_to_send["props"] = active_props;
 				data_to_send["element_id"] = $(element_block_selector + " .sku_prop").data("element-id");
 			}
-
 			else{
 				var $sku_prop = $(element_block_selector).parent().parent().parent()();
-
 				active_props[$sku_prop.data("prop-id")] = $(element_block_selector).data("value-id");
-
 				data_to_send["props"] = active_props;
 				data_to_send["element_id"] = $sku_prop.data("element-id");
 			}
@@ -293,7 +287,6 @@ $(window).load(function(){
 		}
 	
 	});
-
 */
 	// Home filter
 	
@@ -309,7 +302,7 @@ $(window).load(function(){
 			success: function(data) {
 				$(".fast-filter select[name='kind']").html(data);
 				$(".fast-filter select[name='section']").html('<option value="0">РўРѕРІР°СЂ</option>');
-				$(".fast-filter select[name='size']").html('<option value="0">Р Р°Р·РјРµСЂ</option>');
+				$(".fast-filter select[name='size']").html('<option value="0">Р Р°Р·РјРµСЂ</option>');
 			}
 		});
 	});
@@ -326,7 +319,7 @@ $(window).load(function(){
 			},
 			success: function(data) {
 				$(".fast-filter select[name='section']").html(data);
-				$(".fast-filter select[name='size']").html('<option value="0">Р Р°Р·РјРµСЂ</option>');
+				$(".fast-filter select[name='size']").html('<option value="0">Р Р°Р·РјРµСЂ</option>');
 			}
 		});
 	});
@@ -446,7 +439,6 @@ $(window).load(function(){
 		event.preventDefault();
 		
 		var active_props = [];
-
 		$(document).find(".sku_prop").each(function() {
 			active_prop = {}
 			active_prop["NAME"] = $(this).find(".sku_prop_name").text().replace(":", "");
