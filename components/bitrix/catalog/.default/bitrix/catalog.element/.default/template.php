@@ -503,4 +503,4 @@ BX.message({
 	SITE_ID: '<? echo SITE_ID; ?>'
 });
 </script>
-<?debug($arResult['JS_OFFERS'])?>
+<?//debug($arResult['JS_OFFERS'])?>
