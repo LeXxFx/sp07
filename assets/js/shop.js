@@ -153,71 +153,88 @@ var Shop = function () {
 	};
 
 	var productsCatalog = function () {
-		$('.product__item .imgs-list .item a').on("mouseenter", function () {
-			var that = $(this);
-			var target = that.closest('.item__image').find('.image__preview');
-			var newSrc = that.attr('href');
-
-			that.closest('.imgs-list').find('.item').removeClass("current");
-			that.parent().addClass("current");
-
-			target.height(target.height());
-			target.removeClass('image__preview--init').html('').addClass('image__preview--loading');
-
-			if (that.data('source') == 'image') {
-				target.html('<a id="gallery" class="MagicZoomPlus" rel="preload-selectors-small:false;preload-selectors-big:false;initialize-on:mouseover;smoothing-speed:70;fps:40;selectors-effect:false;show-title:false;loading-msg:Загрузка...;background-opacity:10;zoom-width:420;zoom-height:420;zoom-distance:5;hint-text:;selectors-class:current;buttons:hide;caption-source:span;" ' +
-					'href="'+newSrc+'"><img /></a>').find('img').attr('src', newSrc).load(function () {
-					target.removeClass('image__preview--loading');
-					target.find('img').fadeIn('fast');
-					target.height('auto');
-				});
-
-				MagicZoomPlus.start('gallery');
-
-			};
+		var imageItem = $('.product__item .imgs-list .item a');
+        imageItem.on("mouseenter", function () {
+            switchImage($(this));
 		});
+        imageItem.on("click", function (e) {
+        	e.preventDefault();
+            switchImage($(this));
+        });
 
-		var imgs = $(".product__item .imgs-list");
+		var imgs = $(".product-list .product__item .imgs-list");
 		if (imgs.length) {
 			imgs.slick({
 				slidesToShow: 2,
-				slidesToScroll: 2,
+				slidesToScroll: 1,
 				autoplay: false,
 				vertical: true,
 				verticalSwiping: true,
 				prevArrow: '<a class="slick-prev"><i class="fa fa-angle-up"></i></a>',
 				nextArrow: '<a class="slick-next"><i class="fa fa-angle-down"></i></a>'
 			});
+            imgs.on('afterChange', function(event, slick, currentSlide, nextSlide){
+                var slide = slick.$slides.get(currentSlide);
+                switchImage($(slide.children[0]));
+            });
 		}
 	};
 
+
+    function switchImage(image) {
+        var that = image;
+        var target = that.closest('.item__image').find('.image__preview');
+        var newSrc = that.attr('href');
+
+        that.closest('.imgs-list').find('.item').removeClass("current");
+        that.parent().addClass("current");
+
+      //  target.height(target.height());
+        target.removeClass('image__preview--init').html('').addClass('image__preview--loading');
+
+        if (that.data('source') == 'image') {
+            target.html('<a id="gallery" class="MagicZoomPlus" rel="preload-selectors-small:false;preload-selectors-big:false;initialize-on:mouseover;smoothing-speed:70;fps:40;selectors-effect:false;show-title:false;loading-msg:Загрузка...;background-opacity:10;zoom-width:420;zoom-height:420;zoom-distance:5;hint-text:;selectors-class:current;buttons:hide;caption-source:span;" ' +
+                'href="'+newSrc+'"><img /></a>').find('img').attr('src', newSrc).load(function () {
+                target.removeClass('image__preview--loading');
+                target.find('img').fadeIn('fast');
+            });
+
+            MagicZoomPlus.start('gallery');
+
+        };
+    }
+
 	var productGallery = function () {
-		$('#product-gallery .imgs-list .item a').on('click', function (e) {
-			e.preventDefault();
-			var that = $(this);
-			var target = that.closest('.item__image').find('.image__preview');
-			var newSrc = that.attr('href');
-
-			that.closest('.imgs-list').find('.item').removeClass("current");
-			that.parent().addClass("current");
-
-			target.height(target.height());
-			target.removeClass('image__preview--init').html('').addClass('image__preview--loading');
-
-			if (that.data('source') == 'image') {
-				target.html('<a id="gallery" class="MagicZoomPlus" rel="preload-selectors-small:false;preload-selectors-big:false;initialize-on:mouseover;smoothing-speed:70;fps:40;selectors-effect:false;show-title:false;loading-msg:Загрузка...;background-opacity:10;zoom-width:420;zoom-height:420;zoom-distance:5;hint-text:;selectors-class:current;buttons:hide;caption-source:span;" ' +
-					'href="'+newSrc+'"><img /></a>').find('img').attr('src', newSrc).load(function () {
-					target.removeClass('image__preview--loading');
-					target.find('img').fadeIn('fast');
-					target.height('auto');
-				});
-
-				MagicZoomPlus.start('gallery');
-
-			};
-
-			return false;
-		});
+		var gallery = $('#product-gallery').find('.imgs-list');
+		if (gallery.length > 0) {
+            gallery.slick({
+                slidesToShow: 6,
+                slidesToScroll: 1,
+                autoplay: false,
+                vertical: true,
+                verticalSwiping: true,
+                prevArrow: '<a class="slick-prev"><i class="fa fa-angle-up"></i></a>',
+                nextArrow: '<a class="slick-next"><i class="fa fa-angle-down"></i></a>',
+                responsive: [
+                    {
+                        breakpoint: 992,
+                        settings: {
+                            slidesToShow: 3
+                        }
+                    },
+                    {
+                        breakpoint: 478,
+                        settings: {
+                            slidesToShow: 3
+                        }
+                    }
+                ]
+            });
+            gallery.on('afterChange', function(event, slick, currentSlide, nextSlide){
+                var slide = slick.$slides.get(currentSlide);
+                switchImage($(slide.children[0]));
+            });
+        };
 	};
 	//Правки от верстальщика
 	var stickInfoPanel = function() {

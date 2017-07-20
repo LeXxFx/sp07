@@ -202,8 +202,14 @@ if (isset($arResult['OFFERS']) && !empty($arResult['OFFERS']) && !empty($arResul
                 <? $index=0; ?>
                     <?foreach ($arProp['VALUES'] as $arOneValue){
                         $arOneValue['NAME'] = htmlspecialcharsbx($arOneValue['NAME']);?>
+										<?$curOffer = '';
+										foreach($arResult["OFFERS"] as $offer){
+											if($offer["PROPERTIES"][$arProp["CODE"]]["VALUE"] == $arOneValue['XML_ID']){
+												$curOffer = $offer;
+											}
+										}?>
                         <div class="value sku_prop_value" data-prop-maxcount="<?=$arResult['JS_OFFERS'][$index]['MAX_QUANTITY']?>" data-value="<?=$arOneValue["NAME"]?>" data-value-id="<? echo $arOneValue['XML_ID']; ?>" data-treevalue="<? echo $arProp['ID'].'_'.$arOneValue['ID']; ?>" data-onevalue="<? echo $arOneValue['ID']; ?>">
-                            <span><? echo $arOneValue['NAME']; ?></span>
+                            <span id="<?=$curOffer["ID"]?>"><? echo $arOneValue['NAME']; ?></span>
                         </div>
                         <?$index++;?>
                     <?}?>
@@ -218,10 +224,17 @@ if (isset($arResult['OFFERS']) && !empty($arResult['OFFERS']) && !empty($arResul
                     <? $index=0; ?>
                 <?foreach ($arProp['VALUES'] as $arOneValue){
                     $arOneValue['NAME'] = htmlspecialcharsbx($arOneValue['NAME']);?>
-
+					<?$curOffer = '';
+						foreach($arResult["OFFERS"] as $offer){
+						if($offer["PROPERTIES"][$arProp["CODE"]]["VALUE"] == $arOneValue['XML_ID']){
+						$curOffer = $offer;
+							}
+					}?>
                     <div class="value sku_prop_value" data-prop-maxcount="<?=$arResult['JS_OFFERS'][$index]['MAX_QUANTITY']?>" data-value="<?=$arOneValue["NAME"]?>" data-value-id="<? echo $arOneValue['XML_ID']; ?>" data-treevalue="<? echo $arProp['ID'].'_'.$arOneValue['ID']; ?>" data-onevalue="<? echo $arOneValue['ID']; ?>">
-                        <img src="<? echo $arOneValue['PICT']['SRC']; ?>" alt="<? echo $arOneValue['NAME']; ?>" title="<? echo $arOneValue['NAME']; ?>" />
-                    </div>
+                        <span id="<?=$curOffer["ID"]?>">
+						<img src="<? echo $arOneValue['PICT']['SRC']; ?>" alt="<? echo $arOneValue['NAME']; ?>" title="<? echo $arOneValue['NAME']; ?>" />
+						</span>
+					</div>
                     <?$index++;?>
                 <?}?>
             </div>
@@ -503,4 +516,4 @@ BX.message({
 	SITE_ID: '<? echo SITE_ID; ?>'
 });
 </script>
-<?debug($arResult['JS_OFFERS'])?>
+<?//debug($arResult['JS_OFFERS'])?>

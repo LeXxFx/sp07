@@ -105,7 +105,7 @@ endif;
 					</div>
 				<? else: ?>
 					<form action="<?=POST_FORM_ACTION_URI?>" class="buy_one_click_form" method="post" id="buy_one_click_form"
-					      enctype="multipart/form-data">
+					      enctype="multipart/form-data" onsubmit="yaCounter19622830.reachGoal('1_click', function () {alert('Данные успешно отправлены');},<текст>); return true;">
 						<input type="hidden" class="input_ajax_id" name="AJAX_CALL_BUY_ONE_CLICK"
 						       value="<?=$arResult["AJAX_ID"]?>"/>
 						<input type="hidden" name="buy_one_click" value="Y"/>

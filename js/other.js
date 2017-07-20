@@ -77,16 +77,67 @@ $(function() {
 		
 		//$('.sku_prop_value[data-prop-n=0]').click();
         
-    $(".sku_prop_value").on("click", function () {
-        var prop = $(this);
-        prop.siblings().removeClass("active");
-        prop.addClass("active");
-        let element_block = prop.closest('#product_container');
-        update_by_sku(element_block);
-        prop.closest('.product__item').find('.item__input-counter .count').attr('max', prop.data('prop-maxcount'));
-        prop.closest('.product-single').find('.item__input-counter .count').attr('max', prop.data('prop-maxcount'));
+//    $(".sku_prop_value").on("click", function () {
+//        var prop = $(this);
+//        prop.siblings().removeClass("active");
+//        prop.addClass("active");
+//        let element_block = prop.closest('#product_container');
+//        update_by_sku(element_block);
+//        prop.closest('.product__item').find('.item__input-counter .count').attr('max', prop.data('prop-maxcount'));
+//        prop.closest('.product-single').find('.item__input-counter .count').attr('max', prop.data('prop-maxcount'));
 
-        CheckMaxQuantity(prop.closest('.product__item').find('.item__input-counter .count'));
+//        CheckMaxQuantity(prop.closest('.product__item').find('.item__input-counter .count'));
+//    });
+
+ /*
+	При переходе с яндекс маркета в строке содержиться якорь,
+	но на сайте не выбирается данное торговое предложение.
+	Ловим хэш. Ищем в дереве элемент с этим якорем, делаем его активным.
+	После чистим hash.
+	*/    
+    $(".sku_prop_value").on("click", function () {
+		//Ловим hash
+		var urlHash = window.location.hash;
+		//console.log("findHash");
+		//Чистим его
+		urlHash=urlHash.replace('#','');
+		//console.log("clearHash");
+		//Проверяем есть ли он и запускам скрипт
+		if(urlHash !== ''){
+			//console.log("findDone");
+			var thisParent = $("#"+urlHash).parent()
+			$(thisParent).addClass("active");
+			//console.log("activateProps");
+			//Чистим hash
+			var prop = $(this);
+			update_by_sku(prop.closest('#product_container'));
+			prop.closest('.product__item').find('.item__input-counter .count').attr('max', prop.data('prop-maxcount'));
+			prop.closest('.product-single').find('.item__input-counter .count').attr('max', prop.data('prop-maxcount'));
+
+			CheckMaxQuantity(prop.closest('.product__item').find('.item__input-counter .count'));
+			$(window).load(function() {
+				var histAPI = !!(window.history && history.pushState);
+				if (histAPI && (document.location.hash == "#"+urlHash)) {
+					history.replaceState({}, document.title, document.location.pathname + document.location.search)
+					//console.log("dellHash");
+				}
+			});
+		}else{
+			//console.log("hashEmpty");
+			//В противном случае стандартная работа
+			var prop = $(this);
+			//vat yandexName = $('.active');
+			//console.log(yandexName);
+			prop.siblings().removeClass("active");
+			//console.log("del");
+			prop.addClass("active");
+			//console.log("add");
+			update_by_sku(prop.closest('#product_container'));
+			prop.closest('.product__item').find('.item__input-counter .count').attr('max', prop.data('prop-maxcount'));
+			prop.closest('.product-single').find('.item__input-counter .count').attr('max', prop.data('prop-maxcount'));
+
+			CheckMaxQuantity(prop.closest('.product__item').find('.item__input-counter .count'));
+		}
     });
 		
     function update_by_sku(element_block) {
