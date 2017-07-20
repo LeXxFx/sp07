@@ -30,7 +30,7 @@
       }
     }
     .item__name {
-      height: 48px;
+      height: 58px;
       overflow: hidden;
       font-size: 16px;
       font-weight: 300;
@@ -198,7 +198,7 @@
         }
       }
       .item__rate {
-        margin-bottom: 15px;
+        margin-bottom: 10px;
       }
     }
 
@@ -466,6 +466,7 @@
   }
 
   .item__product-options {
+    padding-top: 5px;
     .prop {
       font: bold 15px/1 $font-bold;
       margin: 0 0 10px 0;
