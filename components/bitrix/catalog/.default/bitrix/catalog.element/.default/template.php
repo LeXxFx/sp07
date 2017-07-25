@@ -202,8 +202,14 @@ if (isset($arResult['OFFERS']) && !empty($arResult['OFFERS']) && !empty($arResul
                 <? $index=0; ?>
                     <?foreach ($arProp['VALUES'] as $arOneValue){
                         $arOneValue['NAME'] = htmlspecialcharsbx($arOneValue['NAME']);?>
+										<?$curOffer = '';
+										foreach($arResult["OFFERS"] as $offer){
+											if($offer["PROPERTIES"][$arProp["CODE"]]["VALUE"] == $arOneValue['XML_ID']){
+												$curOffer = $offer;
+											}
+										}?>
                         <div class="value sku_prop_value" data-prop-maxcount="<?=$arResult['JS_OFFERS'][$index]['MAX_QUANTITY']?>" data-value="<?=$arOneValue["NAME"]?>" data-value-id="<? echo $arOneValue['XML_ID']; ?>" data-treevalue="<? echo $arProp['ID'].'_'.$arOneValue['ID']; ?>" data-onevalue="<? echo $arOneValue['ID']; ?>">
-                            <span><? echo $arOneValue['NAME']; ?></span>
+                            <span id="<?=$curOffer["ID"]?>"><? echo $arOneValue['NAME']; ?></span>
                         </div>
                         <?$index++;?>
                     <?}?>
@@ -218,10 +224,17 @@ if (isset($arResult['OFFERS']) && !empty($arResult['OFFERS']) && !empty($arResul
                     <? $index=0; ?>
                 <?foreach ($arProp['VALUES'] as $arOneValue){
                     $arOneValue['NAME'] = htmlspecialcharsbx($arOneValue['NAME']);?>
-
+					<?$curOffer = '';
+						foreach($arResult["OFFERS"] as $offer){
+						if($offer["PROPERTIES"][$arProp["CODE"]]["VALUE"] == $arOneValue['XML_ID']){
+						$curOffer = $offer;
+							}
+					}?>
                     <div class="value sku_prop_value" data-prop-maxcount="<?=$arResult['JS_OFFERS'][$index]['MAX_QUANTITY']?>" data-value="<?=$arOneValue["NAME"]?>" data-value-id="<? echo $arOneValue['XML_ID']; ?>" data-treevalue="<? echo $arProp['ID'].'_'.$arOneValue['ID']; ?>" data-onevalue="<? echo $arOneValue['ID']; ?>">
-                        <img src="<? echo $arOneValue['PICT']['SRC']; ?>" alt="<? echo $arOneValue['NAME']; ?>" title="<? echo $arOneValue['NAME']; ?>" />
-                    </div>
+                        <span id="<?=$curOffer["ID"]?>">
+						<img src="<? echo $arOneValue['PICT']['SRC']; ?>" alt="<? echo $arOneValue['NAME']; ?>" title="<? echo $arOneValue['NAME']; ?>" />
+						</span>
+					</div>
                     <?$index++;?>
                 <?}?>
             </div>
@@ -304,9 +317,9 @@ if (isset($arResult['OFFERS']) && !empty($arResult['OFFERS']) && !empty($arResul
                                                 <i class="icon icon-cart-white"></i>
                                             </button>
                                         </div>
-                                        <div class="item__delivary">
+                                        <!--<div class="item__delivary">
                                             <b>Доставка:</b> 19 февраля
-                                        </div>
+                                        </div>-->
                                     </div><div style="position: relative; width: 250px; height: 221px; display: none; vertical-align: baseline; float: none;"></div>
                                 </div>
                             </div>
@@ -416,13 +429,13 @@ if (isset($arResult['OFFERS']) && !empty($arResult['OFFERS']) && !empty($arResul
                                             <i class="icon icon-cart-white"></i>
                                         </button>
                                     </div>
-                                    <div class="item__delivary">
+                                    <!--<div class="item__delivary">
                                         <b>Доставка:</b> 19 февраля
-                                    </div>
+                                    </div>-->
                                 </div>
                                 <div class="panel__advants">
-                                    <div class="advants__item advants__item--orange"><span><i class="icon icon-rubl"></i></span>
-                                        <p><a href="#">Нашли дешеле? Позвоните!</a></p></div>
+                                    <!--<div class="advants__item advants__item--orange"><span><i class="icon icon-rubl"></i></span>
+                                        <p><a href="#">Нашли дешеле? Позвоните!</a></p></div>-->
                                     <!--<div class="advants__item advants__item--red"><span>5%</span>
                                         <p>До скидки 5% осталось купить на 4000 р.</p></div>
                                     <div class="advants__item advants__item--green"><span><i class="icon icon-car"></i></span>

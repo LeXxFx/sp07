@@ -416,7 +416,7 @@ BX.message({
 	SITE_ID: '<? echo SITE_ID; ?>'
 });
 </script>
-<?debug($arResult['ITEMS'][0]['JS_OFFERS'])?>
+<?//debug($arResult['ITEMS'][0]['JS_OFFERS'])?>
 <?
 	if ($arParams["DISPLAY_BOTTOM_PAGER"])
 	{
