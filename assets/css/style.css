@@ -2661,7 +2661,7 @@ blockquote {
       max-width: 100%;
       max-height: 100%; }
   .product-grid__item .item__name {
-    height: 48px;
+    height: 58px;
     overflow: hidden;
     font-size: 16px;
     font-weight: 300;
@@ -2806,7 +2806,7 @@ blockquote {
         .product-list__item .item__info .item__name > a:hover {
           text-decoration: underline; }
     .product-list__item .item__info .item__rate {
-      margin-bottom: 15px; }
+      margin-bottom: 10px; }
   .product-list__item .item__panel {
     width: 250px;
     min-width: 150px;
@@ -3013,36 +3013,38 @@ blockquote {
         margin: 5px 0 0 0px;
         min-width: 0.2em;
         font-weight: bold; }
-.product__item .item__product-options .prop {
-  font: bold 15px/1 "Roboto", sans-serif;
-  margin: 0 0 10px 0; }
-  .product__item .item__product-options .prop .name {
-    display: block;
+.product__item .item__product-options {
+  padding-top: 5px; }
+  .product__item .item__product-options .prop {
+    font: bold 15px/1 "Roboto", sans-serif;
     margin: 0 0 10px 0; }
-  .product__item .item__product-options .prop .values .value {
-    float: left;
-    margin: 0 5px 5px 0;
-    -moz-transition: all 0.3s ease 0s;
-    -o-transition: all 0.3s ease 0s;
-    -webkit-transition: all 0.3s ease 0s;
-    transition: all 0.3s ease 0s;
-    cursor: pointer; }
-    .product__item .item__product-options .prop .values .value > span {
+    .product__item .item__product-options .prop .name {
       display: block;
-      padding: 3px 5px;
-      border-radius: 2px;
-      border: 1px solid #e5e5e5; }
-    .product__item .item__product-options .prop .values .value > img {
-      border-radius: 2px;
-      border: 1px solid #e5e5e5; }
-    .product__item .item__product-options .prop .values .value.active {
-      cursor: default; }
-      .product__item .item__product-options .prop .values .value.active > span, .product__item .item__product-options .prop .values .value.active > img {
-        border: 1px solid #ef8701; }
-    .product__item .item__product-options .prop .values .value:hover {
-      opacity: 0.7; }
-      .product__item .item__product-options .prop .values .value:hover > span, .product__item .item__product-options .prop .values .value:hover > img {
-        border-color: #bfbfbf; }
+      margin: 0 0 10px 0; }
+    .product__item .item__product-options .prop .values .value {
+      float: left;
+      margin: 0 5px 5px 0;
+      -moz-transition: all 0.3s ease 0s;
+      -o-transition: all 0.3s ease 0s;
+      -webkit-transition: all 0.3s ease 0s;
+      transition: all 0.3s ease 0s;
+      cursor: pointer; }
+      .product__item .item__product-options .prop .values .value > span {
+        display: block;
+        padding: 3px 5px;
+        border-radius: 2px;
+        border: 1px solid #e5e5e5; }
+      .product__item .item__product-options .prop .values .value > img {
+        border-radius: 2px;
+        border: 1px solid #e5e5e5; }
+      .product__item .item__product-options .prop .values .value.active {
+        cursor: default; }
+        .product__item .item__product-options .prop .values .value.active > span, .product__item .item__product-options .prop .values .value.active > img {
+          border: 1px solid #ef8701; }
+      .product__item .item__product-options .prop .values .value:hover {
+        opacity: 0.7; }
+        .product__item .item__product-options .prop .values .value:hover > span, .product__item .item__product-options .prop .values .value:hover > img {
+          border-color: #bfbfbf; }
 
 @media screen and (max-width: 1680px) {
   .product-list__item .item__panel .checksum {
