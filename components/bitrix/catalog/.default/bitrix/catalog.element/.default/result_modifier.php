@@ -624,3 +624,10 @@ if ($arResult['MODULES']['currency'])
 		unset($currencyFormat, $currency, $currencyIterator);
 	}
 }
+if (count($arResult["OFFERS"])>0)
+{
+   if ($arParams["CURRENT_OFFER"]>0)
+   {
+      $arResult["CURRENT_OFFER"] = $arParams["CURRENT_OFFER"];
+   }
+}

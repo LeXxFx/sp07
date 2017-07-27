@@ -367,11 +367,22 @@ else
                                             <div class="col-sm-7">
                                                 <div class="checkout-radio-list">
                                                     <?$i=0?>
+													<?//echo "<pre>"; print_r($arResult["DELIVERY"]); echo "</pre>";?>
                                                     <?foreach($arResult['DELIVERY'] as $key => $arDelivery):?>
-                                                        <div class="item">
+													<?//echo "<pre>";print_r($arDelivery);echo "</pre>";?>
+														<?
+														$arDeliv = CSaleDelivery::GetByID($arDelivery["ID"]);
+														?>
+                                                        <!--<div class="item">
                                                             <label>
-                                                                <input type="radio" <?=($i==0)?'checked="checked"':'';?> name="<?= htmlspecialcharsbx($arDelivery["FIELD_NAME"]) ?>" value="<?= $arDelivery["ID"] ?>" class="checkout_delivery" data-price-nf="<?=$arDelivery['PRICE']?>" data-desc="<?=$arDelivery['DESCRIPTION'];?>" data-name="<?=$arDelivery['NAME'];?>" data-price="<?=$arDelivery['PRICE_FORMATED'];?>" />
-                                                                <b><?=$arDelivery['NAME'];?></b> (<?=$arDelivery['PRICE_FORMATED'];?>)
+                                                                <input type="radio" <?//=($i==0)?'checked="checked"':'';?> name="<?//= htmlspecialcharsbx($arDelivery["FIELD_NAME"]) ?>" value="<?//= $arDelivery["ID"] ?>" class="checkout_delivery" data-price-nf="<?//=$arDelivery['PRICE']?>" data-desc="<?//=$arDelivery['DESCRIPTION'];?>" data-name="<?//=$arDelivery['NAME'];?>" data-price="<?//=$arDelivery['PRICE_FORMATED'];?>" />
+                                                                <b><?//=$arDelivery['NAME'];?></b> (<?//=$arDelivery['PRICE_FORMATED'];?>)
+                                                            </label>
+                                                        </div>-->
+														<div class="item">
+                                                            <label>
+                                                                <input type="radio" <?=($i==0)?'checked="checked"':'';?> name="<?= htmlspecialcharsbx($arDelivery["FIELD_NAME"]) ?>" value="<?= $arDelivery["ID"] ?>" class="checkout_delivery" data-price-nf="<?=$arDeliv["PRICE"]//=$arDelivery['PRICE']?>" data-desc="<?=$arDelivery['DESCRIPTION'];?>" data-name="<?=$arDelivery['NAME'];?>" data-price="<?=$arDeliv["PRICE"]." руб"//=$arDelivery['PRICE_FORMATED'];?>" />
+                                                                <b><?=$arDelivery['NAME'];?></b> (<?=$arDeliv["PRICE"]." руб"//=$arDelivery['PRICE_FORMATED'];?>)
                                                             </label>
                                                         </div>
                                                         <?

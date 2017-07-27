@@ -94,6 +94,7 @@ $arFirstPhoto = current($arResult['MORE_PHOTO']);
 $this->addExternalJS("/bitrix/templates/sp07restail/assets/plugins/magiczoomplus/magiczoomplus.js");
 $this->addExternalJS("/bitrix/templates/sp07restail/js/other.js");
 ?>
+<?//echo "<pre>";print_r($arResult["OFFERS"]);echo "</pre>";?>
             <div class="inner product-item">
                 <div id="content" role="main">
                     <div class="product-single clearfix  item_<?=$arResult['ID']?>" id="product_container" data-id="<?=$arResult['ID']?>" data-tree='<?= json_encode($arResult['JS_OFFERS'])?>'>
@@ -294,9 +295,17 @@ if (isset($arResult['OFFERS']) && !empty($arResult['OFFERS']) && !empty($arResul
                                     </div>
                                     <div class="item__panel">
                                         <div class="item__price">
-
+											<?if(!empty($arResult["CURRENT_OFFER"])):?>
+											<span class="new"><?foreach($arResult["OFFERS"] as $offerPrice){
+												if($offerPrice["ID"] == $arResult["CURRENT_OFFER"]){
+													echo $offerPrice["MIN_PRICE"]["DISCOUNT_VALUE"];
+													}
+												}?></span>
+                                            <span class="currency">руб.</span>
+											<?else:?>
                                             <span class="new"><?=round($arResult['MIN_PRICE']['DISCOUNT_VALUE']); ?></span>
                                             <span class="currency">руб.</span>
+											<?endif;?>
                                         </div>
                                         <div class="item__input-counter amount">
                                             <button type="button" class="btn btn-minus btn-number" data-type="minus" data-field="quant[<?=$arResult['ID']?>]">
@@ -317,9 +326,9 @@ if (isset($arResult['OFFERS']) && !empty($arResult['OFFERS']) && !empty($arResul
                                                 <i class="icon icon-cart-white"></i>
                                             </button>
                                         </div>
-                                        <div class="item__delivary">
+                                        <!--<div class="item__delivary">
                                             <b>Доставка:</b> 19 февраля
-                                        </div>
+                                        </div>-->
                                     </div><div style="position: relative; width: 250px; height: 221px; display: none; vertical-align: baseline; float: none;"></div>
                                 </div>
                             </div>
@@ -429,13 +438,13 @@ if (isset($arResult['OFFERS']) && !empty($arResult['OFFERS']) && !empty($arResul
                                             <i class="icon icon-cart-white"></i>
                                         </button>
                                     </div>
-                                    <div class="item__delivary">
+                                    <!--<div class="item__delivary">
                                         <b>Доставка:</b> 19 февраля
-                                    </div>
+                                    </div>-->
                                 </div>
                                 <div class="panel__advants">
-                                    <div class="advants__item advants__item--orange"><span><i class="icon icon-rubl"></i></span>
-                                        <p><a href="#">Нашли дешеле? Позвоните!</a></p></div>
+                                    <!--<div class="advants__item advants__item--orange"><span><i class="icon icon-rubl"></i></span>
+                                        <p><a href="#">Нашли дешеле? Позвоните!</a></p></div>-->
                                     <!--<div class="advants__item advants__item--red"><span>5%</span>
                                         <p>До скидки 5% осталось купить на 4000 р.</p></div>
                                     <div class="advants__item advants__item--green"><span><i class="icon icon-car"></i></span>
