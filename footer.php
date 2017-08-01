@@ -135,8 +135,8 @@
                         <div class="schedule">
                             <div class="schedule__item">
                                 <i class="icon icon-grafik"></i>
-                                Пн-Пт 8:00-20:00 <br/>
-                                Сб 10:00-14:00, Вс - выходной
+                                Пн-Пт 8:00-17:00 <br/>
+                                Сб, Вс - выходной
                             </div>
                         </div>
                     </div>
