@@ -287,6 +287,9 @@ foreach ($arResult['ITEMS'] as $key => $arItem)
                                 </a>
                                 <div class="item__price">
                                 <!-- $arItem['PROPERTIES']['MINIMUM_PRICE_2']['VALUE'] -->
+									<?if($arItem["MIN_PRICE"]["DISCOUNT_DIFF_PERCENT"] >= 1):?>
+									<span class="old"><?=$arItem['MIN_PRICE']['VALUE'];?></span>
+									<?endif;?>
                                     <span class="new"><? echo round($arItem['MIN_PRICE']['DISCOUNT_VALUE'],0); ?></span>
                                     <span class="currency">руб.</span>
                                 </div>
