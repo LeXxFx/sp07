@@ -25,6 +25,11 @@ var CheckMaxQuantity = function(el){
     	}
     	el.closest('.product__item').find('.addtobasket').each(function(){
     		$(this).attr('data-amount',el.val());
+			console.log("Change3");
+    	});
+		el.closest('.product-single__price').find('.addtobasket').each(function(){
+    		$(this).attr('data-amount',el.val());
+			console.log("Change3");
     	});
 
 		if(parseInt(el.val()) >= el.attr('max')) {
@@ -61,11 +66,13 @@ var Shop = function () {
 					self.closest('.input-counter').find('.btn-plus').attr('disabled', false);
 					if(currentVal > input.attr('min')) {
 						input.val(currentVal - input.data('step') + " " + unit).change();
+						console.log("CHange");
 					}
 				} else if(type == 'plus') {
 					self.closest('.input-counter').find('.btn-minus').attr('disabled', false);
 					if(currentVal < input.attr('max')) {
 						input.val(currentVal + input.data('step') + " " + unit).change();
+						console.log("CHange2");
 					}
 				}
 				CheckMaxQuantity(input);

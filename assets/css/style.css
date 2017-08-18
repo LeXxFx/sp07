@@ -4115,3 +4115,9 @@ blockquote {
 @media screen and (max-width: 767px) {
   .post-content {
     padding: 10px; } }
+	.chars p {
+    border-bottom: 1px dotted;
+    height: 14px;
+    margin: 0 0 7px;
+    position: relative;
+}

@@ -11,6 +11,17 @@
 
 	var searchBox = function () {
 		$('.col-search .search-input .form-control').on("keyup", function (e) {
+
+
+            $.ajax({
+                type: "POST",
+                url: "/ajax/searchRow.php",
+                data: { q: $(this).val() }
+            }).done(function( msg ) {
+                $(".search-menu").html(msg);
+            });
+
+
 			var that = $(this);
 			var currentVal = that.val();
 
