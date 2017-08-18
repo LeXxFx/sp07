@@ -23,6 +23,7 @@ $(function() {
     	.done(function(data) {
     		$('.option-panel__cart').html(data);
     	});
+		console.log("updateBasketPanelSucces");
 	};
 
     var checkDelivery = function(el){
@@ -41,6 +42,7 @@ $(function() {
 			delivery: $('.checkout_delivery:checked').attr('data-price-nf'),
 			payment: $('.checkout_payment:checked').data('id'),
 			sum: $('.checkout-result .suma-tovar').html(),
+			discount: $('.checkout-result .discount').html(),
 		};
 		$.ajax({
 			url: '/bitrix/templates/sp07restail/php/checkout_update.php',
@@ -522,7 +524,37 @@ $(window).load(function(){
 		});
 		$(this).parent().parent().find(".cover-buy").show();
 	});
-*/
+*/	
+//Отправка статистики в Яндекс комерцию
+	function YaAddSku(){
+		var productType = $('.product__type').attr("data-product-type");
+		var idOffer = $('.active').attr("data-product-id");
+		var idProduct = $('.product__id').attr("data-product-id");
+		var productName = $('.item__name').attr("data-product-name");
+		var productAmount = $(".count").val();
+		var productPrice = $(".product-single__price").find(".new");
+		productPrice = $(productPrice).html();
+		if(productType == 1){
+			var id = idOffer;
+		}else{
+			var id = idProduct;
+		}
+		dataLayerSp07.push({
+					"ecommerce": {
+						"add": {
+							"products": [
+								{
+								"id": id,
+								"name" : productName,
+								"quantity": productAmount,
+								"price": productPrice
+								},
+							]
+						}
+					}
+				});
+	}
+
 	$(".addtobasket").on("click", function(event) {
 		event.preventDefault();
 		var active_props = [];
@@ -543,8 +575,10 @@ $(window).load(function(){
 		data_to_send["price_id"] = $(this).attr("data-price-id");
 		data_to_send["product_id"] = $(this).attr("data-id");
 		data_to_send["amount"] = $(this).attr("data-amount");
+		//console.log(data_to_send["product_id"]);
 		
 		var button = $(this);
+		//YaAddSku();
 		
 		$.ajax({
 			url: "/bitrix/templates/sp07restail/php/add_to_cart.php",
@@ -561,7 +595,9 @@ $(window).load(function(){
 				// 	// });
 				// }
 				// small_basket_update();
+				console.log("простой товар ушел");
 				updatepanel();
+				YaAddSku();
 			}
 		});
 		$(this).parent().parent().find(".cover-buy").show();
@@ -590,7 +626,7 @@ $(window).load(function(){
 	
 	function small_basket_update() {
 		$.ajax({
-			url: "/bitrix/templates/sport07/php/basket_small.php",
+			url: "/bitrix/templates/sp07restail/php/basket_small.php",
 			success: function(data) {
 				$(".small-basket").html(data);
 			}
@@ -599,7 +635,7 @@ $(window).load(function(){
 	
 	function big_basket_update() {
 		$.ajax({
-			url: "/bitrix/templates/sport07/php/basket_big.php",
+			url: "/bitrix/templates/sp07restail/php/basket_big.php",
 			success: function(data) {
 				$(".big-basket").html(data);
 			}
@@ -608,7 +644,7 @@ $(window).load(function(){
 	
 	function small_basket_full_price_update() {
 		$.ajax({
-			url: "/bitrix/templates/sport07/php/get_total_price.php",
+			url: "/bitrix/templates/sp07restail/php/get_total_price.php",
 			success: function(data) {
 				var isactive = $(".small-basket .basket").hasClass('active');
 				$(".small-basket").html(data)
@@ -624,6 +660,7 @@ $(window).load(function(){
 //				$(".bottom-order .new-price").html(data.total);
 			}
 		});
+	console.log("update");
 	}
 	
 	// Other

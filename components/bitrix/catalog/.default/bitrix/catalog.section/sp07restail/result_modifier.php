@@ -423,6 +423,7 @@ if (!empty($arResult['ITEMS']))
 					$arItem['PREVIEW_PICTURE'] = $arMatrix[$intSelected]['PREVIEW_PICTURE'];
 					$arItem['PREVIEW_PICTURE_SECOND'] = $arMatrix[$intSelected]['PREVIEW_PICTURE_SECOND'];
 				}
+
 				$arItem['JS_OFFERS'] = $arMatrix;
 				$arItem['OFFERS_SELECTED'] = $intSelected;
 				$arItem['OFFERS_PROPS_DISPLAY'] = $boolSKUDisplayProperties;

@@ -26,6 +26,7 @@ CJSCore::Init(array("jquery"));
     <!-- end: CSS REQUIRED FOR THIS PAGE ONLY -->
 
     <link rel="stylesheet" href="<?=SITE_TEMPLATE_PATH?>/assets/css/style.css">
+	<link rel="stylesheet" href="<?=SITE_TEMPLATE_PATH?>/style.css">
     <link rel="stylesheet" href="<?=SITE_TEMPLATE_PATH?>/assets/plugins/slick/slick.css" />
     <link rel="stylesheet" href="<?=SITE_TEMPLATE_PATH?>/assets/plugins/soon-countdown/css/soon.min.css"/>
 
@@ -261,7 +262,7 @@ CJSCore::Init(array("jquery"));
                 <div class="col-search">
                     <div class="search-input">
                         <!-- <input type="text" placeholder="Поиск среди 6000 спортивных товаров" class="form-control"/> -->
-                        <form action="/store/index.php">
+                        <form action="/search/">
                             <input type="text" name="q" placeholder="Поиск среди 6000 спортивных товаров" class="form-control"/>
                             <button class="btn btn-green">
                             Найти
@@ -269,7 +270,8 @@ CJSCore::Init(array("jquery"));
                         </form>
                         
                     </div>
-                    <!--<div class="search-menu clearfix">
+                   <div class="search-menu clearfix">
+                       <?/*
                         <div class="search-menu__body">
                             <div class="head">Найдено в разделах каталога:</div>
                             <ul>
@@ -314,7 +316,8 @@ CJSCore::Init(array("jquery"));
                         <div class="search-menu__button">
                             <a href="#" class="btn">Посмотреть результаты поиска (35)</a>
                         </div>
-                    </div>-->
+*/?>
+                    </div>
                 </div>
                 <div class="col-panel">
                     <div class="panel">

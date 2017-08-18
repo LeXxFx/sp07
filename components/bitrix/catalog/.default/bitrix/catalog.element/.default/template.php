@@ -93,8 +93,28 @@ $arFirstPhoto = current($arResult['MORE_PHOTO']);
 // $this->addExternalJS("/bitrix/templates/sp07restail/js/basket.js");
 $this->addExternalJS("/bitrix/templates/sp07restail/assets/plugins/magiczoomplus/magiczoomplus.js");
 $this->addExternalJS("/bitrix/templates/sp07restail/js/other.js");
+//$this->addExternalJS("/bitrix/templates/sp07restail/js/yastatistic.js");
 ?>
-<?//echo "<pre>";print_r($arResult["OFFERS"]);echo "</pre>";?>
+<?
+$arFilter = Array('IBLOCK_ID'=> 9,'ID'=>$arResult["IBLOCK_SECTION_ID"], 'GLOBAL_ACTIVE'=>'Y');
+		$db_list = CIBlockSection::GetList(Array("timestamp_x"=>"DESC"), $arFilter, false, Array("UF_*"));
+			if($uf_value = $db_list->GetNext()):
+			$recomend=$uf_value["UF_BUY_TOO"];
+			$helpSecValue = $uf_value["UF_HELP_CHOISE_SEC"];
+			endif;
+			//echo "<pre>";
+			//print_r($recomend);
+			//echo "</pre>";
+?>
+<?
+ $items = CIBlockElement::GetList(array("sort"=>"asc"),array('IBLOCK_ID' => 25,'SECTION_ID' => $arResult["IBLOCK_SECTION_ID"], 'ACTIVE' => 'Y'),false,false,array('ID','NAME','DETAIL_PAGE_URL','IBLOCK_ID','PROPERTY_INTERIOR'));
+
+while($arItem = $items->GetNext())
+{ 
+print_r($arItem);
+}
+?>
+<?//echo "<pre>";print_r($arResult["IBLOCK_SECTION_ID"]);echo "</pre>";?>
             <div class="inner product-item">
                 <div id="content" role="main">
                     <div class="product-single clearfix  item_<?=$arResult['ID']?>" id="product_container" data-id="<?=$arResult['ID']?>" data-tree='<?= json_encode($arResult['JS_OFFERS'])?>'>
@@ -153,7 +173,7 @@ $this->addExternalJS("/bitrix/templates/sp07restail/js/other.js");
                                         </div>
                                     </div>
                                     <div class="item__info">
-                                        <div class="item__name">
+                                        <div class="item__name product__id" data-product-name="<?=$arResult["NAME"]?>" data-product-id="<?=$arResult["ID"]?>">
                                             <?=$arResult["NAME"];?>
                                         </div>
                                         <div class="item__rate">
@@ -181,6 +201,7 @@ $this->addExternalJS("/bitrix/templates/sp07restail/js/other.js");
                                         <? //                                                print_r($arResult);
 if (isset($arResult['OFFERS']) && !empty($arResult['OFFERS']) && !empty($arResult['OFFERS_PROP']))
 {
+	$productType = 1;
     $arSkuProps = array();
 ?>
 <div class="item__product-options sku_props" id="<? echo $arItemIDs['PROP_DIV']; ?>">
@@ -195,8 +216,9 @@ if (isset($arResult['OFFERS']) && !empty($arResult['OFFERS']) && !empty($arResul
             'VALUES_COUNT' => $arProp['VALUES_COUNT']
         );
         unset($arProp['VALUES'][0]);
+		//echo "<pre>";print_r($arProp);echo "</pre>";
         if ('TEXT' == $arProp['SHOW_MODE'])
-        {?>
+        {?><?//echo "<pre>";print_r($arProp);echo "</pre>";?>
             <div class="prop prop-size sku_prop clearfix" data-element-id="<?=$arResult['ID']?>" data-prop-id="<? echo $arProp['ID']?>" data-prop-code="<?=$arProp["CODE"]?>">
                 <div class="name"><? echo htmlspecialcharsex($arProp['NAME']); ?>: </div>
                 <div class="values">
@@ -209,7 +231,7 @@ if (isset($arResult['OFFERS']) && !empty($arResult['OFFERS']) && !empty($arResul
 												$curOffer = $offer;
 											}
 										}?>
-                        <div class="value sku_prop_value" data-prop-maxcount="<?=$arResult['JS_OFFERS'][$index]['MAX_QUANTITY']?>" data-value="<?=$arOneValue["NAME"]?>" data-value-id="<? echo $arOneValue['XML_ID']; ?>" data-treevalue="<? echo $arProp['ID'].'_'.$arOneValue['ID']; ?>" data-onevalue="<? echo $arOneValue['ID']; ?>">
+                        <div class="value sku_prop_value" data-product-id="<?=$curOffer["ID"]?>" data-prop-maxcount="<?=$arResult['JS_OFFERS'][$index]['MAX_QUANTITY']?>" data-value="<?=$arOneValue["NAME"]?>" data-value-id="<? echo $arOneValue['XML_ID']; ?>" data-treevalue="<? echo $arProp['ID'].'_'.$arOneValue['ID']; ?>" data-onevalue="<? echo $arOneValue['ID']; ?>">
                             <span id="<?=$curOffer["ID"]?>"><? echo $arOneValue['NAME']; ?></span>
                         </div>
                         <?$index++;?>
@@ -231,7 +253,7 @@ if (isset($arResult['OFFERS']) && !empty($arResult['OFFERS']) && !empty($arResul
 						$curOffer = $offer;
 							}
 					}?>
-                    <div class="value sku_prop_value" data-prop-maxcount="<?=$arResult['JS_OFFERS'][$index]['MAX_QUANTITY']?>" data-value="<?=$arOneValue["NAME"]?>" data-value-id="<? echo $arOneValue['XML_ID']; ?>" data-treevalue="<? echo $arProp['ID'].'_'.$arOneValue['ID']; ?>" data-onevalue="<? echo $arOneValue['ID']; ?>">
+                    <div class="value sku_prop_value" data-product-id="<?=$curOffer["ID"]?>" data-prop-maxcount="<?=$arResult['JS_OFFERS'][$index]['MAX_QUANTITY']?>" data-value="<?=$arOneValue["NAME"]?>" data-value-id="<? echo $arOneValue['XML_ID']; ?>" data-treevalue="<? echo $arProp['ID'].'_'.$arOneValue['ID']; ?>" data-onevalue="<? echo $arOneValue['ID']; ?>">
                         <span id="<?=$curOffer["ID"]?>">
 						<img src="<? echo $arOneValue['PICT']['SRC']; ?>" alt="<? echo $arOneValue['NAME']; ?>" title="<? echo $arOneValue['NAME']; ?>" />
 						</span>
@@ -271,9 +293,11 @@ if (isset($arResult['OFFERS']) && !empty($arResult['OFFERS']) && !empty($arResul
 ?>
 </div>
 <?
+}else{
+	$productType = 0;
 }
 ?>
-                                        <div class="item__product-options">
+                                        <div class="item__product-options product__type" data-product-type="<?=$productType?>">
                                            
 
                                             
@@ -322,7 +346,7 @@ if (isset($arResult['OFFERS']) && !empty($arResult['OFFERS']) && !empty($arResul
                                             <button class="btn btn-quick-buy bx_big bx_bt_button buy_one_click_popup" data-id="<?=$arResult['ID']?>" data-price-id="<?=$arResult['OFFERS']['0']['ID'];?>" title="Купить в один клик">
                                                 <i class="icon icon-hand"></i>
                                             </button>
-                                            <button class="btn btn-add-to-cart addtobasket" data-amount="1" data-id="<?=$arResult["ID"]?>" data-price-id="<?=$arResult['OFFERS'][0]['CATALOG_PRICE_ID_2'];?>" title="Положить в корзину">
+                                            <button class="btn btn-add-to-cart addtobasket" data-amount="1" data-id="<?=$arResult["ID"]?>" data-price-id="<?=$arResult['OFFERS'][0]['CATALOG_PRICE_ID_2'];?>" title="Положить в корзинупростой">
                                                 <i class="icon icon-cart-white"></i>
                                             </button>
                                         </div>
@@ -336,24 +360,57 @@ if (isset($arResult['OFFERS']) && !empty($arResult['OFFERS']) && !empty($arResul
                                 <ul class="nav nav-tabs">
                                     <li class="active"><a href="#description" data-toggle="tab">Описание</a></li>
                                     <li><a href="#characteristics" data-toggle="tab">Характеристики</a></li>
-                                    <!--<li><a href="#help" data-toggle="tab">Помощь в выборе</a></li>
-                                    <li><a href="#related" data-toggle="tab">С этим товаром покупают</a></li>-->
+									<?if(!empty($arResult["PROPERTIES"]["UF_HELP_CHOISE_ELEMENT"]["VALUE"]) || !empty($helpSecValue)):?>
+                                    <li><a href="#help" data-toggle="tab">Помощь в выборе</a></li>
+									<?endif;?>
+                                    <!--<li><a href="#related" data-toggle="tab">С этим товаром покупают</a></li>-->
                                 </ul>
                                 <div class="tab-content">
                                     <div id="description" class="tab-pane active">
                                         <div class="post">
-                                            <?=$arResult['PREVIEW_TEXT'];?>
+                                            <?=$arResult['DETAIL_TEXT'];?>
                                         </div>
                                     </div>
-                                    <div id="characteristics" class="tab-pane">
-                                        <?=$arResult['DETAIL_TEXT'];?>
+                                    <div id="characteristics" class="tab-pane chars">
+                                        <?
+											foreach($arResult["DISPLAY_PROPERTIES"] as $arProperty) {
+												//echo "<pre>";
+												//print_r($arProperty);
+												//echo "</pre>";
+												?><p><span class="name"><?=$arProperty["NAME"]?></span><span class="value"><?=$arProperty["DISPLAY_VALUE"]?></span></p><?
+											}
+										?>
                                     </div>
                                     <div id="help" class="tab-pane">
-                                        Помощь в выборе
+									<?
+									//echo "<pre>";
+									//echo $arResult["PROPERTIES"]["UF_HELP_CHOISE_ELEMENT"]["VALUE"];
+									//echo $helpSecValue;
+									//echo "</pre>";
+									?>
+									<?
+									if(!empty($arResult["PROPERTIES"]["UF_HELP_CHOISE_ELEMENT"]["VALUE"]) && !empty($helpSecValue)){
+										$idRequest = $arResult["PROPERTIES"]["UF_HELP_CHOISE_ELEMENT"]["VALUE"];
+									}elseif(!empty($arResult["PROPERTIES"]["UF_HELP_CHOISE_ELEMENT"]["VALUE"])){
+										$idRequest = $arResult["PROPERTIES"]["UF_HELP_CHOISE_ELEMENT"]["VALUE"];
+									}elseif(!empty($helpSecValue)){
+										$idRequest = $helpSecValue;
+									}
+									?>
+									<?if($idRequest > 0):?>
+									<?
+										$res = CIBlockElement::GetByID($idRequest);
+										if($ar_res = $res->GetNext()):
+											echo "<h3>".$ar_res["NAME"]."</h3><br>";
+											echo $ar_res["DETAIL_TEXT"];
+											unset($ar_res);
+									endif;
+									?>
+									<?endif;?>
                                     </div>
-                                    <div id="related" class="tab-pane">
+                                    <!--<div id="related" class="tab-pane">
                                         С этим товаром покупают
-                                    </div>
+                                    </div>-->
                                 </div>
                             </div>
                             <?
@@ -364,53 +421,32 @@ if (isset($arResult['OFFERS']) && !empty($arResult['OFFERS']) && !empty($arResul
                             <?
                             }
                             ?>
-                            <!--<div class="user-activity">
+                            <div class="user-activity">
                                 <ul class="nav nav-tabs">
-                                    <li class="active"><a href="#tab_reviews" data-toggle="tab">Отзывы о товаре <span>(5)</span></a></li>
-                                    <li><a href="#tab_quest" data-toggle="tab">Вопросы <span>(0)</span></a></li>
+                                    <li class="active"><a href="#tab_reviews" data-toggle="tab">Отзывы о товаре <!--<span>(5)</span>--></a></li>
+                                    <li><a href="#tab_quest" data-toggle="tab">Вопросы <!--<span>(0)</span>--></a></li>
                                 </ul>
                                 <div class="tab-content">
                                     <div id="tab_reviews" class="tab-pane active">
-                                        <div class="product-reviews">
-                                            <div class="reviews-list">
-                                                <article>
-                                                    <div class="top">
-                                                        <span class="name">Светлана Махмудова</span> <span class="date">(3 недели назад)</span>
-                                                        <div class="rate">
-                                                            <span class="stars star-4"></span>
-                                                        </div>
-                                                    </div>
-                                                    <p>Мяч классный! Качество супер.Очень удобный, легкий.  Взяла 65 см  очень нравится.  Я очень довольна. Доставка на 5+. Спасибо Bodyform за скидку.</p>
-                                                </article>
-                                                <article>
-                                                    <div class="top">
-                                                        <span class="name">Ирина</span> <span class="date">(месяц назад)</span>
-                                                        <div class="rate">
-                                                            <span class="stars star-5"></span>
-                                                        </div>
-                                                    </div>
-                                                    <p>Впечатление с непривычки: легкий, скрипит по ковролину, паркету и плитке. Надеюсь, что через время станет удобнее и привычнее.</p>
-                                                </article>
-                                            </div>
-                                            <div class="panel-pager clearfix">
-                                                <div class="col-sm-6 col-pagination">
-                                                    <div class="pagination">
-                                                        <a href="#" class="active">1</a>
-                                                        <a href="#">2</a>
-                                                        <a href="#">3</a>
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-6 col-button">
-                                                    <button class="btn btn-add-review" data-dismiss="modal" data-toggle="modal" data-target="#modal_add_review">оставить свой</button>
-                                                </div>
-                                            </div>
-                                        </div>
+										<div class="product-reviews">
+											<?CAskaronInclude::IncludeFile(       
+											   "reviews.php",  
+											   array(  
+												  "ELEMENT_ID" => $arResult["ID"],  
+											   )  
+											);?>
+										</div>
                                     </div>
                                     <div id="tab_quest" class="tab-pane">
-
+											<?CAskaronInclude::IncludeFile(       
+											   "questions.php",  
+											   array(  
+												  "ELEMENT_ID" => $arResult["ID"],  
+											   )  
+											);?>
                                     </div>
                                 </div>
-                            </div>-->
+                            </div>
                         </div>
                         <div class="product-single__price">
                             <div class="item__panel">
@@ -454,11 +490,6 @@ if (isset($arResult['OFFERS']) && !empty($arResult['OFFERS']) && !empty($arResul
                         </div>
                     </div>
 					<?
-					$arFilter = Array('IBLOCK_ID'=> 9,'ID'=>$arResult["IBLOCK_SECTION_ID"], 'GLOBAL_ACTIVE'=>'Y');
-							$db_list = CIBlockSection::GetList(Array("timestamp_x"=>"DESC"), $arFilter, false, Array("UF_BUY_TOO"));
-								if($uf_value = $db_list->GetNext()):
-								$recomend=$uf_value["UF_BUY_TOO"];
-								endif;
 					if(!empty($recomend)):
 					?>
                     <div id="complect" class="product-complect">
@@ -492,10 +523,10 @@ if (isset($arResult['OFFERS']) && !empty($arResult['OFFERS']) && !empty($arResul
                                             <div class="title"><?=$arSection["NAME"]?></div>
                                             <div class="desc">Мячи, шейкеры, эспандеры, коврики, гантели, утяжелители, обручи и многое другое для занятий фитнесом.</div>
                                         </div>
-                                        <div class="stick stick-sale">
+                                        <!--<div class="stick stick-sale">
                                             <span class="num">10%</span>
                                             Sale
-                                        </div>
+                                        </div>-->
                                     </a>
                                 </div><?}?>
                             </div>
@@ -503,7 +534,46 @@ if (isset($arResult['OFFERS']) && !empty($arResult['OFFERS']) && !empty($arResul
                     </div><?endif;?>
                 </div>
             </div>
-
+<script>
+var YaUrlHash = window.location.hash;
+YaUrlHash=YaUrlHash.replace('#','');
+if(YaUrlHash == ''){
+window.dataLayerSp07 = window.dataLayerSp07 || [];
+dataLayerSp07.push({
+	"ecommerce": {
+		"currencyCode": "RUB",
+		"detail": {
+			"products": [
+			{
+				"id": "<?=$arResult["ID"]?>",
+				"name" : "<?=$arResult["NAME"]?>",
+				"price":"<?=$arResult["MIN_PRICE"]["VALUE"]?>",
+				"category":"<?=$arResult["SECTION"]["NAME"]?>"
+			},
+			]
+		}
+	}
+});
+}else{
+window.dataLayerSp07 = window.dataLayerSp07 || [];
+dataLayerSp07.push({
+	"ecommerce": {
+		"currencyCode": "RUB",
+		"detail": {
+			"products": [
+			{
+				"id": YaUrlHash,
+				"name" : "<?=$arResult["NAME"]?>",
+				"price":"<?=$arResult["MIN_PRICE"]["VALUE"]?>",
+				"category":"<?=$arResult["SECTION"]["NAME"]?>"
+			},
+			]
+		}
+	}
+});
+}
+console.log("yaViewGoSucces");
+</script>
 <script type="text/javascript">
 var <? echo $strObName; ?> = new JCCatalogElement(<? echo CUtil::PhpToJSObject($arJSParams, false, true); ?>);
 BX.message({

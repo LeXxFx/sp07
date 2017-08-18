@@ -48,9 +48,9 @@ if($arParams['INCLUDE_CSS'] == 'Y')
 	<? endif ?>
 	<?
 
-    echo "<pre>";
-    print_r($GLOBALS["apiSearchFilter"]);
-    echo "</pre>";
+
+
+
 	if($arParams['IBLOCK_ID'])
 	{
 		if(strlen($arResult['q']) >= API_SEARCH_CHAR_LENGTH)

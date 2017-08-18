@@ -1,0 +1,495 @@
+@media ( min-width : 768px) {
+	/*.spoiler-reviews-body .forms{display:table;width:100%;border-spacing:30px;}
+ .spoiler-reviews-body .forms .form-auth{display:table-cell;width:48%;background:#f8f8f8;padding:15px 0 15px 15px;border-right:30px solid #fff;}
+ .spoiler-reviews-body .forms .form-reg{display:table-cell;width:48%;background:#f8f8f8;padding:15px 0 15px 15px;}*/
+	.spoiler-reviews-body .forms {
+		display: flex;
+	} 
+	.spoiler-reviews-body .forms .form-auth {
+		flex-grow: 1;
+		width: 48%;
+		position: relative;
+		margin-right: 4%;
+		background: #f8f8f8;
+		padding: 15px 0 15px 15px;
+	}
+	.spoiler-reviews-body .forms .form-reg {
+		flex-shrink: 1;
+		width: 48%;
+		position: relative;
+		background: #f8f8f8;
+		padding: 15px 0 15px 15px;
+	} 
+	#add_review textarea {
+		width: 50%;
+	}
+	.spoiler-reviews-body .review-add-block {
+		width: 80%;
+		margin-left: 10%;
+		padding: 40px 119px 50px 119px;
+	}
+	#add_review .textbox-group {
+		float: left;
+		width: 50%;
+	}
+}
+
+@media ( max-width : 767px) {
+	#add_review textarea {
+		width: 100%;
+	}
+	.spoiler-reviews-body .forms .form-auth {
+		background: #f8f8f8;
+		margin-bottom: 30px;
+	}
+	.spoiler-reviews-body .forms .form-reg {
+		background: #f8f8f8;
+	}
+}
+
+.spoiler-reviews-body .review-add-block {
+	background: #f8f8f8;
+}
+
+.add-reviews {
+	text-align: center;
+	margin-bottom: 30px;
+}
+
+#reviews-body .add-reviews {
+	margin-top: 20px;
+}
+
+.add-reviews .bg {
+	background: #f8f8f8;
+	padding: 26px 0;
+}
+
+/*Спойлер*/
+.spoiler-reviews-body {
+	display: none;
+	padding-top: 20px;
+}
+
+.spoiler_links {
+	cursor: pointer;
+}
+
+.add-reviews .spoiler {
+	border: 1px solid #7c7c7c;
+	box-shadow: 1px 2px 1px 1px #e2e2e2;
+	padding: 5px;
+	display: inline-block;
+	background: #ffffff;
+}
+
+#reviews-statistics .spoiler-reviews-body {
+	padding-top: 40px;
+}
+
+.add-reviews .spoiler-input {
+	padding: 5px 40px;
+	color: #FFF;
+	text-decoration: none;
+	font-family: "PG Isadora Cyr Pro", Arial, regular;
+	font-size: 18px;
+	min-height: 30px;
+	line-height: 20px;
+	cursor: pointer;
+}
+
+.auth-error {
+	font-size: 18px;
+	color: #994d4d;
+	font-family: "ProximaNova", Arial, sans-serif;
+	text-align: left;
+	margin-bottom: 20px;
+}
+
+#auth-title, #register-title {
+	color: #000000;
+	font-size: 14px;
+	font-family: "ProximaNova", Arial, sans-serif;
+	text-align: left;
+}
+
+#auth_review-check-error, #registration_review-check-error {
+	color: #994d4d;
+	text-align: left;
+}
+
+#reviews-body .title {
+	width: 50%;
+}
+
+.add-reviews .success {
+	color: green;
+	font-size: 14px;
+	font-family: "ProximaNova", Arial, sans-serif;
+	margin-top: 10px;
+}
+
+#add_review .captcha-block{
+	margin-top:30px;
+}
+
+#add_review .add-photo {
+	width: 150px;
+	height: 22px;
+	position: relative;
+	margin-top: 30px;
+}
+
+#add_review input[type='file'] {
+	width: 150px;
+	height: 22px;
+	opacity: 0
+}
+
+#add_review #add-photo-button {
+	display: block;
+	width: 175px;
+	height: 22px;
+	color: #767676;
+	position: absolute;
+	top: 0;
+	font-size: 14px;
+	line-height: 22px;
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+#add_review ul#preview-photo {
+	margin: 0;
+}
+
+#add_review ul#preview-photo li {
+	list-style: none;
+	display: inline-block;
+	position: relative;
+	margin-right: 10px;
+	margin-top: 30px;
+}
+
+#add_review ul#preview-photo li span.delete {
+	position: absolute;
+	right: 0;
+	top: 0;
+	color: #F00;
+	font-size: 20px;
+	cursor: pointer;
+}
+
+.spoiler-reviews-body .add-check-error {
+	text-align: left;
+	font-size: 14px;
+	font-family: "ProximaNova", Arial, sans-serif;
+}
+
+.spoiler-reviews-body .not-buy-error {
+	font-size: 18px;
+	font-family: "ProximaNova", Arial, sans-serif;
+}
+
+.spoiler-reviews-body .review-add-title {
+	font-size: 18px;
+	font-family: "ProximaNovaLight", Arial, sans-serif;
+	text-align: left;
+	margin-left: 10%;
+	margin-bottom: 25px;
+}
+
+.spoiler-reviews-body .review-add-rating-title1 {
+	color: #6c727d;
+	font-size: 14px;
+	font-family: "ProximaNova", Arial, sans-serif;
+	text-align: left;
+	margin-bottom: 5px;
+}
+
+.spoiler-reviews-body .review-add-rating-title2 {
+	color: #b0b3bb;
+	font-size: 14px;
+	font-family: "ProximaNova", Arial, sans-serif;
+	text-align: left;
+	margin-bottom: 10px;
+}
+
+#add_review p.title {
+	margin-bottom: 5px;
+}
+
+#add_review p.title-example {
+	color: #b0b3bb;
+	margin-bottom: 5px;
+}
+
+#add_review p.text {
+	margin-bottom: 5px;
+}
+
+#add_review p.add-field-title {
+	margin-bottom: 5px;
+}
+
+#add_review .rating_selection label {
+	font-size: 14px;
+	border: 1px solid #e2e5e9;
+	display: inline-block;
+	height: 33px;
+	width: 33px;
+	line-height: 33px;
+	text-align: center;
+	background: #ffffff;
+}
+
+#add_review {
+	text-align: left;
+}
+
+#add_review p {
+	color: #6c727d;
+	font-size: 14px;
+	font-family: "ProximaNova", Arial, sans-serif;
+	margin-bottom: 0;
+}
+
+#add_review p.example {
+	color: #b0b3bb;
+	font-size: 14px;
+	font-family: "ProximaNova", Arial, sans-serif;
+}
+
+#add_review p.count {
+	clear: both;
+	font-style: italic;
+	color: #c2c6cb;
+	font-size: 14px;
+	font-family: "ProximaNova", Arial, sans-serif;
+	margin-bottom: 30px;
+	margin-top: 5px;
+}
+
+#add_review input[type="text"] {
+	border: 1px solid #e2e5e9;
+	height: 34px;
+	width: 100%;
+	margin-bottom: 30px;
+	padding: 5px;
+	font-family: "ProximaNova", Arial, sans-serif;
+	color: #000000;
+	font-weight: lighter;
+	font-size: 13px;
+}
+
+#add_review textarea {
+	border: 1px solid #e2e5e9;
+	padding: 5px;
+	font-family: "ProximaNovaLight", Arial, sans-serif;
+	color: #000000;
+	font-weight: lighter;
+	font-size: 13px;
+	height: 190px;
+}
+
+#add_review input[type="radio"] {
+	margin-right: 7px;
+	float: left;
+}
+
+#add_review span.radio-label {
+	margin-right: 15px;
+	font-family: "ProximaNova", Arial, sans-serif;
+	color: #000000;
+	font-weight: lighter;
+	font-size: 13px;
+}
+
+#add_review .radio {
+	float: none;
+	line-height: 14px;
+	display: inline-block;
+	margin-bottom: 30px;
+}
+
+#add_review input[type="submit"] {
+	color: #767676;
+	font-size: 14px;
+	font-family: "ProximaNovaLight", Arial, sans-serif;
+	width: 170px;
+	height: 30px;
+	line-height: 30px;
+	border-radius: 5px;
+	border: 1px solid #c8c8c8;
+	box-shadow: 1px 2px 2px 1px #dedede;
+	margin-top: 30px;
+	background: #FFF;
+}
+
+#add_review #reset-form {
+	border: 0;
+	color: #c2c6cb;
+	font-family: "ProximaNovaLight", Arial, sans-serif;
+	font-size: 14px;
+	text-decoration: underline;
+	margin-left: 15px;
+	background-color: #f8f8f8;
+}
+
+#add_review .textbox-group textarea {
+	width: 100%;
+}
+
+#add_review .recommendated {
+	clear: both;
+}
+
+#add_review .textarea-right-text {
+	margin-left: 30px;
+	width: 225px;
+	float: left;
+}
+
+#add_review .textarea-right-text p {
+	color: #6c727d;
+	font-size: 14px;
+	font-family: "ProximaNova", Arial, sans-serif;
+	margin-bottom: 10px;
+}
+
+#add_review .textarea-right-text ul {
+	margin-left: 13px;
+}
+
+#add_review .textarea-right-text ul li {
+	color: #6c727d;
+	font-size: 12px;
+	font-family: "ProximaNova", Arial, sans-serif;
+}
+
+#add_review .textarea-right-text ul li span {
+	color: #994d4d;
+}
+
+.rating_selection {
+	text-align: left;
+	display: inline-block;
+	margin-bottom: 40px;
+}
+
+.rating_selection input[type='radio'], .rating_selection span {
+	display: none;
+}
+
+.rating_selection label {
+	cursor: pointer;
+}
+
+.rating_selection label:before {
+	display: inline-block;
+	content: "\F005";
+	font-size: 14px;
+	color: #231f20;
+	font-family: "FontAwesome";
+}
+
+.rating_selection input:checked+label ~ label:before {
+	color: #cfd3da;
+}
+
+.rating_selection:hover label[for]:before {
+	color: #231f20;
+}
+
+.rating_selection:hover label:hover ~ label:before {
+	color: #cfd3da;
+}
+
+#add_review #add-photo-button .fa-plus {
+	margin-right: 10px;
+}
+#add_review .bxhtmled-top-bar-wrap .bxhtmled-top-bar-btn,#add_review .bxhtmled-top-bar-wrap .bxhtmled-top-bar-select,#add_review .bxhtmled-top-bar-wrap .bxhtmled-button-fontsize-wrap
+{
+	display:none;
+}
+#add_review .bxhtmled-top-bar-wrap .bxhtmled-button-bold
+{
+	display:inline-block;
+}
+#add_review .bxhtmled-top-bar-wrap .bxhtmled-button-italic
+{
+	display:inline-block;
+}
+#add_review .bxhtmled-top-bar-wrap .bxhtmled-button-underline
+{
+	display:inline-block;
+}
+#add_review .bxhtmled-top-bar-wrap .bxhtmled-button-strike
+{
+	display:inline-block;
+}
+#add_review .bxhtmled-top-bar-wrap .bxhtmled-button-remove-format
+{
+	display:inline-block;
+}
+#add_review .bxhtmled-top-bar-wrap .bxhtmled-top-bar-color
+{
+	display:inline-block;
+}
+#add_review .bxhtmled-top-bar-wrap .bxhtmled-button-ordered-list
+{
+	display:inline-block;
+}
+#add_review .bxhtmled-top-bar-wrap .bxhtmled-button-unordered-list
+{
+	display:inline-block;
+}
+#add_review .bxhtmled-top-bar-wrap .bxhtmled-button-align-left
+{
+	display:inline-block;
+}
+#add_review .bxhtmled-top-bar-wrap .bxhtmled-button-quote
+{
+	display:inline-block;
+}
+#add_review .bxhtmled-iframe-cnt
+{
+	overflow:hidden!important;
+}
+#add_review .feed-add-post-text
+{
+	padding-left:0;
+	padding-right:0;
+}
+.spoiler-reviews-body .reason-title{
+	font-family: "ProximaNova", Arial, sans-serif;
+  	color: #303030;
+  	font-size:16px;
+  	margin-bottom:0px;
+}
+.spoiler-reviews-body .reason-text{
+	font-family: "ProximaNova", Arial, sans-serif;
+  	color: #303030;
+  	font-size:14px;
+  	margin-bottom:8px;
+}
+.spoiler-reviews-body .not-ban-error {
+  font-size: 18px;
+  font-family: "ProximaNova", Arial, sans-serif;
+  color: #994d4d;
+}
+
+#add_review .title-video, #add_review .title-presentation
+{
+	margin-top:30px;
+}
+#add_review input.video, #add_review input.presentation
+{
+	margin-bottom:0;
+}
+.spoiler-questions-body .not-error {
+  font-size: 18px;
+  font-family: "ProximaNova", Arial, sans-serif;
+  color: #994d4d;
+  margin-bottom:8px;
+}

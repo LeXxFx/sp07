@@ -7,9 +7,8 @@
         	})
         	.done(function(data) {
         		$('.option-panel__cart').html(data);
-        	});
+			});
     	};
-
 
         // $('.btn-quick-buy, .btn-add-to-cart').click(function(){
         // 	var parentbtn = $(this);

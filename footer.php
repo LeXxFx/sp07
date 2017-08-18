@@ -3,30 +3,6 @@
     </div>
 	<?//echo $APPLICATION->GetCurDir();?>
 
-
-    <?php
-        if (CModule::IncludeModule("sale"))
-        {
-           $arBasketItems = array();
-           $dbBasketItems = CSaleBasket::GetList(
-                          array("NAME" => "ASC","ID" => "ASC"),
-                          array("FUSER_ID" => CSaleBasket::GetBasketUserID(), "LID" => SITE_ID, "ORDER_ID" => "NULL"),
-                          false,
-                          false,
-                          array("ID","MODULE","PRODUCT_ID","QUANTITY","CAN_BUY","PRICE"));
-           while ($arItems=$dbBasketItems->Fetch())
-           {
-              $arItems=CSaleBasket::GetByID($arItems["ID"]);
-              $arBasketItems[]=$arItems;   
-              $cart_num+=$arItems['QUANTITY'];
-              $cart_sum+=$arItems['PRICE']*$arItems['QUANTITY'];
-           }
-           if (empty($cart_num))
-              $cart_num="0";
-           if (empty($cart_sum))
-              $cart_sum="0";
-        }
-        ?>
 	<?if ($APPLICATION->GetCurDir()=='/category/'){?>
 	<?//$APPLICATION->IncludeFile(
 		//SITE_DIR."include/footer/sp07restail_footer.php",
@@ -222,7 +198,7 @@
                             </form>
                         </div>
                         <div class="search-menu clearfix">
-                            <div class="search-menu__body">
+                            <?/*<div class="search-menu__body">
                                 <div class="head">Найдено в разделах каталога:</div>
                                 <ul>
                                     <li><a href="#">Кимоно для карате</a></li>
@@ -266,91 +242,21 @@
                             <div class="search-menu__button">
                                 <a href="#" class="btn">Посмотреть результаты поиска (35)</a>
                             </div>
+*/?>
                         </div>
                     </div>
                 </div>
                 <div class="option-panel__cart">
-                    <i class="icon icon-cart-white shopping-cart"></i>
-                    Товары в <a href="/personal/cart/">корзине</a>
-                    <span class="num"><?=$cart_num?></span>
-                    <span class="sum"><b><?=$cart_sum?></b> руб.</span>
-                    <a href="/personal/order/make/" class="btn btn-primary">Оформить заказ</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal fade modal-form" id="modal_add_review" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <div class="panel-sport">
-                        <div class="modal-header">
-                            Насколько Вам понравился товар в целом?
-                        </div>
-                        <form action="" role="form" class="form-review form-horizontal">
-                            <div class="form-rating clearfix">
-                                <div class="stars">
-                                    <input id="rating5" type="radio" name="rating" value="5" checked="checked">
-                                    <label for="rating5"></label>
-                                    <input id="rating4" type="radio" name="rating" value="4">
-                                    <label for="rating4"></label>
-                                    <input id="rating3" type="radio" name="rating" value="3">
-                                    <label for="rating3"></label>
-                                    <input id="rating2" type="radio" name="rating" value="2">
-                                    <label for="rating2"></label>
-                                    <input id="rating1" type="radio" name="rating" value="1">
-                                    <label for="rating1"></label>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-sm-12">
-                                    <p class="help">Напишите, пожалуйста, несколько предложений, характеризующих товар, доставку или оплату.</p>
-                                    <textarea cols="30" rows="10" class="form-control"></textarea>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-sm-5">
-                                    <input type="text" class="form-control" placeholder="Ваше имя" />
-                                </div>
-                                <div class="col-sm-7">
-
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-sm-5">
-                                    <input type="email" class="form-control" placeholder="Ваш e-mail" />
-                                </div>
-                                <div class="col-sm-7">
-                                    <span class="info">Ваш e-mail не публикуется на сайте.</span>
-                                </div>
-                            </div>
-                            <div class="form-bot clearfix">
-                                <button class="btn btn-add-review" data-dismiss="modal" data-toggle="modal" data-target="#modal_alert">Оставить отзыв</button>
-                            </div>
-                        </form>
-                        <button class="panel-sport__close" data-dismiss="modal" aria-hidden="true" data-toggle="tooltip" title="Закрыть">
-                            <span><i class="fa fa-angle-left"></i></span>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal fade modal-form" id="modal_alert" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="panel-sport">
-                    <div class="modal-header">
-                        Благодарим Вас за оставленный отзыв!
-                    </div>
-                    <div class="alert-success">
-                        После проверки модератором, он вскоре появится на сайте.
-                    </div>
-                    <button class="panel-sport__close" data-dismiss="modal" aria-hidden="true" data-toggle="tooltip" title="Закрыть">
-                        <span><i class="fa fa-angle-left"></i></span>
-                    </button>
+                    <?php
+					$APPLICATION->IncludeComponent("bitrix:sale.basket.basket.small","sp07rest",Array(
+					"PATH_TO_BASKET" => "/personal/basket.php",
+					"PATH_TO_ORDER" => "/personal/order.php",
+					"SHOW_DELAY" => "Y",
+					"SHOW_NOTAVAIL" => "Y",
+					"SHOW_SUBSCRIBE" => "Y"
+						)
+					);
+					?>
                 </div>
             </div>
         </div>

@@ -1,0 +1,32 @@
+div.bx-auth-reg input.bx-auth-input {vertical-align:middle;}
+div.bx-auth-reg span.bx-auth-secure {background-color:#FFFAE3; border:1px solid #DEDBC8; padding:2px; display:inline-block; vertical-align:middle;}
+div.bx-auth-reg div.bx-auth-secure-icon {background-image:url(images/sec.png); background-repeat:no-repeat; background-position:center; width:19px; height:18px;}
+div.bx-auth-reg div.bx-auth-secure-unlock {background-image:url(images/sec-unlocked.png);}
+
+@media (max-width: 767px) { 
+
+	#registration_question input[type="submit"]{margin:0 auto;display:block;}
+	#registration_question .form-group{margin: 0 auto 5px auto;width:230px;display:block;}
+}
+@media (min-width: 768px) {
+	#registration_question .captcha img{display:inline-block;margin-right:10px;width:35%;}
+	#registration_question .captcha input[type="text"]{height:42px;width:60%;display:inline;float:right;}
+	#registration_question .form-group{margin-bottom:15px;display:inline-block;}
+}
+
+
+#registration_question{text-align:left;}
+#registration_question p{margin-bottom:3px;text-align:left;color:#6c727d;font-family:"ProximaNovaLight",Arial,sans-serif;font-size:12px;}
+#registration_question input[type="text"],#registration_question input[type="password"]{width:230px;color:#303030;font-size:12px;font-family:"ProximaNovaLight",Arial,sans-serif;border:1px solid #e2e5e9;padding:10px;margin-right:20px;}
+#registration_question .form-group{}
+#registration_question .form-group p{margin-bottom:3px;text-align:left;color:#6c727d;font-size:12px;font-family:"ProximaNovaLight",Arial,sans-serif;}
+#registration_question .form-group a{float:right;color:#6c727d;font-size:12px;font-family:"ProximaNovaLight",Arial,sans-serif;font-weight:lighter;}
+#registration_question .checkbox{text-align:left;margin-top:20px;line-height:13px;}
+#registration_question .checkbox input[type="checkbox"]{margin-right:10px;float:left;}
+#registration_question .checkbox label{color:#303030;font-size:12px;font-family:"ProximaNovaLight",Arial,sans-serif;clear:both;}
+#registration_question input[type="submit"]{background:#FFF;color:#767676;font-size:14px;font-family:"ProximaNovaLight",Arial,sans-serif;width:170px;height:30px;line-height:30px;border-radius:5px;border:1px solid #c8c8c8;box-shadow:1px 2px 2px 1px #dedede;margin-top:20px;}
+#registration_question .captcha{background:#efeded;padding:10px;margin:10px 0;width:100%;position:relative;}
+#registration_question .captcha .captcha-title{color:#6c727d;font-size:12px;font-family:"ProximaNovaLight",Arial,sans-serif;}
+#registration_question .captcha .captcha-title-2{color:#303030;font-size:12px;font-family:"ProximaNovaLight",Arial,sans-serif;font-weight:lighter;}
+#registration_question .captcha img{display:inline-block;margin-right:10px;width:35%;height:40px;}
+#registration_question .captcha input[type="text"]{height:42px;width:60%;display:inline;float:right;margin-right:0;}

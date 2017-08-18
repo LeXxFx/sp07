@@ -270,7 +270,8 @@ else
 		"CURRENT_OFFER" => intval($_REQUEST["offer"]) > 0 ? intval($_REQUEST["offer"]) : 0
 	),
 	$component
-);?><?
+);?>
+<?
 $GLOBALS["CATALOG_CURRENT_ELEMENT_ID"] = $ElementID;
 unset($basketAction);
 if ($ElementID > 0)
