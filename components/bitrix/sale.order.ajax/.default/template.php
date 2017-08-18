@@ -541,16 +541,23 @@ else
                             <table class="checkout-result__suma">
                                 <tbody><tr>
                                     <td>Товаров на</td>
-                                    <td class="suma-value suma-tovar"><?=$arResult['PRICE_WITHOUT_DISCOUNT'];?></td>
+                                    <td class="suma-value suma-tovar"><?=$arResult["JS_DATA"]['TOTAL']["ORDER_TOTAL_PRICE_FORMATED"];?></td>
                                 </tr>
+								<?
+								//echo "<pre>";
+								//print_r($arResult["JS_DATA"]["TOTAL"]);
+								//echo "</pre>";
+								?>
                                 <!-- <tr>
                                     <td><span>Бонус 5%</span></td>
                                     <td class="suma-value label-alert">234 руб.</td>
+                                </tr>-->
+                                <?if($arResult["JS_DATA"]["TOTAL"]["DISCOUNT_PRICE"] >= 1):?>
+								<tr>
+                                    <td><span>Скидка</span></td>
+                                    <td class="suma-value label-alert discount"><?=$arResult["JS_DATA"]["TOTAL"]["DISCOUNT_PRICE_FORMATED"]?></td>
                                 </tr>
-                                <tr>
-                                    <td><span>Скидка 5%</span></td>
-                                    <td class="suma-value label-alert">-327 руб.</td>
-                                </tr> -->
+								<?endif;?>
                                 <tr>
                                     <td>Доставка</td>
                                     <td class="suma-value sum-delivery">0 руб.</td>
@@ -558,7 +565,7 @@ else
                                 <tr><td colspan="2"><hr></td></tr>
                                 <tr>
                                     <td>Всего:</td>
-                                    <td class="suma-value"><?=$arResult['PRICE_WITHOUT_DISCOUNT'];?>
+                                    <td class="suma-value"><?=$arResult["JS_DATA"]['TOTAL']["ORDER_TOTAL_PRICE_FORMATED"];?>
                                         
                                     </td>
                                 </tr>

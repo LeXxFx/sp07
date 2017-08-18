@@ -25,6 +25,21 @@ $arDefaultParams = array(
 	'MESS_NOT_AVAILABLE' => '',
 	'MESS_BTN_COMPARE' => ''
 );
+
+$resElSec = CIBlockElement::GetList(array(),array_merge(array("IBLOCK_ID"=>$arParams["IBLOCK_ID"]),$GLOBALS["arrFilter"]),false,false,array("IBLOCK_SECTION_ID"));
+while($arElSec = $resElSec->Fetch())
+{
+    $arElSecs[] = $arElSec["IBLOCK_SECTION_ID"];
+}
+
+$resSec = CIBlockSection::GetList(array(),array("IBLOCK_ID"=>$arParams["IBLOCK_ID"],"ID"=>$arElSecs),false);
+while($arSec = $resSec->GetNext())
+{
+    $arSecs[] = $arSec;
+}
+
+$arResult["arSecs"] = $arSecs;
+
 $arParams = array_merge($arDefaultParams, $arParams);
 
 foreach ($arResult['ITEMS'] as $key => $arItem){
@@ -241,15 +256,10 @@ if (!empty($arResult['ITEMS']))
 			$arItem['OFFERS'] = array();
 		}
 
-
-
 		if ($arItem['CATALOG'] && isset($arItem['OFFERS']) && !empty($arItem['OFFERS']))
 		{
-
-
 			if ('Y' == $arParams['PRODUCT_DISPLAY_MODE'])
 			{
-
 				$arMatrixFields = $arSKUPropKeys;
 				$arMatrix = array();
 
@@ -363,8 +373,6 @@ if (!empty($arResult['ITEMS']))
 				$intSelected = -1;
 				$arItem['MIN_PRICE'] = false;
 				$arItem['MIN_BASIS_PRICE'] = false;
-
-
 				foreach ($arItem['OFFERS'] as $keyOffer => $arOffer)
 				{
 					if (empty($arItem['MIN_PRICE']))
@@ -418,8 +426,6 @@ if (!empty($arResult['ITEMS']))
 						'CAN_BUY' => $arOffer['CAN_BUY'],
 					);
 					$arMatrix[$keyOffer] = $arOneRow;
-
-
 				}
 				if (-1 == $intSelected)
 				{
