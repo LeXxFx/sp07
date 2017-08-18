@@ -1,1 +1,0 @@
-<a href="/"><img src="/bitrix/templates/sport07/images/logo.png" alt=""></a>
