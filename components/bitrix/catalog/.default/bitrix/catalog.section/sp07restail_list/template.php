@@ -427,7 +427,14 @@ foreach ($arResult['ITEMS'] as $key => $arItem)
                                         </button>
                                     </div>
                                     <div class="item__delivary">
-                                        <b>Доставка:</b> 19 февраля
+                                        <b>Доставка:</b>
+										<?
+										$months = array( 1 => 'Января' , 'Февраля' , 'Марта' , 'Апреля' , 'Мая' , 'Июня' , 'Июля' , 'Августа' , 'Сентября' , 'Октября' , 'Ноября' , 'Декабря' );
+										//$dates = date('j.m.Y');
+										$date = date_create("$dates");
+										date_add($date, date_interval_create_from_date_string('2 days'));
+										echo date_format($date, 'j '. $months[date( 'n' )]);
+										?>
                                     </div>
 
                                     <!-- <div class="checksum">

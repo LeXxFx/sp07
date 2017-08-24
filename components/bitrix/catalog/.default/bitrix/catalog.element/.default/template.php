@@ -509,10 +509,11 @@ if (isset($arResult['OFFERS']) && !empty($arResult['OFFERS']) && !empty($arResul
 									//print_r($recomend);
 									//echo "</pre>";
 							$arFilter = Array("IBLOCK_ID"=>9);
-							$arSelectID = Array("ID"=>$recomend);
-							$db_list = CIBlockSection::GetList( $arFilter, $arSelectID, true);
+							$arSelectID = Array("IBLOCK_ID"=>9,"ID"=>$recomend);
+							$db_list = CIBlockSection::GetList( $arFilter, $arSelectID, true, array("UF_*"));
 								while($arSection = $db_list->GetNext())
-								{?>							
+								{?>
+								<?//echo "<pre>";print_r($arSection);echo "</pre>";?>
 								<div class="catalog__item">
                                     <a href="<?=$arSection["SECTION_PAGE_URL"]?>">
 									<?$arSection["PICTURE"] = CFile::GetFileArray($arSection["PICTURE"])?>
@@ -521,7 +522,9 @@ if (isset($arResult['OFFERS']) && !empty($arResult['OFFERS']) && !empty($arResul
                                         </div>
                                         <div class="name">
                                             <div class="title"><?=$arSection["NAME"]?></div>
-                                            <div class="desc">Мячи, шейкеры, эспандеры, коврики, гантели, утяжелители, обручи и многое другое для занятий фитнесом.</div>
+											<?if(!empty($arSection["UF_SEO_TEXT"])):?>
+                                            <div class="desc"><?=$arSection["UF_SEO_TEXT"]?></div>
+											<?endif;?>
                                         </div>
                                         <!--<div class="stick stick-sale">
                                             <span class="num">10%</span>
