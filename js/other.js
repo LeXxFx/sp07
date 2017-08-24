@@ -66,6 +66,9 @@ $(function() {
 		console.log('test');
 		checkPayment($(this));
 	});
+	window.onload = function () {
+	UpdateCheckoutResult();
+	}
 
 
 
@@ -886,7 +889,7 @@ $(function() {
 	}
 	}
 	window.onload = function () {
-	CountBox()
+	UpdateCheckoutResult()
 }
 /* $(document).ready(function(){
 		$(".fixed-header")
