@@ -114,6 +114,18 @@ while($arItem = $items->GetNext())
 print_r($arItem);
 }
 ?>
+<?
+//echo "<pre>";
+//print_r($arResult);
+//echo "</pre>";
+?>
+<?
+	$valueDate = $arResult["PROPERTIES"]["DATE_TO_OFFER"]["VALUE"];
+	$date = date("Y-m-d", strtotime($valueDate));
+	$str = $arResult["PROPERTIES"]["DATE_TO_OFFER"]["VALUE"];
+	$result = substr(strstr($str, ' '), 1, strlen($str));
+	$time = mb_strimwidth($result, 0, 5);
+?>
 <?//echo "<pre>";print_r($arResult["IBLOCK_SECTION_ID"]);echo "</pre>";?>
             <div class="inner product-item">
                 <div id="content" role="main">
@@ -161,16 +173,24 @@ print_r($arItem);
                                                 </a>
                                             <?endif;?>
                                         </div>
-<? // print_r($arResult['MORE_PHOTO']);?>
+<? // print_r($arResult['MORE_PHOTO']);?><?if($arResult["PROPERTIES"]["PRODUCT_OF_THE_DAY"]["VALUE"] == "Y"):?>
                                         <div class="item__stick item__stick-profit">
                                             <span class="num"><i class="fa fa-star-o"></i></span>
                                             Выгода <b>2017</b>
                                         </div>
                                         <div class="item__timer">
                                             <i class="fa fa-clock-o"></i>
-                                            <div class="soon" data-due="2017-04-13T22:05" data-layout="line" data-format="h,m,s" data-labels-days=":" data-labels-hours=":" data-labels-minutes=":" data-labels-seconds=" " data-initialized="true" data-scale="m">
-                                            <span class="soon-group " data-value="1000"><span class="soon-group-inner"><span class="soon-group soon-group-sub" data-value="0"><span class="soon-group-inner"><span class="soon-repeater soon-value "><span class="soon-text ">0</span></span><span class="soon-text soon-label">:</span></span></span><span class="soon-group soon-group-sub" data-value="0"><span class="soon-group-inner"><span class="soon-repeater soon-value "><span class="soon-text ">0</span><span class="soon-text ">0</span></span><span class="soon-text soon-label">:</span></span></span><span class="soon-group soon-group-sub" data-value="0"><span class="soon-group-inner"><span class="soon-repeater soon-value "><span class="soon-text ">0</span><span class="soon-text ">0</span></span><span class="soon-text soon-label"> </span></span></span></span></span></div>
+                                            <div class="soon"
+                                         data-due="<?=$date?>T<?=$time?>"
+                                         data-layout="line"
+                                         data-format="h,m,s"
+                                         data-labels-days=":"
+                                         data-labels-hours=":"
+                                         data-labels-minutes=":"
+                                         data-labels-seconds=" ">
+                                    </div>
                                         </div>
+										<?endif;?>
                                     </div>
                                     <div class="item__info">
                                         <div class="item__name product__id" data-product-name="<?=$arResult["NAME"]?>" data-product-id="<?=$arResult["ID"]?>">
