@@ -541,7 +541,7 @@ else
                             <table class="checkout-result__suma">
                                 <tbody><tr>
                                     <td>Товаров на</td>
-                                    <td class="suma-value suma-tovar"><?=$arResult["JS_DATA"]['TOTAL']["ORDER_TOTAL_PRICE_FORMATED"];?></td>
+                                    <td class="suma-value suma-tovar"><?=$arResult["JS_DATA"]['TOTAL']["ORDER_PRICE_FORMATED"];?></td>
                                 </tr>
 								<?
 								//echo "<pre>";
