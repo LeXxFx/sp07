@@ -327,7 +327,7 @@
     }
   }
   .item__image {
-    @include flex(0 0 520px);
+    @include flex(0 0 590px);
     .image__preview {
       width: 450px;
       height: 380px;
@@ -337,6 +337,33 @@
         max-height: 100%;
         width: auto;
         height: auto;
+      }
+    }
+    .imgs-list {
+      width: 135px;
+      .item {
+        height: 100px;
+        margin: 5px 0;
+        a {
+          height: 100px;
+        }
+      }
+      &.slick-slider {
+        padding: 30px 0;
+        .slick-arrow {
+          border: 1px solid #ccc;
+          border-radius: 50%;
+          width: 27px;
+          height: 27px;
+          display: inline-block;
+          color: #ccc;
+          padding: 3px 0 0;
+          text-align: center;
+          &:hover {
+            border-color: $text-color;
+            color: $text-color;
+          }
+        }
       }
     }
   }

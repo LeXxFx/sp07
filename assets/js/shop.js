@@ -215,7 +215,7 @@ var Shop = function () {
 		var gallery = $('#product-gallery').find('.imgs-list');
 		if (gallery.length > 0) {
             gallery.slick({
-                slidesToShow: 6,
+                slidesToShow: 3,
                 slidesToScroll: 1,
                 autoplay: false,
                 vertical: true,
