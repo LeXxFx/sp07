@@ -161,9 +161,9 @@ var Shop = function () {
 
 	var productsCatalog = function () {
 		var imageItem = $('.product__item .imgs-list .item a');
-        imageItem.on("mouseenter", function () {
+      /*  imageItem.on("mouseenter", function () {
             switchImage($(this));
-		});
+		});*/
         imageItem.on("click", function (e) {
         	e.preventDefault();
             switchImage($(this));

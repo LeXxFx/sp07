@@ -112,7 +112,7 @@
 		$('.col-catalog').on('mouseenter', function(e) {
 			$(this).addClass('col-catalog--open');
 		}).on("mouseleave", function () {
-			$(this).removeClass('col-catalog--open');
+			$('.col-catalog').removeClass('col-catalog--open');
 		});
 
 		$('.col-catalog .catalog-menu .has-child').on('mouseenter', function(e) {
@@ -130,7 +130,7 @@
 			e.preventDefault();
 			var that = $(this);
 			//that.closest('.has-child').removeClass('has-child--open');
-			that.closest('.col-catalog').removeClass('col-catalog--open1');
+			that.closest('.col-catalog').removeClass('col-catalog--open');
 		});
 
 		$('#header').on('click', '.col-catalog', function(e) {

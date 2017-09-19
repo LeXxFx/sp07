@@ -78,9 +78,10 @@
       position: relative;
       width: 255px;
       padding-top: 40px;
+      padding-bottom: 5px;
       @include flex(0 0 255px);
       &--nopadding {
-        padding-top: 10px;
+        padding: 10px;
       }
       .image__preview {
         float: left;
@@ -106,7 +107,7 @@
           max-height: 140px;
         }
         &.image__preview--loading {
-          background:url(../images/ajax-loader.gif) no-repeat center center;
+          background: url(../images/ajax-loader.gif) no-repeat center center;
         }
         &.image__preview--init {
           img {
