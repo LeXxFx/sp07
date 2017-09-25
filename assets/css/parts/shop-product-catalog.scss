@@ -1,11 +1,11 @@
 .product-grid {
   &__item {
     width: 260px;
-    height: 470px;
+    height: 485px;
     margin: -1px 0 0 -1px;
     float: left;
     .item__wrap {
-      min-height: 470px;
+      min-height: 485px;
       padding: 30px 10px 10px;
       text-align: center;
     }
@@ -93,7 +93,7 @@
         position: relative;
         background: center center no-repeat;
         > a {
-          height: 100%;
+          height: 100% !important;
         }
         > iframe {
           width: 100%;

@@ -2636,11 +2636,11 @@ blockquote {
         float: none; } }
 .product-grid__item {
   width: 260px;
-  height: 470px;
+  height: 485px;
   margin: -1px 0 0 -1px;
   float: left; }
   .product-grid__item .item__wrap {
-    min-height: 470px;
+    min-height: 485px;
     padding: 30px 10px 10px;
     text-align: center; }
   .product-grid__item a:hover {
@@ -2719,7 +2719,7 @@ blockquote {
       position: relative;
       background: center center no-repeat; }
       .product-list__item .item__image .image__preview > a {
-        height: 100%; }
+        height: 100% !important; }
       .product-list__item .item__image .image__preview > iframe {
         width: 100%;
         height: 140px; }
