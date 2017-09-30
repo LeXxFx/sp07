@@ -135,11 +135,11 @@ print_r($arItem);
                                 <div class="item__wrap">
                                     <div id="product-gallery" class="item__image">
                                         <div class="imgs-list">
-                                                <? 
+                                                <?
+												$first = true;
                                                 foreach ($arResult['MORE_PHOTO'] as &$arOnePhoto)
                                                 {?>
-
-                                            <div class="item">
+                                            <div class="item <?if($first){echo 'current'; $first = false;}?>">
                                                 <a href="<? echo $arOnePhoto['SRC']; ?>" data-preview="<? echo $arOnePhoto['SRC']; ?>" data-source="image">
                                                     <img src="<? echo $arOnePhoto['SRC']; ?>" alt=""/>
                                                 </a>
@@ -161,19 +161,33 @@ print_r($arItem);
                                                 </a>
                                             <?endif;*/?>
                                             <?if(count($arResult['OFFERS'])>0):?>
-                                                <a id="gallery" href="<? echo $arResult['MORE_PHOTO'][0]['SRC']; ?>" class="MagicZoomPlus" rel="preload-selectors-small:false;preload-selectors-big:false;initialize-on:mouseover;smoothing-speed:70;fps:40;selectors-effect:false;show-title:false;loading-msg:Загрузка...;background-opacity:10;zoom-width:420;zoom-height:420;zoom-distance:5;hint-text:;selectors-class:current;buttons:hide;caption-source:span;">
+                                                <a id="gallery" href="<? echo $arResult['MORE_PHOTO'][0]['SRC']; ?>" class="MagicZoomPlus" rel="preload-selectors-small:false;preload-selectors-big:false;initialize-on:mouseover;smoothing-speed:70;fps:40;selectors-effect:false;show-title:false;loading-msg:Загрузка...;background-opacity:10;zoom-width:600;zoom-height:600;zoom-distance:5;hint-text:;selectors-class:current;buttons:hide;caption-source:span;">
                                                     <img src="<? echo $arResult['MORE_PHOTO'][0]['SRC']; ?>" alt=""/>
                                                 </a>
 <!--                                                <a id="gallery" href="<? echo $arResult['OFFERS'][0]['DETAIL_PICTURE']['SRC']; ?>" class="MagicZoomPlus" rel="preload-selectors-small:false;preload-selectors-big:false;initialize-on:mouseover;smoothing-speed:70;fps:40;selectors-effect:false;show-title:false;loading-msg:Загрузка...;background-opacity:10;zoom-width:420;zoom-height:420;zoom-distance:5;hint-text:;selectors-class:current;buttons:hide;caption-source:span;">
                                                     <img src="<? echo $arResult['OFFERS'][0]['DETAIL_PICTURE']['SRC']; ?>" alt=""/>
                                                 </a>-->
                                             <?else:?>
-                                                <a id="gallery" href="<? echo $arResult['DETAIL_PICTURE']['SRC']; ?>" class="MagicZoomPlus" rel="preload-selectors-small:false;preload-selectors-big:false;initialize-on:mouseover;smoothing-speed:70;fps:40;selectors-effect:false;show-title:false;loading-msg:Загрузка...;background-opacity:10;zoom-width:420;zoom-height:420;zoom-distance:5;hint-text:;selectors-class:current;buttons:hide;caption-source:span;">
+                                                <a id="gallery" href="<? echo $arResult['DETAIL_PICTURE']['SRC']; ?>" class="MagicZoomPlus" rel="preload-selectors-small:false;preload-selectors-big:false;initialize-on:mouseover;smoothing-speed:70;fps:40;selectors-effect:false;show-title:false;loading-msg:Загрузка...;background-opacity:10;zoom-width:600;zoom-height:600;zoom-distance:5;hint-text:;selectors-class:current;buttons:hide;caption-source:span;">
                                                     <img src="<? echo $arResult['DETAIL_PICTURE']['SRC']; ?>" alt=""/>
                                                 </a>
                                             <?endif;?>
                                         </div>
-<? // print_r($arResult['MORE_PHOTO']);?><?if($arResult["PROPERTIES"]["PRODUCT_OF_THE_DAY"]["VALUE"] == "Y"):?>
+										<? // print_r($arResult['MORE_PHOTO']);?>
+										<?//echo "<pre>";print_r($arResult);echo "</pre>";?>
+										<?if($arResult["PROPERTIES"]["M_HIT"]["VALUE"] == 'Y'):?>
+										<div class="item__stick item__stick-hit">
+											<span class="num"><i class="fa fa-thumbs-o-up"></i></span>
+											Хит продаж!
+										</div>
+										<?endif;?>
+										<?if($arResult["MIN_PRICE"]["DISCOUNT_DIFF_PERCENT"] >= 1):?>
+											<div class="item__stick item__stick-sale">
+											<span class="num"><?=$arResult["MIN_PRICE"]["DISCOUNT_DIFF_PERCENT"]?>%</span>
+											Sale
+											</div>
+										<?endif;?>
+										<?if($arResult["PROPERTIES"]["PRODUCT_OF_THE_DAY"]["VALUE"] == "Y"):?>
                                         <div class="item__stick item__stick-profit">
                                             <span class="num"><i class="fa fa-star-o"></i></span>
                                             Выгода <b>2017</b>
@@ -499,12 +513,12 @@ if (isset($arResult['OFFERS']) && !empty($arResult['OFFERS']) && !empty($arResul
                                     </div>-->
                                 </div>
                                 <div class="panel__advants">
-                                    <!--<div class="advants__item advants__item--orange"><span><i class="icon icon-rubl"></i></span>
-                                        <p><a href="#">Нашли дешеле? Позвоните!</a></p></div>-->
-                                    <!--<div class="advants__item advants__item--red"><span>5%</span>
+                                    <div class="advants__item advants__item--orange"><span><i class="icon icon-rubl"></i></span>
+                                        <p><a href="#">Нашли дешеле? Позвоните!</a></p></div>
+                                    <div class="advants__item advants__item--red"><span>5%</span>
                                         <p>До скидки 5% осталось купить на 4000 р.</p></div>
                                     <div class="advants__item advants__item--green"><span><i class="icon icon-car"></i></span>
-                                        <p>До бесплатной доставки осталось купить на 5000 р.</p></div>-->
+                                        <p>До бесплатной доставки осталось купить на 5000 р.</p></div>
                                 </div>
                             </div>
                         </div>

@@ -27,6 +27,7 @@ $(function() {
 	};
 
     var checkDelivery = function(el){
+		console.log(el);
         $('.delivary__info').html('<div class="info__heading">'+el.data('name')+'</div>');
         $('.delivary__info').append('<p>'+el.data('desc')+'</p>');
         $('.delivary__info').append('<p>Стоимость: <b>'+el.data('price')+'</b></p>');
@@ -176,18 +177,33 @@ $(function() {
                 }
             }
             //
+            var flagV = false;
             $.each(pblocks,function(){
                 if($(this).closest('.prop').data('prop-id')!==max_id){
                     if($(this).find('.value.active').is(':hidden') || !$(this).find('.value.active').length){
                         $(this).find('.value.active').removeClass('active');
                         $.each($(this).find('.value'),function(){
-                            if($(this).is(':visible')){
-                               $(this) .addClass('active');return;
+                            console.log($(this).css('display'));
+                            if($(this).css('display') !== 'none' && !flagV){
+                                flagV = true;
+                                $(this) .addClass('active');return;
                             }
                         })
                     }
                 }
             })
+         /*
+             $.each(pblocks,function(){
+             if($(this).closest('.prop').data('prop-id')!==max_id){
+             if($(this).find('.value.active').is(':hidden') || !$(this).find('.value.active').length){
+             $(this).find('.value.active').removeClass('active');
+             $.each($(this).find('.value'),function(){
+
+             })
+             }
+             }
+             })
+             */
         }
         var active_props = {};
         element_block.find(" .sku_props .sku_prop").each(function () {
@@ -209,7 +225,7 @@ $(function() {
                     if (data.price)
                         element_block.find(".item__price .new").text(data.price);
                     if (data.old_price)
-                        element_block.find(".price-old").text(data.old_price);
+                        element_block.find(".item__price .old").text(data.old_price);
                     if (data.id)
                         element_block.find(".buy-card-fast").attr("href", "/include/catalog/element/oneclick.php?id=" + data.id + "&priceid=" + data.price_id);
                     if (data.section_image && element_block.find(".section-item-image").length > 0)
@@ -561,6 +577,7 @@ $(window).load(function(){
 	$(".addtobasket").on("click", function(event) {
 		event.preventDefault();
 		var active_props = [];
+		console.log($(this));
 		$(this).closest('#product_container').find(".sku_prop").each(function() {
 		console.log($(this).find(".name").text().replace(":", ""))
 		console.log($(this).find(".sku_prop_value.active").data("value"))
@@ -601,6 +618,7 @@ $(window).load(function(){
 				console.log("простой товар ушел");
 				updatepanel();
 				YaAddSku();
+				action_update();
 			}
 		});
 		$(this).parent().parent().find(".cover-buy").show();
@@ -642,6 +660,27 @@ $(window).load(function(){
 			success: function(data) {
 				$(".big-basket").html(data);
 			}
+		});
+	}
+	
+	function action_update(){
+		$.ajax({
+			url: "/bitrix/templates/sp07restail/php/action_cart.php",
+			success: function(data){
+				data = eval("(" + data + ")");
+				var discountObj;
+				data["APPLIED_DISCOUNT_LIST"].forEach(function(entry){
+					if(entry['NAME'] == 'basket')
+						discountObj = entry;
+				})			
+				console.log(discountObj);
+				var discountAction = data['PRICE_WITHOUT_DISCOUNT'].replace(/руб./g, '');
+				var discountAction = discountAction.replace(/ /g, '');
+				if(discountAction <= 3000)
+					{console.log('маловато будет')}
+					else{console.log('бухаем')}
+				}
+				//console.log(discountAction);
 		});
 	}
 	

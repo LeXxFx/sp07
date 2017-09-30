@@ -69,6 +69,7 @@ if ($isFilter)
 	if (!isset($arCurSection))
 		$arCurSection = array();
 }
+
 ?>
 <?$APPLICATION->IncludeComponent(
 	"h2o:buyoneclick", 
@@ -217,6 +218,7 @@ if ($isFilter)
 );?>
 
 <?
+
 if ($isVerticalFilter)
 	include($_SERVER["DOCUMENT_ROOT"]."/".$this->GetFolder()."/section_vertical.php");
 else

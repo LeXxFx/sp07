@@ -1,6 +1,6 @@
 <?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();?><!DOCTYPE html>
 <?
-CJSCore::Init(array("jquery"));
+CJSCore::Init(array("jquery2"));
 ?>
 <html>
 <head>
@@ -54,7 +54,26 @@ CJSCore::Init(array("jquery"));
                 <div class="col-contacts">
                     <div class="tel">
                         <div class="tel__item">
-                            <a href="tel:84952151207" data-toggle="tooltip" title="Позвонить в магазин"><span>8 (495)</span> 215-12-07</a>
+                            <a class="mgo-number-10262" href="tel:84952151207" data-toggle="tooltip" title="Позвонить в магазин"><span>8 (495)</span> 215-12-07</a>
+							<script>
+							(function(w, d, u, i, o, s, p) {
+								if (d.getElementById(i)) { return; } w['MangoObject'] = o;
+								w[o] = w[o] || function() { (w[o].q = w[o].q || []).push(arguments) }; w[o].u = u; w[o].t = 1 * new Date();
+								s = d.createElement('script'); s.async = 1; s.id = i; s.src = u;
+								p = d.getElementsByTagName('script')[0]; p.parentNode.insertBefore(s, p);
+							}(window, document, '//widgets.mango-office.ru/widgets/mango.js', 'mango-js', 'mgo'));
+							mgo({
+								calltracking: {
+									id: 10262,
+									elements: [],
+									onReady: function(event) {
+										var number = event.number;
+										$('.mgo-number-10262')
+											.html('<span>8 (' + number.substr(1, 3) + ')</span> ' + number.substr(4, 3) + '-' + number.substr(7, 2) + '-' + number.substr(9, 2));
+									}
+								}
+							});  
+						</script>
                             <span>для абонентов из Москвы</span>
                         </div>
                         <div class="tel__item">

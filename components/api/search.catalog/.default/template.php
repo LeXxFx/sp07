@@ -28,6 +28,7 @@ if(method_exists($this, 'setFrameMode'))
 if($arParams['INCLUDE_CSS'] == 'Y')
 	$this->addExternalCss($this->GetFolder() . '/styles.css');
 ?>
+<div class="inner">
 <div class="api-search-catalog tpl-default" id="<?=$arResult['COMPONENT_ID']?>">
 	<? if($arParams['USE_SEARCH'] == 'Y'): ?>
 		<form action="<?=POST_FORM_ACTION_URI?>" autocomplete="off">
@@ -43,10 +44,16 @@ if($arParams['INCLUDE_CSS'] == 'Y')
 				<div class="api-search-button">
 					<button type="submit"><?=($arParams['BUTTON_TEXT'] ? $arParams['BUTTON_TEXT'] : '<i class="api-search-icon"></i>')?></button>
 				</div>
-			</div>
+			</div> 
 		</form>
 	<? endif ?>
-	<?
+
+
+</div>
+
+
+
+    <?
 
 
 
@@ -55,9 +62,67 @@ if($arParams['INCLUDE_CSS'] == 'Y')
 	{
 		if(strlen($arResult['q']) >= API_SEARCH_CHAR_LENGTH)
 		{
-			$APPLICATION->IncludeComponent(
+
+
+    $APPLICATION->IncludeComponent(
+        "bitrix:catalog.section.list",
+        "sp07restail_subleft",
+        Array(
+            "ADD_SECTIONS_CHAIN" => "N",
+            "CACHE_GROUPS" => "N",
+            "CACHE_TIME" => "36000000",
+            "CACHE_TYPE" => "N",
+            "COUNT_ELEMENTS" => "Y",
+            "IBLOCK_ID" => "9",
+            "IBLOCK_TYPE" => "1c_catalog",
+            "SECTION_CODE" => '',
+            "SECTION_FIELDS" => array("",""),
+            "SECTION_ID" => "",
+            "SECTION_URL" => "#SITE_DIR#/store/#SECTION_CODE#/",
+            "SECTION_USER_FIELDS" => array("",""),
+            "SHOW_PARENT_NAME" => "Y",
+            "TOP_DEPTH" => "2",
+            "VIEW_MODE" => "LIST",
+            "USE_FILTER" => "Y",
+            "FILTER_NAME" =>  $arParams["FILTER_NAME"],
+            "FILTER_VIEW_MODE" => "VERTICAL",
+            "FILTER_FIELD_CODE" => array(
+                0 => "",
+                1 => "",
+            ),
+            "FILTER_PROPERTY_CODE" => array(
+                0 => "",
+                1 => "",
+            ),
+            "FILTER_PRICE_CODE" => array(
+                0 => "Для сайта (САЙТ цена)",
+            ),
+            "FILTER_OFFERS_FIELD_CODE" => array(
+                0 => "",
+                1 => "",
+            ),
+            "FILTER_OFFERS_PROPERTY_CODE" => array(
+                0 => "VES",
+                1 => "DLINA",
+                2 => "DLINA_2",
+                3 => "RAZMER",
+                4 => "RAZMER_3",
+                5 => "NAGRUZKA",
+                6 => "ROST",
+                7 => "TSVET",
+                8 => "TSVET_1",
+                9 => "TSVET_2", 
+                10 => "",
+            ),
+        ),
+        $component
+    );
+
+?>
+    <div id="content" role="main">
+			<?$APPLICATION->IncludeComponent(
 				"bitrix:catalog.section",
-				$arParams['CATALOG_TEMPLATE'],
+                (($_SESSION['viewmode']=='list')?"sp07restail_list2":"sp07restail2"),
 				$arParams,
 				$arResult['THEME_COMPONENT'],
 				array('HIDE_ICONS' => 'Y')
@@ -65,4 +130,5 @@ if($arParams['INCLUDE_CSS'] == 'Y')
 		}
 	}
 	?>
+    </div>
 </div>

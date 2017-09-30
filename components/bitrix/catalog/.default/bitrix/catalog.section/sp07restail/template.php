@@ -74,7 +74,7 @@ if (!empty($arResult['ITEMS']))
                                 <?endif;?>
                                 <?if($_GET['order']=='new' && $_GET['sort']=='desc'):?>
                                 <?else:?>
-                                <a class="dropdown-item" href="?SECTION_ID=<?=$_GET['SECTION_ID']?>&order=new&sort=desc">Сортировка: по новизне</a>
+                                <a class="dropdown-item" href="?SECTION_ID=<?=$_GET['SECTION_ID']?>&order=new&sort=desc">по новизне</a>
                                 <?endif;?>
                                 <!-- <a class="dropdown-item" href="#">Something else here</a> -->
                             </div>
@@ -145,6 +145,7 @@ if (!empty($arResult['ITEMS']))
 				),
 				'ITEMS' => array()
 			);
+
 			$templateRow = '';
 			if ('TEXT' == $arProp['SHOW_MODE'])
 			{
@@ -203,6 +204,7 @@ if (!empty($arResult['ITEMS']))
 	<?
 foreach ($arResult['ITEMS'] as $key => $arItem)
 {
+
 	$this->AddEditAction($arItem['ID'], $arItem['EDIT_LINK'], $strElementEdit);
 	$this->AddDeleteAction($arItem['ID'], $arItem['DELETE_LINK'], $strElementDelete, $arElementDeleteParams);
 	$strMainID = $this->GetEditAreaId($arItem['ID']);
@@ -256,9 +258,24 @@ foreach ($arResult['ITEMS'] as $key => $arItem)
 	$str = $arItem["PROPERTIES"]["DATE_TO_OFFER"]["VALUE"];
 	$result = substr(strstr($str, ' '), 1, strlen($str));
 	$time = mb_strimwidth($result, 0, 5);
-	?>
+	//echo $arItem["PROPERTIES"]["M_NEW"]["VALUE"];
+	//echo $arItem["PROPERTIES"]["M_SALE"]["VALUE"];
+	//echo $arItem["PROPERTIES"]["M_HIT"]["VALUE"];
+	?><?//echo "<pre>";print_r($arItem);echo "</pre>";?>
 	<div class="product-grid__item product__item" id="<? echo $strMainID; ?>">
             <div class="item__wrap item_<?=$arItem['ID']?>" id="product_container" data-block-type="catalog" data-id="<?=$arItem['ID']?>" data-tree='<?= json_encode($arItem['JS_OFFERS'])?>'>
+								<?if($arItem["PROPERTIES"]["M_HIT"]["VALUE"] == 'Y'):?>
+								<div class="item__stick item__stick-hit">
+                                    <span class="num"><i class="fa fa-thumbs-o-up"></i></span>
+                                    Хит продаж!
+                                </div>
+								<?endif;?>
+								<?if($arItem["MIN_PRICE"]["DISCOUNT_DIFF_PERCENT"] >= 1):?>
+									<div class="item__stick item__stick-sale">
+                                    <span class="num"><?=$arItem["MIN_PRICE"]["DISCOUNT_DIFF_PERCENT"]?>%</span>
+                                    Sale
+									</div>
+								<?endif;?>
 								<?if($arItem["PROPERTIES"]["PRODUCT_OF_THE_DAY"]["VALUE"] == "Y"):?>
                                 <div class="item__stick item__stick-profit">
                                     <span class="num"><i class="fa fa-star-o"></i></span>
@@ -337,7 +354,7 @@ foreach ($arResult['ITEMS'] as $key => $arItem)
                                 </div>
 
                                 <div class="item__product-options sku_props">
-                                	<?
+                                	<?//print_r($skuTemplate);
 	                                	$PropIndex = 0;
 						                foreach ($skuTemplate as $propId => $propTemplate)
 										{

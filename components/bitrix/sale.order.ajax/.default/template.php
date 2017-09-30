@@ -221,6 +221,7 @@ else
 {
 	$hideDelivery = empty($arResult['DELIVERY']);
 	?>
+<?//echo "<pre>";print_r($arResult);echo "</pre>";?>
 <!-- bx-soa-order-form  -->
 	<form action="<?=$APPLICATION->GetCurPage();?>" method="POST" name="ORDER_FORM" id="ORDER_FORM" enctype="multipart/form-data">
 		<?
@@ -381,8 +382,8 @@ else
                                                         </div>-->
 														<div class="item">
                                                             <label>
-                                                                <input type="radio" <?=($i==0)?'checked="checked"':'';?> name="<?= htmlspecialcharsbx($arDelivery["FIELD_NAME"]) ?>" value="<?= $arDelivery["ID"] ?>" class="checkout_delivery" data-price-nf="<?=$arDeliv["PRICE"]//=$arDelivery['PRICE']?>" data-desc="<?=$arDelivery['DESCRIPTION'];?>" data-name="<?=$arDelivery['NAME'];?>" data-price="<?=$arDeliv["PRICE"]." руб"//=$arDelivery['PRICE_FORMATED'];?>" />
-                                                                <b><?=$arDelivery['NAME'];?></b> (<?=$arDeliv["PRICE"]." руб"//=$arDelivery['PRICE_FORMATED'];?>)
+                                                                <input type="radio" <?=($i==0)?'checked="checked"':'';?> name="<?= htmlspecialcharsbx($arDelivery["FIELD_NAME"]) ?>" value="<?= $arDelivery["ID"] ?>" class="checkout_delivery" data-price-nf="<?if(!empty($arDelivery["DELIVERY_DISCOUNT_PRICE_FORMATED"])){echo $arDelivery["DELIVERY_DISCOUNT_PRICE"];}else{echo $arDelivery["PRICE"];}?>" data-desc="<?=$arDelivery['DESCRIPTION'];?>" data-name="<?=$arDelivery['NAME'];?>" data-price="<?if(!empty($arDelivery["DELIVERY_DISCOUNT_PRICE_FORMATED"])){echo $arDelivery["DELIVERY_DISCOUNT_PRICE_FORMATED"];}else{echo $arDelivery["PRICE_FORMATED"];}?>" />
+                                                                <b><?=$arDelivery['NAME'];?></b> (<?if(!empty($arDelivery["DELIVERY_DISCOUNT_PRICE_FORMATED"])){echo "бесплатно";}else{echo $arDelivery['PRICE_FORMATED'];}?>)
                                                             </label>
                                                         </div>
                                                         <?
@@ -398,7 +399,7 @@ else
                                                 <div class="delivary__info">
                                                     <div class="info__heading"><?=$capt['NAME']?></div>
                                                     <p><?=$capt['DESCRIPTION']?></p>
-                                                    <p>Стоимость: <b><?=$capt['PRICE_FORMATED']?></b></p>
+                                                    <p>Стоимость: <b><?if(!empty($capt["DELIVERY_DISCOUNT_PRICE_FORMATED"])){echo "бесплатно";}else{ echo $capt['PRICE_FORMATED'];}?></b></p>
                                                 </div>
                                             </div>
                                         </div>

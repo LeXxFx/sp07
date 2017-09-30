@@ -97,6 +97,11 @@ $this->addExternalJS("/bitrix/templates/sp07restail/js/other.js");
 <script>
     // console.log(<?//=CUtil::PhpToJSObject($arResult)?>);
 </script>
+<?
+echo "<pre>";
+print_r($arResult);
+echo "</pre>";
+?>
 <div class="inner">
                 <div id="content" role="main">
                     <div class="product-single clearfix">

@@ -5,6 +5,12 @@ foreach($arResult["ITEMS"] as $resultMiniBasket){
 	$cart_sum+=$priceValue;
 	$cart_num+=$resultMiniBasket["QUANTITY"];
 }
+if(empty($cart_num)){
+	$cart_num = 0;
+	}
+?>
+<?
+//echo "<pre>";print_r($arResult);echo "</pre>";
 ?>
 <i class="icon icon-cart-white shopping-cart"></i>
 Товары в <a href="/personal/cart/">корзине</a>

@@ -13,22 +13,35 @@
 		$('.col-search .search-input .form-control').on("keyup", function (e) {
 
 
-            $.ajax({
-                type: "POST",
-                url: "/ajax/searchRow.php",
-                data: { q: $(this).val() }
-            }).done(function( msg ) {
-                $(".search-menu").html(msg);
-            });
+            if($(this).val().length>0)
+            {
+                $.ajax({
+                    type: "POST",
+                    url: "/ajax/searchRow.php",
+                    data: { q: $(this).val() }
+                }).done(function( msg ) {
+                    $(".search-menu").html(msg);
+                });
 
 
-			var that = $(this);
-			var currentVal = that.val();
+                var that = $(this);
+                var currentVal = that.val();
 
-			if (that.attr('data-val') != currentVal) {
-				that.attr('data-val', currentVal);
-				that.closest('.col-search').addClass('col-search--open');
-			}
+                if (that.attr('data-val') != currentVal) {
+                    that.attr('data-val', currentVal);
+                    that.closest('.col-search').addClass('col-search--open');
+                }
+                else
+                {
+                    that.closest('.col-search').removeClass('col-search--open');
+                }
+            }
+
+
+            else
+            {
+                that.closest('.col-search').removeClass('col-search--open');
+            }
 		});
 		$(document).mouseup(function (e) {
 			var container = $('.col-search--open');
@@ -123,7 +136,7 @@
 		$('.col-catalog').on('mouseenter', function(e) {
 			$(this).addClass('col-catalog--open');
 		}).on("mouseleave", function () {
-			$(this).removeClass('col-catalog--open');
+			$('.col-catalog').removeClass('col-catalog--open');
 		});
 
 		$('.col-catalog .catalog-menu .has-child').on('mouseenter', function(e) {
@@ -141,7 +154,8 @@
 			e.preventDefault();
 			var that = $(this);
 			//that.closest('.has-child').removeClass('has-child--open');
-			that.closest('.col-catalog').removeClass('col-catalog--open1');
+			//that.closest('.col-catalog').removeClass('col-catalog--open1');
+			that.closest('.col-catalog').removeClass('col-catalog--open');
 		});
 
 		$('#header').on('click', '.col-catalog', function(e) {

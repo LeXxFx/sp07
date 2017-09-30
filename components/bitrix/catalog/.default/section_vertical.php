@@ -20,6 +20,7 @@ if(preg_match("/\/store\/(?<section>[^\/]+)\//si",$_SERVER['REQUEST_URI'],$out))
 }else{
 	$section_id='';
 }
+
 ?>
 
 	 <?$APPLICATION->IncludeComponent(
@@ -76,7 +77,7 @@ if(preg_match("/\/store\/(?<section>[^\/]+)\//si",$_SERVER['REQUEST_URI'],$out))
 $component
 );?>
 	<div id="content" role="main">
-<?				if(ModuleManager::isModuleInstalled("sale"))
+<?	 			if(ModuleManager::isModuleInstalled("sale"))
 				{
 					$arRecomData = array();
 					$recomCacheID = array('IBLOCK_ID' => $arParams['IBLOCK_ID']);
@@ -157,7 +158,8 @@ $component
 						);
 					}
 				}
-			?>
+
+	?>
 		
 		
 	<?$APPLICATION->IncludeComponent(
@@ -184,6 +186,7 @@ $component
 	);?><?
 	if($arParams["USE_COMPARE"]=="Y")
 	{
+
 		?><?$APPLICATION->IncludeComponent(
 			"bitrix:catalog.compare.list",
 			"",

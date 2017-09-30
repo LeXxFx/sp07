@@ -200,7 +200,7 @@ var Shop = function () {
         target.removeClass('image__preview--init').html('').addClass('image__preview--loading');
 
         if (that.data('source') == 'image') {
-            target.html('<a id="gallery" class="MagicZoomPlus" rel="preload-selectors-small:false;preload-selectors-big:false;initialize-on:mouseover;smoothing-speed:70;fps:40;selectors-effect:false;show-title:false;loading-msg:Загрузка...;background-opacity:10;zoom-width:420;zoom-height:420;zoom-distance:5;hint-text:;selectors-class:current;buttons:hide;caption-source:span;" ' +
+            target.html('<a id="gallery" class="MagicZoomPlus" rel="preload-selectors-small:false;preload-selectors-big:false;initialize-on:mouseover;smoothing-speed:70;fps:40;selectors-effect:false;show-title:false;loading-msg:Загрузка...;background-opacity:10;zoom-width:600;zoom-height:600;zoom-distance:5;hint-text:;selectors-class:current;buttons:hide;caption-source:span;" ' +
                 'href="'+newSrc+'"><img /></a>').find('img').attr('src', newSrc).load(function () {
                 target.removeClass('image__preview--loading');
                 target.find('img').fadeIn('fast');
@@ -215,7 +215,7 @@ var Shop = function () {
 		var gallery = $('#product-gallery').find('.imgs-list');
 		if (gallery.length > 0) {
             gallery.slick({
-                slidesToShow: 6,
+                slidesToShow: 3,
                 slidesToScroll: 1,
                 autoplay: false,
                 vertical: true,
