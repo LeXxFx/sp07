@@ -109,18 +109,23 @@
 	};
 
 	var CatalogNavigation = function () {
+        var timer;
 		$('.col-catalog').on('mouseenter', function(e) {
+            clearTimeout(timer);
 			$(this).addClass('col-catalog--open');
 		}).on("mouseleave", function () {
-			$('.col-catalog').removeClass('col-catalog--open');
+            timer = setTimeout(function() {
+                $('.col-catalog').removeClass('col-catalog--open');
+            }, 2000);
 		});
 
-		$('.col-catalog .catalog-menu .has-child').on('mouseenter', function(e) {
+        $('.col-catalog .catalog-menu .has-child').on('mouseenter', function(e) {
 			var that = $(this);
-			that.addClass('has-child--open');
-			that.closest('.catalog-menu').find('.submenu').removeClass('submenu--close');
-		}).on("mouseleave", function () {
-			$(this).removeClass('has-child--open');
+            setTimeout(function() {
+                that.closest('.catalog-menu').find('.has-child').removeClass('has-child--open');
+				that.addClass('has-child--open');
+				that.closest('.catalog-menu').find('.submenu').removeClass('submenu--close');
+            }, 200);
 		});
 
 		//ie fix

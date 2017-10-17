@@ -203,6 +203,14 @@
       }
     }
 
+    .item__counter {
+      margin: 0 0 10px 0;
+      b {
+        display: inline-block;
+        margin: 0 10px 0 0;
+      }
+    }
+
     .item__panel {
       width: 250px;
       min-width: 150px;

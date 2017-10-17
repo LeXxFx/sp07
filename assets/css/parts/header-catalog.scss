@@ -188,6 +188,7 @@
           transition: 0.5s;
           background: #eaeaea;
           border-radius: 0 4px 4px 0;
+          display: none;
           &:hover {
             > span {
               border-color: $second-color;
