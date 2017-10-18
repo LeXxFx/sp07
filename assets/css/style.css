@@ -666,6 +666,9 @@ blockquote {
           .col-catalog .catalog-menu > ul > li:not(.has-child):hover > a, .col-catalog .catalog-menu > ul > li.has-child--open > a {
             background: #525151;
             color: #fff; }
+        .col-catalog .catalog-menu > ul > li.has-child:hover > a {
+          background: #525151;
+          color: #fff; }
       .col-catalog .catalog-menu > ul .submenu {
         position: absolute;
         z-index: 1;
