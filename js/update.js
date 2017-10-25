@@ -114,7 +114,7 @@ var UpdateFull = function () {
 	return {
         init: function () {
 			updatepanel();
-			alertBasket();
+			//alertBasket();
         }
     };
 }();
