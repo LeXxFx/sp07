@@ -198,6 +198,9 @@ if ($normalCount > 0):
                             </div>
                         </td>
                         <td class="hidden-xs hidden-sm">
+							<div class="item__discont">
+								<?=$arItem["DISCOUNT_PRICE_PERCENT_FORMATED"];?>
+							</div>
                         </td>
                         <td id="basket_quantity_control">
                             <div class="item__input-counter basket_quantity_control">
