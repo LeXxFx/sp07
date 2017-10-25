@@ -5,7 +5,7 @@ $pathCSSPanel = '/bitrix/panel/main';
 $pathLang = BX_ROOT.'/modules/main/lang/'.LANGUAGE_ID;
 //WARNING: Don't use CUserOptions here! CJSCore::Init can be called from php_interface/init.php where no $USER exists
 
-$amChartsPath = '/bitrix/js/main/amcharts/3.13/';
+$amChartsPath = '/bitrix/js/main/amcharts/3.21/';
 
 $arJSCoreConfig = array(
 	'ajax' => array(
@@ -184,6 +184,7 @@ $arJSCoreConfig = array(
 	),
 	'ui_select' => array(
 		'js' => $pathJS.'/core_ui_select.js',
+		'css' => $pathCSS.'/core_ui_select.css',
 		'rel' => array('popup')
 	),
 	'ui_date' => array(
@@ -203,6 +204,15 @@ $arJSCoreConfig = array(
 			'ui_date'
 		)
 	),
+	'resize_observer' => array(
+		'js' => array(
+			$pathJS.'/resize_observer/resize_observer_collection.js',
+			$pathJS.'/resize_observer/resize_observer_item_collection.js',
+			$pathJS.'/resize_observer/resize_observer_item_rect.js',
+			$pathJS.'/resize_observer/resize_observer_item.js',
+			$pathJS.'/resize_observer/resize_observer.js'
+		)
+	),
 	'decl' => array(
 		'js' => $pathJS.'/core_decl.js'
 	),
@@ -214,6 +224,7 @@ $arJSCoreConfig = array(
 			'/bitrix/js/main/kanban/grid.js',
 			'/bitrix/js/main/kanban/column.js',
 			'/bitrix/js/main/kanban/item.js',
+			'/bitrix/js/main/kanban/dropzone-area.js',
 			'/bitrix/js/main/kanban/dropzone.js',
 			'/bitrix/js/main/kanban/utils.js'
 		),
@@ -238,15 +249,21 @@ $arJSCoreConfig = array(
 	'fullscreen' => array(
 		'js' => $pathJS.'/core_fullscreen.js'
 	),
+	'spotlight' => array(
+		'js' => '/bitrix/js/main/spotlight/spotlight.js',
+		'css' => '/bitrix/js/main/spotlight/css/spotlight.css',
+		'lang' => $pathLang.'/js/spotlight.php',
+		'rel' => array('popup'),
+	),
 
+	/* external libs */
 	'jquery' => array(
 		'js' => 'https://code.jquery.com/jquery-2.2.4.min.js',
 		'skip_core' => true,
 	),
 	'jquery_src' => array(
 		'js' => 'https://code.jquery.com/jquery-2.2.4.js',
-		'skip_core' => true, 
-
+		'skip_core' => true,
 	),
 	'jquery2' => array(
 		'js' => '/bitrix/js/main/jquery/jquery-2.1.3.min.js',
@@ -254,6 +271,10 @@ $arJSCoreConfig = array(
 	),
 	'jquery2_src' => array(
 		'js' => '/bitrix/js/main/jquery/jquery-2.1.3.js',
+		'skip_core' => true,
+	),
+	'jquery3' => array(
+		'js' => 'https://code.jquery.com/jquery-2.2.4.min.js',
 		'skip_core' => true,
 	),
 	'json' => array(
@@ -318,6 +339,20 @@ $arJSCoreConfig = array(
 		'lang' => $pathLang.'/js_core_update_stepper.php',
 		'rel' => array('ajax'),
 	),
+	'uf' => array(
+		'js' => $pathJS.'/core_uf.js',
+		'css' => $pathCSS.'/core_uf.css',
+		'rel' => array('ajax'),
+		'oninit' => function()
+		{
+			return array(
+				'lang_additional' => array(
+					'UF_SITE_TPL' => SITE_TEMPLATE_ID,
+					'UF_SITE_TPL_SIGN' => \Bitrix\Main\UserField\Dispatcher::instance()->getSignatureManager()->getSignature(SITE_TEMPLATE_ID),
+				),
+			);
+		}
+	),
 );
 
 \Bitrix\Main\Page\Asset::getInstance()->addJsKernelInfo(
@@ -328,7 +363,8 @@ $arJSCoreConfig = array(
 		'/bitrix/js/main/core/core_date.js','/bitrix/js/main/core/core_timer.js', '/bitrix/js/main/core/core_fx.js',
 		'/bitrix/js/main/core/core_window.js', '/bitrix/js/main/core/core_autosave.js', '/bitrix/js/main/rating_like.js',
 		'/bitrix/js/main/session.js', '/bitrix/js/main/dd.js', '/bitrix/js/main/utils.js',
-		'/bitrix/js/main/core/core_dd.js', '/bitrix/js/main/core/core_webrtc.js'
+		'/bitrix/js/main/core/core_dd.js', '/bitrix/js/main/core/core_webrtc.js',
+		'/bitrix/js/main/core/core_uf.js'
 	)
 );
 
@@ -336,7 +372,8 @@ $arJSCoreConfig = array(
 	'main',
 	array(
 		'/bitrix/js/main/core/css/core.css', '/bitrix/js/main/core/css/core_popup.css',
-		'/bitrix/js/main/core/css/core_tooltip.css', '/bitrix/js/main/core/css/core_date.css'
+		'/bitrix/js/main/core/css/core_tooltip.css', '/bitrix/js/main/core/css/core_date.css',
+		'/bitrix/js/main/core/css/core_uf.css'
 	)
 );
 
