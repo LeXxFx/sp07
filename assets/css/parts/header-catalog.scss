@@ -102,7 +102,13 @@
             @extend %open_submenu;
           }
         }
-      }
+		&.has-child:hover {
+			> a {
+					background: #525151;
+					color: #fff;
+				}
+			}
+		}
       .submenu {
         @extend %close_submenu;
         position: absolute;

@@ -77,7 +77,7 @@
 	};
 
 	var maskedInput = function() {
-		$('.masked-phone').mask('9 (999) 999-99-99');
+		$('input[autocomplete=tel]').mask('9 (999) 999-99-99');
 	};
 
 	var bfSliders = function() {
@@ -133,28 +133,43 @@
 	};
 
 	var CatalogNavigation = function () {
+        var timer,
+			timeIn = [],
+			timeOut = [];
 		$('.col-catalog').on('mouseenter', function(e) {
+            clearTimeout(timer);
 			$(this).addClass('col-catalog--open');
 		}).on("mouseleave", function () {
-			$('.col-catalog').removeClass('col-catalog--open');
+            timer = setTimeout(function() {
+                $('.col-catalog').removeClass('col-catalog--open');
+            }, 200);
 		});
 
-		$('.col-catalog .catalog-menu .has-child').on('mouseenter', function(e) {
-			var that = $(this);
-			that.addClass('has-child--open');
-			that.closest('.catalog-menu').find('.submenu').removeClass('submenu--close');
-		}).on("mouseleave", function () {
-			$(this).removeClass('has-child--open');
-		});
-
-		//ie fix
-		//$('.catalog-menu ul').css('min-height', $('.catalog-menu ul').height() - 25);
-
+		$(".col-catalog .catalog-menu .has-child").hover(function() {
+			var that = $(this),
+				uid = that.index();
+			
+			timeIn[uid] = setTimeout(function(){ 
+				that.addClass('has-child--open');
+			}, 200);
+			if (timeOut[uid] !== undefined) {
+				clearTimeout(timeOut[uid]);      
+			};			
+		}, function(){
+			var that = $(this),
+				uid = that.index();
+				
+            if (timeIn[uid] !== undefined) {
+				clearTimeout(timeIn[uid]);      
+			};
+			timeOut[uid] = setTimeout(function(){ 
+				that.removeClass('has-child--open'); 
+			}, 200);
+        });
+		
 		$('.catalog-menu').on('click', '.submenu__close', function(e) {
 			e.preventDefault();
 			var that = $(this);
-			//that.closest('.has-child').removeClass('has-child--open');
-			//that.closest('.col-catalog').removeClass('col-catalog--open1');
 			that.closest('.col-catalog').removeClass('col-catalog--open');
 		});
 

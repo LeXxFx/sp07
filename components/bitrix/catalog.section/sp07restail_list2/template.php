@@ -37,6 +37,9 @@ if (!empty($arResult['ITEMS']))
 	                    <div style="display: none;">
 	                    	<form id="ViewModeChanger" action="<?=$_SERVER['REQUEST_URI']?>">
 	                    		<input type="hidden" name="viewmode" id="ViewMode" value=""/>
+                                <?if($_REQUEST["q"]):?>
+                                    <input type="hidden" name="q"  value="<?=$_REQUEST["q"]?>"/>
+                                <?endif;?>
 	                    	</form>
 	                    </div>
                         <div class="product-filter__display clearfix">
@@ -62,19 +65,19 @@ if (!empty($arResult['ITEMS']))
                             <div class="dropdown-menu" aria-labelledby="routeto">
                             	<?if($_GET['order']=='price' && $_GET['sort']=='asc'):?>
                             	<?else:?>
-                                <a class="dropdown-item" href="?SECTION_ID=<?=$_GET['SECTION_ID']?>&order=price&sort=asc">по возрастанию цены</a>
+                                <a class="dropdown-item" href="?SECTION_ID=<?=$_GET['SECTION_ID']?>&order=price&sort=asc<?=$_REQUEST["q"]? "&q=".$_REQUEST["q"]:""?>">по возрастанию цены</a>
                                 <?endif;?>
                                 <?if($_GET['order']=='price' && $_GET['sort']=='desc'):?>
                                 <?else:?>
-                                <a class="dropdown-item" href="?SECTION_ID=<?=$_GET['SECTION_ID']?>&order=price&sort=desc">по уменьшению цены</a>
+                                <a class="dropdown-item" href="?SECTION_ID=<?=$_GET['SECTION_ID']?>&order=price&sort=desc<?=$_REQUEST["q"]? "&q=".$_REQUEST["q"]:""?>">по уменьшению цены</a>
                                 <?endif;?>
                                 <?if($_GET['order']=='rating' && $_GET['sort']=='desc'):?>
                                 <?else:?>
-                                <a class="dropdown-item" href="?SECTION_ID=<?=$_GET['SECTION_ID']?>&order=rating&sort=desc">по рейтингу</a>
+                                <a class="dropdown-item" href="?SECTION_ID=<?=$_GET['SECTION_ID']?>&order=rating&sort=desc<?=$_REQUEST["q"]? "&q=".$_REQUEST["q"]:""?>">по рейтингу</a>
                                 <?endif;?>
                                 <?if($_GET['order']=='new' && $_GET['sort']=='desc'):?>
                                 <?else:?>
-                                <a class="dropdown-item" href="?SECTION_ID=<?=$_GET['SECTION_ID']?>&order=new&sort=desc">Сортировка: по новизне</a>
+                                <a class="dropdown-item" href="?SECTION_ID=<?=$_GET['SECTION_ID']?>&order=new&sort=desc<?=$_REQUEST["q"]? "&q=".$_REQUEST["q"]:""?>">Сортировка: по новизне</a>
                                 <?endif;?>
                                 <!-- <a class="dropdown-item" href="#">Something else here</a> -->
                             </div>
@@ -155,9 +158,21 @@ if (!empty($arResult['ITEMS']))
 				$skuTemplate[$propId]['FULL']['FINISH'] = '</div></div>';	
 				foreach ($arProp['VALUES'] as $arOneValue)
 				{
-					$arOneValue['NAME'] = htmlspecialcharsbx($arOneValue['NAME']);
+                    $curOffer = '';
+                    foreach($arResult["ITEMS"] as $its){
+                        foreach($its["OFFERS"] as $offer)
+                        {
+                            if($offer["PROPERTIES"][$arProp["CODE"]]["VALUE"] == $arOneValue['XML_ID']){
+                                $curOffer = $offer;
+                            }
+                        }
+
+                    }
+
+
+                    $arOneValue['NAME'] = htmlspecialcharsbx($arOneValue['NAME']);
 					//$skuTemplate[$propId]['ITEMS'][$value['ID']] = '<li data-treevalue="'.$propId.'_'.$value['ID'].'" data-onevalue="'.$value['ID'].'" style="width: #WIDTH#;" title="'.$value['NAME'].'"><i></i><span class="cnt">'.$value['NAME'].'</span></li>';
-					$skuTemplate[$propId]['ITEMS'][$arOneValue['ID']] = '<div class="value sku_prop_value" data-prop-maxcount="#MAX_QUANTITY#" data-value="'.$arOneValue["NAME"].'" data-value-id="'.$arOneValue['XML_ID'].'" data-treevalue="'.$arProp['ID'].'_'.$arOneValue['ID'].'" data-onevalue="'.$arOneValue['ID'].'"><span>'.$arOneValue['NAME'].'</span></div>';
+					$skuTemplate[$propId]['ITEMS'][$arOneValue['ID']] = '<div class="value sku_prop_value"  data-price-id="'.$curOffer["CATALOG_PRICE_ID_2"].'" data-prop-maxcount="#MAX_QUANTITY#" data-value="'.$arOneValue["NAME"].'" data-value-id="'.$arOneValue['XML_ID'].'" data-treevalue="'.$arProp['ID'].'_'.$arOneValue['ID'].'" data-onevalue="'.$arOneValue['ID'].'"><span>'.$arOneValue['NAME'].'</span></div>';
 
 				}
 				unset($value);
@@ -178,8 +193,20 @@ if (!empty($arResult['ITEMS']))
 				// 	'</div></div>';
 				foreach ($arProp['VALUES'] as $arOneValue)
 				{
-					$arOneValue['NAME'] = htmlspecialcharsbx($arOneValue['NAME']);
-					$skuTemplate[$propId]['ITEMS'][$arOneValue['ID']] = '<div class="value sku_prop_value" data-prop-maxcount="#MAX_QUANTITY#" data-value="'.$arOneValue["NAME"].'" data-value-id="'.$arOneValue['XML_ID'].'" data-treevalue="'.$arOneValue['ID'].'" data-onevalue="'.$arOneValue['ID'].'" style="height: 40px;"><img width="40px" src="'.$arOneValue['PICT']['SRC'].'" alt="'.$arOneValue["NAME"].'" title="'.$arOneValue["NAME"].'" /></div>';
+                    $curOffer = '';
+                    foreach($arResult["ITEMS"] as $its){
+                        foreach($its["OFFERS"] as $offer)
+                        {
+                            if($offer["PROPERTIES"][$arProp["CODE"]]["VALUE"] == $arOneValue['XML_ID']){
+                                $curOffer = $offer;
+                            }
+                        }
+
+                    }
+
+
+                    $arOneValue['NAME'] = htmlspecialcharsbx($arOneValue['NAME']);
+					$skuTemplate[$propId]['ITEMS'][$arOneValue['ID']] = '<div class="value sku_prop_value"  data-price-id="'.$curOffer["CATALOG_PRICE_ID_2"].'" data-prop-maxcount="#MAX_QUANTITY#" data-value="'.$arOneValue["NAME"].'" data-value-id="'.$arOneValue['XML_ID'].'" data-treevalue="'.$arOneValue['ID'].'" data-onevalue="'.$arOneValue['ID'].'" style="height: 40px;"><img width="40px" src="'.$arOneValue['PICT']['SRC'].'" alt="'.$arOneValue["NAME"].'" title="'.$arOneValue["NAME"].'" /></div>';
 
 					// $skuTemplate[$propId]['ITEMS'][$value['ID']] = '<li data-treevalue="'.$propId.'_'.$value['ID'].
 					// 	'" data-onevalue="'.$value['ID'].'" style="width: #WIDTH#; padding-top: #WIDTH#;"><i title="'.$value['NAME'].'"></i>'.

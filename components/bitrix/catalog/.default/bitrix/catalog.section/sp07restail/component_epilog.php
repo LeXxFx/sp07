@@ -22,8 +22,4 @@ if (isset($templateData['TEMPLATE_LIBRARY']) && !empty($templateData['TEMPLATE_L
 <?
 	}
 }
-
-
-
-
 ?>

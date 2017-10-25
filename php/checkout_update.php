@@ -8,7 +8,6 @@ $sum=str_replace(' ', '', $sum);
 $SumRes=$sum+$_GET['delivery'];
 
 function RUBformat($val){
-
 }
 ?>
 <div class="checkout-result__top">Сводная информация</div>

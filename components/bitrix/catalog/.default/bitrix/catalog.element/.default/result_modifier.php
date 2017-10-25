@@ -1,4 +1,7 @@
 <?
+
+
+
 use Bitrix\Main\Type\Collection;
 use Bitrix\Currency\CurrencyTable;
 use Bitrix\Iblock;

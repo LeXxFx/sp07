@@ -176,6 +176,8 @@ use Bitrix\Main\Loader,
 		else
 			$basketAction = (isset($arParams['SECTION_ADD_TO_BASKET_ACTION']) ? $arParams['SECTION_ADD_TO_BASKET_ACTION'] : '');
 		$intSectionID = 0;
+
+
 		?>
 		<?$intSectionID = $APPLICATION->IncludeComponent(
 			"bitrix:catalog.section",
@@ -183,6 +185,7 @@ use Bitrix\Main\Loader,
 			array(
 				"IBLOCK_TYPE" => $arParams["IBLOCK_TYPE"],
 				"IBLOCK_ID" => $arParams["IBLOCK_ID"],
+				"AJAX_MODE" => "Y",
 				"ELEMENT_SORT_FIELD" => $arParams["ELEMENT_SORT_FIELD"],
 				"ELEMENT_SORT_ORDER" => $arParams["ELEMENT_SORT_ORDER"],
 				"ELEMENT_SORT_FIELD2" => $arParams["ELEMENT_SORT_FIELD2"],
@@ -223,7 +226,7 @@ use Bitrix\Main\Loader,
 				"PRODUCT_PROPERTIES" => $arParams["PRODUCT_PROPERTIES"],
 
 				"DISPLAY_TOP_PAGER" => $arParams["DISPLAY_TOP_PAGER"],
-				"DISPLAY_BOTTOM_PAGER" => $arParams["DISPLAY_BOTTOM_PAGER"],
+				"DISPLAY_BOTTOM_PAGER" => "N",//$arParams["DISPLAY_BOTTOM_PAGER"],
 				"PAGER_TITLE" => $arParams["PAGER_TITLE"],
 				"PAGER_SHOW_ALWAYS" => $arParams["PAGER_SHOW_ALWAYS"],
 				"PAGER_TEMPLATE" => $arParams["PAGER_TEMPLATE"],

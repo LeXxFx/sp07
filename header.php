@@ -26,7 +26,7 @@ CJSCore::Init(array("jquery2"));
     <!-- end: CSS REQUIRED FOR THIS PAGE ONLY -->
 
     <link rel="stylesheet" href="<?=SITE_TEMPLATE_PATH?>/assets/css/style.css">
-	<link rel="stylesheet" href="<?=SITE_TEMPLATE_PATH?>/style.css">
+	<link rel="stylesheet" href="<?=SITE_TEMPLATE_PATH?>/styles.css">
     <link rel="stylesheet" href="<?=SITE_TEMPLATE_PATH?>/assets/plugins/slick/slick.css" />
     <link rel="stylesheet" href="<?=SITE_TEMPLATE_PATH?>/assets/plugins/soon-countdown/css/soon.min.css"/>
 

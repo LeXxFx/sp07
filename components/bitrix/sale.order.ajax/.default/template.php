@@ -136,7 +136,7 @@ switch (LANGUAGE_ID)
 $this->addExternalCss('/bitrix/css/main/bootstrap.css');
 $APPLICATION->SetAdditionalCSS('/bitrix/css/main/themes/'.$arParams['TEMPLATE_THEME'].'/style.css', true);
 $APPLICATION->SetAdditionalCSS($templateFolder.'/style.css', true);
-// $this->addExternalJs($templateFolder.'/order_ajax.js');
+//$this->addExternalJs($templateFolder.'/order_ajax.js');
 \Bitrix\Sale\PropertyValueCollection::initJs();
 
 $this->addExternalJs($templateFolder.'/script.js');
@@ -192,9 +192,9 @@ $this->addExternalJs($scheme.'://api-maps.yandex.ru/2.1.34/?load=package.full&la
             BXFormPosting = false;
             return;
         }
-        else if (json.order.REDIRECT_URL)
+        else if (json['redirect'])
         {
-            window.top.location.href = json.order.REDIRECT_URL;
+            window.top.location.href = json['redirect'];
         }else if (json.order.ERROR)
         {
             $('#error_field').html('');
@@ -368,11 +368,16 @@ else
                                             <div class="col-sm-7">
                                                 <div class="checkout-radio-list">
                                                     <?$i=0?>
-													<?//echo "<pre>"; print_r($arResult["DELIVERY"]); echo "</pre>";?>
+													<?//echo "<pre>"; print_r($arResult); echo "</pre>";?>
                                                     <?foreach($arResult['DELIVERY'] as $key => $arDelivery):?>
 													<?//echo "<pre>";print_r($arDelivery);echo "</pre>";?>
 														<?
 														$arDeliv = CSaleDelivery::GetByID($arDelivery["ID"]);
+														//$dbResultList = \Bitrix\Sale\Delivery\Services\Manager::getById($arDelivery["ID"]);
+														
+														//echo "<pre>";
+														//print_r($arDeliv);
+														//echo "</pre>";
 														?>
                                                         <!--<div class="item">
                                                             <label>
@@ -382,8 +387,8 @@ else
                                                         </div>-->
 														<div class="item">
                                                             <label>
-                                                                <input type="radio" <?=($i==0)?'checked="checked"':'';?> name="<?= htmlspecialcharsbx($arDelivery["FIELD_NAME"]) ?>" value="<?= $arDelivery["ID"] ?>" class="checkout_delivery" data-price-nf="<?if(!empty($arDelivery["DELIVERY_DISCOUNT_PRICE_FORMATED"])){echo $arDelivery["DELIVERY_DISCOUNT_PRICE"];}else{echo $arDelivery["PRICE"];}?>" data-desc="<?=$arDelivery['DESCRIPTION'];?>" data-name="<?=$arDelivery['NAME'];?>" data-price="<?if(!empty($arDelivery["DELIVERY_DISCOUNT_PRICE_FORMATED"])){echo $arDelivery["DELIVERY_DISCOUNT_PRICE_FORMATED"];}else{echo $arDelivery["PRICE_FORMATED"];}?>" />
-                                                                <b><?=$arDelivery['NAME'];?></b> (<?if(!empty($arDelivery["DELIVERY_DISCOUNT_PRICE_FORMATED"])){echo "бесплатно";}else{echo $arDelivery['PRICE_FORMATED'];}?>)
+                                                                <input type="radio" <?=($i==0)?'checked="checked"':'';?> name="<?= htmlspecialcharsbx($arDelivery["FIELD_NAME"]) ?>" value="<?= $arDelivery["ID"] ?>" class="checkout_delivery" data-price-nf="<?if($arResult["DELIVERY_PRICE"] == 0){echo $arResult["DELIVERY_PRICE"];}else{echo $arDeliv["PRICE"];}?>" data-desc="<?=$arDelivery['DESCRIPTION'];?>" data-name="<?=$arDelivery['NAME'];?>" data-price="<?if($arResult["DELIVERY_PRICE"] == 0){echo "бесплатно";}else{echo $arDeliv["PRICE"];}?>" />
+                                                                <b><?=$arDelivery['NAME'];?></b> (<?if($arResult["DELIVERY_PRICE"] == 0){echo "бесплатно";}else{echo $arDeliv['PRICE']." руб.";}?>)
                                                             </label>
                                                         </div>
                                                         <?

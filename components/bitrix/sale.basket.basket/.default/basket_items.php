@@ -16,7 +16,7 @@ if ($normalCount > 0):
 ?>
 
 <div id="cart">
-	<div class="bx_ordercart_order_table_container cart-table">
+	<div class="cart-table">
 		<table id="basket_items">
             <colgroup>
                 <col />

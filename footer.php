@@ -10,7 +10,7 @@
 	//	Array("MODE"=>"html")
 	//);?>
 
-	    <div class="container">
+	<div class="container">
         <section id="advants">
             <div class="heading">Наши преимущества</div>
             <div class="advants__list clearfix">
@@ -80,6 +80,7 @@
                         <div class="head">Помощь покупателю</div>
                         <ul class="navi">
                             <li><a href="/delivery_pay/">Доставка и оплата</a></li>
+                            <li><a href="/sales/">Скидки</a></li>
                             <li><a href="/return-exchange/">Гарантия и возврат</a></li>
                             <!--<li><a href="#">Обратная связь</a></li>-->
                         </ul>
@@ -111,7 +112,7 @@
                         <div class="schedule">
                             <div class="schedule__item">
                                 <i class="icon icon-grafik"></i>
-                                Пн-Пт 8:00-17:00 <br/>
+                                Пн-Пт 9:00-19:30 <br/>
                                 Сб, Вс - выходной
                             </div>
                         </div>
@@ -136,7 +137,7 @@
                         <div class="yandex-review">
                             <img src="<?=SITE_TEMPLATE_PATH?>/assets/images/yandex_market.png" alt=""/>
                             <p>
-                                <a href="#" class="link-all">Оценить нас на Я.Маркете</a>
+                                <a href="https://market.yandex.ru/shop/238585/reviews?clid=703" class="link-all">Оценить нас на Я.Маркете</a>
                             </p>
                         </div>
                     </div>
@@ -168,7 +169,7 @@
                     <div class="viewed-list viewed-list--has-caorusel">
                         <?$APPLICATION->IncludeComponent(
                         "bitrix:sale.viewed.product",
-                            "",
+                            "sp07rest",
                             Array(
                                 "VIEWED_COUNT" => "5",
                                 "VIEWED_NAME" => "Y",
@@ -190,7 +191,7 @@
                 <div class="option-panel__search">
                     <div class="col-search">
                         <div class="search-input">
-                        <form action="/store/index.php">
+                        <form action="/search/">
                             <input type="text" name="q" placeholder="Поиск среди 6000 спортивных товаров" class="form-control"/>
                             <button class="btn btn-green">
                                 <i class="fa fa-search"></i>
@@ -198,51 +199,6 @@
                             </form>
                         </div>
                         <div class="search-menu clearfix">
-                            <?/*<div class="search-menu__body">
-                                <div class="head">Найдено в разделах каталога:</div>
-                                <ul>
-                                    <li><a href="#">Кимоно для карате</a></li>
-                                    <li><a href="#">Кимоно для дзюдо</a></li>
-                                </ul>
-                                <div class="head">Найдены товары (всего 35):</div>
-                                <div class="products-list clearfix">
-                                    <div class="item">
-                                        <a class="img" href="product.html"><img src="<?=SITE_TEMPLATE_PATH?>/demo/product_img1.png" alt=""/></a>
-                                        <div class="name">
-                                            Кимоно для карате Golden Scorpion "PKM-885"
-                                        </div>
-                                        <div class="price">
-                                            <span class="new">1502</span>
-                                            <span class="currency">руб.</span>
-                                        </div>
-                                    </div>
-                                    <div class="item">
-                                        <a class="img" href="product.html"><img src="<?=SITE_TEMPLATE_PATH?>/demo/product_img2.png" alt=""/></a>
-                                        <div class="name">
-                                            Кимоно для карате Alpha Caprice GS-KK01
-                                        </div>
-                                        <div class="price">
-                                            <span class="old">1805</span>
-                                            <span class="new">1480</span>
-                                            <span class="currency">руб.</span>
-                                        </div>
-                                    </div>
-                                    <div class="item">
-                                        <a class="img" href="product.html"><img src="<?=SITE_TEMPLATE_PATH?>/demo/product_img3.png" alt=""/></a>
-                                        <div class="name">
-                                            Кимоно для карате Golden Scorpion "PKM-1200" те Golden Scorpion "PKM-1200"
-                                        </div>
-                                        <div class="price">
-                                            <span class="new">1479</span>
-                                            <span class="currency">руб.</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="search-menu__button">
-                                <a href="#" class="btn">Посмотреть результаты поиска (35)</a>
-                            </div>
-*/?>
                         </div>
                     </div>
                 </div>
@@ -291,24 +247,77 @@
 						</script>
 						<noscript><div><img src="https://mc.yandex.ru/watch/19622830" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 						<!-- /Yandex.Metrika counter -->
-
-
+	<div class="alert-basket" style="display:none;">
+		<a class="alert-basket" href="#" data-dismiss="modal" data-toggle="modal" data-target="#modal_basket_alert">Нет нужного товара?</a>
+	</div>
+	<div class="modal fade modal-form" id="modal_basket_alert" tabindex="-1" role="dialog" aria-hidden="false">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="panel-sport">
+                    <div class="panel-sport__heading">
+                        Ваши товары отложены всего на 2 дня. Заберите их в корзине.
+                    </div>
+					<div class="buttons">
+						<a href="/personal/cart/" class="btn btn-default">Оформить заказ!</a>
+					</div>
+                    <button class="panel-sport__close" data-dismiss="modal" aria-hidden="true" data-toggle="tooltip" title="Закрыть">
+                        <span><i class="fa fa-angle-left"></i></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+	<div class="modal fade modal-form" id="modal_callback" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="panel-sport">
+                    <div class="panel-sport__heading">
+                        Хотите мы Вам перезвоним, подскажем есть ли у нас нужный Вам товар, а также расскажем о наших скидках и акциях?
+                    </div>
+                    <form action="" class="form-callback">
+                        <div class="row">
+                            <div class="col-md-9">
+                                <div class="row">
+                                    <div class="col-sm-7">
+                                        <input type="text" class="form-control" name="message" placeholder="Укажите, какой товар Вы ищете?"/>
+                                    </div>
+                                    <div class="col-sm-5">
+                                        <input type="text" class="form-control masked-phone" name="phone" placeholder="Ваш номер телефона"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <a href="#" class="btn send_mail">Отправить</a>
+                            </div>
+                        </div>
+                    </form>
+                    <button class="panel-sport__close" data-dismiss="modal" aria-hidden="true" data-toggle="tooltip" title="Закрыть">
+                        <span><i class="fa fa-angle-left"></i></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+	
     <script src="<?=SITE_TEMPLATE_PATH?>/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
     <script src="<?=SITE_TEMPLATE_PATH?>/assets/plugins/slick/slick.js"></script>
     <script src="<?=SITE_TEMPLATE_PATH?>/assets/plugins/soon-countdown/js/soon.min.js"></script>
     <script src="<?=SITE_TEMPLATE_PATH?>/assets/js/jquery.sticky-kit.min.js"></script>
     <script src="<?=SITE_TEMPLATE_PATH?>/assets/js/jquery.maskedinput.js"></script>
     <script src="<?=SITE_TEMPLATE_PATH?>/assets/js/masonry.pkgd.min.js" type="text/javascript"></script>
+    <script src="<?=SITE_TEMPLATE_PATH?>/js/update.js" type="text/javascript"></script>
 
     <script src="<?=SITE_TEMPLATE_PATH?>/assets/js/default.js"></script>
     <script src="<?=SITE_TEMPLATE_PATH?>/assets/js/index.js"></script>
     <script src="<?=SITE_TEMPLATE_PATH?>/assets/js/shop.js"></script>
+    <script src="<?=SITE_TEMPLATE_PATH?>/js/mail.js"></script>
 <script src="<?=SITE_TEMPLATE_PATH?>/assets/plugins/magiczoomplus/magiczoomplus.js" type="text/javascript"></script>
     <script>
        $(document).ready(function ($) {
            Main.init();
            Index.init();
            Shop.init();
+		   UpdateFull.init();
        });
    </script>
 

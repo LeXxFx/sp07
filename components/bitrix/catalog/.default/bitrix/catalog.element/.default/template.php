@@ -265,7 +265,7 @@ if (isset($arResult['OFFERS']) && !empty($arResult['OFFERS']) && !empty($arResul
 												$curOffer = $offer;
 											}
 										}?>
-                        <div class="value sku_prop_value" data-product-id="<?=$curOffer["ID"]?>" data-prop-maxcount="<?=$arResult['JS_OFFERS'][$index]['MAX_QUANTITY']?>" data-value="<?=$arOneValue["NAME"]?>" data-value-id="<? echo $arOneValue['XML_ID']; ?>" data-treevalue="<? echo $arProp['ID'].'_'.$arOneValue['ID']; ?>" data-onevalue="<? echo $arOneValue['ID']; ?>">
+                        <div class="value sku_prop_value" data-price-id="<?=$curOffer["CATALOG_PRICE_ID_2"]?>" data-product-id="<?=$curOffer["ID"]?>" data-prop-maxcount="<?=$arResult['JS_OFFERS'][$index]['MAX_QUANTITY']?>" data-value="<?=$arOneValue["NAME"]?>" data-value-id="<? echo $arOneValue['XML_ID']; ?>" data-treevalue="<? echo $arProp['ID'].'_'.$arOneValue['ID']; ?>" data-onevalue="<? echo $arOneValue['ID']; ?>">
                             <span id="<?=$curOffer["ID"]?>"><? echo $arOneValue['NAME']; ?></span>
                         </div>
                         <?$index++;?>
@@ -287,7 +287,7 @@ if (isset($arResult['OFFERS']) && !empty($arResult['OFFERS']) && !empty($arResul
 						$curOffer = $offer;
 							}
 					}?>
-                    <div class="value sku_prop_value" data-product-id="<?=$curOffer["ID"]?>" data-prop-maxcount="<?=$arResult['JS_OFFERS'][$index]['MAX_QUANTITY']?>" data-value="<?=$arOneValue["NAME"]?>" data-value-id="<? echo $arOneValue['XML_ID']; ?>" data-treevalue="<? echo $arProp['ID'].'_'.$arOneValue['ID']; ?>" data-onevalue="<? echo $arOneValue['ID']; ?>">
+                    <div class="value sku_prop_value" data-price-id="<?=$curOffer["CATALOG_PRICE_ID_2"]?>" data-product-id="<?=$curOffer["ID"]?>" data-prop-maxcount="<?=$arResult['JS_OFFERS'][$index]['MAX_QUANTITY']?>" data-value="<?=$arOneValue["NAME"]?>" data-value-id="<? echo $arOneValue['XML_ID']; ?>" data-treevalue="<? echo $arProp['ID'].'_'.$arOneValue['ID']; ?>" data-onevalue="<? echo $arOneValue['ID']; ?>">
                         <span id="<?=$curOffer["ID"]?>">
 						<img src="<? echo $arOneValue['PICT']['SRC']; ?>" alt="<? echo $arOneValue['NAME']; ?>" title="<? echo $arOneValue['NAME']; ?>" />
 						</span>
@@ -516,7 +516,7 @@ if (isset($arResult['OFFERS']) && !empty($arResult['OFFERS']) && !empty($arResul
                                     <div class="advants__item advants__item--orange"><span><i class="icon icon-rubl"></i></span>
                                         <p><a href="#">Нашли дешеле? Позвоните!</a></p></div>
                                     <div class="advants__item advants__item--red"><span>5%</span>
-                                        <p>До скидки 5% осталось купить на 4000 р.</p></div>
+                                        <p>До скидки 5% осталось купить на 3000 р.</p></div>
                                     <div class="advants__item advants__item--green"><span><i class="icon icon-car"></i></span>
                                         <p>До бесплатной доставки осталось купить на 5000 р.</p></div>
                                 </div>
@@ -572,6 +572,7 @@ if (isset($arResult['OFFERS']) && !empty($arResult['OFFERS']) && !empty($arResul
                 </div>
             </div>
 <script>
+//action_update();
 var YaUrlHash = window.location.hash;
 YaUrlHash=YaUrlHash.replace('#','');
 if(YaUrlHash == ''){

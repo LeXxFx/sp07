@@ -1,5 +1,5 @@
-﻿$(function() {
-	$('.sku_prop').each(function(){
+$(function() {
+	$('body').find('.sku_prop').each(function(){
 		$(this).find('.sku_prop_value:first-child').click();
 	});
 
@@ -169,7 +169,7 @@ var Shop = function () {
             switchImage($(this));
         });
 
-		var imgs = $(".product-list .product__item .imgs-list");
+		var imgs = $('body').find(".product-list .product__item .imgs-list");
 		if (imgs.length) {
 			imgs.slick({
 				slidesToShow: 2,

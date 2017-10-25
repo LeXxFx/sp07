@@ -80,9 +80,21 @@ if (!empty($arResult['ITEMS']))
 				// 	'</div></div>';
 				foreach ($arProp['VALUES'] as $arOneValue)
 				{
+                    $curOffer = '';
+                    foreach($arResult["ITEMS"] as $its){
+                        foreach($its["OFFERS"] as $offer)
+                        {
+                            if($offer["PROPERTIES"][$arProp["CODE"]]["VALUE"] == $arOneValue['XML_ID']){
+                                $curOffer = $offer;
+                            }
+                        }
+
+                    }
+
+
 					$arOneValue['NAME'] = htmlspecialcharsbx($arOneValue['NAME']);
 					//$skuTemplate[$propId]['ITEMS'][$value['ID']] = '<li data-treevalue="'.$propId.'_'.$value['ID'].'" data-onevalue="'.$value['ID'].'" style="width: #WIDTH#;" title="'.$value['NAME'].'"><i></i><span class="cnt">'.$value['NAME'].'</span></li>';
-					$skuTemplate[$propId]['ITEMS'][$arOneValue['ID']] = '<div class="value sku_prop_value" data-prop-maxcount="#MAX_QUANTITY#" data-value="'.$arOneValue["NAME"].'" data-value-id="'.$arOneValue['XML_ID'].'" data-treevalue="'.$arProp['ID'].'_'.$arOneValue['ID'].'" data-onevalue="'.$arOneValue['ID'].'"><span>'.$arOneValue['NAME'].'</span></div>';
+					$skuTemplate[$propId]['ITEMS'][$arOneValue['ID']] = '<div class="value sku_prop_value" data-price-id="'.$curOffer["CATALOG_PRICE_ID_2"].'" data-prop-maxcount="#MAX_QUANTITY#" data-value="'.$arOneValue["NAME"].'" data-value-id="'.$arOneValue['XML_ID'].'" data-treevalue="'.$arProp['ID'].'_'.$arOneValue['ID'].'" data-onevalue="'.$arOneValue['ID'].'"><span>'.$arOneValue['NAME'].'</span></div>';
 
 				}
 				unset($value);
@@ -96,8 +108,21 @@ if (!empty($arResult['ITEMS']))
 
 				foreach ($arProp['VALUES'] as $arOneValue)
 				{
+
+                    $curOffer = '';
+                    foreach($arResult["ITEMS"] as $its){
+                        foreach($its["OFFERS"] as $offer)
+                        {
+                            if($offer["PROPERTIES"][$arProp["CODE"]]["VALUE"] == $arOneValue['XML_ID']){
+                                $curOffer = $offer;
+                            }
+                        }
+
+                    }
+
+
 					$arOneValue['NAME'] = htmlspecialcharsbx($arOneValue['NAME']);
-					$skuTemplate[$propId]['ITEMS'][$arOneValue['ID']] = '<div class="value sku_prop_value" data-prop-maxcount="#MAX_QUANTITY#" data-value="'.$arOneValue["NAME"].'" data-value-id="'.$arOneValue['XML_ID'].'" data-treevalue="'.$arOneValue['ID'].'" data-onevalue="'.$arOneValue['ID'].'" style="height: 40px;"><img width="40px" src="'.$arOneValue['PICT']['SRC'].'" alt="'.$arOneValue["NAME"].'" title="'.$arOneValue["NAME"].'" /></div>';
+					$skuTemplate[$propId]['ITEMS'][$arOneValue['ID']] = '<div class="value sku_prop_value" data-price-id="'.$curOffer["CATALOG_PRICE_ID_2"].'" data-prop-maxcount="#MAX_QUANTITY#" data-value="'.$arOneValue["NAME"].'" data-value-id="'.$arOneValue['XML_ID'].'" data-treevalue="'.$arOneValue['ID'].'" data-onevalue="'.$arOneValue['ID'].'" style="height: 40px;"><img width="40px" src="'.$arOneValue['PICT']['SRC'].'" alt="'.$arOneValue["NAME"].'" title="'.$arOneValue["NAME"].'" /></div>';
 				}
 				unset($value);
 			}

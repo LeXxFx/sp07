@@ -6,7 +6,7 @@ var ObjSIze = function(obj) {
     return size;
 };
 $(function() {
-    // $('.checkout_payment').click();		
+    // $('.checkout_payment').click();				
 
     $('.amount .input-number').change(function(){
     	
@@ -14,20 +14,8 @@ $(function() {
 
     });
 
-	var updatepanel = function(){
-		$.ajax({
-    		url: '/bitrix/templates/sp07restail/ajax/PanelBasketUpdate.php',
-    		type: 'GET',
-    		dataType: 'html',
-    	})
-    	.done(function(data) {
-    		$('.option-panel__cart').html(data);
-    	});
-		console.log("updateBasketPanelSucces");
-	};
-
     var checkDelivery = function(el){
-		console.log(el);
+		//console.log(el);
         $('.delivary__info').html('<div class="info__heading">'+el.data('name')+'</div>');
         $('.delivary__info').append('<p>'+el.data('desc')+'</p>');
         $('.delivary__info').append('<p>Стоимость: <b>'+el.data('price')+'</b></p>');
@@ -61,14 +49,21 @@ $(function() {
 	$('.checkout_delivery').click(function(){
 		UpdateCheckoutResult();
 		checkDelivery($(this));
+		//console.log($(this));
 	});
 
 	$('.checkout_payment').click(function(){
-		console.log('test');
+		//console.log('test');
 		checkPayment($(this));
 	});
 	window.onload = function () {
-	UpdateCheckoutResult();
+	var countProduct = $('body').find('.option-panel__cart .num').html();
+	$('body').find('.panel__cart .dropdown').empty();
+	$('body').find('.panel__cart .dropdown').html('<a href="/personal/cart/"><i class="icon icon-cart-orange shopping-cart"></i><span>Корзина ('+countProduct+')</span></a>');
+		
+		UpdateCheckoutResult();
+		action_update();
+		//alertBasket();
 	}
 
 
@@ -101,7 +96,8 @@ $(function() {
 	Ловим хэш. Ищем в дереве элемент с этим якорем, делаем его активным.
 	После чистим hash.
 	*/    
-    $(".sku_prop_value").on("click", function () {
+    //$(".sku_prop_value").on("click", function () {
+    $("body").on("click", ".sku_prop_value", function () {
 		//Ловим hash
 		var urlHash = window.location.hash;
 		//console.log("findHash");
@@ -183,7 +179,7 @@ $(function() {
                     if($(this).find('.value.active').is(':hidden') || !$(this).find('.value.active').length){
                         $(this).find('.value.active').removeClass('active');
                         $.each($(this).find('.value'),function(){
-                            console.log($(this).css('display'));
+                            //console.log($(this).css('display'));
                             if($(this).css('display') !== 'none' && !flagV){
                                 flagV = true;
                                 $(this) .addClass('active');return;
@@ -213,15 +209,21 @@ $(function() {
         data_to_send["props"] = active_props;
         data_to_send["element_id"] = element_block.find(".sku_props .sku_prop").data("element-id");
 
+
+        if(typeof element_block.find(".sku_prop_value.active").data("value")!=="undefined"){
+            element_block.find(".addtobasket").attr("data-price-id", element_block.find(".sku_prop_value.active").attr("data-price-id"));
+
+        }
+
         $.ajax({
             url: "/bitrix/templates/sp07restail/php/update_element_by_sku.php",
             data: data_to_send,
             success: function (data) {
                 if (data != "null") {
                     data = eval("(" + data + ")");
-                    // console.log(data);
-                    if (data.price_id)
-                        element_block.find(".addtobasket").attr("data-price-id", data.price_id);
+                    //console.log(data);
+                   // if (data.price_id)
+                     //   element_block.find(".addtobasket").attr("data-price-id", data.price_id);
                     if (data.price)
                         element_block.find(".item__price .new").text(data.price);
                     if (data.old_price)
@@ -231,6 +233,7 @@ $(function() {
                     if (data.section_image && element_block.find(".section-item-image").length > 0)
                         element_block.find(".section-item-image").attr("src", data.section_image);
                     if (data.photos_small) {
+						//console.log("отработало");
                         $(".product__item .imgs-list").slick('unslick');
                         element_block.find("ul.pagination").html("");
                         element_block.find("hidden_photos").html("");
@@ -283,83 +286,6 @@ $(function() {
         });
     }
 	
-	//});
-	/*
-$(window).load(function(){
-		
-        
-        update_by_sku("oneElement");
-		 $(".cnt_item").on("click", function(){
-		
-			update_by_sku($(this).parent().parent().attr("id"));
-		});
-		
-		function update_by_sku(element_block_id) {
-			element_block_selector = "#" + element_block_id;
-			var element_block = $(element_block_selector);
-			var active_props = {};
-			var data_to_send = {};
-			
-			if ($(element_block_selector + " .sku_prop").length) {
-				$(element_block_selector + " .sku_prop").each(function() {
-					active_props[$(this).data("prop-id")] = $(this).find(".bx_scu_scroller_container .bx_scu .bx_active").data("value-id");
-				});
-				
-				data_to_send["props"] = active_props;
-				data_to_send["element_id"] = $(element_block_selector + " .sku_prop").data("element-id");
-			}
-			else{
-				var $sku_prop = $(element_block_selector).parent().parent().parent()();
-				active_props[$sku_prop.data("prop-id")] = $(element_block_selector).data("value-id");
-				data_to_send["props"] = active_props;
-				data_to_send["element_id"] = $sku_prop.data("element-id");
-			}
-			
-            $.ajax({
-				url: "/bitrix/templates/sport07/php/update_element_by_sku.php",
-				data: data_to_send,
-				success: function(data) {
-					element_block = $('body');
-					if (data != "null") {
-					data = eval("(" + data + ")");
-					if(data.price_id)
-						element_block.find(".addtobasket").attr("data-price-id", data.price_id);
-					if(data.price)
-						element_block.find(".price").text(data.price);
-					if(data.old_price)
-						element_block.find(".price-old").text(data.old_price);
-					if(data.id)
-						element_block.find(".buy-card-fast").attr("href", "/include/catalog/element/oneclick.php?id=" + data.id + "&priceid=" + data.price_id);
-					if(data.section_image && element_block.find(".section-item-image").length > 0)
-						element_block.find(".section-item-image").attr("src", data.section_image);
-					if(data.photos_small) {
-						element_block.find("ul.pagination").html("");
-						element_block.find("hidden_photos").html("");
-						$.each(data.photos_small, function(key, value) {
-							element_block.find("ul.pagination").append('<li><a href="'+data.photos_full[key]+'" class="fancybox detail-small-image" rel="gallery"><img src="'+value+'" alt=""></a></li>');
-						});
-						$.each(data.photos_full, function(key, value) {
-							if(key == 0)
-								element_block.find(".slides_container").html('<a href="'+value+'" class="fancybox detail-full-image" rel="gallery2"><img src="'+value+'" width="369" alt=""></a>');
-							else
-								element_block.find(".hidden_photos").append('<a href="'+value+'" class="fancybox detail-small-image" rel="gallery2"></a>');
-						});
-					}
-					if(data.detail_small_image && element_block.find(".detail-small-image").length > 0) {
-						element_block.find(".detail-small-image img").attr("src", data.detail_small_image);
-						element_block.find(".detail-small-image").attr("href", data.detail_full_image);
-					}
-					if(data.detail_full_image && element_block.find(".detail-full-image").length > 0) {
-						element_block.find(".detail-full-image img").attr("src", data.detail_full_image);
-						element_block.find(".detail-full-image").attr("href", data.detail_full_image);
-					}
-					}
-				}
-			});
-		}
-	
-	});
-*/
 	// Home filter
 	
 	$(".fast-filter select[name='pol']").change(function() {
@@ -426,6 +352,45 @@ $(window).load(function(){
 				document.location.href = msg + "?" + t_pol + "=Y&" + t_size + "=Y&set_filter=РџРѕРєР°Р·Р°С‚СЊ";
 			}
 		});
+	});
+	
+	$('body').on("click", "a.ajax-load", function(e) {
+		e.preventDefault();
+		var url = $(this).attr('href')+'&view='+$(this).data('type-load');
+		var type = $(this).data('catalog-type');
+		$('.ajax-pager-wrap').find('.pager-navigation').empty();
+		$('.ajax-pager-wrap').find('.pager-navigation').append('<img src="/bitrix/templates/sp07restail/ajax/images/89.gif">');
+		$.ajax({
+    		url: url,
+    		type: 'GET',
+    		dataType: 'html',
+    	})
+		.done(function(data) {
+			$('body').find(".product-list .product__item .imgs-list").slick('unslick'); 
+			if(type == 'grid'){
+				$('.ajax-pager-wrap').remove();
+				$(".product-grid > div:last-child").remove();
+				$('.product-grid').append(data);
+				//$.getScript('https://anti-vk.com/bitrix/templates/sp07restail/js/other.js');
+				setTimeout(function () {
+					Shop.init();
+					$('body').find('.sku_prop').each(function(){
+						$(this).find('.sku_prop_value:first-child').click();
+					});
+				}, 1000);
+			}else{
+				$('.ajax-pager-wrap').remove();
+				$(".product-list > div:last-child").remove();
+				$('.product-list').append(data);
+				//$.getScript('https://anti-vk.com/bitrix/templates/sp07restail/assets/js/shop.js');
+				setTimeout(function () {
+					Shop.init();
+					$('body').find('.sku_prop').each(function(){
+						$(this).find('.sku_prop_value:first-child').click();
+					});
+				}, 2000);
+			}
+    	});
 	});
 	
 	// Fancybox
@@ -574,13 +539,14 @@ $(window).load(function(){
 				});
 	}
 
-	$(".addtobasket").on("click", function(event) {
+	//$(".addtobasket").on("click", function(event) {
+	$("body").on("click" ,".addtobasket", function(event) {
 		event.preventDefault();
 		var active_props = [];
-		console.log($(this));
+		//console.log($(this));
 		$(this).closest('#product_container').find(".sku_prop").each(function() {
-		console.log($(this).find(".name").text().replace(":", ""))
-		console.log($(this).find(".sku_prop_value.active").data("value"))
+		//console.log($(this).find(".name").text().replace(":", ""))
+		//console.log($(this).find(".sku_prop_value.active").data("value"))
                     if(typeof $(this).find(".sku_prop_value.active").data("value")!=="undefined"){
 			active_prop = {}
 			active_prop["NAME"] = $(this).find(".name").text().replace(":", "");
@@ -615,8 +581,10 @@ $(window).load(function(){
 				// 	// });
 				// }
 				// small_basket_update();
-				console.log("простой товар ушел");
-				updatepanel();
+				//console.log(data);
+				//console.log("простой товар ушел");
+				//updatepanel();
+				UpdateFull.init();
 				YaAddSku();
 				action_update();
 			}
@@ -663,22 +631,119 @@ $(window).load(function(){
 		});
 	}
 	
+	function alertBasket(){
+		idleTimer = null;
+		idleState = false; // состояние отсутствия
+		idleWait = 150000; // время ожидания в мс. (1/1000 секунды)
+		var dateNow = Math.floor(new Date() / 1000);
+		function get_cookie(cookie_name){
+			var results = document.cookie.match ( '(^|;) ?' + cookie_name + '=([^;]*)(;|$)' );
+				if(results)
+					return ( unescape ( results[2] ) );
+				else
+					return null;
+		}
+		function delete_cookie ( cookie_name ){
+			var cookie_date = new Date ( );  // Текущая дата и время
+			cookie_date.setTime ( cookie_date.getTime() - 1 );
+			document.cookie = cookie_name += "=; expires=" + cookie_date.toGMTString();
+		}
+		function set_cookie(name, value, exp_y, exp_m, exp_d, path, domain, secure){
+			var cookie_string = name + "=" + escape ( value );
+			if(exp_y){
+				var expires = new Date ( exp_y, exp_m, exp_d );
+				cookie_string += "; expires=" + expires.toGMTString();
+				}
+				if(path)
+					cookie_string += "; path=" + escape ( path );
+				if(domain)
+					cookie_string += "; domain=" + escape ( domain );
+				if(secure)
+					cookie_string += "; secure";
+				document.cookie = cookie_string;
+		}
+		//delete_cookie ("alertBasket");
+		//set_cookie('alertBasketOpen', 'YES');
+		var xx = document.cookie;
+		console.log(xx);
+		var x = get_cookie('alertBasket');
+		var d = get_cookie('alertBasketOpen');
+		console.log(x);
+		if(x == null){
+			document.cookie = "alertBasket="+dateNow;
+		}
+		if(dateNow - x < 172800){
+				if(dateNow - x <= 300){
+				set_cookie('alertBasketOpen', 'YES');
+				}else{
+					$('.alert-basket').trigger('click');
+					document.cookie = "alertBasket="+dateNow;
+				};
+			//document.cookie = "alertBasketOpen=asdasdasd";
+		}
+		if(dateNow - x > 172800){
+			document.cookie = "alertBasket="+dateNow;
+		}
+		console.log(x);
+		  $(document).bind('mousemove keydown scroll', function(){
+			clearTimeout(idleTimer); // отменяем прежний временной отрезок
+			//if(idleState == true){ 
+			  // Действия на возвращение пользователя
+			   //$("body").append("<p>С возвращением!</p>");
+			//}
+		 
+			idleState = false;
+			idleTimer = setTimeout(function(){ 
+			  // Действия на отсутствие пользователя
+			  $('.alert-basket').trigger('click');
+			  //$("body").append("<p>Вы отсутствовали более чем " + idleWait/1000 + " секунд.</p>");
+			  idleState = true; 
+			}, idleWait);
+		  });
+		 
+		  $("body").trigger("mousemove"); // сгенерируем ложное событие, для запуска скрипта
+	}
+	
 	function action_update(){
 		$.ajax({
 			url: "/bitrix/templates/sp07restail/php/action_cart.php",
 			success: function(data){
 				data = eval("(" + data + ")");
+				//console.log(data);
 				var discountObj;
+				//console.log(data["APPLIED_DISCOUNT_LIST"]);
+				if(data["APPLIED_DISCOUNT_LIST"] != null){
 				data["APPLIED_DISCOUNT_LIST"].forEach(function(entry){
 					if(entry['NAME'] == 'basket')
 						discountObj = entry;
-				})			
-				console.log(discountObj);
+				})
+				}
 				var discountAction = data['PRICE_WITHOUT_DISCOUNT'].replace(/руб./g, '');
 				var discountAction = discountAction.replace(/ /g, '');
+				//console.log(discountAction);
 				if(discountAction <= 3000)
-					{console.log('маловато будет')}
-					else{console.log('бухаем')}
+					{
+						//console.log(sumForAction)
+					var sumForAction = 3000 - discountAction;
+					var sumForDelivery = 5000 - discountAction;
+					//console.log('маловато будет');
+					$("#product_container").find(".advants__item--red").html('');
+					$("#product_container").find(".advants__item--red").append("<span>5%</span><p>До скидки 5% осталось купить на "+sumForAction+" р.</p>");
+					$("#product_container").find(".advants__item--green").html('');
+					$("#product_container").find(".advants__item--green").append("<span><i class=\"icon icon-car\"></i></span><p>До бесплатной доставки осталось купить на "+sumForDelivery+" р.</p>");
+					}
+					else{//console.log('бухаем')
+					$("#product_container").find(".advants__item--red").html('');
+					$("#product_container").find(".advants__item--red").append("<span>5%</span><p>Скидка 5 % АКТИВИРОВАНА</p>");
+					if(discountAction <= 5000){
+						var sumForDelivery = 5000 - discountAction;
+						$("#product_container").find(".advants__item--green").html('');
+						$("#product_container").find(".advants__item--green").append("<span><i class=\"icon icon-car\"></i></span><p>До бесплатной доставки осталось купить на "+sumForDelivery+" р.</p>");
+					}else{
+						$("#product_container").find(".advants__item--green").html('');
+						$("#product_container").find(".advants__item--green").append("<span><i class=\"icon icon-car\"></i></span><p>Бесплатная доставка активирована</p>");
+					}
+					}
 				}
 				//console.log(discountAction);
 		});
@@ -702,7 +767,7 @@ $(window).load(function(){
 //				$(".bottom-order .new-price").html(data.total);
 			}
 		});
-	console.log("update");
+	//console.log("update");
 	}
 	
 	// Other

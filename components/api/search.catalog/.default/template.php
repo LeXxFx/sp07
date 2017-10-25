@@ -117,6 +117,33 @@ if($arParams['INCLUDE_CSS'] == 'Y')
         ),
         $component
     );
+   $arParams["PAGER_TEMPLATE"] = "sp07restail";
+
+    if($_REQUEST["order"] == "rating" || $_REQUEST["order"] == "new" || $_REQUEST["order"] == "price")
+        $order = $_REQUEST["order"];
+    else
+        $order = "sort";
+
+    if($_REQUEST["sort"] == "asc")
+        $sort = $_REQUEST["sort"];
+    else
+        $sort = "desc";
+
+    $num = $arParams["PAGE_ELEMENT_COUNT"];
+
+    if($order == "price")
+        $arParams["ELEMENT_SORT_FIELD"] = "property_MINIMUM_PRICE_2";
+    if($order == "rating")
+        $arParams["ELEMENT_SORT_FIELD"] = "property_rating";
+    if($order == "new")
+        $arParams["ELEMENT_SORT_FIELD"] = "property_M_NEW";
+    if($order == "sort")
+        $arParams["ELEMENT_SORT_FIELD"] = "sort";
+
+    $arParams["ELEMENT_SORT_ORDER"] = $sort;
+
+    if (isset($_GET['viewmode'])) $_SESSION['viewmode']=$_GET['viewmode'];
+
 
 ?>
     <div id="content" role="main">

@@ -4,7 +4,7 @@ use Bitrix\Main\Loader,
 	Bitrix\Main\ModuleManager;?>
 
 <div class="inner">
-
+<?//echo "<pre>";print_r($arParams);echo "</pre>";?>
 
 <?
 if(preg_match("/\/store\/(?<section>[^\/]+)\//si",$_SERVER['REQUEST_URI'],$out))
