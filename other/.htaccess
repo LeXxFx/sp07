@@ -1,0 +1,129 @@
+Options -Indexes 
+ErrorDocument 404 /404.php
+Redirect 301 /store/penni_bordy/ https://sport07.ru/store/mini-kruizery/
+Redirect 301 /store/08_pennibordy/ https://sport07.ru/store/mini-kruizery/
+Redirect 301 /store/penni_bordy/penni_bord_xlt_2206l_violet_22_/ https://sport07.ru/store/mini-kruizery/mini-kruizer_xlt_2206l_violet_22_/
+Redirect 301 /store/penni_bordy/penni_bord_xlt_2206l_black_22_/ https://sport07.ru/store/mini-kruizery/mini-kruizer_xlt_2206l_black_22_/
+Redirect 301 /store/penni_bordy/penni_bord_ps006_print_purple_22_/ https://sport07.ru/store/mini-kruizery/mini-kruizer_ps006_print_purple_22_/
+Redirect 301 /store/penni_bordy/penni_bord_ps006_print_multicolor_22_/ https://sport07.ru/store/mini-kruizery/mini-kruizer_ps006_print_multicolor_22_/
+Redirect 301 /store/penni_bordy/penni_bord_ps006_print_violet_22_/ https://sport07.ru/store/mini-kruizery/mini-kruizer_ps006_print_violet_22_/
+Redirect 301 /store/penni_bordy/penni_bord_ps009_11_blue_22_/ https://sport07.ru/store/mini-kruizery/mini-kruizer_ps009_11_blue_22_/
+Redirect 301 /store/penni_bordy/penni_bord_ps009_11_blue_white_22_/ https://sport07.ru/store/mini-kruizery/mini-kruizer_ps009_11_blue_white_22_/
+Redirect 301 /store/penni_bordy/penni_bord_ps005_32_green_blue_pink_22_/ https://sport07.ru/store/mini-kruizery/mini-kruizer_ps005_32_green_blue_pink_22_/
+Redirect 301 /store/penni_bordy/penni_bord_ps005_32_pink_wellow_blue_22_/ https://sport07.ru/store/mini-kruizery/mini-kruizer_ps005_32_pink_yellow_blue_22_/
+Redirect 301 /store/penni_bordy/penni_bord_ps007_6_white_22_/ https://sport07.ru/store/mini-kruizery/mini-kruizer_ps007_6_white_22_/
+Redirect 301 /store/penni_bordy/penni_bord_ps007_6_green_22_/ https://sport07.ru/store/mini-kruizery/mini-kruizer_ps007_6_green_22_/
+Redirect 301 /store/penni_bordy/penni_bord_ps007_6_purple_22_/ https://sport07.ru/store/mini-kruizery/mini-kruizer_ps007_6_blue_22_/
+Redirect 301 /store/penni_bordy/penni_bord_ps007_6_blue_22_/ https://sport07.ru/store/mini-kruizery/mini-kruizer_ps005_1_blue_22_/
+Redirect 301 /store/penni_bordy/penni_bord_ps005_1_blue_22_/ https://sport07.ru/store/mini-kruizery/mini-kruizer_ps005_1_green_22_/
+Redirect 301 /store/penni_bordy/penni_bord_ps005_1_green_22_/ https://sport07.ru/store/mini-kruizery/mini-kruizer_ps005_1_pink_22_/
+Redirect 301 /store/penni_bordy/penni_bord_ps005_1_pink_22_/ https://sport07.ru/store/mini-kruizery/mini-kruizer_ps006_blue_22_/
+Redirect 301 /store/penni_bordy/penni_bord_ps006_blue_22_/ https://sport07.ru/store/mini-kruizery/mini-kruizer_p9_gray_so_svyatyashchimisya_kolesami_22_/
+Redirect 301 /store/penni_bordy/penni_bord_p9_gray_so_svyatyashchimisya_kolesami_22_/ https://sport07.ru/store/mini-kruizery/mini-kruizer_p3_violet/
+Redirect 301 /store/samokaty/2_v_1_samokat_penni_bord_xlt_sc024_red/ https://sport07.ru/store/samokaty/2_v_1_samokat_mini-kruizer_xlt_sc024_red/
+Redirect 301 /store/samokaty/2_v_1_samokat_penni_bord_xlt_sc024_yellow/ https://sport07.ru/store/samokaty/2_v_1_samokat_mini-kruizer_xlt_sc024_yellow/
+Redirect 301 /store/samokaty/2_v_1_samokat_penni_bord_xlt_sc024_pink/ https://sport07.ru/store/samokaty/2_v_1_samokat_mini-kruizer_xlt_sc024_pink/
+Redirect 301 /store/samokaty/2_v_1_samokat_penni_bord_xlt_sc024_blue/ https://sport07.ru/store/samokaty/2_v_1_samokat_mini-kruizer_xlt_sc024_blue/
+Redirect 301 /store/sumki_kholodidniki/ https://sport07.ru/store/sumki_kholodilniki/
+Redirect 301 /store/espandery_1/ https://sport07.ru/store/espandery_universalnye/
+Redirect 301 /store/odezhda_dlya_gimnastiki_1/ https://sport07.ru/store/losiny_topy_shorty_i_mayki/
+Redirect 301 /store/gimnasticheskie_kupalniki/ https://sport07.ru/store/gimnasticheskie_kupalniki_1/
+Redirect 301 /store/losiny_noski_i_yubki/ https://sport07.ru/store/losiny_topy_shorty_i_mayki/
+Redirect 301 /store/cheshki/ https://sport07.ru/store/cheshki_baletki_dzhazovki/
+Redirect 301 /store/klyushki/ https://sport07.ru/store/klyushki_shayby/
+Redirect 301 /store/hokkeinyi_trikotaj/ https://sport07.ru/store/khokkeynyy_trikotazh/
+Redirect 301 /store/aksessuary_dlya_konkov_i_rolikov/ https://sport07.ru/store/aksessuary_5/
+Redirect 301 /store/daiving/ https://sport07.ru/store/dayving_i_otdykh_na_vode/
+Redirect 301 /store/plavanie/ https://sport07.ru/store/plavanie_i_dayving/
+Redirect 301 /store/beysbol/ https://sport07.ru/store/beysbolnye_bity/
+Redirect 301 /store/konki_razdvijnye_i_transformery/ https://sport07.ru/store/konki_transformery_zima_leto_1/
+Redirect 301 /store/hokkeinaya_ekipirovka/ https://sport07.ru/store/khokkeynaya_zashchita/
+Redirect 301 /store/rolikovye_konki_na_plastikovoy_rame/ https://sport07.ru/store/rolikovye_konki_na_alyuminevoy_rame/
+Redirect 301 /store/detskie_rolikovye_konki/ https://sport07.ru/store/rolikovye_konki_na_alyuminevoy_rame/
+Redirect 301 /store/lasty_dlya_plavaniya/ https://sport07.ru/store/lasty/
+Redirect 301 /store/trubki_daiving/ https://sport07.ru/store/trubki_dlya_podvodnogo_plavaniya_1/
+Redirect 301 /store/komplekty_maska_trubka/ https://sport07.ru/store/komplekty_dlya_dayvinga_1/
+Redirect 301 /store/zhilety_krugi_narukavniki/ https://sport07.ru/store/tovary_dlya_plyazha/
+Redirect 301 /store/basseyny_1/ https://sport07.ru/store/detskie_naduvnye_basseyny_1/
+Redirect 301 /store/shapochki_dlya_plavanya/ https://sport07.ru/store/shapochki_dlya_plavaniya/
+Redirect 301 /store/ochki_dlya_plavaniya/ https://sport07.ru/store/ochki_dlya_plavaniya_1/
+Redirect 301 /store/plavki/ https://sport07.ru/store/plavki_1/
+Redirect 301 /store/kupalniki/ https://sport07.ru/store/plavki_1/
+Redirect 301 /store/berushi_i_zajimy/ https://sport07.ru/store/berushi_i_zazhimy/
+Redirect 301 /store/detskie_naduvnye_basseyny_1/ https://sport07.ru/store/detskie_naduvnye_basseyny_2/
+Redirect 301 /store/doski_i_narukavniki/ https://sport07.ru/store/berushi_i_zazhimy/
+Redirect 301 /store/akva_aksessuary/ https://sport07.ru/store/akvaaerobika/
+Redirect 301 /store/silovye_trenajory/ https://sport07.ru/store/stoyki_pod_shtangu_so_skamey/
+Redirect 301 /store/skamia_dlya_pressa/ https://sport07.ru/store/skami/
+Redirect 301 /store/kimono_dlya_karate/ https://sport07.ru/store/kimono/
+Redirect 301 /store/perchatki_sparringovye_dlya_karate/ https://sport07.ru/store/nakladki_sparringovye_dlya_karate/
+Redirect 301 /store/zaschita_dlya_karate/ https://sport07.ru/store/zashchita_karate/
+Redirect 301 /store/sambovki_bortsovki/ https://sport07.ru/store/bortsovki/
+Redirect 301 /store/sumki_dlya_edinoborstv/ https://sport07.ru/store/dzyudo/
+Redirect 301 /store/nastolnye_igry/ https://sport07.ru/store/igry_dlya_doma/
+Redirect 301 /store/nastolnye_igry/ https://sport07.ru/store/igry_dlya_doma/
+Redirect 301 /store/zaschita_hockey/ https://sport07.ru/store/khokkeynaya_zashchita/
+Redirect 301 /store/shaiby_myachi_sumki/ https://sport07.ru/store/klyushki_shayby/
+Redirect 301 /store/aksessuary_7/ https://sport07.ru/store/khokkeynye_konki/
+Redirect 301 /store/aksessuary_6/ https://sport07.ru/store/figurnye_konki_1/
+Redirect 301 /store/dvukhpodvesnye_velosipedy_stels/ https://sport07.ru/store/gornye_velosipedy_stels/
+Redirect 301 /store/zhenskie_velosipedy_stels/ https://sport07.ru/store/gornye_velosipedy_stels/
+Redirect 301 /store/dvukhpodvesnye_velosipedy_maverick/ https://sport07.ru/store/gornye_velosipedy/
+Redirect 301 /store/maverick/ https://sport07.ru/store/velosipedy_/
+Redirect 301 /store/dorozhnye_velosipedy_maverick/ https://sport07.ru/store/dorozhnye_velosipedy_/
+Redirect 301 /store/podrostkovye_velosipedy_maverick/ https://sport07.ru/store/podrostkovye_velosipedy_/
+Redirect 301 /store/stels/ https://sport07.ru/store/velosipedy_/
+Redirect 301 /store/gornye_velosipedy_stels/ https://sport07.ru/store/gornye_velosipedy/
+Redirect 301 /store/detskie_velosipedy_stels/ https://sport07.ru/store/detskie_velosipedy_/
+Redirect 301 /store/dorozhnye_velosipedy_stels/ https://sport07.ru/store/dorozhnye_velosipedy_/
+Redirect 301 /store/podrostkovye_velosipedy_stels/ https://sport07.ru/store/podrostkovye_velosipedy_/
+Redirect 301 /store/skladnye_velosipedy_stels/ https://sport07.ru/store/gornye_velosipedy/
+Redirect 301 /store/perekladiny/ https://sport07.ru/store/turniki_v_proem/
+
+<IfModule mod_php5.c>
+	php_flag allow_call_time_pass_reference 1
+	php_flag session.use_trans_sid off
+
+	#php_value display_errors 1
+
+	#php_value mbstring.internal_encoding UTF-8
+</IfModule>
+
+<IfModule mod_rewrite.c>
+Options +FollowSymLinks
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+   RewriteCond %{REQUEST_FILENAME} !-l
+   RewriteCond %{REQUEST_FILENAME} !-d
+   RewriteCond %{REQUEST_URI} ^(.*/[^/\.]+)$
+   RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1/ [R=301,L]
+# Редирект с www на без www
+RewriteCond %{HTTP_HOST} ^www\.(.*) [NC]
+RewriteRule ^(.*)$ http://%1/$1 [R=301,L]
+# Удаляем index.php из адреса
+RewriteCond %{THE_REQUEST} ^GET.*index\.php [NC]
+# Не применяем к админке, иначе перестает работать страница Highload-блоки
+RewriteCond %{REQUEST_URI} !/bitrix/admin/.* [NC]
+RewriteRule (.*?)index\.php/*(.*) /$1$2 [R=301,NE,L]
+RewriteCond %{THE_REQUEST} ^GET.*index\.html [NC]
+# Не применяем к админке, иначе перестает работать страница Highload-блоки
+RewriteRule (.*?)index\.html/*(.*) /$1$2 [R=301,NE,L]
+RewriteCond %{REQUEST_FILENAME} !-f 
+RewriteCond %{REQUEST_FILENAME} !-d 
+RewriteCond %{REQUEST_FILENAME} !-f 
+RewriteCond %{REQUEST_FILENAME} !-l 
+RewriteCond %{REQUEST_FILENAME} !-d 
+RewriteCond %{REQUEST_FILENAME} !/bitrix/urlrewrite.php$ 
+RewriteRule ^(.*)$ /bitrix/urlrewrite.php [L] 
+RewriteRule .* - [E=REMOTE_USER:%{HTTP:Authorization}]
+</IfModule>
+
+<IfModule mod_dir.c>
+	DirectoryIndex index.php index.html
+</IfModule>
+
+<IfModule mod_expires.c>
+	ExpiresActive on
+	ExpiresByType image/jpeg "access plus 3 day"
+	ExpiresByType image/gif "access plus 3 day"
+</IfModule>
