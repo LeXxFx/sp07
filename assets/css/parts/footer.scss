@@ -1,0 +1,176 @@
+#footer {
+  background: $primary-color;
+  color: #fff;
+  padding: 40px 0;
+  .head {
+    font-size: 25px;
+    font-weight: bold;
+  }
+  .navi {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    li {
+      a {
+        display: block;
+        color: #fff;
+        font-size: 18px;
+        font-weight: 300;
+      }
+    }
+  }
+  .footer__contacts {
+    .tel {
+      &__item {
+        display: inline-block;
+        width: 210px;
+        padding-left: 40px;
+        position: relative;
+        margin-bottom: 20px;
+        &:last-of-type {
+          &:before {
+            display: none;
+          }
+        }
+        &:before {
+          content: "";
+          display: block;
+          background: url(../images/sprite.png) no-repeat -31px 0;
+          width: 29px;
+          height: 29px;
+          position: absolute;
+          left: 0;
+          top: 8px;
+        }
+        > a {
+          display: block;
+          font-size: 23px;
+          line-height: 1.1;
+          text-decoration: none;
+          color: #fff;
+          > span {
+            font-size: 13px;
+            line-height: 1;
+          }
+        }
+        > span {
+          font-size: 13px;
+          color: #fff;
+          font-weight: 300;
+        }
+      }
+    }
+    > p {
+      font-size: 18px;
+      margin: 0;
+    }
+    > a {
+      margin-bottom: 20px;
+      display: block;
+    }
+    a {
+      font-size: 18px;
+      color: #fff;
+      text-decoration: underline;
+      &:hover {
+        text-decoration: none;
+      }
+    }
+    .schedule {
+      &__item {
+        display: inline-block;
+        padding-left: 40px;
+        position: relative;
+        margin-bottom: 20px;
+        &:before {
+          content: "";
+          display: block;
+          background: url(../images/sprite.png) no-repeat -131px -2px;
+          width: 28px;
+          height: 28px;
+          position: absolute;
+          left: 0;
+          top: 3px;
+        }
+      }
+    }
+  }
+  .payemts-list {
+    padding-top: 10px;
+    a {
+      margin: 0 5px 5px 0;
+    }
+    .link-all {
+      color: #fff;
+      font-size: 18px;
+      font-weight: 300;
+      text-decoration: underline;
+      display: inline-block;
+      margin-top: 10px;
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+  .yandex-review {
+    padding-top: 30px;
+    img {
+      margin-bottom: 10px;
+    }
+    .link-all {
+      border: 1px solid #fff;
+      background: #5b5b5b;
+      border-radius: 4px;
+      color: #fff;
+      display: inline-block;
+      padding: 5px 10px;
+      &:hover {
+        text-decoration: none;
+        background: lighten(#5b5b5b, 5%);
+      }
+
+    }
+  }
+  .copyright {
+    padding-top: 40px;
+    p {
+      margin-bottom: 0;
+    }
+  }
+}
+
+@media screen and (max-width: 992px) {
+  #footer {
+    .head {
+      font-size: 18px;
+    }
+    .navi {
+      margin-bottom: 20px;
+      li a {
+        font-size: 15px;
+      }
+    }
+    .footer__contacts {
+      .tel {
+        margin-bottom: 20px;
+      }
+      .schedule {
+        margin-bottom: 20px;
+      }
+      > p {
+        font-size: 15px;
+      }
+      a {
+        font-size: 15px;
+      }
+    }
+    .payemts-list {
+      .link-all {
+        font-size: 13px;
+      }
+    }
+    .copyright {
+      font-size: 12px;
+    }
+  }
+}

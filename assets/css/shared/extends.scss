@@ -1,0 +1,61 @@
+%form-control {
+  background: #fff;
+  border: 1px solid #f4f4f4;
+  border-radius: 3px;
+  font-size: 20px;
+  padding: 7px 15px;
+  height: auto;
+  &:focus {
+    border-color: $second-color;
+    background: #fff;
+  }
+}
+
+%rates {
+  height: 13px;
+  .stars {
+    text-indent: -999em;
+    display: inline-block;
+    background: repeat-x 0 0;
+    background-image: url(../images/star_empty.png);
+    height: 12px;
+    width: 65px;
+    vertical-align: top;
+    position: relative;
+    &:before {
+      content: '';
+      display: block;
+      height: 12px;
+      background: repeat-x 0 0;
+      position: absolute;
+      left: 0;
+      top: 0;
+      background-image: url(../images/star_rating.png);
+    }
+    &.star-1 {
+      &:before {
+        width: 13px;
+      }
+    }
+    &.star-2 {
+      &:before {
+        width: 26px;
+      }
+    }
+    &.star-3 {
+      &:before {
+        width: 39px;
+      }
+    }
+    &.star-4 {
+      &:before {
+        width: 52px;
+      }
+    }
+    &.star-5 {
+      &:before {
+        width: 65px;
+      }
+    }
+  }
+}
