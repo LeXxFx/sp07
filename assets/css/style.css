@@ -1125,7 +1125,8 @@ blockquote {
   -o-transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   -webkit-transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  max-width: 1200px; }
+  max-width: 1200px;
+  width: 100%; }
   .viewed-list .panel-sport {
     -webkit-box-shadow: 1px 1px 7px rgba(0, 0, 0, 0.4);
     -moz-box-shadow: 1px 1px 7px rgba(0, 0, 0, 0.4);
@@ -1138,7 +1139,7 @@ blockquote {
     display: none; }
   .viewed-list .slick-slider .slick-slide {
     width: 260px;
-    margin: 0 8px; }
+    margin: 0 8px 10px 8px; }
   .viewed-list--has-caorusel .viewed-list__body {
     padding-right: 200px;
     position: relative; }
@@ -2712,7 +2713,7 @@ blockquote {
     -ms-flex: 0 0 255px;
     flex: 0 0 255px; }
     .product-list__item .item__image--nopadding {
-      padding: 10px; }
+      padding: 10px 0; }
     .product-list__item .item__image .image__preview {
       float: left;
       margin-right: 5px;
@@ -2872,17 +2873,22 @@ blockquote {
   position: absolute;
   top: 8px;
   left: 0;
-  min-width: 110px;
-  height: 25px;
   text-align: center;
-  padding: 5px 10px 5px 45px;
   font-size: 14px;
   line-height: 1.1;
   font-weight: bold;
-  border: 1px solid #e5e5e5;
-  border-radius: 0 4px 4px 0;
   color: #da2222;
-  background: #fff; }
+  background: #fff;
+  z-index: 100; }
+  .product__item .item__stick > div {
+    display: block;
+    margin: 0 0 5px 0;
+    position: relative;
+    border: 1px solid #e5e5e5;
+    border-radius: 0 4px 4px 0;
+    padding: 5px 10px 5px 45px;
+    min-width: 110px;
+    height: 25px; }
   .product__item .item__stick .num {
     color: #fff;
     background: #da2222;
@@ -2909,6 +2915,14 @@ blockquote {
     .product__item .item__stick-profit .num {
       background: #222222;
       color: #da2222; }
+.product__item .item__black-friday {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  z-index: 100;
+  background: url(../images/icon_black-friday.png) no-repeat 0 0;
+  width: 47px;
+  height: 47px; }
 .product__item .item__price {
   padding-left: 0;
   margin-bottom: 5px; }
