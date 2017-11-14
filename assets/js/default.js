@@ -112,7 +112,9 @@
 		$('.col-catalog').on('mouseenter', function(e) {
 			$(this).addClass('col-catalog--open');
 		}).on("mouseleave", function () {
-			$('.col-catalog').removeClass('col-catalog--open');
+			setTimeout(function(){
+				$('.col-catalog').removeClass('col-catalog--open');
+			}, 2000);	
 		});
 
 		$('.col-catalog .catalog-menu .has-child').on('mouseenter', function(e) {
@@ -120,7 +122,7 @@
 			that.addClass('has-child--open');
 			that.closest('.catalog-menu').find('.submenu').removeClass('submenu--close');
 		}).on("mouseleave", function () {
-			$(this).removeClass('has-child--open');
+			$(this).removeClass('has-child--open');			
 		});
 
 		//ie fix
