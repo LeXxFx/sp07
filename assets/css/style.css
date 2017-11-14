@@ -666,6 +666,9 @@ blockquote {
           .col-catalog .catalog-menu > ul > li:not(.has-child):hover > a, .col-catalog .catalog-menu > ul > li.has-child--open > a {
             background: #525151;
             color: #fff; }
+        .col-catalog .catalog-menu > ul > li.has-child:hover > a {
+          background: #525151;
+          color: #fff; }
       .col-catalog .catalog-menu > ul .submenu {
         position: absolute;
         z-index: 1;
@@ -743,7 +746,8 @@ blockquote {
           padding: 0;
           transition: 0.5s;
           background: #eaeaea;
-          border-radius: 0 4px 4px 0; }
+          border-radius: 0 4px 4px 0;
+          display: none; }
           .col-catalog .catalog-menu > ul .submenu__close:hover > span {
             border-color: #ef8701;
             color: #ef8701; }
@@ -1121,7 +1125,8 @@ blockquote {
   -o-transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   -webkit-transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  max-width: 1200px; }
+  max-width: 1200px;
+  width: 100%; }
   .viewed-list .panel-sport {
     -webkit-box-shadow: 1px 1px 7px rgba(0, 0, 0, 0.4);
     -moz-box-shadow: 1px 1px 7px rgba(0, 0, 0, 0.4);
@@ -1134,7 +1139,7 @@ blockquote {
     display: none; }
   .viewed-list .slick-slider .slick-slide {
     width: 260px;
-    margin: 0 8px; }
+    margin: 0 8px 10px 8px; }
   .viewed-list--has-caorusel .viewed-list__body {
     padding-right: 200px;
     position: relative; }
@@ -2708,7 +2713,7 @@ blockquote {
     -ms-flex: 0 0 255px;
     flex: 0 0 255px; }
     .product-list__item .item__image--nopadding {
-      padding: 10px; }
+      padding: 10px 0; }
     .product-list__item .item__image .image__preview {
       float: left;
       margin-right: 5px;
@@ -2808,6 +2813,11 @@ blockquote {
           text-decoration: underline; }
     .product-list__item .item__info .item__rate {
       margin-bottom: 10px; }
+  .product-list__item .item__counter {
+    margin: 0 0 10px 0; }
+    .product-list__item .item__counter b {
+      display: inline-block;
+      margin: 0 10px 0 0; }
   .product-list__item .item__panel {
     width: 250px;
     min-width: 150px;
@@ -2863,17 +2873,22 @@ blockquote {
   position: absolute;
   top: 8px;
   left: 0;
-  min-width: 110px;
-  height: 25px;
   text-align: center;
-  padding: 5px 10px 5px 45px;
   font-size: 14px;
   line-height: 1.1;
   font-weight: bold;
-  border: 1px solid #e5e5e5;
-  border-radius: 0 4px 4px 0;
   color: #da2222;
-  background: #fff; }
+  background: #fff;
+  z-index: 100; }
+  .product__item .item__stick > div {
+    display: block;
+    margin: 0 0 5px 0;
+    position: relative;
+    border: 1px solid #e5e5e5;
+    border-radius: 0 4px 4px 0;
+    padding: 5px 10px 5px 45px;
+    min-width: 110px;
+    height: 25px; }
   .product__item .item__stick .num {
     color: #fff;
     background: #da2222;
@@ -2900,6 +2915,14 @@ blockquote {
     .product__item .item__stick-profit .num {
       background: #222222;
       color: #da2222; }
+.product__item .item__black-friday {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  z-index: 100;
+  background: url(../images/icon_black-friday.png) no-repeat 0 0;
+  width: 47px;
+  height: 47px; }
 .product__item .item__price {
   padding-left: 0;
   margin-bottom: 5px; }
@@ -3568,47 +3591,55 @@ blockquote {
   .cart-table table tr td {
     border: none;
     border-bottom: 1px solid #e5e5e5;
-    padding: 20px 10px; }
-    .cart-table table tr td .product-info a {
-      text-decoration: none; }
-    .cart-table table tr td .product-info .img img {
-      display: inline-block;
-      width: 170px;
-      height: auto;
-      margin: 0 30px 0 0;
-      vertical-align: middle; }
-    .cart-table table tr td .product-info .name {
-      margin: 0;
-      display: inline-block;
-      vertical-align: middle; }
-      .cart-table table tr td .product-info .name a {
-        text-decoration: none;
-        font: bold 18px/1 "Roboto", sans-serif;
-        color: #222222;
-        display: block;
-        margin-bottom: 15px; }
-        .cart-table table tr td .product-info .name a:hover {
-          color: #ef8701; }
-    .cart-table table tr td .product-info .prop .prop__item {
-      margin-bottom: 5px; }
-      .cart-table table tr td .product-info .prop .prop__item .name {
+    padding: 20px 10px;
+    white-space: normal; }
+    .cart-table table tr td .product-info {
+      display: flex;
+      align-items: center;
+      justify-content: space-between; }
+      .cart-table table tr td .product-info a {
+        text-decoration: none; }
+      .cart-table table tr td .product-info .img {
+        flex: 0 0 170px;
+        margin: 0 30px 0 0; }
+        .cart-table table tr td .product-info .img img {
+          display: inline-block;
+          width: 170px;
+          height: auto;
+          vertical-align: middle; }
+      .cart-table table tr td .product-info .name {
+        flex: 1 1 80%;
+        margin: 0;
         display: inline-block;
-        width: 80px;
-        color: #575757;
-        font-size: 18px;
-        line-height: 1.2; }
-      .cart-table table tr td .product-info .prop .prop__item .value {
-        display: inline-block;
-        margin: 0 2px; }
-        .cart-table table tr td .product-info .prop .prop__item .value > span {
-          font-size: 16px;
-          font-weight: bold;
-          padding: 2px 5px;
-          border-radius: 2px;
-          border: 1px solid #e5e5e5; }
-        .cart-table table tr td .product-info .prop .prop__item .value > img {
-          border-radius: 2px;
-          border: 1px solid #e5e5e5; }
+        vertical-align: middle; }
+        .cart-table table tr td .product-info .name a {
+          text-decoration: none;
+          font: bold 18px/1 "Roboto", sans-serif;
+          color: #222222;
+          display: block;
+          margin-bottom: 15px; }
+          .cart-table table tr td .product-info .name a:hover {
+            color: #ef8701; }
+      .cart-table table tr td .product-info .prop .prop__item {
+        margin-bottom: 5px; }
+        .cart-table table tr td .product-info .prop .prop__item .name {
+          display: inline-block;
+          width: 80px;
+          color: #575757;
+          font-size: 18px;
+          line-height: 1.2; }
+        .cart-table table tr td .product-info .prop .prop__item .value {
+          display: inline-block;
+          margin: 0 2px; }
+          .cart-table table tr td .product-info .prop .prop__item .value > span {
+            font-size: 16px;
+            font-weight: bold;
+            padding: 2px 5px;
+            border-radius: 2px;
+            border: 1px solid #e5e5e5; }
+          .cart-table table tr td .product-info .prop .prop__item .value > img {
+            border-radius: 2px;
+            border: 1px solid #e5e5e5; }
     .cart-table table tr td .item__discont {
       text-align: center;
       font-size: 24px;
@@ -3717,9 +3748,11 @@ blockquote {
     padding: 10px 5px; }
     .cart-table table tr td .product-info .name a {
       font-size: 16px; }
-    .cart-table table tr td .product-info .img img {
-      width: 60px;
-      margin: 0 10px 0 0; }
+    .cart-table table tr td .product-info .img {
+      flex: 0 0 60px; }
+      .cart-table table tr td .product-info .img img {
+        width: 60px;
+        margin: 0 10px 0 0; }
     .cart-table table tr td .product-info .prop .prop__item .name {
       width: 60px;
       font-size: 14px; }
@@ -3750,10 +3783,14 @@ blockquote {
   .cart-table table:not(.cart-bottom__suma) tr td {
     width: 100%;
     display: block; }
-    .cart-table table:not(.cart-bottom__suma) tr td .product-info .img {
+    .cart-table table:not(.cart-bottom__suma) tr td .product-info {
       display: block; }
-      .cart-table table:not(.cart-bottom__suma) tr td .product-info .img img {
-        width: 120px; }
+      .cart-table table:not(.cart-bottom__suma) tr td .product-info .img {
+        display: block;
+        text-align: center;
+        margin: 0 0 10px 0; }
+        .cart-table table:not(.cart-bottom__suma) tr td .product-info .img img {
+          width: 120px; }
     .cart-table table:not(.cart-bottom__suma) tr td .item__input-counter {
       font-size: 12px;
       width: 80px; }

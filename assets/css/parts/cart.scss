@@ -60,20 +60,27 @@
         border: none;
         border-bottom: 1px solid #e5e5e5;
         padding: 20px 10px;
+        white-space: normal;
+
         .product-info {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
           a {
             text-decoration: none;
           }
           .img {
+            flex: 0 0 170px;
+            margin: 0 30px 0 0;
             img {
               display: inline-block;
               width: 170px;
               height: auto;
-              margin: 0 30px 0 0;
               vertical-align: middle;
             }
           }
           .name {
+            flex: 1 1 80%;
             margin: 0;
             display: inline-block;
             vertical-align: middle;
@@ -267,6 +274,7 @@
               }
             }
             .img {
+              flex: 0 0 60px;
               img {
                 width: 60px;
                 margin: 0 10px 0 0;
@@ -332,8 +340,11 @@
           width: 100%;
           display: block;
           .product-info {
+            display: block;
             .img {
               display: block;
+              text-align: center;
+              margin: 0 0 10px 0;
               img {
                 width: 120px;
               }

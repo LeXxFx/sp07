@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Товары - Сетка | Sport07</title>
+    <title>Корзина | Sport07</title>
 
     <link rel="shortcut icon" href="assets/images/favicon.png">
 
@@ -17,6 +17,10 @@
     <link rel="stylesheet" href="assets/plugins/slick/slick.css" />
     <link rel="stylesheet" href="assets/plugins/soon-countdown/css/soon.min.css"/>
     <!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+    <!-- start: CSS REQUIRED FOR THIS PAGE ONLY -->
+    <link href="assets/plugins/magiczoomplus/magiczoomplus.css" rel="stylesheet" type="text/css" media="screen"/>
+    <!-- end: CSS REQUIRED FOR THIS PAGE ONLY -->
 </head>
 <body>
     <div class="container">
@@ -293,699 +297,195 @@
         </header>
         <div id="wrapper" role="main">
             <div id="breadcumbs">
-                <a href="#">Главная</a><span class="sep">/</span> <a href="#">Единоборства</a><span class="sep">/</span> <a href="#">Карате</a><span class="sep">/</span> <span class="current">Кимоно карате</span>
+                <a href="#">Главная</a><span class="sep">/</span> <span class="current">Корзина</span>
             </div>
             <div class="inner">
                 <div id="content" role="main">
-                    <div class="page-heading">Кимоно для карате</div>
-                    <div class="product-filter">
-                        <div class="product-filter__display clearfix">
-                            <a href="shop-list.html" class="display__list">Список</a>
-                            <a href="shop-grid.html" class="display__grid display--active">Сетка</a>
-                        </div>
-                        <div class="product-filter__sorting dropdown">
-                            <button class="dropdown-toggle" type="button" id="routeto" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Сортировка: по возрастанию цены <i class="fa fa-angle-down"></i>
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="routeto">
-                                <a class="dropdown-item" href="#">Action</a>
-                                <a class="dropdown-item" href="#">Something else here</a>
-                                <a class="dropdown-item dropdown-active" href="#">Another action</a>
-                                <a class="dropdown-item" href="#">Something else here</a>
-                                <a class="dropdown-item" href="#">Something else here</a>
+                    <div id="cart">
+                        <div class="cart-table">
+                            <table>
+                                <colgroup>
+                                    <col />
+                                    <col width="110" />
+                                    <col width="110" />
+                                    <col  width="110"/>
+                                    <col width="110" />
+                                </colgroup>
+                                <tr>
+                                    <th class="th-product">
+                                        Товар
+                                    </th>
+                                    <th class="hidden-xs hidden-sm">
+                                        Цена
+                                    </th>
+                                    <th class="hidden-xs hidden-sm">
+                                        Скидка
+                                    </th>
+                                    <th>
+                                        Кол<sapn class="hidden-xs">ичество</sapn>
+                                    </th>
+                                    <th class="th-sum">
+                                        Сумма
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="product-info">
+                                            <a class="img" href="product.html">
+                                                <img src="demo/product_img2.png" alt=""/>
+                                            </a>
+                                            <div class="name">
+                                                <a href="product.html">
+                                                    Мяч прыгун с ручками, 65 см Мяч прыгун с ручками, 65 см Мяч прыгун с ручками, 65 см Мяч прыгун с ручками, 65 см
+                                                </a>
+                                                <div class="prop">
+                                                    <div class="prop__item">
+                                                        <div class="name">Размер: </div>
+                                                        <div class="value">
+                                                            <span>s 37</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="prop__item">
+                                                        <div class="name">Цвет: </div>
+                                                        <div class="value">
+                                                            <img src="assets/images/color_darkgrey.png" alt=""/>
+                                                        </div>
+                                                        <div class="value">
+                                                            <img src="assets/images/color_white.png" alt=""/>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="hidden-xs hidden-sm">
+                                        <div class="item__price">
+                                            <span class="new">1480</span>
+                                            <span class="currency">руб.</span>
+                                        </div>
+                                    </td>
+                                    <td class="hidden-xs hidden-sm">
+                                        <div class="item__discont">
+                                            15%
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="item__input-counter">
+                                            <button type="button" class="btn btn-minus btn-number" data-type="minus" data-field="quant[101]">
+                                                -
+                                            </button>
+                                            <div class="input-group-text">
+                                                <input type="text" name="quant[101]" class="form-control input-number input-area" value="1" min="0" max="100000" data-step="1">
+                                            </div>
+                                            <button type="button" class="btn btn-plus btn-number" data-type="plus" data-field="quant[101]">
+                                                +
+                                            </button>
+                                        </div>
+                                    </td>
+                                    <td class="td-sum">
+                                        <div class="item__price">
+                                            <span class="new">1480</span>
+                                            <span class="currency">руб.</span>
+                                        </div>
+                                        <div class="item__remove">
+                                            <a class="btn-remove-item" href="#">Удалить</a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="product-info">
+                                            <a class="img" href="product.html">
+                                                <img src="demo/product_img2.png" alt=""/>
+                                            </a>
+                                            <div class="name">
+                                                <a href="product.html">
+                                                    Кимоно для карате Golden Scorpion "PKM-885"
+                                                </a>
+                                                <div class="prop">
+                                                    <div class="prop__item">
+                                                        <div class="name">Размер: </div>
+                                                        <div class="value">
+                                                            <span>s 37</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="prop__item">
+                                                        <div class="name">Цвет: </div>
+                                                        <div class="value">
+                                                            <img src="assets/images/color_grey.png" alt=""/>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="hidden-xs hidden-sm">
+                                        <div class="item__price">
+                                            <span class="old">1800</span>
+                                            <span class="new">1480</span>
+                                            <span class="currency">руб.</span>
+                                        </div>
+                                    </td>
+                                    <td class="hidden-xs hidden-sm">
+                                    </td>
+                                    <td>
+                                        <div class="item__input-counter">
+                                            <button type="button" class="btn btn-minus btn-number" data-type="minus" data-field="quant[101]">
+                                                -
+                                            </button>
+                                            <div class="input-group-text">
+                                                <input type="text" name="quant[101]" class="form-control input-number input-area" value="2" min="0" max="100000" data-step="1">
+                                            </div>
+                                            <button type="button" class="btn btn-plus btn-number" data-type="plus" data-field="quant[101]">
+                                                +
+                                            </button>
+                                        </div>
+                                    </td>
+                                    <td class="td-sum">
+                                        <div class="item__price">
+                                            <span class="new">1480</span>
+                                            <span class="currency">руб.</span>
+                                        </div>
+                                        <div class="item__remove">
+                                            <a class="btn-remove-item" href="#">Удалить</a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                            <div class="cart-bottom clearfix">
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <p><b>До скидки 5%</b> осталось купить на 555 руб.</p>
+                                        <p><b>Бонус 5 %</b> на следующую покупку (<span class="label-alert">239 руб.</span>)</p>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <table class="cart-bottom__suma">
+                                            <tr>
+                                                <td>Итого:</td>
+                                                <td class="suma-value">4679 <span>руб.</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td><span>бонус 5%</span></td>
+                                                <td class="suma-value label-alert">234 <span>руб.</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Всего:</td>
+                                                <td class="suma-value">4445 <span>руб.</span></td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="buttons clearfix">
+                                <a class="btn btn-default" href="shop-grid.html">Продолжить покупки</a>
+                                <a class="btn btn-primary" href="checkout.html">Оформить заказ</a>
                             </div>
                         </div>
                     </div>
-                    <div class="filter-selected">
-                        Выбранные фильтры:
-                        <div class="filter-selected__item">
-                            <a class="filter-cancel" title="Отменить выбор"><i class="fa fa-times"></i></a>
-                            <span>Размер: 130 см</span>
-                        </div>
-                        <div class="filter-selected__item">
-                            <a class="filter-cancel" title="Отменить выбор"><i class="fa fa-times"></i></a>
-                            <span>Товары со скидкой</span>
-                        </div>
-                        <a href="#" class="filter-cancel-all">Очистить все фильтры</a>
-                    </div>
-                    <div class="product-grid clearfix">
-                        <div class="product-grid__item product__item">
-                            <div class="item__wrap">
-                                <div class="item__stick">
-                                    <div class="item__stick-profit">
-                                        <span class="num"><i class="fa fa-star-o"></i></span>
-                                        Выгода <b>2017</b>
-                                    </div>
-                                </div>
-                                <div class="item__timer">
-                                    <i class="fa fa-clock-o"></i>
-                                    <div class="soon"
-                                         data-due="2017-03-31T22:05"
-                                         data-layout="line"
-                                         data-format="h,m,s"
-                                         data-labels-days=":"
-                                         data-labels-hours=":"
-                                         data-labels-minutes=":"
-                                         data-labels-seconds=" ">
-                                    </div>
-                                </div>
-                                <a href="product.html">
-                                    <div class="item__image">
-                                        <img src="demo/product_img1.png" alt=""/>
-                                    </div>
-                                    <div class="item__name">
-                                        Кимоно для карате БОЕЦЪ Кимоно для карате БОЕЦЪ Кимоно для карате БОЕЦЪ рате БОЕЦЪ Кимоно для карате БОЕЦЪ Кимоно для карате БОЕЦЪ
-                                    </div>
-                                </a>
-                                <div class="item__price">
-                                    <span class="new">1480</span>
-                                    <span class="currency">руб.</span>
-                                </div>
-                                <div class="item__rate">
-                                    <span class="stars star-0"></span>
-                                </div>
-                                <div class="item__input-counter">
-                                    <button type="button" class="btn btn-minus btn-number" data-type="minus" data-field="quant[2]">
-                                        -
-                                    </button>
-                                    <div class="input-group-text">
-                                        <input type="text" name="quant[2]" class="form-control input-number input-area" value="1" min="1" max="100000" data-step="1" data-unit="">
-                                    </div>
-                                    <button type="button" class="btn btn-plus btn-number" data-type="plus" data-field="quant[2]">
-                                        +
-                                    </button>
-                                </div>
-                                <div class="item__buttons">
-                                    <button class="btn btn-quick-buy" title="Купить в один клик">
-                                        <i class="icon icon-hand"></i>
-                                    </button>
-                                    <button class="btn btn-add-to-cart" title="Положить в корзину">
-                                        <i class="icon icon-cart-white"></i>
-                                    </button>
-                                </div>
-                                <div class="item__product-options">
-                                    <div class="prop prop-size clearfix">
-                                        <div class="name">Размер: </div>
-                                        <div class="values">
-                                            <div class="value">
-                                                <span>s 37</span>
-                                            </div>
-                                            <div class="value active">
-                                                <span>xl 40</span>
-                                            </div>
-                                            <div class="value">
-                                                <span>xxl 45</span>
-                                            </div>
-                                            <div class="value">
-                                                <span>xxxl 47</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="prop prop-color clearfix">
-                                        <div class="name">Цвет: </div>
-                                        <div class="values">
-                                            <div class="value">
-                                                <img src="assets/images/color_white.png" alt=""/>
-                                            </div>
-                                            <div class="value active">
-                                                <img src="assets/images/color_grey.png" alt=""/>
-                                            </div>
-                                            <div class="value">
-                                                <img src="assets/images/color_darkgrey.png" alt=""/>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="product-grid__item product__item">
-                            <div class="item__wrap">
-                                <div class="item__stick">
-                                    <div class="item__stick-sale">
-                                        <span class="num">10%</span>
-                                        Sale
-                                    </div>
-                                </div>
-                                <a href="product.html">
-                                    <div class="item__image">
-                                        <img src="demo/product_img2.png" alt=""/>
-                                    </div>
-                                    <div class="item__name">
-                                        Кимоно для карате Alpha Caprice GS-KK02
-                                    </div>
-                                </a>
-                                <div class="item__price">
-                                    <span class="old">1805</span>
-                                    <span class="new">1480</span>
-                                    <span class="currency">руб.</span>
-                                </div>
-                                <div class="item__rate">
-                                    <span class="stars star-4"></span>
-                                </div>
-                                <div class="item__input-counter">
-                                    <button type="button" class="btn btn-minus btn-number" data-type="minus" data-field="quant[2]">
-                                        -
-                                    </button>
-                                    <div class="input-group-text">
-                                        <input type="text" name="quant[2]" class="form-control input-number input-area" value="1" min="1" max="100000" data-step="1" data-unit="">
-                                    </div>
-                                    <button type="button" class="btn btn-plus btn-number" data-type="plus" data-field="quant[2]">
-                                        +
-                                    </button>
-                                </div>
-                                <div class="item__buttons">
-                                    <button class="btn btn-quick-buy" title="Купить в один клик">
-                                        <i class="icon icon-hand"></i>
-                                    </button>
-                                    <button class="btn btn-add-to-cart" title="Положить в корзину">
-                                        <i class="icon icon-cart-white"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="product-grid__item product__item">
-                            <div class="item__wrap">
-                                <div class="item__stick">
-                                    <div class="item__stick-hit">
-                                        <span class="num"><i class="fa fa-thumbs-o-up"></i></span>
-                                        Хит продаж!
-                                    </div>
-                                    <div class="item__stick-sale">
-                                        <span class="num">10%</span>
-                                        Sale
-                                    </div>
-                                </div>
-                                <div class="item__black-friday"></div>
-                                <a href="product.html">
-                                    <div class="item__image">
-                                        <img src="demo/product_img3.png" alt=""/>
-                                    </div>
-                                    <div class="item__name">
-                                        Кимоно для карате Golden Scorpion "PKM-1200"
-                                    </div>
-                                </a>
-                                <div class="item__price">
-                                    <span class="old">1805</span>
-                                    <span class="new">1480</span>
-                                    <span class="currency">руб.</span>
-                                </div>
-                                <div class="item__rate">
-                                    <span class="stars star-1"></span>
-                                </div>
-                                <div class="item__input-counter">
-                                    <button type="button" class="btn btn-minus btn-number" data-type="minus" data-field="quant[2]">
-                                        -
-                                    </button>
-                                    <div class="input-group-text">
-                                        <input type="text" name="quant[2]" class="form-control input-number input-area" value="1" min="1" max="100000" data-step="1" data-unit="">
-                                    </div>
-                                    <button type="button" class="btn btn-plus btn-number" data-type="plus" data-field="quant[2]">
-                                        +
-                                    </button>
-                                </div>
-                                <div class="item__buttons">
-                                    <button class="btn btn-quick-buy" title="Купить в один клик">
-                                        <i class="icon icon-hand"></i>
-                                    </button>
-                                    <button class="btn btn-add-to-cart" title="Положить в корзину">
-                                        <i class="icon icon-cart-white"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="product-grid__item product__item">
-                            <div class="item__wrap">
-                                <div class="item__stick">
-                                    <div class="item__stick-profit">
-                                        <span class="num"><i class="fa fa-star-o"></i></span>
-                                        Выгода <b>2017</b>
-                                    </div>
-                                </div>
-                                <div class="item__timer">
-                                    <i class="fa fa-clock-o"></i>
-                                    <div class="soon"
-                                         data-due="2017-03-30T12:05"
-                                         data-layout="line"
-                                         data-format="h,m,s"
-                                         data-labels-days=":"
-                                         data-labels-hours=":"
-                                         data-labels-minutes=":"
-                                         data-labels-seconds=" ">
-                                    </div>
-                                </div>
-                                <a href="product.html">
-                                    <div class="item__image">
-                                        <img src="demo/product_img1.png" alt=""/>
-                                    </div>
-                                    <div class="item__name">
-                                        Кимоно для карате БОЕЦЪ
-                                    </div>
-                                </a>
-                                <div class="item__price">
-                                    <span class="new">1480</span>
-                                    <span class="currency">руб.</span>
-                                </div>
-                                <div class="item__rate">
-                                    <span class="stars star-0"></span>
-                                </div>
-                                <div class="item__input-counter">
-                                    <button type="button" class="btn btn-minus btn-number" data-type="minus" data-field="quant[2]">
-                                        -
-                                    </button>
-                                    <div class="input-group-text">
-                                        <input type="text" name="quant[2]" class="form-control input-number input-area" value="1" min="1" max="100000" data-step="1" data-unit="">
-                                    </div>
-                                    <button type="button" class="btn btn-plus btn-number" data-type="plus" data-field="quant[2]">
-                                        +
-                                    </button>
-                                </div>
-                                <div class="item__buttons">
-                                    <button class="btn btn-quick-buy" title="Купить в один клик">
-                                        <i class="icon icon-hand"></i>
-                                    </button>
-                                    <button class="btn btn-add-to-cart" title="Положить в корзину">
-                                        <i class="icon icon-cart-white"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="product-grid__item product__item">
-                            <div class="item__wrap">
-                                <div class="item__stick">
-                                    <div class="item__stick-sale">
-                                        <span class="num">10%</span>
-                                        Sale
-                                    </div>
-                                </div>
-                                <a href="product.html">
-                                    <div class="item__image">
-                                        <img src="demo/product_img2.png" alt=""/>
-                                    </div>
-                                    <div class="item__name">
-                                        Кимоно для карате Alpha Caprice GS-KK02
-                                    </div>
-                                </a>
-                                <div class="item__price">
-                                    <span class="old">1805</span>
-                                    <span class="new">1480</span>
-                                    <span class="currency">руб.</span>
-                                </div>
-                                <div class="item__rate">
-                                    <span class="stars star-4"></span>
-                                </div>
-                                <div class="item__input-counter">
-                                    <button type="button" class="btn btn-minus btn-number" data-type="minus" data-field="quant[2]">
-                                        -
-                                    </button>
-                                    <div class="input-group-text">
-                                        <input type="text" name="quant[2]" class="form-control input-number input-area" value="1" min="1" max="100000" data-step="1" data-unit="">
-                                    </div>
-                                    <button type="button" class="btn btn-plus btn-number" data-type="plus" data-field="quant[2]">
-                                        +
-                                    </button>
-                                </div>
-                                <div class="item__buttons">
-                                    <button class="btn btn-quick-buy" title="Купить в один клик">
-                                        <i class="icon icon-hand"></i>
-                                    </button>
-                                    <button class="btn btn-add-to-cart" title="Положить в корзину">
-                                        <i class="icon icon-cart-white"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="product-grid__item product__item">
-                            <div class="item__wrap">
-                                <div class="item__stick">
-                                    <div class="item__stick-profit">
-                                        <span class="num"><i class="fa fa-star-o"></i></span>
-                                        Выгода <b>2017</b>
-                                    </div>
-                                </div>
-                                <div class="item__timer">
-                                    <i class="fa fa-clock-o"></i>
-                                    <div class="soon"
-                                         data-due="2017-03-30T18:05"
-                                         data-layout="line"
-                                         data-format="h,m,s"
-                                         data-labels-days=":"
-                                         data-labels-hours=":"
-                                         data-labels-minutes=":"
-                                         data-labels-seconds=" ">
-                                    </div>
-                                </div>
-                                <a href="product.html">
-                                    <div class="item__image">
-                                        <img src="demo/product_img1.png" alt=""/>
-                                    </div>
-                                    <div class="item__name">
-                                        Кимоно для карате БОЕЦЪ
-                                    </div>
-                                </a>
-                                <div class="item__price">
-                                    <span class="new">1480</span>
-                                    <span class="currency">руб.</span>
-                                </div>
-                                <div class="item__rate">
-                                    <span class="stars star-0"></span>
-                                </div>
-                                <div class="item__input-counter">
-                                    <button type="button" class="btn btn-minus btn-number" data-type="minus" data-field="quant[2]">
-                                        -
-                                    </button>
-                                    <div class="input-group-text">
-                                        <input type="text" name="quant[2]" class="form-control input-number input-area" value="1" min="1" max="100000" data-step="1" data-unit="">
-                                    </div>
-                                    <button type="button" class="btn btn-plus btn-number" data-type="plus" data-field="quant[2]">
-                                        +
-                                    </button>
-                                </div>
-                                <div class="item__buttons">
-                                    <button class="btn btn-quick-buy" title="Купить в один клик">
-                                        <i class="icon icon-hand"></i>
-                                    </button>
-                                    <button class="btn btn-add-to-cart" title="Положить в корзину">
-                                        <i class="icon icon-cart-white"></i>
-                                    </button>
-                                </div>
-                                <div class="item__product-options">
-                                    <div class="prop prop-size clearfix">
-                                        <div class="name">Размер: </div>
-                                        <div class="values">
-                                            <div class="value">
-                                                <span>s 37</span>
-                                            </div>
-                                            <div class="value active">
-                                                <span>xl 40</span>
-                                            </div>
-                                            <div class="value">
-                                                <span>xxl 45</span>
-                                            </div>
-                                            <div class="value">
-                                                <span>xxxl 47</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="prop prop-color clearfix">
-                                        <div class="name">Цвет: </div>
-                                        <div class="values">
-                                            <div class="value">
-                                                <img src="assets/images/color_white.png" alt=""/>
-                                            </div>
-                                            <div class="value active">
-                                                <img src="assets/images/color_grey.png" alt=""/>
-                                            </div>
-                                            <div class="value">
-                                                <img src="assets/images/color_darkgrey.png" alt=""/>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="product-grid__item product__item">
-                            <div class="item__wrap">
-                                <div class="item__stick">
-                                    <div class="item__stick-sale">
-                                        <span class="num">10%</span>
-                                        Sale
-                                    </div>
-                                </div>
-                                <a href="product.html">
-                                    <div class="item__image">
-                                        <img src="demo/product_img2.png" alt=""/>
-                                    </div>
-                                    <div class="item__name">
-                                        Кимоно для карате Alpha Caprice GS-KK02
-                                    </div>
-                                </a>
-                                <div class="item__price">
-                                    <span class="old">1805</span>
-                                    <span class="new">1480</span>
-                                    <span class="currency">руб.</span>
-                                </div>
-                                <div class="item__rate">
-                                    <span class="stars star-4"></span>
-                                </div>
-                                <div class="item__input-counter">
-                                    <button type="button" class="btn btn-minus btn-number" data-type="minus" data-field="quant[2]">
-                                        -
-                                    </button>
-                                    <div class="input-group-text">
-                                        <input type="text" name="quant[2]" class="form-control input-number input-area" value="1" min="1" max="100000" data-step="1" data-unit="">
-                                    </div>
-                                    <button type="button" class="btn btn-plus btn-number" data-type="plus" data-field="quant[2]">
-                                        +
-                                    </button>
-                                </div>
-                                <div class="item__buttons">
-                                    <button class="btn btn-quick-buy" title="Купить в один клик">
-                                        <i class="icon icon-hand"></i>
-                                    </button>
-                                    <button class="btn btn-add-to-cart" title="Положить в корзину">
-                                        <i class="icon icon-cart-white"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="product-grid__item product__item">
-                            <div class="item__wrap">
-                                <div class="item__stick">
-                                    <div class="item__stick-hit">
-                                        <span class="num"><i class="fa fa-thumbs-o-up"></i></span>
-                                        Хит продаж!
-                                    </div>
-                                </div>
-                                <a href="product.html">
-                                    <div class="item__image">
-                                        <img src="demo/product_img3.png" alt=""/>
-                                    </div>
-                                    <div class="item__name">
-                                        Кимоно для карате Golden Scorpion "PKM-1200"
-                                    </div>
-                                </a>
-                                <div class="item__price">
-                                    <span class="old">1805</span>
-                                    <span class="new">1480</span>
-                                    <span class="currency">руб.</span>
-                                </div>
-                                <div class="item__rate">
-                                    <span class="stars star-1"></span>
-                                </div>
-                                <div class="item__input-counter">
-                                    <button type="button" class="btn btn-minus btn-number" data-type="minus" data-field="quant[2]">
-                                        -
-                                    </button>
-                                    <div class="input-group-text">
-                                        <input type="text" name="quant[2]" class="form-control input-number input-area" value="1" min="1" max="100000" data-step="1" data-unit="">
-                                    </div>
-                                    <button type="button" class="btn btn-plus btn-number" data-type="plus" data-field="quant[2]">
-                                        +
-                                    </button>
-                                </div>
-                                <div class="item__buttons">
-                                    <button class="btn btn-quick-buy" title="Купить в один клик">
-                                        <i class="icon icon-hand"></i>
-                                    </button>
-                                    <button class="btn btn-add-to-cart" title="Положить в корзину">
-                                        <i class="icon icon-cart-white"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div id="sidebar">
-                    <aside>
-                        <div class="widget widget-catalog widget-catalog-shop">
-                            <ul>
-                                <li class="widget-catalog__title active"><a href="#">Карате</a></li>
-                                <li class="active"><a href="#">Кимоно карате (15)</a></li>
-                                <li><a href="#">Кимоно кудо (16)</a></li>
-                                <li><a href="#">Кимоно киокушинкай (20)</a></li>
-                            </ul>
-                            <ul class="list1 list-hidden">
-                                <li class="widget-catalog__title active"><a href="#">Карате</a></li>
-                                <li class="active"><a href="#">Кимоно карате (15)</a></li>
-                                <li><a href="#">Кимоно кудо (16)</a></li>
-                                <li><a href="#">Кимоно киокушинкай (20)</a></li>
-                            </ul>
-                            <div class="link-show-more collapsed">
-                                <a href="#" data-target=".list1">
-                                    Показать еще
-                                    <i class="fa fa-angle-down"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="widget widget-filters">
-                            <div class="widget-filters__item filter__size">
-                                <div class="filter__top">Размер</div>
-                                <ul class="filter__list">
-                                    <li><a href="#">120 см (2)</a></li>
-                                    <li class="filter__active"><a href="#">130 см (3)</a></li>
-                                    <li><a href="#">140 см (2)</a></li>
-                                    <li><a href="#">150 см (5)</a></li>
-                                    <li><a href="#">160 см (5)</a></li>
-                                </ul>
-                                <ul class="filter__list filter__list2 list-hidden">
-                                    <li><a href="#">120 см (2)</a></li>
-                                    <li><a href="#">130 см (3)</a></li>
-                                    <li><a href="#">140 см (2)</a></li>
-                                    <li><a href="#">150 см (5)</a></li>
-                                    <li><a href="#">160 см (5)</a></li>
-                                </ul>
-                                <div class="link-show-more collapsed">
-                                    <a href="#" data-target=".filter__list2">
-                                        Показать еще
-                                        <i class="fa fa-angle-down"></i>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="widget-filters__item filter__age">
-                                <div class="filter__top">Возраст</div>
-                                <ul class="filter__list">
-                                    <li><a href="#">Детские (13)</a></li>
-                                    <li><a href="#">Взрослые (7)</a></li>
-                                </ul>
-                            </div>
-                            <div class="widget-filters__item filter__discont">
-                                <a class="btn filter__active" href="#">Товары со скидкой (7)</a>
-                            </div>
-                        </div>
-                        <div class="link-propose">
-                            <a class="btn" href="#" data-dismiss="modal" data-toggle="modal" data-target="#modal_callback">Нет нужного товара?</a>
-                        </div>
-                        <div class="widget widget-discont">
-                            <a href=""><img src="demo/discont.png" alt=""/></a>
-                        </div>
-                        <div class="widget widget-delivary">
-                            <div class="widget-delivary__inner">
-                                <b>Доставим бесплатно</b> в указанное место, при покупке на сумму <br/> от 5000 р.
-                            </div>
-                        </div>
-                    </aside>
-                </div>
-            </div>
-            <div class="category__post">
-                <div class="post">
-                    <div class="top">Наш ассортимент товаров для единоборств</div>
-                    <p>Наш интернет-магазин спорттоваров создан на базе нескольких крупных оптовых компаний, обеспечивающих спортивными, туристическими товарами и товарами для активного отдыха более 1000 спортивных магазинов по всей России уже на протяжении более 20 лет. Это Компании «Альфа Каприз», «Нова Тур», «Трамп», «Арктика» и другие. На страницах нашего интернет магазина вы можете увидеть более 6000 наименований товаров для спорта и активного отдыха для самого широкого круга пользователей, начиная от детей и заканчивая продвинутыми любителями спорта.
-                        <a href="#">Наш ассортимент</a> товаров отработан в течении многих лет успешной работы на российском рынке в условиях жесткой конкуренции. Он производится на крупных фабриках Китая, Пакистана, России и других стран в больших объемах под строгим контролем.</p>
-                    <p>Главной задачей вышеперечисленных компаний, успешно развивающихся на рынке более 20 лет, является обеспечение покупателей хорошим, качественным товаром, полностью отвечающим его функциональному назначению, по реальным обоснованным ценам.</p>
-                </div>
-                <div id="text" class="collapse clearfix">
-                    <div class="post">
-                        <p>Наш интернет-магазин спорттоваров создан на базе нескольких крупных оптовых компаний, обеспечивающих спортивными, туристическими товарами и товарами для активного отдыха более 1000 спортивных магазинов по всей России уже на протяжении более 20 лет. Это Компании «Альфа Каприз», «Нова Тур», «Трамп», «Арктика» и другие. На страницах нашего интернет магазина вы можете увидеть более 6000 наименований товаров для спорта и активного отдыха для самого широкого круга пользователей, начиная от детей и заканчивая продвинутыми любителями спорта.
-                            <a href="#">Наш ассортимент</a> товаров отработан в течении многих лет успешной работы на российском рынке в условиях жесткой конкуренции. Он производится на крупных фабриках Китая, Пакистана, России и других стран в больших объемах под строгим контролем.</p>
-                        <p>Главной задачей вышеперечисленных компаний, успешно развивающихся на рынке более 20 лет, является обеспечение покупателей хорошим, качественным товаром, полностью отвечающим его функциональному назначению, по реальным обоснованным ценам.</p>
-                    </div>
-                </div>
-                <div class="show_more">
-                    <button class="btn collapsed" data-toggle="collapse" data-target="#text" data-title-init="Подробнее" data-title-collapsed="Закрыть"><span>Подробнее</span> <i class="icon icon-arrow-down"></i></button>
                 </div>
             </div>
         </div>
     </div>
-    <section class="testimonials">
-        <div class="container">
-            <div class="heading">Покупатели о нас</div>
-            <div class="testimonials__list">
-                <div class="item">
-                    <div class="title">
-                        <span><i class="fa fa-thumbs-o-up"></i></span>
-                        Обалденный, самый лучший интернет-магазин
-                    </div>
-                    <div class="short">
-                        Обалденный, самый лучший интернет-магазин, интересный сайт! Уже больше года покупаю одежду только там – не нужно тратить время на походы по магазинам
-                    </div>
-                    <div class="meta">
-                        <a class="meta__comments">1 Комментарий</a>
-                        <span class="meta__date">13.01.2017г.</span>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="title">
-                        <span><i class="fa fa-thumbs-o-up"></i></span>
-                        Обалденный, самый лучший интернет-магазин
-                    </div>
-                    <div class="short">
-                        Обалденный, самый лучший интернет-магазин, интересный сайт! Уже больше года покупаю одежду только там – не нужно тратить время на походы по магазинам
-                    </div>
-                    <div class="meta">
-                        <a class="meta__comments">1 Комментарий</a>
-                        <span class="meta__date">13.01.2017г.</span>
-                    </div>
-                </div>
-            </div>
-            <div class="testimonials__bottom">
-                <a class="testimonials__button-next"><span>Показать следующий отзыв</span>
-                    <i class="fa fa-angle-right"></i></a>
-                <a href="#" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" data-target="#modal_add_review">Оставить свой отзыв о магазине</a>
-            </div>
-        </div>
-    </section>
-    <div class="container">
-        <section id="advants">
-            <div class="heading">Наши преимущества</div>
-            <div class="advants__list clearfix">
-                <div class="item">
-                    <a href="#">
-                        <div class="icons">
-                            <i class="icon icon-advant1"></i>
-                        </div>
-                        <div class="name">Постоянным покупателям - вечные скидки</div>
-                        <div class="short">Став постоянным клиентом нашего магазина Вы будете иметь возможность покупать со скидкой до 50%.</div>
-                    </a>
-                </div>
-                <div class="item">
-                    <a href="#">
-                        <div class="icons">
-                            <i class="icon icon-advant2"></i>
-                        </div>
-                        <div class="name">Бесплатная доставка</div>
-                        <div class="info">По всей России при покупке на сумму от 5000 руб.</div>
-                        <div class="short"> А также, курьерская доставка, Почтой России и транспортными компаниями.</div>
-                    </a>
-                </div>
-                <div class="item">
-                    <a href="#">
-                        <div class="icons">
-                            <i class="icon icon-advant3"></i>
-                        </div>
-                        <div class="name">Самовывоз</div>
-                        <div class="info">Бесплатные и платные пункты вывоза заказов по всей России.</div>
-                        <div class="short">В некоторых пунктах есть примерка.</div>
-                    </a>
-                </div>
-                <div class="item">
-                    <a href="#">
-                        <div class="icons">
-                            <i class="icon icon-advant4"></i>
-                        </div>
-                        <div class="name">Оплата</div>
-                        <div class="info">Любые удобные способы оплаты.</div>
-                        <div class="short">
-                            - Наличными,
-                            - Банковской картой,
-                            - Онлайн платежи.
-                        </div>
-                    </a>
-                </div>
-                <div class="item">
-                    <a href="#">
-                        <div class="icons">
-                            <i class="icon icon-advant5"></i>
-                            <i class="icon icon-advant6"></i>
-                        </div>
-                        <div class="name">Гарантия качества</div>
-                        <div class="info">и возврат товаров</div>
-                        <div class="short">Без проблем и лишней бюрократии вернём Вам деньги за товар, который не подошел или не понравился.</div>
-                    </a>
-                </div>
-            </div>
-        </section>
-    </div>
-
     <footer id="footer">
         <div class="container">
             <div class="row">
@@ -1364,8 +864,8 @@
                     </div>
                 </div>
                 <div class="option-panel__cart">
-                    <a class="icon icon-cart-white shopping-cart" href="cart.html"></a>
-                    <span>Товары в <a href="cart.html">корзине</a></span>
+                    <i class="icon icon-cart-white shopping-cart"></i>
+                    Товары в <a href="cart.html">корзине</a>
                     <span class="num">2</span>
                     <span class="sum"><b>3559</b> руб.</span>
                     <a href="checkout.html" class="btn btn-primary">Оформить заказ</a>
