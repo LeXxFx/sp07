@@ -1,8 +1,10 @@
 <?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();?>
+						<?if(sizeof($arResult) != 0):?>
 						<div class="panel-sport">
 							<div class="panel-sport__heading">
 								Вы смотрели:
 							</div>
+							<?//echo "<pre>";print_r($arResult);echo "</pre>";?>
 							<div class="viewed-list__body">
 								<?if (sizeof($arResult)>3):?>
 								<div class="viewed-list__button-next">
@@ -42,4 +44,5 @@
 								<span><i class="fa fa-angle-left"></i></span>
 							</button>
 						</div>
+						<?endif;?>
 
