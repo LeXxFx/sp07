@@ -1,0 +1,15 @@
+.chars p span {
+    background-color: #fff;
+    display: block;
+    position: absolute;
+}
+
+.chars p span.name {
+	left: 0;
+	padding: 0 5px 0 0;
+}
+
+.chars p span.value {
+	right: 0;
+	padding: 0 0 0 5px;
+}

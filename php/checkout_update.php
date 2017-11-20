@@ -1,11 +1,13 @@
 <?
+//echo "<pre>";
+//print_r($_GET);
+//echo "</pre>";
 $sum=str_replace(' руб.', '', $_GET['sum']);
 $sum=str_replace(' ', '', $sum);
 
 $SumRes=$sum+$_GET['delivery'];
 
 function RUBformat($val){
-
 }
 ?>
 <div class="checkout-result__top">Сводная информация</div>
@@ -17,11 +19,13 @@ function RUBformat($val){
 <!--<tr>
         <td><span>Бонус 5%</span></td>
         <td class="suma-value label-alert">234 руб.</td>
-    </tr>
+    </tr>-->
+	<?if(!empty($_GET["discount"])):?>
     <tr>
-        <td><span>Скидка 5%</span></td>
-        <td class="suma-value label-alert">-327 руб.</td>
-    </tr> -->
+        <td><span>Скидка</span></td>
+        <td class="suma-value label-alert discount"><?=$_GET["discount"]?></td>
+    </tr>
+	<?endif;?>
     <tr>
         <td>Доставка</td>
         <td class="suma-value sum-delivery"><?=number_format($_GET['delivery'], 0, ',', ' ');?> руб.</td>
