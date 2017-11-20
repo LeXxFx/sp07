@@ -133,6 +133,52 @@ CJSCore::Init(array("jquery2"));
                         
                     </div>
                    <div class="search-menu clearfix">
+                       <?/*
+                        <div class="search-menu__body">
+                            <div class="head">Найдено в разделах каталога:</div>
+                            <ul>
+                                <li><a href="#">Кимоно для карате</a></li>
+                                <li><a href="#">Кимоно для дзюдо</a></li>
+                            </ul>
+                            <div class="head">Найдены товары (всего 35):</div>
+                            <div class="products-list clearfix">
+                                <div class="item">
+                                    <a class="img" href="product.html"><img src="<?=SITE_TEMPLATE_PATH?>/demo/product_img1.png" alt=""/></a>
+                                    <div class="name">
+                                        Кимоно для карате Golden Scorpion "PKM-885"
+                                    </div>
+                                    <div class="price">
+                                        <span class="new">1502</span>
+                                        <span class="currency">руб.</span>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <a class="img" href="product.html"><img src="<?=SITE_TEMPLATE_PATH?>/demo/product_img2.png" alt=""/></a>
+                                    <div class="name">
+                                        Кимоно для карате Alpha Caprice GS-KK01
+                                    </div>
+                                    <div class="price">
+                                        <span class="old">1805</span>
+                                        <span class="new">1480</span>
+                                        <span class="currency">руб.</span>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <a class="img" href="product.html"><img src="<?=SITE_TEMPLATE_PATH?>/demo/product_img3.png" alt=""/></a>
+                                    <div class="name">
+                                        Кимоно для карате Golden Scorpion "PKM-1200" те Golden Scorpion "PKM-1200"
+                                    </div>
+                                    <div class="price">
+                                        <span class="new">1479</span>
+                                        <span class="currency">руб.</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="search-menu__button">
+                            <a href="#" class="btn">Посмотреть результаты поиска (35)</a>
+                        </div>
+*/?>
                     </div>
                 </div>
                 <div class="col-panel">
