@@ -175,8 +175,8 @@ print_r($arItem);
                                         </div>
 										<? // print_r($arResult['MORE_PHOTO']);?>
 										<?//echo "<pre>";print_r($arResult);echo "</pre>";?>
-										<?if($arResult["PROPERTIES"]["M_HIT"]["VALUE"] == 'Y' && $arResult["MIN_PRICE"]["DISCOUNT_DIFF_PERCENT"] >= 1 && $arResult["PROPERTIES"]["PRODUCT_OF_THE_DAY"]["VALUE"] == "Y"):?>
-										<div class="item__stick">
+										<?if($arResult["PROPERTIES"]["M_HIT"]["VALUE"] == 'Y' || $arResult["MIN_PRICE"]["DISCOUNT_DIFF_PERCENT"] >= 1 || $arResult["PROPERTIES"]["PRODUCT_OF_THE_DAY"]["VALUE"] == "Y"):?>
+										<div class="item__stick"><?=$arResult["PROPERTIES"]["PRODUCT_OF_THE_DAY"]["VALUE"]?>
 											<?if($arResult["PROPERTIES"]["M_HIT"]["VALUE"] == 'Y'):?>
 											<div class="item__stick-hit">
 												<span class="num"><i class="fa fa-thumbs-o-up"></i></span>
@@ -194,11 +194,13 @@ print_r($arItem);
 												<span class="num"><i class="fa fa-star-o"></i></span>
 												Выгода <b>2017</b>
 											</div>
+											<?endif;?>
 										</div>
 										<?endif;?>
 										<?if($arResult["PROPERTIES"]["M_BLACK_FRIDAY"]["VALUE"] == 'Y'):?>
 										<div class="item__black-friday"></div>
 										<?endif;?>
+										<?if($arResult["PROPERTIES"]["PRODUCT_OF_THE_DAY"]["VALUE"] == "Y"):?>
                                         <div class="item__timer">
                                             <i class="fa fa-clock-o"></i>
                                             <div class="soon"

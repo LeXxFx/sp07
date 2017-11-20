@@ -326,7 +326,7 @@ foreach ($arResult['ITEMS'] as $key => $arItem)
                                         </a>
                                     <?endif;?>
                                     </div>
-									<?if($arItem["PROPERTIES"]["M_HIT"]["VALUE"] == 'Y' && $arItem["PROPERTIES"]["M_SALE"]["VALUE"] == 'Y' && $arItem["MIN_PRICE"]["DISCOUNT_DIFF_PERCENT"] >=1):?>
+									<?if($arItem["PROPERTIES"]["M_HIT"]["VALUE"] == 'Y' || $arItem["PROPERTIES"]["M_SALE"]["VALUE"] == 'Y' || $arItem["MIN_PRICE"]["DISCOUNT_DIFF_PERCENT"] >=1):?>
 									<div class="item__stick">
 										<?if($arItem["PROPERTIES"]["M_HIT"]["VALUE"] == 'Y'):?>
 										<div class="item__stick-hit">

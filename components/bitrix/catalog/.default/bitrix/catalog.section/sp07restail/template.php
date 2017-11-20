@@ -303,7 +303,7 @@ foreach ($arResult['ITEMS'] as $key => $arItem)
 	?><?//echo "<pre>";print_r($arItem);echo "</pre>";?>
 	<div class="product-grid__item product__item" id="<? echo $strMainID; ?>">
             <div class="item__wrap item_<?=$arItem['ID']?>" id="product_container" data-block-type="catalog" data-id="<?=$arItem['ID']?>" data-tree='<?= json_encode($arItem['JS_OFFERS'])?>'>
-								<?if($arItem["PROPERTIES"]["M_HIT"]["VALUE"] == 'Y' && $arItem["PROPERTIES"]["M_SALE"]["VALUE"] == 'Y' && $arItem["MIN_PRICE"]["DISCOUNT_DIFF_PERCENT"] >= 1 && $arItem["PROPERTIES"]["PRODUCT_OF_THE_DAY"]["VALUE"] == 'Y'):?>
+								<?if($arItem["PROPERTIES"]["M_HIT"]["VALUE"] == 'Y' || $arItem["PROPERTIES"]["M_SALE"]["VALUE"] == 'Y' || $arItem["MIN_PRICE"]["DISCOUNT_DIFF_PERCENT"] >= 1 || $arItem["PROPERTIES"]["PRODUCT_OF_THE_DAY"]["VALUE"] == 'Y'):?>
 								<div class="item__stick">
 									<?if($arItem["PROPERTIES"]["M_HIT"]["VALUE"] == 'Y'):?>
 									<div class="item__stick-hit">
