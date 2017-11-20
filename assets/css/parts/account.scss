@@ -1,0 +1,99 @@
+.account {
+  &-login {
+    max-width: 1000px;
+    border-bottom: 1px solid #d7d7d7;
+    margin: 0 0 40px 0;
+    padding: 0 0 40px 0;
+  }
+  .form-horizontal {
+    font-size: 20px;
+    padding: 0 10px;
+    .form-group {
+      .form-control {
+        height: 50px;
+        border: 1px solid #cfcfcf;
+        background: #fcfcfc;
+        padding: 10px;
+        vertical-align: middle;
+        &:focus {
+          border-color: #abc5e3;
+          background: #fff;
+        }
+      }
+    }
+    .form-baton {
+      padding: 30px 0;
+      .col-btn {
+        text-align: right;
+        .btn {
+          background: $primary-color;
+          font-weight: bold;
+          color: #fff;
+          width: 180px;
+          height: 50px;
+          font-size: 26px;
+          &:hover {
+            background: darken($primary-color, 5%);
+          }
+        }
+      }
+    }
+    .form-bottom {
+      font-size: 24px;
+    }
+    a {
+      font-size: 24px;
+      text-decoration: underline;
+      color: $second-color;
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+  .form-checkbox {
+    input {
+      opacity: 0;
+      visibility: hidden;
+      position: absolute;
+      &:checked ~ span {
+        &:before {
+          background-position: -169px -147px;
+        }
+      }
+    }
+    span {
+      display: block;
+      font-size: 20px;
+      font-weight: 300;
+      color: #5b5b5c;
+      position: relative;
+      padding: 3px 0 0 50px;
+      cursor: pointer;
+      &:hover {
+        color: $second-color;
+      }
+      &:before {
+        content: "";
+        display: block;
+        background: url(../images/sprite.png) no-repeat -169px -182px;
+        width: 36px;
+        height: 35px;
+        position: absolute;
+        left: 0;
+        top: 0;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 992px) {
+
+}
+
+@media screen and (max-width: 767px) {
+
+}
+
+@media screen and (max-width: 480px) {
+
+}

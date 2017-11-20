@@ -2262,6 +2262,14 @@ blockquote {
       text-align: right;
       z-index: 2; }
 
+.bot-help {
+  font-size: 26px; }
+  .bot-help h2 {
+    font-size: 32px;
+    margin: 0 0 30px 0; }
+  .bot-help ol {
+    margin: 0 0 90px 0; }
+
 @media screen and (max-width: 992px) {
   #wrapper .inner {
     display: block; }
@@ -4248,3 +4256,66 @@ blockquote {
 @media screen and (max-width: 767px) {
   .post-content {
     padding: 10px; } }
+.account-login {
+  max-width: 1000px;
+  border-bottom: 1px solid #d7d7d7;
+  margin: 0 0 40px 0;
+  padding: 0 0 40px 0; }
+.account .form-horizontal {
+  font-size: 20px;
+  padding: 0 10px; }
+  .account .form-horizontal .form-group .form-control {
+    height: 50px;
+    border: 1px solid #cfcfcf;
+    background: #fcfcfc;
+    padding: 10px;
+    vertical-align: middle; }
+    .account .form-horizontal .form-group .form-control:focus {
+      border-color: #abc5e3;
+      background: #fff; }
+  .account .form-horizontal .form-baton {
+    padding: 30px 0; }
+    .account .form-horizontal .form-baton .col-btn {
+      text-align: right; }
+      .account .form-horizontal .form-baton .col-btn .btn {
+        background: #458909;
+        font-weight: bold;
+        color: #fff;
+        width: 180px;
+        height: 50px;
+        font-size: 26px; }
+        .account .form-horizontal .form-baton .col-btn .btn:hover {
+          background: #397107; }
+  .account .form-horizontal .form-bottom {
+    font-size: 24px; }
+  .account .form-horizontal a {
+    font-size: 24px;
+    text-decoration: underline;
+    color: #ef8701; }
+    .account .form-horizontal a:hover {
+      text-decoration: none; }
+.account .form-checkbox input {
+  opacity: 0;
+  visibility: hidden;
+  position: absolute; }
+  .account .form-checkbox input:checked ~ span:before {
+    background-position: -169px -147px; }
+.account .form-checkbox span {
+  display: block;
+  font-size: 20px;
+  font-weight: 300;
+  color: #5b5b5c;
+  position: relative;
+  padding: 3px 0 0 50px;
+  cursor: pointer; }
+  .account .form-checkbox span:hover {
+    color: #ef8701; }
+  .account .form-checkbox span:before {
+    content: "";
+    display: block;
+    background: url(../images/sprite.png) no-repeat -169px -182px;
+    width: 36px;
+    height: 35px;
+    position: absolute;
+    left: 0;
+    top: 0; }
