@@ -1,14 +1,8 @@
 <?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();?>		
         </div>
     </div>
-	<?//echo $APPLICATION->GetCurDir();?>
 
 	<?if ($APPLICATION->GetCurDir()=='/category/'){?>
-	<?//$APPLICATION->IncludeFile(
-		//SITE_DIR."include/footer/sp07restail_footer.php",
-		//Array(),
-	//	Array("MODE"=>"html")
-	//);?>
 
 	<div class="container">
         <section id="advants">
@@ -82,7 +76,6 @@
                             <li><a href="/delivery_pay/">Доставка и оплата</a></li>
                             <li><a href="/sales/">Скидки</a></li>
                             <li><a href="/return-exchange/">Гарантия и возврат</a></li>
-                            <!--<li><a href="#">Обратная связь</a></li>-->
                         </ul>
                     </div>
                     <div class="col-md-6">
@@ -108,7 +101,7 @@
                             </div>
                         </div>
                         <p>E-mail для вопросов и предложений: <a href="mailto:info@sport07.ru">info@sport07.ru</a></p>
-                        <a href="https://vk.com/sport07ru">Мы Вконтакте.</a>
+                        <a href="https://vk.com/sport07ru" rel="nofollow">Мы Вконтакте.</a>
                         <div class="schedule">
                             <div class="schedule__item">
                                 <i class="icon icon-grafik"></i>
@@ -137,7 +130,7 @@
                         <div class="yandex-review">
                             <img src="<?=SITE_TEMPLATE_PATH?>/assets/images/yandex_market.png" alt=""/>
                             <p>
-                                <a href="https://market.yandex.ru/shop/238585/reviews?clid=703" class="link-all">Оценить нас на Я.Маркете</a>
+                                <a href="https://market.yandex.ru/shop/238585/reviews?clid=703" rel="nofollow" class="link-all">Оценить нас на Я.Маркете</a>
                             </p>
                         </div>
                     </div>
@@ -145,7 +138,7 @@
                 <div class="col-md-5">
                     <div class="copyright">
                         <p>© Интернет-магазин спортивных товаров и инвентаря, 2017 г.</p>
-                        Сегодня наш сайт посмотрели <!--<img src="<?//=SITE_TEMPLATE_PATH?>/demo/stat.png" alt=""/>-->
+                        Сегодня наш сайт посмотрели
 						<!-- Yandex.Metrika informer -->
 						<a href="https://metrika.yandex.ru/stat/?id=19622830&amp;from=informer"
 						target="_blank" rel="nofollow"><img src="https://informer.yandex.ru/informer/19622830/1_0_2020ECFF_0000CCFF_1_pageviews"
@@ -303,7 +296,7 @@
     <script src="<?=SITE_TEMPLATE_PATH?>/assets/plugins/slick/slick.js"></script>
     <script src="<?=SITE_TEMPLATE_PATH?>/assets/plugins/soon-countdown/js/soon.min.js"></script>
     <script src="<?=SITE_TEMPLATE_PATH?>/assets/js/jquery.sticky-kit.min.js"></script>
-    <script src="<?=SITE_TEMPLATE_PATH?>/assets/js/jquery.maskedinput.js"></script>
+	<script src="<?=SITE_TEMPLATE_PATH?>/assets/plugins/jquery.maskedinput/jquery.mask.min.js"></script>
     <script src="<?=SITE_TEMPLATE_PATH?>/assets/js/masonry.pkgd.min.js" type="text/javascript"></script>
     <script src="<?=SITE_TEMPLATE_PATH?>/js/update.js" type="text/javascript"></script>
 

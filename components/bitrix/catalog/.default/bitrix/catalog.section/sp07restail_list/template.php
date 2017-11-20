@@ -291,7 +291,7 @@ foreach ($arResult['ITEMS'] as $key => $arItem)
 	?>
 	<div class="product-list__item product__item" id="<? echo $strMainID; ?>">
 	<div class="item__wrap item_<?=$arItem['ID']?>" id="product_container" data-id="<?=$arItem['ID']?>" data-tree='<?= json_encode($arItem['JS_OFFERS'])?>'>
-                                <div class="item__image <?if($arItem["PROPERTIES"]["M_HIT"]["VALUE"] != 'Y' || $arItem["PROPERTIES"]["M_SALE"]["VALUE"] != 'Y' || $arItem["PROPERTIES"]["PRODUCT_OF_THE_DAY"]["VALUE"] != 'Y'){echo 'item__image--nopadding';}?>">
+                                <div class="item__image <?if($arItem["PROPERTIES"]["M_HIT"]["VALUE"] != 'Y' && $arItem["PROPERTIES"]["M_SALE"]["VALUE"] != 'Y' && $arItem["MIN_PRICE"]["DISCOUNT_DIFF_PERCENT"] == 0 && $arItem["PROPERTIES"]["PRODUCT_OF_THE_DAY"]["VALUE"] != 'Y'){echo 'item__image--nopadding';}?>">
                                     <div class="imgs-list">
                                     	<?if (!empty($arItem['PREVIEW_PICTURE'])):?>
 	                                        <div class="item current">
@@ -326,17 +326,24 @@ foreach ($arResult['ITEMS'] as $key => $arItem)
                                         </a>
                                     <?endif;?>
                                     </div>
-									<?if($arItem["PROPERTIES"]["M_HIT"]["VALUE"] == 'Y'):?>
-									<div class="item__stick item__stick-hit">
-										<span class="num"><i class="fa fa-thumbs-o-up"></i></span>
-										Хит продаж!
+									<?if($arItem["PROPERTIES"]["M_HIT"]["VALUE"] == 'Y' && $arItem["PROPERTIES"]["M_SALE"]["VALUE"] == 'Y' && $arItem["MIN_PRICE"]["DISCOUNT_DIFF_PERCENT"] >=1):?>
+									<div class="item__stick">
+										<?if($arItem["PROPERTIES"]["M_HIT"]["VALUE"] == 'Y'):?>
+										<div class="item__stick-hit">
+											<span class="num"><i class="fa fa-thumbs-o-up"></i></span>
+											Хит продаж!
+										</div>
+										<?endif;?>
+										<?if($arItem["MIN_PRICE"]["DISCOUNT_DIFF_PERCENT"] >= 1):?>
+										<div class="item__stick-sale">
+											<span class="num"><?=$arItem["MIN_PRICE"]["DISCOUNT_DIFF_PERCENT"]?>%</span>
+											Sale
+										</div>
+										<?endif;?>
 									</div>
 									<?endif;?>
-									<?if($arItem["MIN_PRICE"]["DISCOUNT_DIFF_PERCENT"] >= 1):?>
-									<div class="item__stick item__stick-sale">
-                                    <span class="num"><?=$arItem["MIN_PRICE"]["DISCOUNT_DIFF_PERCENT"]?>%</span>
-                                    Sale
-									</div>
+									<?if($arItem["PROPERTIES"]["M_BLACK_FRIDAY"]["VALUE"] == "Y"):?>
+										<div class="item__black-friday"></div>
 									<?endif;?>
 									<?if($arItem["PROPERTIES"]["PRODUCT_OF_THE_DAY"]["VALUE"] == "Y"):?>
                                     <div class="item__stick item__stick-profit">
@@ -439,6 +446,22 @@ foreach ($arResult['ITEMS'] as $key => $arItem)
 										}
 										unset($arOneJs);
 										?>
+                                    </div>
+									<div class="item__counter">
+									<? 
+									if($arItem['CATALOG_QUANTITY'] >= 1){
+										$maxCcount =  $arItem['CATALOG_QUANTITY'];
+											if(50 <= $maxCcount){
+												$strcount = "<b>Наличие:</b><span><img src=\"/bitrix/templates/sp07restail/assets/images/cnt-big.png\" alt=\"\"></span>";
+											}elseif(20 <= $maxCcount && 49 >= $maxCcount){
+												$strcount = "<b>Наличие:</b><span><img src=\"/bitrix/templates/sp07restail/assets/images/cnt-midle.png\" alt=\"\"></span>";
+											}else{
+												$strcount = "<b>Наличие:</b><span><img src=\"/bitrix/templates/sp07restail/assets/images/cnt-little.png\" alt=\"\"></span>";
+											};
+										unset ($maxCcount);
+									}
+									?><?=$strcount;?>
+									<?unset($strcount);?>
                                     </div>
                                 </div>
                                 <div class="item__panel">

@@ -181,6 +181,7 @@
   transform: translate(0px, 30px);
   @include transition(all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275));
   max-width: 1200px;
+  width: 100%;
   .panel-sport {
     @include boxshadow(1px 1px 7px rgba(0, 0, 0, 0.4));
   }
@@ -200,7 +201,7 @@
   .slick-slider {
     .slick-slide {
       width: 260px;
-      margin: 0 8px;
+      margin: 0 8px 10px 8px;
     }
   }
   &--has-caorusel {

@@ -29,7 +29,11 @@ $this->addExternalJS("/bitrix/templates/sp07restail/js/other.js");
 		$('.widget.widget-filters').hide();
 	</script>
 <?endif;?>
-
+<?
+//echo "<pre>";
+//print_r($arResult["ITEMS"]);
+//echo "</pre>";
+?>
 <?
 if (!empty($arResult['ITEMS']))
 {?>
@@ -299,24 +303,33 @@ foreach ($arResult['ITEMS'] as $key => $arItem)
 	?><?//echo "<pre>";print_r($arItem);echo "</pre>";?>
 	<div class="product-grid__item product__item" id="<? echo $strMainID; ?>">
             <div class="item__wrap item_<?=$arItem['ID']?>" id="product_container" data-block-type="catalog" data-id="<?=$arItem['ID']?>" data-tree='<?= json_encode($arItem['JS_OFFERS'])?>'>
-								<?if($arItem["PROPERTIES"]["M_HIT"]["VALUE"] == 'Y'):?>
-								<div class="item__stick item__stick-hit">
-                                    <span class="num"><i class="fa fa-thumbs-o-up"></i></span>
-                                    Хит продаж!
-                                </div>
-								<?endif;?>
-								<?if($arItem["MIN_PRICE"]["DISCOUNT_DIFF_PERCENT"] >= 1):?>
-									<div class="item__stick item__stick-sale">
-                                    <span class="num"><?=$arItem["MIN_PRICE"]["DISCOUNT_DIFF_PERCENT"]?>%</span>
-                                    Sale
+								<?if($arItem["PROPERTIES"]["M_HIT"]["VALUE"] == 'Y' && $arItem["PROPERTIES"]["M_SALE"]["VALUE"] == 'Y' && $arItem["MIN_PRICE"]["DISCOUNT_DIFF_PERCENT"] >= 1 && $arItem["PROPERTIES"]["PRODUCT_OF_THE_DAY"]["VALUE"] == 'Y'):?>
+								<div class="item__stick">
+									<?if($arItem["PROPERTIES"]["M_HIT"]["VALUE"] == 'Y'):?>
+									<div class="item__stick-hit">
+										<span class="num"><i class="fa fa-thumbs-o-up"></i></span>
+										Хит продаж!
 									</div>
+									<?endif;?>
+									<?if($arItem["MIN_PRICE"]["DISCOUNT_DIFF_PERCENT"] >= 1):?>
+										<div class="item__stick-sale">
+										<span class="num"><?=$arItem["MIN_PRICE"]["DISCOUNT_DIFF_PERCENT"]?>%</span>
+										Sale
+										</div>
+									<?endif;?>
+									<?if($arItem["PROPERTIES"]["PRODUCT_OF_THE_DAY"]["VALUE"] == "Y"):?>
+									<div class="item__stick-profit">
+										<span class="num"><i class="fa fa-star-o"></i></span>
+										Выгода <b>2017</b><?//if (isset($arItem['OFFERS']) || !empty($arItem['OFFERS'])) echo ' o';?>
+									</div>
+									<?endif;?>
+								</div>
+								<?endif;?>
+								<?if($arItem["PROPERTIES"]["M_BLACK_FRIDAY"]["VALUE"] == 'Y'):?>
+								<div class="item__black-friday"></div>
 								<?endif;?>
 								<?if($arItem["PROPERTIES"]["PRODUCT_OF_THE_DAY"]["VALUE"] == "Y"):?>
-                                <div class="item__stick item__stick-profit">
-                                    <span class="num"><i class="fa fa-star-o"></i></span>
-                                    Выгода <b>2017</b><?//if (isset($arItem['OFFERS']) || !empty($arItem['OFFERS'])) echo ' o';?>
-                                </div>
-                                <div class="item__timer">
+								<div class="item__timer">
                                     <i class="fa fa-clock-o"></i>
                                     <div class="soon"
                                          data-due="<?=$date?>T<?=$time?>"
@@ -383,17 +396,16 @@ foreach ($arResult['ITEMS'] as $key => $arItem)
                                         <i class="icon icon-hand"></i>
                                     </button>
 									<?//echo "<pre>";print_r($arItem["OFFERS"]);echo "</pre>";?>
-                                    <button class="btn btn-add-to-cart addtobasket" data-field="quant[<?=$arItem['ID']?>]" data-amount="1" data-id="<?=$arItem["ID"]?>" data-price-id="<?=$arItem['OFFERS']['0']['CATALOG_PRICE_ID_2'];?>" title="Положить в корзину">
+									<?
+									//Для Руслана. Добавлено data-buy-url
+									?>
+                                    <button class="btn btn-add-to-cart addtobasket" data-buy-url="<?=$arItem["DETAIL_PAGE_URL"]?>" data-field="quant[<?=$arItem['ID']?>]" data-amount="1" data-id="<?=$arItem["ID"]?>" data-price-id="<?=$arItem['OFFERS']['0']['CATALOG_PRICE_ID_2'];?>" title="Положить в корзину">
                                         <i class="icon icon-cart-white"></i>
                                     </button>
                                 </div>
 
                                 <div class="item__product-options sku_props">
                                 	<?//print_r($skuTemplate);
-
-
-
-
                                     $curOffer = '';
 
                                     $PropIndex = 0;
@@ -417,20 +429,10 @@ foreach ($arResult['ITEMS'] as $key => $arItem)
 											unset($valueCount);
 											echo '<div>', str_replace(array('#ITEM#_prop_', '#WIDTH#', '#ELEMENT_ID#'), array($arItemIDs['PROP'], 'auto', $arItem['ID']), $rowTemplate['START']);
 
-
-
                                             foreach ($propTemplate['ITEMS'] as $value => $valueItem)
 											{
-
-
-
-
-
-
-
                                                 if (!isset($arItem['SKU_TREE_VALUES'][$propId][$value]))
 													continue;
-
 
                                                 $curOffer = '';
                                                 foreach($arItem["OFFERS"] as $offer){
@@ -438,79 +440,19 @@ foreach ($arResult['ITEMS'] as $key => $arItem)
                                                     {
                                                         if(!empty($ofProp["VALUE"]) && !empty($valueItem['XML_ID']))
                                                         {
-
-
                                                             if($ofProp["VALUE"] == $valueItem['XML_ID']){
-
-
-
                                                                 $curOffer = $offer;
-                                                            }
-
+															}
                                                         }
-
                                                     }
-
                                                 }
-
-
-
-
-/*
-                                                $curOffer = '';
-
-                                                    foreach($arItem["OFFERS"] as $offer)
-                                                    {
-
-                                                        if($offer["PROPERTIES"][$arProp["CODE"]]["VALUE"] == $arOneValue['XML_ID']){
-                                                            $curOffer = $offer;
-                                                        }
-                                                    }
-
-
-
-
-
-                                                foreach($arItem["OFFERS"] as $offer)
-                                                {
-                                                    foreach($offer["PROPERTIES"] as $prOffers)
-                                                    {
-
-
-                                                        if($prOffers["ID"]==$propId)
-                                                        {
-
-
-
-                                                           foreach($prOffers["VALUE"] as $propValOf)
-                                                           {
-
-                                                               if($propValOf==$valueItem)
-                                                               $curOffer = $offer;
-
-                                                           }
-
-                                                        }
-
-
-
-
-
-                                                    }
-
-                                                }
-*/
-												// echo str_replace(array('#ITEM#_prop_', '#WIDTH#', '#ELEMENT_ID#'), array($arItemIDs['PROP'], 'auto', $arItem['ID']), $valueItem);
 												echo str_replace(array('#ITEM#_prop_', '#WIDTH#', '#ELEMENT_ID#', '#MAX_QUANTITY#',"#PRICE_ID#" ), array($arItemIDs['PROP'], 'auto', $arItem['ID'],trim($arItem['OFFERS'][$PropIndex]['CATALOG_QUANTITY']),trim($curOffer['CATALOG_PRICE_ID_2'])), $valueItem["VALUE"]);//,
 												$PropIndex++;
-//                                                                                        debug($valueItem);
 											}
 											unset($value, $valueItem);
 											echo str_replace('#ITEM#_prop_', $arItemIDs['PROP'], $rowTemplate['FINISH']), '</div>';
 										}
 										unset($propId, $propTemplate);
-
-
 
 										foreach ($arResult['SKU_PROPS'] as $arOneProp)
 										{

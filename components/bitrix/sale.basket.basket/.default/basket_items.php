@@ -198,7 +198,7 @@ if ($normalCount > 0):
                             </div>
                         </td>
                         <td class="hidden-xs hidden-sm">
-							<div class="item__discont">
+							<div id="discount_value_<?=$arItem["ID"]?>" class="item__discont">
 								<?=$arItem["DISCOUNT_PRICE_PERCENT_FORMATED"];?>
 							</div>
                         </td>
@@ -367,7 +367,7 @@ if ($normalCount > 0):
 			}
 			?>
 			
-			<a href="<?=$_SERVER['HTTP_REFERER']?>" class="btn btn-default">Продолжить покупки</a>
+			<a href="<?if($_SERVER['HTTP_REFERER']){echo $_SERVER['HTTP_REFERER'];}else{echo "/";}?>" class="btn btn-default">Продолжить покупки</a>
 			<a href="javascript:void(0)" onclick="checkOut();" class="btn btn-primary"><?=GetMessage("SALE_ORDER")?></a>
 		</div>
 	</div>

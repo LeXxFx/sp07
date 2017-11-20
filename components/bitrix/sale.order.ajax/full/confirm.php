@@ -19,6 +19,7 @@ if ($arParams["SET_TITLE"] == "Y")
 	<table class="sale_order_full_table">
 		<tr>
 			<td>
+				<p>Уважаемый покупатель!</p>
 				<?=Loc::getMessage("SOA_ORDER_SUC", array(
 					"#ORDER_DATE#" => $arResult["ORDER"]["DATE_INSERT"],
 					"#ORDER_ID#" => $arResult["ORDER"]["ACCOUNT_NUMBER"]
@@ -29,7 +30,11 @@ if ($arParams["SET_TITLE"] == "Y")
 					))?>
 				<? endif ?>
 				<br /><br />
-				<?=Loc::getMessage("SOA_ORDER_SUC1", array("#LINK#" => $arParams["PATH_TO_PERSONAL"]))?>
+				<p>Менеджер свяжется с Вами, ожидайте пожалуйста, звонок.<br>
+				График обработки заказов: с понедельника по пятницу с 8.00 до 19.00<br>
+				В выходные и праздничные дни заказы не обрабатываются. Все заказы переносятся на следующий рабочий день.</p>
+				<?//=Loc::getMessage("SOA_ORDER_SUC1", array("#LINK#" => $arParams["PATH_TO_PERSONAL"]))?>
+				<p>Остались вопросы? Позвоните, пожалуйста, по бесплатному номеру 8-800-555-20-82</p>
 			</td>
 		</tr>
 	</table>

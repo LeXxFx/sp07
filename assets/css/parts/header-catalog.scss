@@ -13,7 +13,7 @@
 .col-catalog {
   margin-bottom: 17px;
   position: relative;
-  overflow: hidden;
+  /*overflow: hidden;*/
   > .btn {
     font-size: 25px;
     width: 270px;
@@ -103,12 +103,12 @@
           }
         }
 		&.has-child:hover {
-			> a {
-					background: #525151;
-					color: #fff;
-				}
-			}
-		}
+          > a {
+            background: #525151;
+            color: #fff;
+          }
+        }
+      }
       .submenu {
         @extend %close_submenu;
         position: absolute;
@@ -194,6 +194,7 @@
           transition: 0.5s;
           background: #eaeaea;
           border-radius: 0 4px 4px 0;
+          display: none;
           &:hover {
             > span {
               border-color: $second-color;

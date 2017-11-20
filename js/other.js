@@ -137,7 +137,20 @@ $(function() {
 			update_by_sku(prop.closest('#product_container'));
 			prop.closest('.product__item').find('.item__input-counter .count').attr('max', prop.data('prop-maxcount'));
 			prop.closest('.product-single').find('.item__input-counter .count').attr('max', prop.data('prop-maxcount'));
-
+			var maxCount = Number(prop.data('prop-maxcount'));
+			if(50 <= maxCount){
+				//console.log(maxCount);
+				prop.closest('.product-single').find('.item__counter').html('<b>Наличие:</b><span><img src="/bitrix/templates/sp07restail/assets/images/cnt-big.png" alt=""></span>');
+				prop.closest('.product__item').find('.item__counter').html('<b>Наличие:</b><span><img src="/bitrix/templates/sp07restail/assets/images/cnt-big.png" alt=""></span>');
+			}else if(20 <= maxCount && 49 >= maxCount){
+				//console.log(maxCount);
+				prop.closest('.product-single').find('.item__counter').html('<b>Наличие:</b><span><img src="/bitrix/templates/sp07restail/assets/images/cnt-midle.png" alt=""></span>');
+				prop.closest('.product__item').find('.item__counter').html('<b>Наличие:</b><span><img src="/bitrix/templates/sp07restail/assets/images/cnt-midle.png" alt=""></span>');
+			}else{
+				//console.log(maxCount);
+				prop.closest('.product-single').find('.item__counter').html('<b>Наличие:</b><span><img src="/bitrix/templates/sp07restail/assets/images/cnt-little.png" alt=""></span>');
+				prop.closest('.product__item').find('.item__counter').html('<b>Наличие:</b><span><img src="/bitrix/templates/sp07restail/assets/images/cnt-little.png" alt=""></span>');
+			}
 			CheckMaxQuantity(prop.closest('.product__item').find('.item__input-counter .count'));
 		}
     });
@@ -211,7 +224,7 @@ $(function() {
 
 
         if(typeof element_block.find(".sku_prop_value.active").data("value")!=="undefined"){
-            element_block.find(".addtobasket").attr("data-price-id", element_block.find(".sku_prop_value.active").attr("data-price-id"));
+            element_block.find(".addtobasket").attr("data-price-id", element_block.find(".sku_prop_value.active:last").attr("data-price-id"));
 
         }
 
@@ -230,7 +243,9 @@ $(function() {
                         element_block.find(".item__price .old").text(data.old_price);
                     if (data.id)
                         element_block.find(".buy-card-fast").attr("href", "/include/catalog/element/oneclick.php?id=" + data.id + "&priceid=" + data.price_id);
-                    if (data.section_image && element_block.find(".section-item-image").length > 0)
+					//Для Руслана. Попутно в кнопке меняем data-id
+						element_block.find(".addtobasket").attr("data-id", data.id);
+					if (data.section_image && element_block.find(".section-item-image").length > 0)
                         element_block.find(".section-item-image").attr("src", data.section_image);
                     if (data.photos_small) {
 						//console.log("отработало");
@@ -540,6 +555,7 @@ $(function() {
 	}
 
 	//$(".addtobasket").on("click", function(event) {
+		//Для Руслана. Добавил условие 
 	$("body").on("click" ,".addtobasket", function(event) {
 		event.preventDefault();
 		var active_props = [];
@@ -561,11 +577,14 @@ $(function() {
 		data_to_send["price_id"] = $(this).attr("data-price-id");
 		data_to_send["product_id"] = $(this).attr("data-id");
 		data_to_send["amount"] = $(this).attr("data-amount");
-		//console.log(data_to_send["product_id"]);
+		//console.log(data_to_send);
+		var buyUrl = $(this).data("buy-url");
+		var send_url_buy = buyUrl+"?&action=BUY&id="+data_to_send["product_id"]+"&quantity="+data_to_send["amount"];
+		//console.log(send_url_buy);
 		
 		var button = $(this);
-		//YaAddSku();
-		
+		//console.log(data_to_send['price_id']);
+		if(!data_to_send["price_id"]){
 		$.ajax({
 			url: "/bitrix/templates/sp07restail/php/add_to_cart.php",
 			data: data_to_send,
@@ -584,11 +603,23 @@ $(function() {
 				//console.log(data);
 				//console.log("простой товар ушел");
 				//updatepanel();
+				console.log("сюда");
 				UpdateFull.init();
 				YaAddSku();
 				action_update();
 			}
 		});
+		}else{
+			$.ajax({
+			url: send_url_buy,
+			type: 'GET',
+			success: function(data) {
+				UpdateFull.init();
+				YaAddSku();
+				action_update();
+			}
+		});
+		}
 		$(this).parent().parent().find(".cover-buy").show();
 	});
 
@@ -665,10 +696,10 @@ $(function() {
 		//delete_cookie ("alertBasket");
 		//set_cookie('alertBasketOpen', 'YES');
 		var xx = document.cookie;
-		console.log(xx);
+		//console.log(xx);
 		var x = get_cookie('alertBasket');
 		var d = get_cookie('alertBasketOpen');
-		console.log(x);
+		//console.log(x);
 		if(x == null){
 			document.cookie = "alertBasket="+dateNow;
 		}
@@ -684,7 +715,7 @@ $(function() {
 		if(dateNow - x > 172800){
 			document.cookie = "alertBasket="+dateNow;
 		}
-		console.log(x);
+		//console.log(x);
 		  $(document).bind('mousemove keydown scroll', function(){
 			clearTimeout(idleTimer); // отменяем прежний временной отрезок
 			//if(idleState == true){ 

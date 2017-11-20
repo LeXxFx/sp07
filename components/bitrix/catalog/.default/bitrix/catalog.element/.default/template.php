@@ -150,7 +150,7 @@ print_r($arItem);
                                                 unset($arOnePhoto);
                                                 ?>
                                         </div>
-                                        <div class="image__preview">
+                                        <div class="image__preview image__preview--init">
                                             <?/*if (!empty($arResult['PREVIEW_PICTURE'])):?>
                                                 <a href="<? echo $arResult['PREVIEW_PICTURE']['SRC']; ?>" class="MagicZoomPlus" rel="preload-selectors-small:false;preload-selectors-big:false;initialize-on:mouseover;smoothing-speed:70;fps:40;selectors-effect:false;show-title:false;loading-msg:Загрузка...;background-opacity:10;zoom-width:420;zoom-height:420;zoom-distance:5;hint-text:;selectors-class:current;buttons:hide;caption-source:span;">
                                                     <img src="<? echo $arResult['PREVIEW_PICTURE']['SRC']; ?>" alt=""/>
@@ -175,23 +175,30 @@ print_r($arItem);
                                         </div>
 										<? // print_r($arResult['MORE_PHOTO']);?>
 										<?//echo "<pre>";print_r($arResult);echo "</pre>";?>
-										<?if($arResult["PROPERTIES"]["M_HIT"]["VALUE"] == 'Y'):?>
-										<div class="item__stick item__stick-hit">
-											<span class="num"><i class="fa fa-thumbs-o-up"></i></span>
-											Хит продаж!
+										<?if($arResult["PROPERTIES"]["M_HIT"]["VALUE"] == 'Y' && $arResult["MIN_PRICE"]["DISCOUNT_DIFF_PERCENT"] >= 1 && $arResult["PROPERTIES"]["PRODUCT_OF_THE_DAY"]["VALUE"] == "Y"):?>
+										<div class="item__stick">
+											<?if($arResult["PROPERTIES"]["M_HIT"]["VALUE"] == 'Y'):?>
+											<div class="item__stick-hit">
+												<span class="num"><i class="fa fa-thumbs-o-up"></i></span>
+												Хит продаж!
+											</div>
+											<?endif;?>
+											<?if($arResult["MIN_PRICE"]["DISCOUNT_DIFF_PERCENT"] >= 1):?>
+											<div class="item__stick-sale">
+												<span class="num"><?=$arResult["MIN_PRICE"]["DISCOUNT_DIFF_PERCENT"]?>%</span>
+												Sale
+											</div>
+											<?endif;?>
+											<?if($arResult["PROPERTIES"]["PRODUCT_OF_THE_DAY"]["VALUE"] == "Y"):?>
+											<div class="item__stick item__stick-profit">
+												<span class="num"><i class="fa fa-star-o"></i></span>
+												Выгода <b>2017</b>
+											</div>
 										</div>
 										<?endif;?>
-										<?if($arResult["MIN_PRICE"]["DISCOUNT_DIFF_PERCENT"] >= 1):?>
-											<div class="item__stick item__stick-sale">
-											<span class="num"><?=$arResult["MIN_PRICE"]["DISCOUNT_DIFF_PERCENT"]?>%</span>
-											Sale
-											</div>
+										<?if($arResult["PROPERTIES"]["M_BLACK_FRIDAY"]["VALUE"] == 'Y'):?>
+										<div class="item__black-friday"></div>
 										<?endif;?>
-										<?if($arResult["PROPERTIES"]["PRODUCT_OF_THE_DAY"]["VALUE"] == "Y"):?>
-                                        <div class="item__stick item__stick-profit">
-                                            <span class="num"><i class="fa fa-star-o"></i></span>
-                                            Выгода <b>2017</b>
-                                        </div>
                                         <div class="item__timer">
                                             <i class="fa fa-clock-o"></i>
                                             <div class="soon"
@@ -202,7 +209,7 @@ print_r($arItem);
                                          data-labels-hours=":"
                                          data-labels-minutes=":"
                                          data-labels-seconds=" ">
-                                    </div>
+											</div>
                                         </div>
 										<?endif;?>
                                     </div>
@@ -233,11 +240,11 @@ print_r($arItem);
                                                 ?>
                                         </div>
                                         <? //                                                print_r($arResult);
-if (isset($arResult['OFFERS']) && !empty($arResult['OFFERS']) && !empty($arResult['OFFERS_PROP']))
-{
-	$productType = 1;
-    $arSkuProps = array();
-?>
+										if (isset($arResult['OFFERS']) && !empty($arResult['OFFERS']) && !empty($arResult['OFFERS_PROP']))
+										{
+											$productType = 1;
+											$arSkuProps = array();
+										?>
 <div class="item__product-options sku_props" id="<? echo $arItemIDs['PROP_DIV']; ?>">
 <?
     foreach ($arResult['SKU_PROPS'] as &$arProp)
@@ -331,11 +338,11 @@ if (isset($arResult['OFFERS']) && !empty($arResult['OFFERS']) && !empty($arResul
 	$productType = 0;
 }
 ?>
-                                        <div class="item__product-options product__type" data-product-type="<?=$productType?>">
+                                        <!-- <div class="item__product-options product__type" data-product-type="<?=$productType?>">
                                            
 
                                             
-                                     <!--        <div class="prop prop-color clearfix">
+                                            <div class="prop prop-color clearfix">
                                                 <div class="name">Цвет: </div>
                                                 <div class="values">
                                                     <div class="value">
@@ -348,8 +355,28 @@ if (isset($arResult['OFFERS']) && !empty($arResult['OFFERS']) && !empty($arResul
                                                         <img src="/bitrix/templates/sp07restail/assets/images/color_darkgrey.png" alt="">
                                                     </div>
                                                 </div>
-                                            </div> -->
-                                        </div>
+                                            </div> 
+                                        </div>-->
+										<?if(isset($arResult["OFFERS"])):?>
+										<div class="item__counter" style="margin-top:13px;">
+										<?else:?>
+										<div class="item__counter">
+										<?endif;?>
+										<?
+										if($arResult['CATALOG_QUANTITY'] >= 1){
+											$maxCcount =  $arResult['CATALOG_QUANTITY'];
+												if(50 <= $maxCcount){
+													$strcount = "<b>Наличие:</b><span><img src=\"/bitrix/templates/sp07restail/assets/images/cnt-big.png\" alt=\"\"></span>";
+												}elseif(20 <= $maxCcount && 49 >= $maxCcount){
+													$strcount = "<b>Наличие:</b><span><img src=\"/bitrix/templates/sp07restail/assets/images/cnt-midle.png\" alt=\"\"></span>";
+												}else{
+													$strcount = "<b>Наличие:</b><span><img src=\"/bitrix/templates/sp07restail/assets/images/cnt-little.png\" alt=\"\"></span>";
+												};
+											unset ($maxCcount);
+										}
+										?><?=$strcount;?>
+										<?unset($strcount);?>
+										</div>
                                     </div>
                                     <div class="item__panel">
                                         <div class="item__price">
@@ -380,7 +407,7 @@ if (isset($arResult['OFFERS']) && !empty($arResult['OFFERS']) && !empty($arResul
                                             <button class="btn btn-quick-buy bx_big bx_bt_button buy_one_click_popup" data-id="<?=$arResult['ID']?>" data-price-id="<?=$arResult['OFFERS']['0']['ID'];?>" title="Купить в один клик">
                                                 <i class="icon icon-hand"></i>
                                             </button>
-                                            <button class="btn btn-add-to-cart addtobasket" data-amount="1" data-id="<?=$arResult["ID"]?>" data-price-id="<?=$arResult['OFFERS'][0]['CATALOG_PRICE_ID_2'];?>" title="Положить в корзинупростой">
+                                            <button class="btn btn-add-to-cart addtobasket" data-amount="1" data-buy-url="<?=$arItem["DETAIL_PAGE_URL"]?>" data-id="<?=$arResult["ID"]?>" data-price-id="<?=$arResult['OFFERS'][0]['CATALOG_PRICE_ID_2'];?>" title="Положить в корзинупростой">
                                                 <i class="icon icon-cart-white"></i>
                                             </button>
                                         </div>
@@ -504,7 +531,7 @@ if (isset($arResult['OFFERS']) && !empty($arResult['OFFERS']) && !empty($arResul
                                         <button class="btn btn-quick-buy bx_big bx_bt_button buy_one_click_popup" data-id="<?=$arResult['ID']?>" data-price-id="<?=$arResult['OFFERS']['0']['ID'];?>"  title="Купить в один клик">
                                             <i class="icon icon-hand"></i>
                                         </button>
-                                        <button class="btn btn-add-to-cart addtobasket" data-amount="1" data-id="<?=$arResult["ID"]?>" data-price-id="<?=$arResult['OFFERS'][0]['CATALOG_PRICE_ID_2'];?>" title="Положить в корзину">
+                                        <button class="btn btn-add-to-cart addtobasket" data-amount="1" data-buy-url="<?=$arResult["DETAIL_PAGE_URL"]?>" data-id="<?=$arResult["ID"]?>" data-price-id="<?=$arResult['OFFERS'][0]['CATALOG_PRICE_ID_2'];?>" title="Положить в корзину">
                                             <i class="icon icon-cart-white"></i>
                                         </button>
                                     </div>
