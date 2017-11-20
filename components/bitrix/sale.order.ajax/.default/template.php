@@ -136,7 +136,7 @@ switch (LANGUAGE_ID)
 $this->addExternalCss('/bitrix/css/main/bootstrap.css');
 $APPLICATION->SetAdditionalCSS('/bitrix/css/main/themes/'.$arParams['TEMPLATE_THEME'].'/style.css', true);
 $APPLICATION->SetAdditionalCSS($templateFolder.'/style.css', true);
-// $this->addExternalJs($templateFolder.'/order_ajax.js');
+//$this->addExternalJs($templateFolder.'/order_ajax.js');
 \Bitrix\Sale\PropertyValueCollection::initJs();
 
 $this->addExternalJs($templateFolder.'/script.js');
@@ -192,9 +192,9 @@ $this->addExternalJs($scheme.'://api-maps.yandex.ru/2.1.34/?load=package.full&la
             BXFormPosting = false;
             return;
         }
-        else if (json.order.REDIRECT_URL)
+        else if (json['redirect'])
         {
-            window.top.location.href = json.order.REDIRECT_URL;
+            window.top.location.href = json['redirect'];
         }else if (json.order.ERROR)
         {
             $('#error_field').html('');
@@ -221,6 +221,7 @@ else
 {
 	$hideDelivery = empty($arResult['DELIVERY']);
 	?>
+<?//echo "<pre>";print_r($arResult);echo "</pre>";?>
 <!-- bx-soa-order-form  -->
 	<form action="<?=$APPLICATION->GetCurPage();?>" method="POST" name="ORDER_FORM" id="ORDER_FORM" enctype="multipart/form-data">
 		<?
@@ -367,11 +368,16 @@ else
                                             <div class="col-sm-7">
                                                 <div class="checkout-radio-list">
                                                     <?$i=0?>
-													<?//echo "<pre>"; print_r($arResult["DELIVERY"]); echo "</pre>";?>
+													<?//echo "<pre>"; print_r($arResult); echo "</pre>";?>
                                                     <?foreach($arResult['DELIVERY'] as $key => $arDelivery):?>
 													<?//echo "<pre>";print_r($arDelivery);echo "</pre>";?>
 														<?
 														$arDeliv = CSaleDelivery::GetByID($arDelivery["ID"]);
+														//$dbResultList = \Bitrix\Sale\Delivery\Services\Manager::getById($arDelivery["ID"]);
+														
+														//echo "<pre>";
+														//print_r($arDeliv);
+														//echo "</pre>";
 														?>
                                                         <!--<div class="item">
                                                             <label>
@@ -381,8 +387,8 @@ else
                                                         </div>-->
 														<div class="item">
                                                             <label>
-                                                                <input type="radio" <?=($i==0)?'checked="checked"':'';?> name="<?= htmlspecialcharsbx($arDelivery["FIELD_NAME"]) ?>" value="<?= $arDelivery["ID"] ?>" class="checkout_delivery" data-price-nf="<?=$arDeliv["PRICE"]//=$arDelivery['PRICE']?>" data-desc="<?=$arDelivery['DESCRIPTION'];?>" data-name="<?=$arDelivery['NAME'];?>" data-price="<?=$arDeliv["PRICE"]." руб"//=$arDelivery['PRICE_FORMATED'];?>" />
-                                                                <b><?=$arDelivery['NAME'];?></b> (<?=$arDeliv["PRICE"]." руб"//=$arDelivery['PRICE_FORMATED'];?>)
+                                                                <input type="radio" <?=($i==0)?'checked="checked"':'';?> name="<?= htmlspecialcharsbx($arDelivery["FIELD_NAME"]) ?>" value="<?= $arDelivery["ID"] ?>" class="checkout_delivery" data-price-nf="<?if($arResult["DELIVERY_PRICE"] == 0){echo $arResult["DELIVERY_PRICE"];}else{echo $arDeliv["PRICE"];}?>" data-desc="<?=$arDelivery['DESCRIPTION'];?>" data-name="<?=$arDelivery['NAME'];?>" data-price="<?if($arResult["DELIVERY_PRICE"] == 0){echo "бесплатно";}else{echo $arDeliv["PRICE"];}?>" />
+                                                                <b><?=$arDelivery['NAME'];?></b> (<?if($arResult["DELIVERY_PRICE"] == 0){echo "бесплатно";}else{echo $arDeliv['PRICE']." руб.";}?>)
                                                             </label>
                                                         </div>
                                                         <?
@@ -398,7 +404,7 @@ else
                                                 <div class="delivary__info">
                                                     <div class="info__heading"><?=$capt['NAME']?></div>
                                                     <p><?=$capt['DESCRIPTION']?></p>
-                                                    <p>Стоимость: <b><?=$capt['PRICE_FORMATED']?></b></p>
+                                                    <p>Стоимость: <b><?if(!empty($capt["DELIVERY_DISCOUNT_PRICE_FORMATED"])){echo "бесплатно";}else{ echo $capt['PRICE_FORMATED'];}?></b></p>
                                                 </div>
                                             </div>
                                         </div>
@@ -541,16 +547,23 @@ else
                             <table class="checkout-result__suma">
                                 <tbody><tr>
                                     <td>Товаров на</td>
-                                    <td class="suma-value suma-tovar"><?=$arResult['PRICE_WITHOUT_DISCOUNT'];?></td>
+                                    <td class="suma-value suma-tovar"><?=$arResult["JS_DATA"]['TOTAL']["ORDER_PRICE_FORMATED"];?></td>
                                 </tr>
+								<?
+								//echo "<pre>";
+								//print_r($arResult["JS_DATA"]["TOTAL"]);
+								//echo "</pre>";
+								?>
                                 <!-- <tr>
                                     <td><span>Бонус 5%</span></td>
                                     <td class="suma-value label-alert">234 руб.</td>
+                                </tr>-->
+                                <?if($arResult["JS_DATA"]["TOTAL"]["DISCOUNT_PRICE"] >= 1):?>
+								<tr>
+                                    <td><span>Скидка</span></td>
+                                    <td class="suma-value label-alert discount"><?=$arResult["JS_DATA"]["TOTAL"]["DISCOUNT_PRICE_FORMATED"]?></td>
                                 </tr>
-                                <tr>
-                                    <td><span>Скидка 5%</span></td>
-                                    <td class="suma-value label-alert">-327 руб.</td>
-                                </tr> -->
+								<?endif;?>
                                 <tr>
                                     <td>Доставка</td>
                                     <td class="suma-value sum-delivery">0 руб.</td>
@@ -558,7 +571,7 @@ else
                                 <tr><td colspan="2"><hr></td></tr>
                                 <tr>
                                     <td>Всего:</td>
-                                    <td class="suma-value"><?=$arResult['PRICE_WITHOUT_DISCOUNT'];?>
+                                    <td class="suma-value"><?=$arResult["JS_DATA"]['TOTAL']["ORDER_TOTAL_PRICE_FORMATED"];?>
                                         
                                     </td>
                                 </tr>

@@ -120,91 +120,11 @@ if (!empty($arResult['ITEMS']))
 <? } ?>
 <div class="bx_catalog_list_home col<? echo $arParams['LINE_ELEMENT_COUNT']; ?> <? echo $templateData['TEMPLATE_CLASS']; ?>">
 	<?
+
+
 foreach ($arResult['ITEMS'] as $key => $arItem)
 {
 
-	?>
-<div class="product-grid__item product__item">
-                            <div class="item__wrap">
-                                <div class="item__stick item__stick-profit">
-                                    <span class="num"><i class="fa fa-star-o"></i></span>
-                                    Выгода <b>2017</b>
-                                </div>
-                                <div class="item__timer">
-                                    <i class="fa fa-clock-o"></i>
-                                    <div class="soon" data-due="2017-03-31T22:05" data-layout="line" data-format="h,m,s" data-labels-days=":" data-labels-hours=":" data-labels-minutes=":" data-labels-seconds=" " data-initialized="true" data-scale="m">
-                                    <span class="soon-group " data-value="1000"><span class="soon-group-inner"><span class="soon-group soon-group-sub" data-value="0"><span class="soon-group-inner"><span class="soon-repeater soon-value "><span class="soon-text ">0</span></span><span class="soon-text soon-label">:</span></span></span><span class="soon-group soon-group-sub" data-value="0"><span class="soon-group-inner"><span class="soon-repeater soon-value "><span class="soon-text ">0</span><span class="soon-text ">0</span></span><span class="soon-text soon-label">:</span></span></span><span class="soon-group soon-group-sub" data-value="0"><span class="soon-group-inner"><span class="soon-repeater soon-value "><span class="soon-text ">0</span><span class="soon-text ">0</span></span><span class="soon-text soon-label"> </span></span></span></span></span></div>
-                                </div>
-                                <a href="product.html">
-                                    <div class="item__image">
-                                        <img src="demo/product_img1.png" alt="">
-                                    </div>
-                                    <div class="item__name">
-                                        Кимоно для карате БОЕЦЪ
-                                    </div>
-                                </a>
-                                <div class="item__price">
-                                    <span class="new">1480</span>
-                                    <span class="currency">руб.</span>
-                                </div>
-                                <div class="item__rate">
-                                    <span class="stars star-0"></span>
-                                </div>
-                                <div class="item__input-counter">
-                                    <button type="button" class="btn btn-minus btn-number" data-type="minus" data-field="quant[2]">
-                                        -
-                                    </button>
-                                    <div class="input-group-text">
-                                        <input type="text" name="quant[2]" class="form-control input-number input-area" value="1" min="1" max="100000" data-step="1" data-unit="">
-                                    </div>
-                                    <button type="button" class="btn btn-plus btn-number" data-type="plus" data-field="quant[2]">
-                                        +
-                                    </button>
-                                </div>
-                                <div class="item__buttons">
-                                    <button class="btn btn-quick-buy" title="Купить в один клик">
-                                        <i class="icon icon-hand"></i>
-                                    </button>
-                                    <button class="btn btn-add-to-cart" title="Положить в корзину">
-                                        <i class="icon icon-cart-white"></i>
-                                    </button>
-                                </div>
-                                <div class="item__product-options">
-                                    <div class="prop prop-size clearfix">
-                                        <div class="name">Размер: </div>
-                                        <div class="values">
-                                            <div class="value">
-                                                <span>s 37</span>
-                                            </div>
-                                            <div class="value active">
-                                                <span>xl 40</span>
-                                            </div>
-                                            <div class="value">
-                                                <span>xxl 45</span>
-                                            </div>
-                                            <div class="value">
-                                                <span>xxxl 47</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="prop prop-color clearfix">
-                                        <div class="name">Цвет: </div>
-                                        <div class="values">
-                                            <div class="value">
-                                                <img src="assets/images/color_white.png" alt="">
-                                            </div>
-                                            <div class="value active">
-                                                <img src="assets/images/color_grey.png" alt="">
-                                            </div>
-                                            <div class="value">
-                                                <img src="assets/images/color_darkgrey.png" alt="">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-	<?
 	$this->AddEditAction($arItem['ID'], $arItem['EDIT_LINK'], $strElementEdit);
 	$this->AddDeleteAction($arItem['ID'], $arItem['DELETE_LINK'], $strElementDelete, $arElementDeleteParams);
 	$strMainID = $this->GetEditAreaId($arItem['ID']);

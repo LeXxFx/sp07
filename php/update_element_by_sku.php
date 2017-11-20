@@ -13,7 +13,7 @@ $arFilter = array();
 foreach($_GET["props"] as $key => $value) {
 	$arFilter["PROPERTY_".$key] = $value;
 }
-
+$fields = array("BUY_URL");
 $res = CCatalogSKU::getOffersList(
 	$_GET["element_id"],
 	0,

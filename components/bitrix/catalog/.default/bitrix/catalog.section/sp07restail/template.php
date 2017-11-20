@@ -29,7 +29,11 @@ $this->addExternalJS("/bitrix/templates/sp07restail/js/other.js");
 		$('.widget.widget-filters').hide();
 	</script>
 <?endif;?>
-
+<?
+//echo "<pre>";
+//print_r($arResult["ITEMS"]);
+//echo "</pre>";
+?>
 <?
 if (!empty($arResult['ITEMS']))
 {?>
@@ -74,7 +78,7 @@ if (!empty($arResult['ITEMS']))
                                 <?endif;?>
                                 <?if($_GET['order']=='new' && $_GET['sort']=='desc'):?>
                                 <?else:?>
-                                <a class="dropdown-item" href="?SECTION_ID=<?=$_GET['SECTION_ID']?>&order=new&sort=desc">Сортировка: по новизне</a>
+                                <a class="dropdown-item" href="?SECTION_ID=<?=$_GET['SECTION_ID']?>&order=new&sort=desc">по новизне</a>
                                 <?endif;?>
                                 <!-- <a class="dropdown-item" href="#">Something else here</a> -->
                             </div>
@@ -128,11 +132,19 @@ if (!empty($arResult['ITEMS']))
 	);
 	unset($currencyList, $templateLibrary);
 
+
+
+
+
+
 	$skuTemplate = array();
 	if (!empty($arResult['SKU_PROPS']))
 	{
+
 		foreach ($arResult['SKU_PROPS'] as $arProp)
 		{
+
+
 			$propId = $arProp['ID'];
 			$skuTemplate[$propId] = array(
 				'SCROLL' => array(
@@ -145,6 +157,7 @@ if (!empty($arResult['ITEMS']))
 				),
 				'ITEMS' => array()
 			);
+
 			$templateRow = '';
 			if ('TEXT' == $arProp['SHOW_MODE'])
 			{
@@ -152,7 +165,7 @@ if (!empty($arResult['ITEMS']))
 				$skuTemplate[$propId]['SCROLL']['FINISH'] = '</div></div>';
 
 				$skuTemplate[$propId]['FULL']['START'] = '<div class="prop prop-size sku_prop clearfix" data-element-id="#ELEMENT_ID#" data-prop-id="'.$arProp['ID'].'" data-prop-code="'.$arProp["CODE"].'"><div class="name">'.htmlspecialcharsex($arProp['NAME']).': </div><div class="values">';
-				$skuTemplate[$propId]['FULL']['FINISH'] = '</div></div>';				
+				$skuTemplate[$propId]['FULL']['FINISH'] = '</div></div>';
 
 				// $skuTemplate[$propId]['FULL']['START'] = '<div class="bx_item_detail_size" id="#ITEM#_prop_'.$propId.'_cont">'.
 				// 	'<span class="bx_item_section_name_gray">'.htmlspecialcharsbx($arProp['NAME']).'</span>'.
@@ -161,13 +174,24 @@ if (!empty($arResult['ITEMS']))
 				// 	'<div class="bx_slide_left" id="#ITEM#_prop_'.$propId.'_left" data-treevalue="'.$propId.'" style="display: none;"></div>'.
 				// 	'<div class="bx_slide_right" id="#ITEM#_prop_'.$propId.'_right" data-treevalue="'.$propId.'" style="display: none;"></div>'.
 				// 	'</div></div>';
-				foreach ($arProp['VALUES'] as $arOneValue)
+
+
+                foreach ($arProp['VALUES'] as $arOneValue)
 				{
+
+
+
+
+
+
+
 					$arOneValue['NAME'] = htmlspecialcharsbx($arOneValue['NAME']);
 					//$skuTemplate[$propId]['ITEMS'][$value['ID']] = '<li data-treevalue="'.$propId.'_'.$value['ID'].'" data-onevalue="'.$value['ID'].'" style="width: #WIDTH#;" title="'.$value['NAME'].'"><i></i><span class="cnt">'.$value['NAME'].'</span></li>';
-					$skuTemplate[$propId]['ITEMS'][$arOneValue['ID']] = '<div class="value sku_prop_value" data-prop-maxcount="#MAX_QUANTITY#" data-value="'.$arOneValue["NAME"].'" data-value-id="'.$arOneValue['XML_ID'].'" data-treevalue="'.$arProp['ID'].'_'.$arOneValue['ID'].'" data-onevalue="'.$arOneValue['ID'].'"><span>'.$arOneValue['NAME'].'</span></div>';
+					$skuTemplate[$propId]['ITEMS'][$arOneValue['ID']]["VALUE"] = '<div class="value sku_prop_value" data-price-id="#PRICE_ID#" data-prop-maxcount="#MAX_QUANTITY#" data-value="'.$arOneValue["NAME"].'" data-value-id="'.$arOneValue['XML_ID'].'" data-treevalue="'.$arProp['ID'].'_'.$arOneValue['ID'].'" data-onevalue="'.$arOneValue['ID'].'"><span>'.$arOneValue['NAME'].'</span></div>';
 
-				}
+                     $skuTemplate[$propId]['ITEMS'][$arOneValue['ID']]["XML_ID"] = $arOneValue['XML_ID'];
+
+                }
 				unset($value);
 			}
 			elseif ('PICT' == $arProp['SHOW_MODE'])
@@ -175,13 +199,18 @@ if (!empty($arResult['ITEMS']))
 				$skuTemplate[$propId]['SCROLL']['START'] = '<div class="prop prop-color sku_prop clearfix" data-element-id="#ELEMENT_ID#" data-prop-id="'.$arProp['ID'].'" data-prop-code="'.$arProp["CODE"].'"><div class="name">'.htmlspecialcharsex($arProp['NAME']).': </div><div class="values">';
 				$skuTemplate[$propId]['SCROLL']['FINISH'] = '</div></div>';
 				$skuTemplate[$propId]['FULL']['START'] = '<div class="prop prop-color sku_prop clearfix" data-element-id="#ELEMENT_ID#" data-prop-id="'.$arProp['ID'].'" data-prop-code="'.$arProp["CODE"].'"><div class="name">'.htmlspecialcharsex($arProp['NAME']).': </div><div class="values">';
-				$skuTemplate[$propId]['FULL']['FINISH'] = '</div></div>';				
+				$skuTemplate[$propId]['FULL']['FINISH'] = '</div></div>';
 
 				foreach ($arProp['VALUES'] as $arOneValue)
 				{
+
+
+
+
 					$arOneValue['NAME'] = htmlspecialcharsbx($arOneValue['NAME']);
-					$skuTemplate[$propId]['ITEMS'][$arOneValue['ID']] = '<div class="value sku_prop_value" data-prop-maxcount="#MAX_QUANTITY#" data-value="'.$arOneValue["NAME"].'" data-value-id="'.$arOneValue['XML_ID'].'" data-treevalue="'.$arOneValue['ID'].'" data-onevalue="'.$arOneValue['ID'].'" style="height: 40px;"><img width="40px" src="'.$arOneValue['PICT']['SRC'].'" alt="'.$arOneValue["NAME"].'" title="'.$arOneValue["NAME"].'" /></div>';
-				}
+					$skuTemplate[$propId]['ITEMS'][$arOneValue['ID']]["VALUE"] = '<div class="value sku_prop_value" data-price-id="#PRICE_ID#" data-prop-maxcount="#MAX_QUANTITY#" data-value="'.$arOneValue["NAME"].'" data-value-id="'.$arOneValue['XML_ID'].'" data-treevalue="'.$arOneValue['ID'].'" data-onevalue="'.$arOneValue['ID'].'" style="height: 40px;"><img width="40px" src="'.$arOneValue['PICT']['SRC'].'" alt="'.$arOneValue["NAME"].'" title="'.$arOneValue["NAME"].'" /></div>';
+                    $skuTemplate[$propId]['ITEMS'][$arOneValue['ID']]["XML_ID"] = $arOneValue['XML_ID'];
+                }
 				unset($value);
 			}
 		}
@@ -200,9 +229,21 @@ if (!empty($arResult['ITEMS']))
 ?>
 <div class="bx_catalog_list_home col<? echo $arParams['LINE_ELEMENT_COUNT']; ?> <? echo $templateData['TEMPLATE_CLASS']; ?>">
 <div class="product-grid clearfix">
+<!--RestartBuffer-->
 	<?
+
 foreach ($arResult['ITEMS'] as $key => $arItem)
 {
+
+
+    /*
+ foreach($arItem["OFFERS"] as $off)
+ {
+     echo "<pre>";
+     print_r($off["PROPERTIES"][CML2_ATTRIBUTES]);
+     echo "</pre>";
+ }
+    */
 	$this->AddEditAction($arItem['ID'], $arItem['EDIT_LINK'], $strElementEdit);
 	$this->AddDeleteAction($arItem['ID'], $arItem['DELETE_LINK'], $strElementDelete, $arElementDeleteParams);
 	$strMainID = $this->GetEditAreaId($arItem['ID']);
@@ -256,15 +297,39 @@ foreach ($arResult['ITEMS'] as $key => $arItem)
 	$str = $arItem["PROPERTIES"]["DATE_TO_OFFER"]["VALUE"];
 	$result = substr(strstr($str, ' '), 1, strlen($str));
 	$time = mb_strimwidth($result, 0, 5);
-	?>
+	//echo $arItem["PROPERTIES"]["M_NEW"]["VALUE"];
+	//echo $arItem["PROPERTIES"]["M_SALE"]["VALUE"];
+	//echo $arItem["PROPERTIES"]["M_HIT"]["VALUE"];
+	?><?//echo "<pre>";print_r($arItem);echo "</pre>";?>
 	<div class="product-grid__item product__item" id="<? echo $strMainID; ?>">
             <div class="item__wrap item_<?=$arItem['ID']?>" id="product_container" data-block-type="catalog" data-id="<?=$arItem['ID']?>" data-tree='<?= json_encode($arItem['JS_OFFERS'])?>'>
+								<?if($arItem["PROPERTIES"]["M_HIT"]["VALUE"] == 'Y' && $arItem["PROPERTIES"]["M_SALE"]["VALUE"] == 'Y' && $arItem["MIN_PRICE"]["DISCOUNT_DIFF_PERCENT"] >= 1 && $arItem["PROPERTIES"]["PRODUCT_OF_THE_DAY"]["VALUE"] == 'Y'):?>
+								<div class="item__stick">
+									<?if($arItem["PROPERTIES"]["M_HIT"]["VALUE"] == 'Y'):?>
+									<div class="item__stick-hit">
+										<span class="num"><i class="fa fa-thumbs-o-up"></i></span>
+										Хит продаж!
+									</div>
+									<?endif;?>
+									<?if($arItem["MIN_PRICE"]["DISCOUNT_DIFF_PERCENT"] >= 1):?>
+										<div class="item__stick-sale">
+										<span class="num"><?=$arItem["MIN_PRICE"]["DISCOUNT_DIFF_PERCENT"]?>%</span>
+										Sale
+										</div>
+									<?endif;?>
+									<?if($arItem["PROPERTIES"]["PRODUCT_OF_THE_DAY"]["VALUE"] == "Y"):?>
+									<div class="item__stick-profit">
+										<span class="num"><i class="fa fa-star-o"></i></span>
+										Выгода <b>2017</b><?//if (isset($arItem['OFFERS']) || !empty($arItem['OFFERS'])) echo ' o';?>
+									</div>
+									<?endif;?>
+								</div>
+								<?endif;?>
+								<?if($arItem["PROPERTIES"]["M_BLACK_FRIDAY"]["VALUE"] == 'Y'):?>
+								<div class="item__black-friday"></div>
+								<?endif;?>
 								<?if($arItem["PROPERTIES"]["PRODUCT_OF_THE_DAY"]["VALUE"] == "Y"):?>
-                                <div class="item__stick item__stick-profit">
-                                    <span class="num"><i class="fa fa-star-o"></i></span>
-                                    Выгода <b>2017</b><?//if (isset($arItem['OFFERS']) || !empty($arItem['OFFERS'])) echo ' o';?>
-                                </div>
-                                <div class="item__timer">
+								<div class="item__timer">
                                     <i class="fa fa-clock-o"></i>
                                     <div class="soon"
                                          data-due="<?=$date?>T<?=$time?>"
@@ -287,6 +352,9 @@ foreach ($arResult['ITEMS'] as $key => $arItem)
                                 </a>
                                 <div class="item__price">
                                 <!-- $arItem['PROPERTIES']['MINIMUM_PRICE_2']['VALUE'] -->
+									<?if($arItem["MIN_PRICE"]["DISCOUNT_DIFF_PERCENT"] >= 1):?>
+									<span class="old"><?=$arItem['MIN_PRICE']['VALUE'];?></span>
+									<?endif;?>
                                     <span class="new"><? echo round($arItem['MIN_PRICE']['DISCOUNT_VALUE'],0); ?></span>
                                     <span class="currency">руб.</span>
                                 </div>
@@ -327,15 +395,20 @@ foreach ($arResult['ITEMS'] as $key => $arItem)
                                     <button class="btn btn-quick-buy bx_big bx_bt_button buy_one_click_popup" data-id="<?=$arItem['ID']?>" data-price-id="<?=$arItem['OFFERS2']['ID']?>" title="Купить в один клик">
                                         <i class="icon icon-hand"></i>
                                     </button>
-
-                                    <button class="btn btn-add-to-cart addtobasket" data-field="quant[<?=$arItem['ID']?>]" data-amount="1" data-id="<?=$arItem["ID"]?>" data-price-id="<?=$arItem['OFFERS']['0']['CATALOG_PRICE_ID_2'];?>" title="Положить в корзину">
+									<?//echo "<pre>";print_r($arItem["OFFERS"]);echo "</pre>";?>
+									<?
+									//Для Руслана. Добавлено data-buy-url
+									?>
+                                    <button class="btn btn-add-to-cart addtobasket" data-buy-url="<?=$arItem["DETAIL_PAGE_URL"]?>" data-field="quant[<?=$arItem['ID']?>]" data-amount="1" data-id="<?=$arItem["ID"]?>" data-price-id="<?=$arItem['OFFERS']['0']['CATALOG_PRICE_ID_2'];?>" title="Положить в корзину">
                                         <i class="icon icon-cart-white"></i>
                                     </button>
                                 </div>
 
                                 <div class="item__product-options sku_props">
-                                	<?
-	                                	$PropIndex = 0;
+                                	<?//print_r($skuTemplate);
+                                    $curOffer = '';
+
+                                    $PropIndex = 0;
 						                foreach ($skuTemplate as $propId => $propTemplate)
 										{
 											if (!isset($arItem['SKU_TREE_VALUES'][$propId]))
@@ -355,19 +428,32 @@ foreach ($arResult['ITEMS'] as $key => $arItem)
 											}
 											unset($valueCount);
 											echo '<div>', str_replace(array('#ITEM#_prop_', '#WIDTH#', '#ELEMENT_ID#'), array($arItemIDs['PROP'], 'auto', $arItem['ID']), $rowTemplate['START']);
-											foreach ($propTemplate['ITEMS'] as $value => $valueItem)
+
+                                            foreach ($propTemplate['ITEMS'] as $value => $valueItem)
 											{
-												if (!isset($arItem['SKU_TREE_VALUES'][$propId][$value]))
+                                                if (!isset($arItem['SKU_TREE_VALUES'][$propId][$value]))
 													continue;
-												// echo str_replace(array('#ITEM#_prop_', '#WIDTH#', '#ELEMENT_ID#'), array($arItemIDs['PROP'], 'auto', $arItem['ID']), $valueItem);
-												echo str_replace(array('#ITEM#_prop_', '#WIDTH#', '#ELEMENT_ID#', '#MAX_QUANTITY#'), array($arItemIDs['PROP'], 'auto', $arItem['ID'],trim($arItem['OFFERS'][$PropIndex]['CATALOG_QUANTITY'])), $valueItem);
+
+                                                $curOffer = '';
+                                                foreach($arItem["OFFERS"] as $offer){
+                                                    foreach($offer["PROPERTIES"] as $ofProp)
+                                                    {
+                                                        if(!empty($ofProp["VALUE"]) && !empty($valueItem['XML_ID']))
+                                                        {
+                                                            if($ofProp["VALUE"] == $valueItem['XML_ID']){
+                                                                $curOffer = $offer;
+															}
+                                                        }
+                                                    }
+                                                }
+												echo str_replace(array('#ITEM#_prop_', '#WIDTH#', '#ELEMENT_ID#', '#MAX_QUANTITY#',"#PRICE_ID#" ), array($arItemIDs['PROP'], 'auto', $arItem['ID'],trim($arItem['OFFERS'][$PropIndex]['CATALOG_QUANTITY']),trim($curOffer['CATALOG_PRICE_ID_2'])), $valueItem["VALUE"]);//,
 												$PropIndex++;
-//                                                                                        debug($valueItem);
 											}
 											unset($value, $valueItem);
 											echo str_replace('#ITEM#_prop_', $arItemIDs['PROP'], $rowTemplate['FINISH']), '</div>';
 										}
 										unset($propId, $propTemplate);
+
 										foreach ($arResult['SKU_PROPS'] as $arOneProp)
 										{
 											if (!isset($arItem['OFFERS_PROP'][$arOneProp['CODE']]))
@@ -391,11 +477,33 @@ foreach ($arResult['ITEMS'] as $key => $arItem)
 									</div>
 	</div>
 	</div>
-
-
 <?}?>
 <div style="clear: both;"></div>
 </div>
+<?php
+$paramName = 'PAGEN_'.$arResult['NAV_RESULT']->NavNum;
+$paramValue = $arResult['NAV_RESULT']->NavPageNomer;
+$pageCount = $arResult['NAV_RESULT']->NavPageCount;
+if ($paramValue < $pageCount) {
+    $paramValue = (int) $paramValue + 1;
+    $url = htmlspecialcharsbx(
+        $APPLICATION->GetCurPageParam(
+            sprintf('%s=%s', $paramName, $paramValue), 
+            array($paramName, 'AJAX_PAGE',)
+        )
+    );
+	echo sprintf('
+	<div class="ajax-pager-wrap">
+	<div class="panel-pager clearfix">
+		<div class="pager-navigation">
+			<a href="%s" class="ajax-load btn btn-primary" data-catalog-type="grid" data-type-load="ajax">Показать еще</a>
+		</div>
+	</div>
+	</div>',
+        $url);
+}
+?>
+<!--RestartBuffer-->
 </div>
 <script type="text/javascript">
 BX.message({
@@ -418,8 +526,8 @@ BX.message({
 </script>
 <?//debug($arResult['ITEMS'][0]['JS_OFFERS'])?>
 <?
-	if ($arParams["DISPLAY_BOTTOM_PAGER"])
-	{
-		?><? echo $arResult["NAV_STRING"]; ?><?
-	}
+	//if ($arParams["DISPLAY_BOTTOM_PAGER"])
+	//{
+		?><?// echo $arResult["NAV_STRING"]; ?><?
+	//}
 }

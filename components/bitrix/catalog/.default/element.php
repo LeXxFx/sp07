@@ -266,10 +266,12 @@ else
 		'SHOW_CLOSE_POPUP' => isset($arParams['COMMON_SHOW_CLOSE_POPUP']) ? $arParams['COMMON_SHOW_CLOSE_POPUP'] : '',
 		'DISPLAY_COMPARE' => (isset($arParams['USE_COMPARE']) ? $arParams['USE_COMPARE'] : ''),
 		'COMPARE_PATH' => $arResult['FOLDER'].$arResult['URL_TEMPLATES']['compare'],
-		'SHOW_BASIS_PRICE' => (isset($arParams['DETAIL_SHOW_BASIS_PRICE']) ? $arParams['DETAIL_SHOW_BASIS_PRICE'] : 'Y')
+		'SHOW_BASIS_PRICE' => (isset($arParams['DETAIL_SHOW_BASIS_PRICE']) ? $arParams['DETAIL_SHOW_BASIS_PRICE'] : 'Y'),
+		"CURRENT_OFFER" => intval($_REQUEST["offer"]) > 0 ? intval($_REQUEST["offer"]) : 0
 	),
 	$component
-);?><?
+);?>
+<?
 $GLOBALS["CATALOG_CURRENT_ELEMENT_ID"] = $ElementID;
 unset($basketAction);
 if ($ElementID > 0)

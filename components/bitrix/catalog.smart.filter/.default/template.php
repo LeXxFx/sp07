@@ -2,43 +2,11 @@
 $this->setFrameMode(true);
 $this->addExternalJS("/bitrix/templates/sp07restail/js/filter.js");
 ?>
-<!-- 
-                            <div class="widget widget-filters">
-                            <div class="widget-filters__item filter__size">
-                                <div class="filter__top">Размер</div>
-                                <ul class="filter__list">
-                                    <li><a href="#">120 см (2)</a></li>
-                                    <li class="filter__active"><a href="#">130 см (3)</a></li>
-                                    <li><a href="#">140 см (2)</a></li>
-                                    <li><a href="#">150 см (5)</a></li>
-                                    <li><a href="#">160 см (5)</a></li>
-                                </ul>
-                                <ul class="filter__list filter__list2 list-hidden">
-                                    <li><a href="#">120 см (2)</a></li>
-                                    <li><a href="#">130 см (3)</a></li>
-                                    <li><a href="#">140 см (2)</a></li>
-                                    <li><a href="#">150 см (5)</a></li>
-                                    <li><a href="#">160 см (5)</a></li>
-                                </ul>
-                                <div class="link-show-more collapsed">
-                                    <a href="#" data-target=".filter__list2">
-                                        Показать еще
-                                        <i class="fa fa-angle-down"></i>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="widget-filters__item filter__age">
-                                <div class="filter__top">Возраст</div>
-                                <ul class="filter__list">
-                                    <li><a href="#">Детские (13)</a></li>
-                                    <li><a href="#">Взрослые (7)</a></li>
-                                </ul>
-                            </div>
-                            <div class="widget-filters__item filter__discont">
-                                <a class="btn filter__active" href="#">Товары со скидкой (7)</a>
-                            </div>
-                        </div>
-                         -->
+<?
+//echo "<pre>";
+//print_r($arResult);
+//echo "</pre>";
+?>
 <div class="widget widget-filters">
 		<form name="<?=$arResult["FILTER_NAME"]."_form"?>" action="<?=$arResult["FORM_ACTION"]?>" method="get" class="smartfilter">
 			<?foreach($arResult["HIDDEN"] as $arItem):?>
@@ -101,14 +69,14 @@ $this->addExternalJS("/bitrix/templates/sp07restail/js/filter.js");
 			</div>
 		</form>
 </div>
-<!--<div class="link-propose">
+<div class="link-propose">
     <a class="btn" href="#" data-dismiss="modal" data-toggle="modal" data-target="#modal_callback">Нет нужного товара?</a>
 </div>
-<div class="widget widget-discont">
+<!--<div class="widget widget-discont">
     <a href=""><img src="/bitrix/templates/sp07restail/demo/discont.png" alt=""></a>
-</div>
+</div>-->
 <div class="widget widget-delivary">
     <div class="widget-delivary__inner">
-        <b>Доставим бесплатно</b> в указанное место, при покупке на сумму <br> от 5000 р.
+        <b>Доставим бесплатно*</b> доставим бесплатно в указанное место при покупке на сумму от 5000<br>* не распространяется на заказы весом более 10 кг и на регионы.<br>
     </div>
-</div>-->
+</div>
