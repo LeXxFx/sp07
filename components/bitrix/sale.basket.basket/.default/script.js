@@ -1130,6 +1130,7 @@ function recalcBasketAjax(params)
 		dataType: 'json',
 		onsuccess: function(result)
 		{
+			console.log(result);
 			BX.closeWait();
 			basketPoolQuantity.setProcessing(false);
 

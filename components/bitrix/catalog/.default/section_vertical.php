@@ -4,7 +4,7 @@ use Bitrix\Main\Loader,
 	Bitrix\Main\ModuleManager;?>
 
 <div class="inner">
-
+<?//echo "<pre>";print_r($arParams);echo "</pre>";?>
 
 <?
 if(preg_match("/\/store\/(?<section>[^\/]+)\//si",$_SERVER['REQUEST_URI'],$out))
@@ -20,6 +20,7 @@ if(preg_match("/\/store\/(?<section>[^\/]+)\//si",$_SERVER['REQUEST_URI'],$out))
 }else{
 	$section_id='';
 }
+
 ?>
 
 	 <?$APPLICATION->IncludeComponent(
@@ -76,7 +77,7 @@ if(preg_match("/\/store\/(?<section>[^\/]+)\//si",$_SERVER['REQUEST_URI'],$out))
 $component
 );?>
 	<div id="content" role="main">
-<?				if(ModuleManager::isModuleInstalled("sale"))
+<?	 			if(ModuleManager::isModuleInstalled("sale"))
 				{
 					$arRecomData = array();
 					$recomCacheID = array('IBLOCK_ID' => $arParams['IBLOCK_ID']);
@@ -157,7 +158,8 @@ $component
 						);
 					}
 				}
-			?>
+
+	?>
 		
 		
 	<?$APPLICATION->IncludeComponent(
@@ -184,6 +186,7 @@ $component
 	);?><?
 	if($arParams["USE_COMPARE"]=="Y")
 	{
+
 		?><?$APPLICATION->IncludeComponent(
 			"bitrix:catalog.compare.list",
 			"",
@@ -209,6 +212,8 @@ $component
 		$basketAction = (isset($arParams['SECTION_ADD_TO_BASKET_ACTION']) ? $arParams['SECTION_ADD_TO_BASKET_ACTION'] : '');
 
 	$intSectionID = 0;
+
+
 	?>
 	<?$intSectionID = $APPLICATION->IncludeComponent(
 		"bitrix:catalog.section",

@@ -241,10 +241,15 @@ if (!empty($arResult['ITEMS']))
 			$arItem['OFFERS'] = array();
 		}
 
+
+
 		if ($arItem['CATALOG'] && isset($arItem['OFFERS']) && !empty($arItem['OFFERS']))
 		{
+
+
 			if ('Y' == $arParams['PRODUCT_DISPLAY_MODE'])
 			{
+
 				$arMatrixFields = $arSKUPropKeys;
 				$arMatrix = array();
 
@@ -358,6 +363,8 @@ if (!empty($arResult['ITEMS']))
 				$intSelected = -1;
 				$arItem['MIN_PRICE'] = false;
 				$arItem['MIN_BASIS_PRICE'] = false;
+
+
 				foreach ($arItem['OFFERS'] as $keyOffer => $arOffer)
 				{
 					if (empty($arItem['MIN_PRICE']))
@@ -411,6 +418,8 @@ if (!empty($arResult['ITEMS']))
 						'CAN_BUY' => $arOffer['CAN_BUY'],
 					);
 					$arMatrix[$keyOffer] = $arOneRow;
+
+
 				}
 				if (-1 == $intSelected)
 				{

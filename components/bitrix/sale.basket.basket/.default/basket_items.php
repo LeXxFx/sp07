@@ -16,7 +16,7 @@ if ($normalCount > 0):
 ?>
 
 <div id="cart">
-	<div class="bx_ordercart_order_table_container cart-table">
+	<div class="cart-table">
 		<table id="basket_items">
             <colgroup>
                 <col />
@@ -198,6 +198,9 @@ if ($normalCount > 0):
                             </div>
                         </td>
                         <td class="hidden-xs hidden-sm">
+							<div id="discount_value_<?=$arItem["ID"]?>" class="item__discont">
+								<?=$arItem["DISCOUNT_PRICE_PERCENT_FORMATED"];?>
+							</div>
                         </td>
                         <td id="basket_quantity_control">
                             <div class="item__input-counter basket_quantity_control">
@@ -364,7 +367,7 @@ if ($normalCount > 0):
 			}
 			?>
 			
-			<a href="<?=$_SERVER['HTTP_REFERER']?>" class="btn btn-default">Продолжить покупки</a>
+			<a href="<?if($_SERVER['HTTP_REFERER']){echo $_SERVER['HTTP_REFERER'];}else{echo "/";}?>" class="btn btn-default">Продолжить покупки</a>
 			<a href="javascript:void(0)" onclick="checkOut();" class="btn btn-primary"><?=GetMessage("SALE_ORDER")?></a>
 		</div>
 	</div>

@@ -3,6 +3,19 @@
 /** @var @global CMain $APPLICATION */
 use Bitrix\Main\Loader;
 global $APPLICATION;
+if (isset($_GET['PAGEN_1'])) {
+ 
+    $content = ob_get_contents();
+    ob_end_clean();
+ 
+    $APPLICATION->RestartBuffer();
+ 
+    list(, $content_html) = explode('<!--RestartBuffer-->', $content);
+ 
+    echo $content_html;
+ 
+    die();
+}
 if (isset($templateData['TEMPLATE_THEME']))
 {
 	$APPLICATION->SetAdditionalCSS($templateData['TEMPLATE_THEME']);

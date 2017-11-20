@@ -4,7 +4,7 @@ $this->setFrameMode(true);
 <div id="sidebar">
 <aside class="">
 	<div class="widget widget-catalog">
-
+<?//echo "<pre>";print_r($arParams);echo "</pre>";?>
 <?
 if(preg_match("/\/store\/(?<section>[^\/]+)\//si",$_SERVER['REQUEST_URI'],$out))
 {?>

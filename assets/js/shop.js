@@ -1,4 +1,20 @@
 ﻿$(function() {
+	$('body').find('.sku_prop').each(function(){
+		$(this).find('.sku_prop_value:first-child').click();
+	});
+
+	$('.next-step').click(function(){
+		$(this).closest('.checkout-step__item').next().find('.checkout-step__heading a').click();
+		return false;
+	});
+
+	$('.prev-step').click(function(){
+		$(this).closest('.checkout-step__item').prev().find('.checkout-step__heading a').click();
+		return false;
+	});	
+});
+
+$(function() {
 	$('.sku_prop').each(function(){
 		$(this).find('.sku_prop_value:first-child').click();
 	});
