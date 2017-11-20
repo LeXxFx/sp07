@@ -565,6 +565,25 @@
 }
 
 @media screen and (max-width: 767px) {
+  .product-grid {
+    display: flex;
+    flex-wrap: wrap;
+    &__item {
+      vertical-align: top;
+      height: auto;
+      flex: 1 1 260px;
+      .item {
+        &__wrap {
+          height: auto;
+          min-height: 100%;
+        }
+        &__product-options {
+          display: block;
+          opacity: 1
+        }
+      }
+    }
+  }
   .product-list {
     .item__wrap {
       flex-wrap: wrap;

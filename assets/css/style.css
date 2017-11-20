@@ -618,7 +618,7 @@ blockquote {
     top: 100%;
     left: 0;
     margin: -10px 0 0 0;
-    z-index: 100;
+    z-index: 1000;
     visibility: hidden;
     opacity: 0;
     transform: translate(0, 30px);
@@ -1188,21 +1188,28 @@ blockquote {
       .viewed-list .panel-sport__close {
         width: 40px; } }
 @media screen and (max-width: 767px) {
-  #option_panel .option-panel__viewed > a:after {
-    right: -20px; }
-  #option_panel .option-panel__search .col-search .search-input {
-    width: 100%; }
-  #option_panel .option-panel__cart {
-    line-height: 34px;
-    margin-left: 0; }
-    #option_panel .option-panel__cart:before {
-      left: -20px; }
-    #option_panel .option-panel__cart > span {
-      font-size: 12px;
+  #option_panel .option-panel {
+    text-align: right;
+    justify-content: flex-end; }
+    #option_panel .option-panel__viewed {
       display: none; }
-    #option_panel .option-panel__cart .num {
-      margin: 0 5px;
-      display: inline-block; }
+      #option_panel .option-panel__viewed > a:after {
+        right: -20px; }
+    #option_panel .option-panel__search .col-search .search-input {
+      width: 100%; }
+    #option_panel .option-panel__cart {
+      line-height: 34px;
+      margin-left: 0; }
+      #option_panel .option-panel__cart:before {
+        left: -20px;
+        display: none; }
+      #option_panel .option-panel__cart > span {
+        font-size: 12px;
+        display: none; }
+      #option_panel .option-panel__cart .num {
+        margin: 0 5px;
+        display: inline-block;
+        padding: 4px 7px 2px 7px; }
 
   .viewed-list {
     max-width: 320px; } }
@@ -2229,6 +2236,32 @@ blockquote {
 .popular-list .catalog .catalog__list .catalog__item {
   width: 25%; }
 
+.options-view p {
+  position: relative;
+  font-size: 18px; }
+  .options-view p:before {
+    content: '';
+    position: absolute;
+    bottom: .4rem;
+    width: 100%;
+    height: 0;
+    line-height: 0;
+    border-bottom: 1px dotted #222222; }
+  .options-view p span {
+    display: inline-block; }
+    .options-view p span.name {
+      padding-right: 5px;
+      background: #fff;
+      position: relative;
+      z-index: 2; }
+    .options-view p span.value {
+      background: #fff;
+      position: absolute;
+      right: 0;
+      padding-left: 5px;
+      text-align: right;
+      z-index: 2; }
+
 @media screen and (max-width: 992px) {
   #wrapper .inner {
     display: block; }
@@ -2258,7 +2291,10 @@ blockquote {
       width: 40px; } }
 @media screen and (max-width: 767px) {
   #content .catalog .catalog__list .catalog__item {
-    width: 50%; } }
+    width: 50%; }
+
+  .options-view p {
+    font-size: 13px; } }
 @media screen and (max-width: 480px) {
   #content .catalog .catalog__list .catalog__item {
     width: 100%; } }
@@ -2580,7 +2616,7 @@ blockquote {
           color: #222222;
           position: absolute;
           bottom: 100%;
-          line-height: 1.1;
+          line-height: 1.4;
           visibility: hidden;
           transition: transform 0.3s ease;
           transform: translateY(5px); }
@@ -3086,6 +3122,20 @@ blockquote {
   .product__item .item__buttons .btn {
     margin: 0 5px; } }
 @media screen and (max-width: 767px) {
+  .product-grid {
+    display: flex;
+    flex-wrap: wrap; }
+    .product-grid__item {
+      vertical-align: top;
+      height: auto;
+      flex: 1 1 260px; }
+      .product-grid__item .item__wrap {
+        height: auto;
+        min-height: 100%; }
+      .product-grid__item .item__product-options {
+        display: block;
+        opacity: 1; }
+
   .product-list .item__wrap {
     flex-wrap: wrap; }
   .product-list__item .item__panel {
@@ -3205,7 +3255,8 @@ blockquote {
           margin: 0 0 5px 0; }
     .product-single__price .panel__advants {
       background: #fff;
-      text-align: left; }
+      text-align: left;
+      margin-left: 1px; }
       .product-single__price .panel__advants .advants__item {
         border-bottom: 1px solid #e5e5e5;
         padding: 10px 0;
@@ -3528,7 +3579,7 @@ blockquote {
         border-top: 1px solid #e5e5e5;
         padding: 10px 0; }
         .product-single__body .product__item .item__wrap .item__panel > div {
-          max-width: 220px; }
+          max-width: 100%; }
           .product-single__body .product__item .item__wrap .item__panel > div.item__delivary {
             display: none; }
     .product-single .user-activity .product-reviews .panel-pager .col-button {

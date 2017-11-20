@@ -289,7 +289,10 @@
 @media screen and (max-width: 767px) {
   #option_panel {
     .option-panel {
+      text-align: right;
+      justify-content: flex-end;
       &__viewed {
+        display: none;
         > a {
           &:after {
             right: -20px;
@@ -308,6 +311,7 @@
         margin-left: 0;
         &:before {
           left: -20px;
+          display: none;
         }
         > span {
           font-size: 12px;
@@ -316,6 +320,7 @@
         .num {
           margin: 0 5px;
           display: inline-block;
+          padding: 4px 7px 2px 7px;
         }
       }
     }
