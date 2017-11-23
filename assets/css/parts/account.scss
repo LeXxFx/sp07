@@ -1,13 +1,10 @@
 .account {
-  &-login {
-    max-width: 1000px;
-    border-bottom: 1px solid #d7d7d7;
-    margin: 0 0 40px 0;
-    padding: 0 0 40px 0;
-  }
+  padding: 20px 0 40px 0;
+
   .form-horizontal {
     font-size: 20px;
     padding: 0 10px;
+    max-width: 1000px;
     .form-group {
       .form-control {
         height: 50px;
@@ -15,10 +12,18 @@
         background: #fcfcfc;
         padding: 10px;
         vertical-align: middle;
+        border-radius: 0;
+        transition: .3s;
         &:focus {
           border-color: #abc5e3;
           background: #fff;
         }
+        &.has-error {
+          border-color: #a00808 !important;
+        }
+      }
+      .control-label {
+        padding-top: 12px;
       }
     }
     .form-baton {
@@ -31,6 +36,7 @@
           color: #fff;
           width: 180px;
           height: 50px;
+          padding: 6px 20px;
           font-size: 26px;
           &:hover {
             background: darken($primary-color, 5%);
@@ -42,11 +48,26 @@
       font-size: 24px;
     }
     a {
-      font-size: 24px;
+      font-size: 1em;
       text-decoration: underline;
       color: $second-color;
       &:hover {
         text-decoration: none;
+      }
+    }
+    .form-captcha {
+      .control-label {
+        padding-top: 5px;
+      }
+      &__image {
+        border: 1px solid #cfcfcf;
+        background: #fcfcfc;
+        height: 50%;
+        margin-bottom: 5px;
+        img {
+          width: auto;
+          max-height: 50px;
+        }
       }
     }
   }
@@ -84,16 +105,502 @@
       }
     }
   }
+  &-login {
+    border-bottom: 1px solid #d7d7d7;
+    margin: 0 0 40px 0;
+  }
+  &-registration {
+    .form-horizontal {
+      .control-label {
+        text-align: left;
+        font-size: 20px;
+      }
+      .form-baton {
+        .col-btn {
+          .btn {
+            width: auto;
+            min-width: 280px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.cabinet {
+  padding: 20px 0;
+  margin: 0 0 30px 0;
+  .page-nav {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 25px 0;
+    display: flex;
+    align-content: center;
+    > li {
+      margin: 0 140px 0 0;
+      &:last-child {
+        margin: 0;
+      }
+      > a {
+        color: #222222;
+        font-size: 22px;
+        font-weight: bold;
+        padding: 10px 30px;
+        height: 50px;
+        background: transparent;
+        border: 1px solid transparent;
+        &:hover {
+          color: $second-color;
+          span {
+            border-color: $second-color;
+          }
+        }
+        span {
+          border-bottom: 3px dotted #222;
+          display: inline-block;
+        }
+      }
+      &.active {
+        a {
+          cursor: default;
+          color: #363a47;
+          background: #f6f6f6;
+          border: 1px solid #e6e6e6;
+          span {
+            border-bottom-color: transparent;
+          }
+        }
+      }
+    }
+  }
+  .change-password {
+    padding: 100px 0 60px 0;
+    display: flex;
+    align-content: center;
+    justify-content: space-between;
+    white-space: nowrap;
+    .form-control {
+      flex: 0 0 170px;
+      height: 50px;
+    }
+
+    .form-checkbox {
+      position: relative;
+      flex: 0 0 240px;
+      input {
+        opacity: 0;
+        visibility: hidden;
+        position: absolute;
+        &:checked ~ span {
+          &:before {
+            background-position: -169px -147px;
+          }
+        }
+      }
+      span {
+        display: inline-block;
+        font-size: 20px;
+        font-weight: bold;
+        color: #222;
+        white-space: nowrap;
+        position: relative;
+        padding: 6px 75px 0 0;
+        cursor: pointer;
+        &:hover {
+          color: $second-color;
+        }
+        &:before {
+          content: "";
+          display: block;
+          background: url(../images/sprite.png) no-repeat -169px -182px;
+          width: 36px;
+          height: 35px;
+          position: absolute;
+          left: auto;
+          right: 0;
+          top: 5px;
+        }
+      }
+    }
+  }
+  .history-nav {
+    display: flex;
+    margin: 0 0 30px 0;
+    &__item {
+      width: 200px;
+      height: 200px;
+      background: #fcfcfc;
+      transition: background-color .3s;
+      text-align: center;
+      padding: 10px;
+
+      &:hover {
+        background: #f6f6f6;
+        text-decoration: none;
+      }
+      &.active {
+        background: #d7d7d7;
+      }
+      .nav-label {
+        font-size: 26px;
+        line-height: 1;
+        font-weight: bold;
+        color: #222;
+        display: block;
+      }
+      .nav-icon {
+        height: 115px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        text-align: center;
+        &:after {
+          content: "";
+          display: inline-block;
+          background: url(../images/icon_cabient.png) no-repeat;
+        }
+        &-1 {
+          padding-right: 25px;
+          &:after {
+            background-position: 0 0;
+            width: 77px;
+            height: 77px;
+          }
+        }
+        &-2 {
+          &:after {
+            background-position: -85px -19px;
+            width: 80px;
+            height: 59px;
+          }
+        }
+        &-3 {
+          &:after {
+            background-position: -172px -11px;
+            width: 67px;
+            height: 67px;
+          }
+        }
+        &-4 {
+          &:after {
+            background-position: -246px -12px;
+            width: 65px;
+            height: 66px;
+          }
+        }
+        &-5 {
+          &:after {
+            background-position: -315px -12px;
+            width: 65px;
+            height: 66px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.order-list {
+  max-width: 1000px;
+  .order-item {
+    border-bottom: 1px solid #d7d7d7;
+    &__top {
+      a {
+        font-size: 26px;
+        text-shadow: 1px 0 0 #222;
+        color: #222;
+        display: block;
+        padding: 15px 0;
+        &:hover {
+          text-shadow: 1px 0 0 $second-color;
+          color: $second-color;
+          text-decoration: none;
+        }
+        &.collapsed {
+          text-shadow: none;
+        }
+      }
+    }
+    &__details {
+      font-size: 18px;
+      .order-top {
+        display: flex;
+        justify-content: space-between;
+        padding: 15px 0 0 0;
+
+        &__info {
+          margin: 0 0 15px 0;
+          p {
+            margin: 0;
+          }
+        }
+        &__btn {
+          margin: 0 10px 15px 0;
+          .btn {
+            width: 190px;
+            padding: 6px 20px;
+            font-size: 26px;
+            font-weight: bold;
+          }
+        }
+      }
+      .order-products {
+        margin: 0 0 20px 0;
+        p {
+          font-weight: bold;
+          margin: 0;
+        }
+        a {
+          display: block;
+          font-weight: 300;
+          color: #222;
+          line-height: 1.2;
+          margin: 0 0 5px 0;
+          &:hover {
+            color: $second-color;
+          }
+        }
+      }
+      .order-bot {
+        text-align: right;
+        padding: 0 0 25px 0;
+        .btn {
+          border: none;
+          color: #222;
+          font-size: 18px;
+          &:hover {
+            text-decoration: underline;
+            color: $second-color;
+          }
+          &-green {
+            color: #fff;
+            font-weight: bold;
+            margin: 0 20px 0 0;
+            &:hover {
+              text-decoration: none;
+              color: #fff;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.order-promo {
+  margin: 30px 0;
+  h2 {
+    margin: 20px 0 5px 0;
+    font-size: 26px;
+    font-weight: bold;
+    color: $second-color;
+  }
+  p {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0 0 25px 0;
+  }
+  .btn {
+    font-size: 26px;
+    font-weight: bold;
+  }
 }
 
 @media screen and (max-width: 992px) {
 
+  .cabinet {
+    .change-password {
+      padding: 50px 0 30px 0;
+      .control-label {
+        font-size: 16px;
+      }
+      .form-control {
+        flex: 0 0 120px;
+        height: 40px;
+      }
+    }
+    .history-nav {
+      &__item {
+        height: 140px;
+        .nav-icon {
+          height: 90px;
+        }
+        .nav-label {
+          font-size: 15px;
+        }
+      }
+    }
+  }
+
+  .order-list {
+    .order-item {
+      &__top {
+        a {
+          font-size: 14px;
+        }
+      }
+      &__details {
+        font-size: 14px;
+        .order-top__btn .btn {
+          font-size: 16px;
+        }
+      }
+    }
+  }
+
 }
 
 @media screen and (max-width: 767px) {
+  .account {
+    .form-horizontal {
+      font-size: 16px;
+      .form-group {
+        .form-control {
+          height: 40px;
+          font-size: 16px;
+        }
+        .control-label {
+          padding-top: 8px;
+          font-size: 16px;
+        }
+      }
+      .form-baton {
+        .col-btn {
+          .btn {
+            font-size: 16px;
+            min-width: 180px;
+            height: 40px;
+          }
+        }
+      }
+    }
+    &-login {
+      padding: 0;
+    }
+    .form-checkbox {
+      span {
+        font-size: 16px;
+        &:before {
+          top: 5px;
+        }
+      }
+    }
+    .form-horizontal {
+      .form-baton {
+        padding: 0;
+        a {
+          display: block;
+          font-size: 16px;
+          margin: 0 0 15px 0;
+          text-align: right;
+        }
+      }
+      .form-bottom {
+        font-size: 16px;
+      }
+      .text-right {
+        text-align: left;
+        padding-top: 10px;
+      }
+    }
+  }
+  .bot-help {
+    font-size: 16px;
+    h2 {
+      font-size: 20px;
+    }
+    ol {
+      margin: 0 0 20px 0;
+      padding: 0 0 0 20px;
+    }
+  }
+  .cabinet {
+    padding: 0;
+    .page-nav {
+      text-align: center;
+      > li {
+        margin: 0;
+        > a {
+          font-size: 16px;
+          padding: 7px 10px;
+          height: 40px;
+        }
+      }
+    }
+    .change-password {
+      display: block;
+      padding: 20px 0;
+      .form-checkbox {
+        display: block;
+        margin: 0 0 20px 0;
+      }
+      .control-label {
+        font-size: 16px;
+        margin: 0 0 5px 0;
+      }
+      .form-control {
+        flex: 0 0 100%;
+        margin: 0 0 20px 0;
+      }
+    }
+    .history-nav {
+      display: block;
+      &__item {
+        height: auto;
+        width: auto;
+        display: block;
+        .nav-icon {
+          display: none;
+        }
+        .nav-label {
+          font-size: 16px;
+        }
+      }
+    }
+  }
+  .order-promo {
+    h2 {
+      font-size: 18px;
+    }
+    p {
+      font-size: 14px;
+    }
+    .btn {
+      font-size: 18px;
+    }
+  }
 
 }
 
 @media screen and (max-width: 480px) {
+  .cabinet {
+    .page-nav {
+      display: block;
+      margin: 0 0 10px 0;
+      > li {
+        margin: 0 0 20px 0 !important;
+      }
+    }
+  }
 
+  .order-list {
+    .order-item {
+      &__top {
+        a {
+          font-size: 14px;
+        }
+      }
+      &__details {
+        font-size: 14px;
+        .order-top {
+          display: block;
+          &__btn {
+            margin: 0 0 20px 0;
+            text-align: right;
+          }
+        }
+      }
+    }
+  }
 }

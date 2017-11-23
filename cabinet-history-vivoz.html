@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Забыли пароль | Sport07</title>
+    <title>История заказов | Sport07</title>
 
     <link rel="shortcut icon" href="assets/images/favicon.png">
 
@@ -863,60 +863,68 @@
 		</header>
         <div id="wrapper" role="main">
             <div id="breadcumbs">
-                <a href="#">Главная</a><span class="sep">/</span> <span class="current">Авторизация в личном кабинете</span>
+                <a href="#">Главная</a><span class="sep">/</span> <span class="current">Личный кабинет</span>
             </div>
             <div class="inner">
                 <div id="content" role="main">
-					<div class="account account-login">
-						<form action="#" class="form-horizontal">
-							<div class="form-group">
-								<div class="col-sm-3">
-									<label class="control-label">Em@il<span class="req">*</span></label>
+					<div class="cabinet">
+						<ul class="page-nav clearfix">
+							<li><a href="cabinet.html"><span>Персональная информация</span></a></li>
+							<li class="active"><a href="cabinet-history.html"><span>История заказов</span></a></li>
+						</ul>
+						<div class="history-nav">
+							<a href="cabinet-history.html" class="history-nav__item">
+								<span class="nav-icon nav-icon-1"></span>
+								<span class="nav-label">Принят</span>
+							</a>
+							<a href="cabinet-history-send.html" class="history-nav__item">
+								<span class="nav-icon nav-icon-2"></span>
+								<span class="nav-label">Отправлен</span>
+							</a>
+							<a href="cabinet-history-vivoz.html" class="history-nav__item active">
+								<span class="nav-icon nav-icon-3"></span>
+								<span class="nav-label">В пункте самовывоза</span>
+							</a>
+							<a href="cabinet-history-complete.html" class="history-nav__item">
+								<span class="nav-icon nav-icon-4"></span>
+								<span class="nav-label">Выполнен</span>
+							</a>
+							<a href="cabinet-history-canceled.html" class="history-nav__item">
+								<span class="nav-icon nav-icon-5"></span>
+								<span class="nav-label">Отменен</span>
+							</a>
+						</div>
+						<div class="order-list">
+							<div class="order-list__item order-item">
+								<div class="order-item__top">
+									<a data-toggle="collapse" data-parent="#history" href="#zakaz_1">Заказ №7436 от 15.10.2017, 4 товара на сумму 3013 руб.</a>
 								</div>
-								<div class="col-sm-9">
-									<input type="email" class="form-control" placeholder="ivanov@mail.ru">
+								<div id="zakaz_1" class="order-item__details collapse in">
+									<div class="order-top">
+										<div class="order-top__info">
+											<p><b>Сумма к оплате: 3013.00 руб.</b></p>
+											<p><b>Служба доставки:</b> Самовывоз c Дубнинской (г.Москва)</p>
+											<p><b>Адрес:</b> Москва, Корнейчука ул., д. 8</p>
+											Постамат находится в ТЦ Час Пик. Транспорт: м. Бибирево, последний вагон из центра, из стеклянных дверей налево, затем еще раз налево. Сразу за ним остановка общественного транспорта. Автобус № 290. Вариант 2: от м. Алтуфьево- Автобус № 259, 815.
+											Тел.: +7 495 988 1230
+											Режим работы: Пн: 10:00-22:00 Вт: 10:00-22:00 Ср: 10:00-22:00 Чт: 10:00-22:00 Пт: 10:00-22:00 Сб: 10:00-22:00 Вс: 10:00-22:00
+										</div>
+									</div>
+									<div class="order-products">
+										<p>Состав заказа:</p>
+										<a href="product.html">Утяжелитель универсальный BF-WUN01 синий (2 * 2000 г) (1 пар)</a>
+										<a href="product.html">Коврик гимнастический BF-YM01 173*61*0,4 см. (Green) (1 шт))</a>
+										<a href="product.html">Мяч для пилатеса BF-TB01 3,0 кг/15 см (Graphite) (1 шт)</a>
+										<a href="product.html">Петля BF-RL10-208 см (оранжевый ) (1 шт)</a>
+									</div>
+									<div class="order-top">
+										<div class="order-top__info">
+											<p><b>Срок хранения заказа:</b> 3 дня.</p>
+										</div>
+									</div>
 								</div>
 							</div>
-							<div class="form-group">
-								<div class="col-sm-3">
-									<label class="control-label">Пароль<span class="req">*</span></label>
-								</div>
-								<div class="col-sm-9">
-									<input type="password" class="form-control" placeholder="***********">
-								</div>
-							</div>
-							<div class="form-group">
-								<div class="col-sm-9 col-sm-offset-3">
-									<label for="rememberMe" class="form-checkbox">
-										<input type="checkbox" id="rememberMe">
-										<span>Запомнить меня на этом компьютере</span>
-									</label>
-								</div>
-							</div>
-							<div class="form-group form-baton">
-								<div class="col-sm-5 col-sm-offset-3">
-									<a href="forgot-password.html">Забыли пароль?</a>
-								</div>
-								<div class="col-sm-4 col-btn">
-									<button class="btn btn-success">Войти</button>
-								</div>
-							</div>
-							<div class="form-group form-bottom">
-								<div class="col-sm-9 col-sm-offset-3">
-									Еще не зарегистрированы на сайте? <a href="registration.html">Пройдите регистрацию</a>.
-								</div>
-							</div>
-						</form>
-					</div>
-					<div class="bot-help">
-						<h2>Что дает регистрация на сайте?</h2>
-						<ol>
-							<li>Пользоваться <b>дополнительными</b> скидками и специальными предложениями;</li>
-							<li>Отслеживать состояния Ваших <b>заказов</b>;</li>
-							<li><b>Значительно</b> ускоряет процесс оформления заказа;</li>
-							<li><b>Заранее</b> узнавать о предстоящих акциях и распродажах.</li>
-						</ol>
-						<p>Регистрация <b>не является</b> обязательной для совершения покупок.</p>
+						</div>
 					</div>
                 </div>
             </div>

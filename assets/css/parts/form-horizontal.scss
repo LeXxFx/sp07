@@ -6,11 +6,14 @@
       color: #313131;
       padding-top: 5px;
       .required {
-        color: #b0140c;
+        color: #a00808;
       }
     }
     .form-control {
       @extend %form-control;
+      &.has-error {
+        border-color: #a00808 !important;
+      }
     }
     textarea.form-control {
       height: 70px;

@@ -867,7 +867,7 @@
             </div>
             <div class="inner">
                 <div id="content" role="main">
-					<div class="account account-login">
+					<div class="account account-registration">
 						<form action="#" class="form-horizontal">
 							<div class="form-group">
 								<div class="col-sm-3">
@@ -882,7 +882,7 @@
 									<label class="control-label">Имя<span class="req">*</span></label>
 								</div>
 								<div class="col-sm-9">
-									<input type="text" class="form-control">
+									<input type="text" class="form-control has-error">
 								</div>
 							</div>
 							<div class="form-group">
@@ -898,7 +898,7 @@
 									<label class="control-label">Номер телефона<span class="req">*</span></label>
 								</div>
 								<div class="col-sm-9">
-									<input type="tel" class="form-control">
+									<input type="tel" class="form-control" autocomplete="tel">
 								</div>
 							</div>
 							<div class="form-group">
@@ -931,12 +931,19 @@
 									<input type="password" class="form-control">
 								</div>
 							</div>
-							<div class="form-group">
+							<div class="form-group form-captcha">
 								<div class="col-sm-3">
 									<label class="control-label">Введите символы, как на картинке<span class="req">*</span></label>
 								</div>
-								<div class="col-sm-9">
-									<input type="password" class="form-control">
+								<div class="col-sm-3">
+									<div class="form-captcha__image">
+										<img src="demo/captcha.jpg" alt=""/>
+									</div>
+								</div>
+								<div class="col-sm-6">
+									<div class="form-captcha__input">
+										<input type="text" class="form-control">
+									</div>
 								</div>
 							</div>
 							<div class="form-group form-baton">
