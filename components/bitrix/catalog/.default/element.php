@@ -267,6 +267,7 @@ else
 		'DISPLAY_COMPARE' => (isset($arParams['USE_COMPARE']) ? $arParams['USE_COMPARE'] : ''),
 		'COMPARE_PATH' => $arResult['FOLDER'].$arResult['URL_TEMPLATES']['compare'],
 		'SHOW_BASIS_PRICE' => (isset($arParams['DETAIL_SHOW_BASIS_PRICE']) ? $arParams['DETAIL_SHOW_BASIS_PRICE'] : 'Y'),
+		'STRICT_SECTION_CHECK' => "Y",
 		"CURRENT_OFFER" => intval($_REQUEST["offer"]) > 0 ? intval($_REQUEST["offer"]) : 0
 	),
 	$component

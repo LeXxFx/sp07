@@ -543,7 +543,7 @@ print_r($arItem);
                                 </div>
                                 <div class="panel__advants">
                                     <div class="advants__item advants__item--orange"><span><i class="icon icon-rubl"></i></span>
-                                        <p><a href="#">Нашли дешеле? Позвоните!</a></p></div>
+                                        <p><a href="#">Нашли дешевле? Позвоните!</a></p></div>
                                     <div class="advants__item advants__item--red"><span>5%</span>
                                         <p>До скидки 5% осталось купить на 3000 р.</p></div>
                                     <div class="advants__item advants__item--green"><span><i class="icon icon-car"></i></span>

@@ -1,8 +1,14 @@
-<?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();?>		
+<?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();?>
         </div>
     </div>
+	<?//echo $APPLICATION->GetCurDir();?>
 
 	<?if ($APPLICATION->GetCurDir()=='/category/'){?>
+	<?//$APPLICATION->IncludeFile(
+		//SITE_DIR."include/footer/sp07restail_footer.php",
+		//Array(),
+	//	Array("MODE"=>"html")
+	//);?>
 
 	<div class="container">
         <section id="advants">
@@ -66,6 +72,9 @@
         </section>
     </div>
 	<?}?>
+	<?if($APPLICATION->GetCurPage() == "/"):?>
+	<section class="testimonials nomargin">
+    </section><?endif;?>
     <footer id="footer">
         <div class="container">
             <div class="row">
@@ -76,6 +85,7 @@
                             <li><a href="/delivery_pay/">Доставка и оплата</a></li>
                             <li><a href="/sales/">Скидки</a></li>
                             <li><a href="/return-exchange/">Гарантия и возврат</a></li>
+                            <!--<li><a href="#">Обратная связь</a></li>-->
                         </ul>
                     </div>
                     <div class="col-md-6">
@@ -106,7 +116,7 @@
                             <div class="schedule__item">
                                 <i class="icon icon-grafik"></i>
                                 Пн-Пт 9:00-19:30 <br/>
-                                Сб, Вс - выходной
+                                Сб с 10:00-14:00, Вск - вых.
                             </div>
                         </div>
                     </div>
@@ -117,10 +127,10 @@
                     <div class="col-md-6">
                         <div class="head">Способы оплаты</div>
                         <div class="payemts-list">
-                            <a href="/delivery_pay"><img src="<?=SITE_TEMPLATE_PATH?>/assets/images/payment1.png" alt=""/></a>
-                            <a href="/delivery_pay"><img src="<?=SITE_TEMPLATE_PATH?>/assets/images/payment2.png" alt=""/></a>
-                            <a href="/delivery_pay"><img src="<?=SITE_TEMPLATE_PATH?>/assets/images/payment3.png" alt=""/></a>
-                            <a href="/delivery_pay"><img src="<?=SITE_TEMPLATE_PATH?>/assets/images/payment4.png" alt=""/></a>
+                            <a href="/delivery_pay/"><img src="<?=SITE_TEMPLATE_PATH?>/assets/images/payment1.png" alt=""/></a>
+                            <a href="/delivery_pay/"><img src="<?=SITE_TEMPLATE_PATH?>/assets/images/payment2.png" alt=""/></a>
+                            <a href="/delivery_pay/"><img src="<?=SITE_TEMPLATE_PATH?>/assets/images/payment3.png" alt=""/></a>
+                            <a href="/delivery_pay/"><img src="<?=SITE_TEMPLATE_PATH?>/assets/images/payment4.png" alt=""/></a>
                             <p>
                                 <a href="/delivery_pay/" class="link-all">Посмотреть все способы</a>
                             </p>
@@ -138,7 +148,7 @@
                 <div class="col-md-5">
                     <div class="copyright">
                         <p>© Интернет-магазин спортивных товаров и инвентаря, 2017 г.</p>
-                        Сегодня наш сайт посмотрели
+                        Сегодня наш сайт посмотрели <!--<img src="<?//=SITE_TEMPLATE_PATH?>/demo/stat.png" alt=""/>-->
 						<!-- Yandex.Metrika informer -->
 						<a href="https://metrika.yandex.ru/stat/?id=19622830&amp;from=informer"
 						target="_blank" rel="nofollow"><img src="https://informer.yandex.ru/informer/19622830/1_0_2020ECFF_0000CCFF_1_pageviews"
@@ -155,10 +165,10 @@
         <div class="container">
             <div class="option-panel">
                 <div class="option-panel__viewed">
-                    <a href="#" class="option-panel__viewed-link">
-                        <i class="icon icon-eye"></i>
-                        <span>Просмотренные товары</span>
-                    </a>
+					<a href="#" class="option-panel__viewed-link">
+						<i class="icon icon-eye"></i>
+						<span>Просмотренные товары</span>
+					</a>
                     <div class="viewed-list viewed-list--has-caorusel">
                         <?$APPLICATION->IncludeComponent(
                         "bitrix:sale.viewed.product",
@@ -240,9 +250,9 @@
 						</script>
 						<noscript><div><img src="https://mc.yandex.ru/watch/19622830" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 						<!-- /Yandex.Metrika counter -->
-	<div class="alert-basket" style="display:none;">
+	<!--<div class="alert-basket" style="display:none;">
 		<a class="alert-basket" href="#" data-dismiss="modal" data-toggle="modal" data-target="#modal_basket_alert">Нет нужного товара?</a>
-	</div>
+	</div>-->
 	<div class="modal fade modal-form" id="modal_basket_alert" tabindex="-1" role="dialog" aria-hidden="false">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -296,7 +306,7 @@
     <script src="<?=SITE_TEMPLATE_PATH?>/assets/plugins/slick/slick.js"></script>
     <script src="<?=SITE_TEMPLATE_PATH?>/assets/plugins/soon-countdown/js/soon.min.js"></script>
     <script src="<?=SITE_TEMPLATE_PATH?>/assets/js/jquery.sticky-kit.min.js"></script>
-	<script src="<?=SITE_TEMPLATE_PATH?>/assets/plugins/jquery.maskedinput/jquery.mask.min.js"></script>
+    <script src="<?=SITE_TEMPLATE_PATH?>/assets/plugins/jquery.maskedinput/jquery.mask.min.js"></script>
     <script src="<?=SITE_TEMPLATE_PATH?>/assets/js/masonry.pkgd.min.js" type="text/javascript"></script>
     <script src="<?=SITE_TEMPLATE_PATH?>/js/update.js" type="text/javascript"></script>
 

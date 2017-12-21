@@ -59,7 +59,7 @@
       .name {
         text-align: center;
         position: relative;
-        margin-top: -70px;
+        margin-top: -75px;
         &:hover {
           .title {
             color: $second-color;
@@ -71,10 +71,10 @@
           }
         }
         .title {
-          font-size: 22px;
+          font-size: 20px;
           padding: 8px 10px;
           background: rgba(255, 255, 255, 0.6);
-          line-height: 1.1;
+          line-height: 1.2;
           font-weight: bold;
           color: $text-color;
         }
@@ -84,7 +84,7 @@
           color: $text-color;
           position: absolute;
           bottom: 100%;
-          line-height: 1.1;
+          line-height: 1.4;
           visibility: hidden;
           transition: transform 0.3s ease;
           transform: translateY(5px);

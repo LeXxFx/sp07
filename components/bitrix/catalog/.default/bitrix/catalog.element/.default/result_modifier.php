@@ -59,19 +59,6 @@ $arDefaultParams = array(
 );
 $arParams = array_merge($arDefaultParams, $arParams);
 
-$arResult['PROPS']=array();
-$arInfo = CCatalogSKU::GetInfoByProductIBlock(intval(9)); 
-if (is_array($arInfo)) 
-{ 
-     $rsOffers = CIBlockElement::GetList(array(),array('IBLOCK_ID' => $arInfo['IBLOCK_ID'], 'PROPERTY_'.$arInfo['SKU_PROPERTY_ID'] => $_GET['ELEMENT_ID'])); 
-	// $rsOffers = CCatalogSKU::getOffersList($_GET['ELEMENT_ID']);
-     while ($arOffer = $rsOffers->GetNext()) 
-	// foreach ($rsOffers as $arOffer)
-    {
-    	//$arResult['PROPS'][]=$arOffer;
-    } 
-}
-
 $arParams['TEMPLATE_THEME'] = (string)($arParams['TEMPLATE_THEME']);
 if ('' != $arParams['TEMPLATE_THEME'])
 {

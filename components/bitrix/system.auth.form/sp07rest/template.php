@@ -3,10 +3,10 @@ CJSCore::Init();
 $this->addExternalJS($templateFolder."/script.js");
 ?>
 <?
-//echo "<pre>";
-//print_r($arResult);
-//echo "</pre>";
-//print '<pre>' . htmlspecialchars(print_r(get_defined_vars(), true)) . '</pre>';
+echo "<pre>";
+print_r($arResult);
+echo "</pre>";
+/print '<pre>' . htmlspecialchars(print_r(get_defined_vars(), true)) . '</pre>';
 ?>
 <div id="bx-system-auth-form">
 
