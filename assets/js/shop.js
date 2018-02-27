@@ -272,6 +272,21 @@ var Shop = function () {
                 switchImage($(slide.children[0]));
             });
         };
+
+
+		var gallery2 = $('#product-gallery').find('.images-list');
+
+		gallery2.find('.item a').on('click', function(e) {
+			e.preventDefault();
+			var that = $(this), item = that.closest('.item');
+
+			if (item.hasClass('load-next')) {
+				item.remove();
+			} else {
+				item.siblings().removeClass('current');
+				switchImage(that);
+			}
+		});
 	};
 	//Правки от верстальщика
 	var stickInfoPanel = function() {
