@@ -454,31 +454,50 @@
                             </table>
                             <div class="cart-bottom clearfix">
                                 <div class="row">
-                                    <div class="col-md-8">
+                                    <div class="col-md-8 cart-bottom__left">
+                                        <p><b>Скидка 5%</b> - активирована</p>
                                         <p><b>До скидки 5%</b> осталось купить на 555 руб.</p>
-                                        <p><b>Бонус 5 %</b> на следующую покупку (<span class="label-alert">239 руб.</span>)</p>
+                                        <p><b>Бесплатная доставка</b> - активирована</p>
+                                        <p class="help-row">* не распространяется на заказы весом более 10кг и на регионы.</p>
+                                        <a class="btn btn-default" href="shop-grid.html">Продолжить покупки</a>
                                     </div>
                                     <div class="col-md-4">
                                         <table class="cart-bottom__suma">
                                             <tr>
-                                                <td>Итого:</td>
-                                                <td class="suma-value">4679 <span>руб.</span></td>
+                                                <td>
+                                                    Итого:
+                                                    <p class="suma-discont">Скидка</p>
+                                                </td>
+                                                <td class="suma-value">
+                                                    4679 <span>руб.</span>
+                                                    <p class="suma-discont">680 <span>руб.</span></p>
+                                                </td>
                                             </tr>
                                             <tr>
-                                                <td><span>бонус 5%</span></td>
-                                                <td class="suma-value label-alert">234 <span>руб.</span></td>
+                                                <td>К оплате:</td>
+                                                <td class="suma-value">6532 <span>руб.</span></td>
                                             </tr>
                                             <tr>
-                                                <td>Всего:</td>
-                                                <td class="suma-value">4445 <span>руб.</span></td>
+                                                <td colspan="2">
+                                                    <p class="cart-bottom__info">За этот заказ Вам будет начеслено 326 бонусов на следующую покупку</p>
+                                                </td>
                                             </tr>
                                         </table>
                                     </div>
                                 </div>
                             </div>
-                            <div class="buttons clearfix">
-                                <a class="btn btn-default" href="shop-grid.html">Продолжить покупки</a>
-                                <a class="btn btn-primary" href="checkout.html">Оформить заказ</a>
+                            <div class="cart-bottom__buttons">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        Ваш заказ забронирован на 12 часов. Пожалуйста, оформите его, пока он есть на нашем складе.
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="buttons clearfix">
+                                            <a class="btn btn-default btn-quick-checkout" href="#">Заказать без оформления</a>
+                                            <a class="btn btn-primary" href="checkout.html">Оформить заказ</a>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -1089,6 +1108,60 @@
                     <div class="bot">
                         <span class="req">*</span> - Обязательно для заполнения. Купить в 1 клик - это не заполнять никакие формы, а просто оставить свой номер телефона, чтобы наш консультант решил все вопросы по оформлению заказа.
                     </div>
+                    <button class="panel-sport__close" data-dismiss="modal" aria-hidden="true" data-toggle="tooltip" title="Закрыть">
+                        <span><i class="fa fa-angle-left"></i></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade modal-form" id="modal_quick_checkout" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="panel-sport">
+                    <div class="panel-sport__heading">
+                        Наш конслуьтант свяжется с Вами, чтобы решить все вопросы по оформлению заказа.
+                    </div>
+                    <form action="" class="form-info">
+                        <div class="form-info__top">Введите Ваши данные:</div>
+                        <div class="row">
+                            <div class="col-sm-8">
+                                <div class="row form-group">
+                                    <div class="col-sm-5">
+                                        <label class="control-label">Имя:</label>
+                                    </div>
+                                    <div class="col-sm-7">
+                                        <input type="text" class="form-control"/>
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col-sm-5">
+                                        <label class="control-label">Ваш номер телефона: <span class="req">*</span></label>
+                                    </div>
+                                    <div class="col-sm-7">
+                                        <input type="tel" class="form-control masked-phone" autocomplete="tel"/>
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col-sm-5">
+                                        <label class="control-label">E-mail:</label>
+                                    </div>
+                                    <div class="col-sm-7">
+                                        <input type="email" class="form-control"/>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-7 col-sm-offset-5">
+                                        <span class="req">*</span> - Обязательно для заполнения.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <button class="btn btn-primary" data-dismiss="modal" data-toggle="modal" data-target="#modal_alert">Купить</button>
+                            </div>
+                        </div>
+                    </form>
                     <button class="panel-sport__close" data-dismiss="modal" aria-hidden="true" data-toggle="tooltip" title="Закрыть">
                         <span><i class="fa fa-angle-left"></i></span>
                     </button>

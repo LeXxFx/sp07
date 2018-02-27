@@ -47,6 +47,21 @@
       }
     }
   }
+  &#modal_quick_checkout {
+    .panel-sport__heading {
+      color: $text-color;
+      text-align: center;
+    }
+    .form-info__top {
+      font-size: 24px;
+      font-weight: bold;
+      color: $second-color;
+      text-align: center;
+      border-top: 1px solid #e5e5e5;
+      padding: 15px 0 0;
+      margin: 0 20px;
+    }
+  }
   &#modal_callback {
     .panel-sport__heading {
       text-align: center;
@@ -187,10 +202,10 @@
           .imgs-list {
             overflow: hidden;
             float: none;
-            padding: 0 50px 0 0;
+            padding: 0 35px;
             margin: 10px 0;
             width: 100%;
-            height: 90px;
+            height: 75px;
             > .item {
               display: inline-block;
               max-width: 30%;
@@ -198,7 +213,7 @@
             }
 
             .item {
-              height: 90px;
+              height: 75px;
               margin: 0 2px;
               border: 1px solid #e7e7e7;
               &:hover {
@@ -211,23 +226,27 @@
                 border-color: #5a5a5a;
               }
             }
-            .slick-prev {
-              display: none !important;
-            }
-            .slick-next {
-              width: 28px;
-              height: 28px;
+            .slick-arrow {
+              width: 22px;
+              height: 22px;
               left: auto;
               right: 5px;
-              top: 35px;
+              top: 30px;
               margin: 0;
               text-align: center;
-              font-size: 24px;
+              font-size: 18px;
               border: 2px solid $text-color;
               border-radius: 50%;
               transform: rotate(-90deg);
               &:hover {
                 border-color: $second-color;
+              }
+              &.slick-prev {
+                left: 5px;
+              }
+              &.slick-next {
+                left: auto;
+                right: 5px;
               }
             }
           }

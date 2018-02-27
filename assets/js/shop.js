@@ -161,6 +161,11 @@ var Shop = function () {
 			e.preventDefault();
 			// $('#modal_quickby').modal('show');
 		});
+
+		$('.btn-quick-checkout').on('click', function (e) {
+			e.preventDefault();
+			$('#modal_quick_checkout').modal('show');
+		});
 	}
 
 	var showMore = function () {
@@ -227,9 +232,13 @@ var Shop = function () {
         };
     }
 
-	var productGallery = function () {
+	var productGallery = function (inputgallery) {
 		var gallery = $('#product-gallery').find('.imgs-list');
 		var isVertical = true;
+
+		if (inputgallery !== undefined) {
+			gallery = inputgallery;
+		}
 
 		if (gallery.data('direction') === "row")
 			isVertical = false;
@@ -377,7 +386,8 @@ var Shop = function () {
 		});
 
 		$('.product-preview').on('shown.bs.modal', function (e) {
-			//productGallery();
+			var gallery = $(this).find('.imgs-list');
+			productGallery(gallery);
 		});
 	};
     return {

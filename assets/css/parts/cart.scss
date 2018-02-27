@@ -11,13 +11,15 @@
         color: $second-color;
       }
     }
-    .cart-bottom__suma {
-      border: none !important;
+    &__suma {
+      border: none;
       max-width: 340px;
       float: right;
+      margin: 0;
       td {
-        border: none !important;
-        padding: 0;
+        border: none;
+        border-bottom: 1px dotted #c4c4c4;
+        padding: 10px 0;
         &.suma-value {
           text-align: right;
         }
@@ -25,7 +27,40 @@
           font-size: 16px;
           font-weight: 300;
         }
+        .suma-discont {
+          color: $second-color;
+          font-size: 13px;
+        }
       }
+      tr {
+        &:last-of-type {
+          td {
+            border: none;
+          }
+        }
+      }
+    }
+    &__left {
+      p {
+        line-height: 1;
+      }
+      .help-row {
+        margin: 0 0 30px 0;
+        font-size: 14px;
+        font-weight: 300;
+        color: #575757;
+      }
+      .btn-default {
+        border-radius: 0;
+        padding: 10px 15px;
+        font-size: 18px;
+        transition: .3s;
+      }
+    }
+    &__info {
+      color: $second-color;
+      font-size: 15px;
+      line-height: 1.1;
     }
   }
 }
@@ -228,11 +263,12 @@
     min-width: 200px;
     height: 40px;
     margin-left: 30px;
-    font-size: 16px;
+    font-size: 18px;
     padding: 7px 15px;
     border-radius: 0;
+    font-weight: bold;
     &.btn-default {
-      font-weight: 300;
+      max-width: 420px;
     }
     &.btn-primary {
       color: #fff;
