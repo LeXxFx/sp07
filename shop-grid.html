@@ -16,6 +16,8 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/plugins/slick/slick.css" />
     <link rel="stylesheet" href="assets/plugins/soon-countdown/css/soon.min.css"/>
+    <link rel="stylesheet" href="assets/plugins/noUiSlider.10.0.0/nouislider.min.css"/>
+
     <!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 </head>
 <body>
@@ -352,6 +354,7 @@
                                 <a href="product.html">
                                     <div class="item__image">
                                         <img src="demo/product_img1.png" alt=""/>
+                                        <button class="item__preview">Быстрый просмотр</button>
                                     </div>
                                     <div class="item__name">
                                         Кимоно для карате БОЕЦЪ Кимоно для карате БОЕЦЪ Кимоно для карате БОЕЦЪ рате БОЕЦЪ Кимоно для карате БОЕЦЪ Кимоно для карате БОЕЦЪ
@@ -429,6 +432,7 @@
                                 <a href="product.html">
                                     <div class="item__image">
                                         <img src="demo/product_img2.png" alt=""/>
+                                        <button class="item__preview">Быстрый просмотр</button>
                                     </div>
                                     <div class="item__name">
                                         Кимоно для карате Alpha Caprice GS-KK02
@@ -479,6 +483,7 @@
                                 <a href="product.html">
                                     <div class="item__image">
                                         <img src="demo/product_img3.png" alt=""/>
+                                        <button class="item__preview">Быстрый просмотр</button>
                                     </div>
                                     <div class="item__name">
                                         Кимоно для карате Golden Scorpion "PKM-1200"
@@ -536,6 +541,7 @@
                                 <a href="product.html">
                                     <div class="item__image">
                                         <img src="demo/product_img1.png" alt=""/>
+                                        <button class="item__preview">Быстрый просмотр</button>
                                     </div>
                                     <div class="item__name">
                                         Кимоно для карате БОЕЦЪ
@@ -580,6 +586,7 @@
                                 <a href="product.html">
                                     <div class="item__image">
                                         <img src="demo/product_img2.png" alt=""/>
+                                        <button class="item__preview">Быстрый просмотр</button>
                                     </div>
                                     <div class="item__name">
                                         Кимоно для карате Alpha Caprice GS-KK02
@@ -625,7 +632,7 @@
                                 <div class="item__timer">
                                     <i class="fa fa-clock-o"></i>
                                     <div class="soon"
-                                         data-due="2017-03-30T18:05"
+                                         data-due="2018-03-30T18:05"
                                          data-layout="line"
                                          data-format="h,m,s"
                                          data-labels-days=":"
@@ -637,6 +644,7 @@
                                 <a href="product.html">
                                     <div class="item__image">
                                         <img src="demo/product_img1.png" alt=""/>
+                                        <button class="item__preview">Быстрый просмотр</button>
                                     </div>
                                     <div class="item__name">
                                         Кимоно для карате БОЕЦЪ
@@ -797,27 +805,42 @@
                 </div>
                 <div id="sidebar">
                     <aside>
-                        <div class="widget widget-catalog widget-catalog-shop">
-                            <ul>
-                                <li class="widget-catalog__title active"><a href="#">Карате</a></li>
-                                <li class="active"><a href="#">Кимоно карате (15)</a></li>
-                                <li><a href="#">Кимоно кудо (16)</a></li>
-                                <li><a href="#">Кимоно киокушинкай (20)</a></li>
-                            </ul>
-                            <ul class="list1 list-hidden">
-                                <li class="widget-catalog__title active"><a href="#">Карате</a></li>
-                                <li class="active"><a href="#">Кимоно карате (15)</a></li>
-                                <li><a href="#">Кимоно кудо (16)</a></li>
-                                <li><a href="#">Кимоно киокушинкай (20)</a></li>
-                            </ul>
-                            <div class="link-show-more collapsed">
-                                <a href="#" data-target=".list1">
-                                    Показать еще
-                                    <i class="fa fa-angle-down"></i>
-                                </a>
-                            </div>
-                        </div>
                         <div class="widget widget-filters">
+                            <div class="widget widget-catalog widget-catalog-shop">
+                                <ul>
+                                    <li class="widget-catalog__title active"><a href="#">Карате</a></li>
+                                    <li class="active"><a href="#">Кимоно карате (15)</a></li>
+                                    <li><a href="#">Кимоно кудо (16)</a></li>
+                                    <li><a href="#">Кимоно киокушинкай (20)</a></li>
+                                </ul>
+                                <ul class="list1 list-hidden">
+                                    <li class="widget-catalog__title active"><a href="#">Карате</a></li>
+                                    <li class="active"><a href="#">Кимоно карате (15)</a></li>
+                                    <li><a href="#">Кимоно кудо (16)</a></li>
+                                    <li><a href="#">Кимоно киокушинкай (20)</a></li>
+                                </ul>
+                                <div class="link-show-more collapsed">
+                                    <a href="#" data-target=".list1">
+                                        Показать еще
+                                        <i class="fa fa-angle-down"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="filter-slider">
+                                <div class="filter-slider__top">
+                                    <span>Цена, руб.</span>
+                                    <a href="#" class="filter-slider__clear">сбросить</a>
+                                </div>
+                                <div class="filter-slider__slider">
+                                    <div class="slider-range" data-min-value="0" data-max-value="100"></div>
+                                    <div class="slider-inputs">
+                                        <input type="text" class="form-control input-number-min" />
+                                        <span>&mdash;</span>
+                                        <input type="text" class="form-control input-number-max" value="100" />
+                                    </div>
+                                    <button class="btn btn-range">Показать товары <span>(7)</span></button>
+                                </div>
+                            </div>
                             <div class="widget-filters__item filter__size">
                                 <div class="filter__top">Размер</div>
                                 <ul class="filter__list">
@@ -1064,6 +1087,11 @@
             </div>
         </div>
     </footer>
+
+    <div class="checksum">
+        <span>Скидка 2% активирована. До скидки 5% осталось купить на сумму 4441 руб.</span>
+        <span>До бесплатной доставки осталось купить на сумму 1441 руб.</span>
+    </div>
 
     <div id="option_panel">
         <div class="container">
@@ -1447,6 +1475,158 @@
         </div>
     </div>
 
+    <div class="modal fade modal-form product-preview" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="preview-arrows">
+                    <button class="preview-arrows__left" title="Назад"><i class="fa fa-angle-left"></i></button>
+                    <button class="preview-arrows__right" title="Вперед"><i class="fa fa-angle-right"></i></button>
+                </div>
+                <div class="panel-sport">
+                    <div class="product-list__item product__item">
+                        <div class="left-part">
+                            <div id="product-gallery" class="item__image">
+                                <div class="image__preview image__preview--init">
+                                    <a id="gallery" href="demo/d101ff901f2f4bb8879bd80c86c5df36.jpg" class="MagicZoomPlus" rel="preload-selectors-small:false;preload-selectors-big:false;initialize-on:mouseover;smoothing-speed:70;fps:40;selectors-effect:false;show-title:false;loading-msg:Загрузка...;background-opacity:10;zoom-width:720;zoom-height:620;zoom-distance:5;hint-text:;selectors-class:current;buttons:hide;caption-source:span;">
+                                        <img src="demo/d101ff901f2f4bb8879bd80c86c5df36.jpg" alt=""/>
+                                    </a>
+                                </div>
+                                <div class="imgs-list" data-direction="row">
+                                    <div class="item current">
+                                        <a href="demo/product_img1.jpg" data-preview="demo/product_img1.jpg" data-source="image">
+                                            <img src="demo/product_img1.jpg" alt=""/>
+                                        </a>
+                                    </div>
+                                    <div class="item">
+                                        <a href="demo/product_img2.jpg" data-preview="demo/product_img2.jpg" data-source="image">
+                                            <img src="demo/product_img2.jpg" alt=""/>
+                                        </a>
+                                    </div>
+                                    <div class="item">
+                                        <a href="demo/product_img4.jpg" data-preview="demo/product_img4.jpg" data-source="image">
+                                            <img src="demo/product_img4.jpg" alt=""/>
+                                        </a>
+                                    </div>
+                                    <div class="item">
+                                        <a href="demo/product_img3.jpg" data-preview="demo/product_img3.jpg" data-source="image">
+                                            <img src="demo/product_img3.jpg" alt=""/>
+                                        </a>
+                                    </div>
+                                    <div class="item">
+                                        <a href="demo/product_img6.png" data-preview="demo/product_img6.png" data-source="image">
+                                            <img src="demo/product_img6-1.png" alt=""/>
+                                        </a>
+                                    </div>
+                                    <div class="item">
+                                        <a href="demo/product_img5.jpg" data-preview="demo/product_img5-1.jpg" data-source="image">
+                                            <img src="demo/product_img5-1.jpg" alt=""/>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="item__stick">
+                                    <div class="item__stick-profit">
+                                        <span class="num"><i class="fa fa-star-o"></i></span>
+                                        Выгода <b>2017</b>
+                                    </div>
+                                </div>
+                                <div class="item__timer">
+                                    <i class="fa fa-clock-o"></i>
+                                    <div class="soon"
+                                         data-due="2017-04-13T22:05"
+                                         data-layout="line"
+                                         data-format="h,m,s"
+                                         data-labels-days=":"
+                                         data-labels-hours=":"
+                                         data-labels-minutes=":"
+                                         data-labels-seconds=" ">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item__short">
+                                <div class="post">
+                                    Кимоно для Карате ПРЕМИУМ.
+                                    Комплект: куртка, брюки.
+                                    Состав 100% хлопок выбеленный (саржа диагонального плетения), плотность 340 гр/м2.
+                                    Особенности  кроя: швы обработаны оверлоком.
+                                    Страна производитель: Пакистан.
+                                    Упаковка: пакет.
+                                </div>
+                                <div class="btn-more"><a href="#">Подробнее</a></div>
+                            </div>
+                        </div>
+                        <div class="item__info">
+                            <div class="item__name">
+                                Кимоно для карате БОЕЦЪ
+                            </div>
+                            <div class="item__rate">
+                                <span class="stars star-0"></span>
+                            </div>
+                            <div class="item__price">
+                                <span class="old">1505</span>
+                                <span class="new">1480</span>
+                                <span class="currency">руб.</span>
+                            </div>
+                            <div class="item__product-options">
+                                <div class="prop prop-size clearfix">
+                                    <div class="name">Размер: </div>
+                                    <div class="values">
+                                        <div class="value">
+                                            <span>s 37</span>
+                                        </div>
+                                        <div class="value active">
+                                            <span>xl 40</span>
+                                        </div>
+                                        <div class="value">
+                                            <span>xxl 45</span>
+                                        </div>
+                                        <div class="value">
+                                            <span>xxxl 47</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="prop prop-color clearfix">
+                                    <div class="name">Цвет: </div>
+                                    <div class="values">
+                                        <div class="value">
+                                            <img src="assets/images/color_white.png" alt=""/>
+                                        </div>
+                                        <div class="value active">
+                                            <img src="assets/images/color_grey.png" alt=""/>
+                                        </div>
+                                        <div class="value">
+                                            <img src="assets/images/color_darkgrey.png" alt=""/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item__buttons">
+                                <button class="btn btn-quick-buy" title="Купить в один клик">
+                                    <i class="icon icon-hand"></i>
+                                </button>
+                                <button class="btn btn-add-to-cart" title="Положить в корзину">
+                                    <i class="icon icon-cart-white"></i>
+                                    <span>Добавить в корзину</span>
+                                </button>
+                            </div>
+                            <div class="item__bonus">
+                                <div class="item__bonus__top"><i class="icon icon-car-orange"></i> Доставка по всей России</div>
+                                <p><strong>По Москве</strong> 1-2 дня, 260 руб.</p>
+                                <p><strong>По Московской обл.</strong> 1-4 дня, 329 руб.</p>
+                                <p><strong>В регионы</strong> 1-14 дней, от 350 руб.</p>
+                                <div class="item__bonus__top"><i class="icon icon-bonus"></i> Бонусы на следющие поокупки</div>
+                                <p><strong>140 бонусов</strong></p>
+                                <p>1 бонус = 1 рублю. <a href="#">Подробнее.</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="panel-sport__close" data-dismiss="modal" aria-hidden="true" data-toggle="tooltip" title="Закрыть">
+                        <span><i class="fa fa-angle-left"></i></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="assets/js/jquery-2.2.4.min.js"></script>
     <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/plugins/slick/slick.js"></script>
@@ -1454,6 +1634,11 @@
     <script src="assets/js/jquery.sticky-kit.min.js"></script>
     <script src="assets/js/jquery.maskedinput.js"></script>
     <script src="assets/js/masonry.pkgd.min.js" type="text/javascript"></script>
+    <script src="assets/plugins/noUiSlider.10.0.0/nouislider.min.js" type="text/javascript"></script>
+
+    <!-- start: SCRIPTS REQUIRED FOR THIS PAGE ONLY -->
+    <script src="assets/plugins/magiczoomplus/magiczoomplus.js" type="text/javascript"></script>
+    <!-- end: SCRIPTS REQUIRED FOR THIS PAGE ONLY -->
 
     <script src="assets/js/default.js"></script>
     <script src="assets/js/index.js"></script>
@@ -1464,6 +1649,8 @@
            Main.init();
            Index.init();
            Shop.init();
+
+           $('.product-preview').modal('show');
        });
    </script>
 

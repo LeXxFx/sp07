@@ -76,7 +76,7 @@
     }
 
     &-filters {
-      background: #eaeaea;
+      background: #f8f6f7;
       border-radius: 4px;
       padding: 10px;
       .filter__top {
@@ -130,6 +130,16 @@
           }
         }
       }
+      .widget-catalog {
+        position: relative;
+        margin-bottom: 30px;
+        &:after {
+          content: "";
+          display: block;
+          margin: 30px 20px 0 20px;
+          border-bottom: 1px solid #d0d0d0;
+        }
+      }
     }
 
     .list-hidden {
@@ -146,13 +156,14 @@
         color: #7e7e7e;
         font-weight: normal;
         text-decoration: none;
-        border-bottom: 1px dotted #7e7e7e;
+        border-bottom: 1px dashed #e3e1e2;
         i {
           margin-left: 6px;
         }
         &:hover {
-          border-color: transparent;
+          border-color: $second-color;
           text-decoration: none;
+          color: $second-color;
         }
       }
       &:not(.collapsed) {
@@ -178,6 +189,115 @@
       max-width: 280px;
       &:hover {
         background: darken(#e5e5e5, 5%);
+      }
+    }
+  }
+
+  .filter-slider {
+    margin: 0 0 35px 0;
+    &__top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 0 0 20px 0;
+      span {
+        font-size: 16px;
+        font-weight: bold;
+        color: $text-color;
+      }
+      a {
+        font-size: 13px;
+        color: $second-color;
+        display: inline-block;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+    .slider-inputs {
+      @include flexbox();
+      align-items: center;
+      margin-bottom: 15px;
+      justify-content: center;
+      .form-control {
+        color: $text-color;
+        width: 75px;
+        height: 22px;
+        padding: 5px;
+        font-weight: bold;
+        &:focus {
+          border-color: $second-color;
+        }
+      }
+      span {
+        margin: 0 5px;
+      }
+      .btn {
+        margin: 0 0 0 10px;
+        width: 30px;
+        border-radius: 3px;
+        padding: 3px;
+        font-size: 13px;
+        height: 30px;
+        background: $second-color;
+        border: 1px solid $second-color;
+        &:hover {
+          background: lighten($second-color, 5%);
+        }
+      }
+    }
+    .noUi-target {
+      border: none;
+      box-shadow: none;
+      background: #bbbbbb;
+      height: 2px;
+    }
+    .noUi-horizontal {
+      height: 2px;
+      margin: 0 20px 25px 20px;
+      .noUi-handle {
+        width: 11px;
+        height: 11px;
+        left: -5px;
+        top: -5px;
+        background: $second-color;
+        border: 1px solid #f8f6f7;
+        box-shadow: none;
+        cursor: pointer;
+        outline: none !important;
+        border-radius: 50%;
+        &:before, &:after {
+          display: none;
+        }
+        &.noUi-active {
+          width: 18px;
+          height: 18px;
+          top: -7px;
+        }
+      }
+    }
+    .noUi-connect {
+      background: $second-color;
+      box-shadow: none;
+      height: 2px;
+    }
+    .btn-range {
+      margin: 35px auto 0 auto;
+      width: 190px;
+      height: 36px;
+      background: $second-color;
+      color: #fff;
+      font-size: 16px;
+      font-weight: bold;
+      border: 1px solid #c0bebf;
+      display: block;
+      transition: .3s;
+      span {
+        font-weight: 300;
+      }
+      &:hover {
+        background: darken($second-color, 5%);
       }
     }
   }
