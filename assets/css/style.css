@@ -3158,7 +3158,7 @@ blockquote {
     -ms-flex: 1 0 240px;
     flex: 1 0 240px; }
     .product-list__item .item__info .item__name {
-      margin: 5px 0 10px;
+      margin: 8px 0;
       font-size: 18px;
       font-weight: bold;
       color: #ef8701; }
