@@ -3438,6 +3438,8 @@ blockquote {
       .product-grid__item .item__product-options {
         display: block;
         opacity: 1; }
+    .product-grid .item__preview {
+      display: none; }
 
   .product-list .item__wrap {
     flex-wrap: wrap; }

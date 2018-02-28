@@ -187,7 +187,10 @@ var Shop = function () {
 		});*/
         imageItem.on("click", function (e) {
         	e.preventDefault();
-            switchImage($(this));
+			var that = $(this),
+				zoom_size = that.parent('.item').data('zoom-size');
+
+            switchImage(that,zoom_size );
         });
 
 		var imgs = $(".product-list .product__item .imgs-list");
@@ -209,10 +212,15 @@ var Shop = function () {
 	};
 
 
-    function switchImage(image) {
-        var that = image;
-        var target = that.closest('.item__image').find('.image__preview');
-        var newSrc = that.attr('href');
+    function switchImage(image, zoom_size) {
+        var that = image,
+			target = that.closest('.item__image').find('.image__preview'),
+			newSrc = that.attr('href'),
+			$zoom = 450;
+
+		if (zoom_size !== undefined) {
+			$zoom = zoom_size;
+		}
 
         that.closest('.imgs-list').find('.item').removeClass("current");
         that.parent().addClass("current");
@@ -221,7 +229,7 @@ var Shop = function () {
         target.removeClass('image__preview--init').html('').addClass('image__preview--loading');
 
         if (that.data('source') == 'image') {
-            target.html('<a id="gallery" class="MagicZoomPlus" rel="preload-selectors-small:false;preload-selectors-big:false;initialize-on:mouseover;smoothing-speed:70;fps:40;selectors-effect:false;show-title:false;loading-msg:Загрузка...;background-opacity:10;zoom-width:420;zoom-height:420;zoom-distance:5;hint-text:;selectors-class:current;buttons:hide;caption-source:span;" ' +
+            target.html('<a id="gallery" class="MagicZoomPlus" rel="preload-selectors-small:false;preload-selectors-big:false;initialize-on:mouseover;smoothing-speed:70;fps:40;selectors-effect:false;show-title:false;loading-msg:Загрузка...;background-opacity:10;zoom-width:'+$zoom+';zoom-height:'+$zoom+';zoom-distance:5;hint-text:;selectors-class:current;buttons:hide;caption-source:span;" ' +
                 'href="'+newSrc+'"><img /></a>').find('img').attr('src', newSrc).load(function () {
                 target.removeClass('image__preview--loading');
                 target.find('img').fadeIn('fast');
@@ -268,8 +276,10 @@ var Shop = function () {
                 ]
             });
             gallery.on('afterChange', function(event, slick, currentSlide, nextSlide){
-                var slide = slick.$slides.get(currentSlide);
-                switchImage($(slide.children[0]));
+                var slide = slick.$slides.get(currentSlide),
+					item = $(slide.children[0]),
+					zoom_size = slide.data('zoom-size');
+                switchImage(item, zoom_size);
             });
         };
 
@@ -402,7 +412,7 @@ var Shop = function () {
 
 		$('.product-preview').on('shown.bs.modal', function (e) {
 			var gallery = $(this).find('.imgs-list');
-			productGallery(gallery);
+			productGallery(gallery, 350);
 		});
 	};
     return {
