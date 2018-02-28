@@ -278,7 +278,8 @@ var Shop = function () {
             gallery.on('afterChange', function(event, slick, currentSlide, nextSlide){
                 var slide = slick.$slides.get(currentSlide),
 					item = $(slide.children[0]),
-					zoom_size = slide.data('zoom-size');
+					zoom_size = $(slide).data('zoom-size');
+
                 switchImage(item, zoom_size);
             });
         };
@@ -411,8 +412,10 @@ var Shop = function () {
 		});
 
 		$('.product-preview').on('shown.bs.modal', function (e) {
-			var gallery = $(this).find('.imgs-list');
-			productGallery(gallery, 350);
+			var gallery = $(this).find('.imgs-list:not(.slick-slider)');
+			if (gallery.length) {
+				productGallery(gallery, 350);
+			}
 		});
 	};
     return {
