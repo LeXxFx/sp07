@@ -53,7 +53,7 @@ var Main = function () {
     };
 
     var maskedInput = function() {
-        $('.masked-phone').mask('9 (999) 999-99-99');
+        $('input[autocomplete=tel]').mask('9 (999) 999-99-99');
     };
 
     var bfSliders = function() {
