@@ -267,6 +267,18 @@
 		});
 	};
 
+	var mobileInit = function() {
+		$('.link-search').on('click', function(e){
+			e.preventDefault();
+			$('.col-search').slideToggle();
+		});
+
+		$('.link-menu').on('click', function(e){
+			e.preventDefault();
+			$('.navi-mobile').slideToggle();
+		});
+	}
+
 	return {
 		init: function () {
 			runGoTop();
@@ -279,6 +291,7 @@
 			optionPanel();
 			stickSidebar();
 			masonryList();
+			mobileInit();
 		}
 	};
 }();
