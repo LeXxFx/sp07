@@ -661,19 +661,24 @@ blockquote {
         justify-content: center;
         flex-wrap: wrap; }
         .header__top .col-contacts .tel__item {
+          width: 45%;
+          margin: 0 1.5% 10px 1.5%;
           padding-left: 0;
-          width: 150px;
-          margin: 0 20px 10px 20px; }
-          .header__top .col-contacts .tel__item:last-of-type {
-            width: 150px; }
+          min-width: 150px; }
           .header__top .col-contacts .tel__item:before {
             display: none; }
-  .header__bot .col-catalog .hidden-xxs {
-    display: none; }
+          .header__top .col-contacts .tel__item:last-of-type {
+            width: 45%;
+            padding-left: 0; }
   .header__bot .col-catalog > .btn {
-    width: auto; }
+    width: auto;
+    font-size: 13px; }
     .header__bot .col-catalog > .btn b {
-      margin-left: 0; }
+      margin-left: 5px;
+      width: 22px;
+      height: 22px;
+      line-height: 20px;
+      margin-top: 3px; }
   .header__bot .col-panel .panel > div {
     width: 35px; }
     .header__bot .col-panel .panel > div.show-mobile {
@@ -905,6 +910,18 @@ blockquote {
             margin: 20px 0 0 -34px; }
             .col-catalog .catalog-menu > ul .submenu__close .hints > div {
               width: 70px; }
+    .col-catalog .catalog-menu__close {
+      position: absolute;
+      top: 0;
+      right: 10px;
+      border: none;
+      background: none;
+      padding: 0;
+      font-size: 32px;
+      line-height: 1;
+      color: #686868;
+      z-index: 100;
+      display: none; }
 
 @media screen and (max-width: 1380px) {
   .col-catalog > .btn {
@@ -983,7 +1000,24 @@ blockquote {
     .col-catalog > .btn {
       width: 130px; }
     .col-catalog .catalog-menu {
-      margin: -17px 0 0 0; } }
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      margin: 0;
+      width: 240px;
+      padding-top: 30px;
+      box-shadow: 2px 7px 5px 0px rgba(0, 0, 0, 0.2);
+      transform: translateX(-100%);
+      transition: .3s;
+      display: block; }
+      .col-catalog .catalog-menu > ul {
+        box-shadow: none;
+        margin: 0;
+        max-height: 100%;
+        overflow-y: auto; }
+      .col-catalog .catalog-menu__close {
+        display: block; } }
 #footer {
   background: #458909;
   color: #fff;

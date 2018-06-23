@@ -478,14 +478,16 @@
                     justify-content: center;
                     flex-wrap: wrap;
                     &__item {
+                        width: 45%;
+                        margin: 0 1.5% 10px 1.5%;
                         padding-left: 0;
-                        width: 150px;
-                        margin: 0 20px 10px 20px;
-                        &:last-of-type {
-                            width: 150px;
-                        }
+                        min-width: 150px;
                         &:before {
                             display: none;
+                        }
+                        &:last-of-type {
+                            width: 45%;
+                            padding-left: 0;
                         }
                     }
                 }
@@ -493,13 +495,15 @@
         }
         &__bot {
             .col-catalog {
-                .hidden-xxs {
-                    display: none;
-                }
                 >.btn {
                     width: auto;
+                    font-size: 13px;
                     b {
-                        margin-left: 0;
+                        margin-left: 5px;
+                        width: 22px;
+                        height: 22px;
+                        line-height: 20px;
+                        margin-top: 3px;
                     }
                 }
             }
