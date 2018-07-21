@@ -349,6 +349,36 @@
             }
         }
     }
+    &.alert-callback {
+        .panel-sport {
+            min-height: 40px;
+        }
+    }
+    &#modal_noitem {
+        .modal-dialog {
+            max-width: 680px;
+        }
+        .panel-sport {
+            &__heading {
+                text-align: center;
+            }
+        }
+        .form-callback {
+            .form-control {
+                height: 45px;
+            }
+            .btn {
+                width: 100%;
+                height: 45px;
+                border-radius: 0;
+                background: none;
+                border: 1px solid $second-color;
+                color: $second-color;
+                font-size: 21px;
+                font-weight: 300;
+            }
+        }
+    }
 }
 
 @media screen and (max-width: 768px) {
