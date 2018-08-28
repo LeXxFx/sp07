@@ -999,6 +999,10 @@
 											<div class="item__price">
 												<span class="new">1480</span>
 												<span class="currency">руб.</span>
+											</div>															
+											<div class="item__no-item">
+												<b>Товар закончился</b>
+												<a href="#" class="link-no-item">Сообщить о поступлении</a>
 											</div>
 											<div class="item__input-counter">
 												<button type="button" class="btn btn-minus btn-number" data-type="minus" data-field="quant[2]">
@@ -1111,7 +1115,13 @@
                                     <div class="item__price">
                                         <span class="new">1480</span>
                                         <span class="currency">руб.</span>
-                                    </div>
+                                    </div>	
+															
+									<div class="item__no-item">
+										<b>Товар закончился</b>
+										<a href="#" class="link-no-item">Сообщить о поступлении</a>
+									</div>
+
                                     <div class="item__input-counter">
                                         <button type="button" class="btn btn-minus btn-number" data-type="minus" data-field="quant[2]">
                                             -
@@ -1656,6 +1666,10 @@
                                 <a href="product.html">Кимоно для карате Golden Scorpion "PKM-1200"</a>
                             </div>
                             <div class="col-sm-4 col-options">
+                                <div class="item__no-item">
+                                    <b>Товар закончился</b>
+                                    <a href="#" class="link-no-item">Сообщить о поступлении</a>
+                                </div>
                                 <div class="item__product-options">
                                     <div class="prop prop-size clearfix">
                                         <div class="name">Размер: </div>
@@ -1713,7 +1727,7 @@
                     <div class="panel-sport__heading">
                         Ваши данные:
                     </div>
-                    <form action="" class="form-info">
+                    <form action="" class="form-horizontal form-info">
                         <div class="row">
                             <div class="col-sm-8">
                                 <div class="row form-group">
@@ -1757,6 +1771,49 @@
         </div>
     </div>
 
+    <div class="modal fade modal-form" id="modal_noitem" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="panel-sport">
+                    <div class="panel-sport__heading">
+                        Мы сообщим Вам на электронную почту, когда поступит товар в продажу.
+                    </div>
+                    <form action="" class="form-callback">
+                        <div class="row">
+                            <div class="col-sm-8">
+                                <input type="email" class="form-control" placeholder="Укажите Ваш e-m@il" />
+                            </div>
+                            <div class="col-sm-4">
+                                <button class="btn" data-dismiss="modal" data-toggle="modal" data-target="#alert_callback">Отправить</button>
+                            </div>
+                        </div>
+                    </form>
+                    <button class="panel-sport__close" data-dismiss="modal" aria-hidden="true" data-toggle="tooltip" title="Закрыть">
+                        <span>
+                            <i class="fa fa-angle-left"></i>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade modal-form alert-callback" id="alert_callback" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="panel-sport">
+                    <div class="modal-header">
+                        Спасибо! Ваш запрос отправлен.
+                    </div>
+                    <button class="panel-sport__close" data-dismiss="modal" aria-hidden="true" data-toggle="tooltip" title="Закрыть">
+                        <span>
+                            <i class="fa fa-angle-left"></i>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+	
     <script src="assets/js/jquery-2.2.4.min.js"></script>
     <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/plugins/slick/slick.js"></script>

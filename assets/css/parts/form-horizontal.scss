@@ -44,6 +44,8 @@
             }
             .txt {
                 position: relative;
+                font-weight: 300;
+                font-size: 16px;
                 &:before {
                     content: "";
                     background: url(../images/sprite.png) no-repeat -169px -182px;
@@ -53,6 +55,13 @@
                     left: 0;
                     top: 0;
                     transform: scale(0.8);
+                }
+                a {
+                    color: $second-color;
+                    text-decoration: underline;
+                    &:hover {
+                        text-decoration: none;
+                    }
                 }
             }
             input[type=checkbox] {
@@ -186,19 +195,6 @@
             &:focus {
                 border: none;
                 border-bottom: 1px solid $second-color;
-            }
-        }
-        .checkbox {
-            .txt {
-                font-weight: 300;
-                font-size: 16px;
-                a {
-                    color: $second-color;
-                    text-decoration: underline;
-                    &:hover {
-                        text-decoration: none;
-                    }
-                }
             }
         }
     }

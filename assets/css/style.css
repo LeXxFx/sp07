@@ -1553,6 +1553,19 @@ blockquote {
     visibility: visible;
     margin: 12px 0 0 0; }
 
+body.modal-open,
+.modal-open .navbar-fixed-top,
+.modal-open .navbar-fixed-bottom {
+  padding-right: 17px; }
+
+.modal-scrollable {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow: auto; }
+
 .modal-form .modal-dialog {
   width: 96%;
   max-width: 850px;
@@ -1658,6 +1671,8 @@ blockquote {
     border-left: 1px solid #e5e5e5;
     border-right: 1px solid #e5e5e5;
     min-height: 150px; }
+    .modal-form#modal_quickby .product-info .col-options .item__no-item {
+      border: none; }
   .modal-form#modal_quickby .product-info .col-price {
     border-right: none;
     text-align: center; }
@@ -1896,7 +1911,9 @@ blockquote {
       .form-horizontal .form-group .checkbox label:hover {
         color: #000; }
     .form-horizontal .form-group .checkbox .txt {
-      position: relative; }
+      position: relative;
+      font-weight: 300;
+      font-size: 16px; }
       .form-horizontal .form-group .checkbox .txt:before {
         content: "";
         background: url(../images/sprite.png) no-repeat -169px -182px;
@@ -1906,6 +1923,11 @@ blockquote {
         left: 0;
         top: 0;
         transform: scale(0.8); }
+      .form-horizontal .form-group .checkbox .txt a {
+        color: #ef8701;
+        text-decoration: underline; }
+        .form-horizontal .form-group .checkbox .txt a:hover {
+          text-decoration: none; }
     .form-horizontal .form-group .checkbox input[type=checkbox] {
       display: none; }
       .form-horizontal .form-group .checkbox input[type=checkbox]:checked + .txt:before {
@@ -2015,14 +2037,6 @@ blockquote {
     .form-callback .form-group .form-control:focus {
       border: none;
       border-bottom: 1px solid #ef8701; }
-  .form-callback .form-group .checkbox .txt {
-    font-weight: 300;
-    font-size: 16px; }
-    .form-callback .form-group .checkbox .txt a {
-      color: #ef8701;
-      text-decoration: underline; }
-      .form-callback .form-group .checkbox .txt a:hover {
-        text-decoration: none; }
   .form-callback .form-bot {
     text-align: center; }
     .form-callback .form-bot .btn {
@@ -3871,6 +3885,20 @@ blockquote {
             text-decoration: underline; }
             .product-single__price .item__panel__inner .item__delivary p a:hover {
               text-decoration: none; }
+      .product-single__price .item__panel__inner .item__no-item {
+        padding: 15px 0;
+        border-top: 1px solid #e5e5e5;
+        text-align: center; }
+        .product-single__price .item__panel__inner .item__no-item b {
+          display: block;
+          margin: 0 0 15px 0;
+          font-size: 24px; }
+        .product-single__price .item__panel__inner .item__no-item a {
+          font-size: 18px;
+          color: #ef8701;
+          text-decoration: underline; }
+          .product-single__price .item__panel__inner .item__no-item a:hover {
+            text-decoration: none; }
     .product-single__price .panel__advants {
       background: #fff;
       text-align: left;

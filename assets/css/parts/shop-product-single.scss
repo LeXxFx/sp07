@@ -150,6 +150,24 @@
           }
         }
       }
+	.item__no-item {
+		padding: 15px 0;
+		border-top: 1px solid #e5e5e5;
+		text-align: center;
+		b {
+			display: block;
+			margin: 0 0 15px 0;
+			font-size: 24px;
+		}
+		a {
+			font-size: 18px;
+			color: $second-color;
+			text-decoration: underline;
+			&:hover {
+				text-decoration: none;
+			}
+		}
+	}
 
     }
     .panel__advants {

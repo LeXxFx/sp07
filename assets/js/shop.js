@@ -159,7 +159,7 @@ var Shop = function () {
 	var quickBuy = function () {
 		$('.btn-quick-buy').on('click', function (e) {
 			e.preventDefault();
-			// $('#modal_quickby').modal('show');
+			$('#modal_quickby').modal('show');
 		});
 
 		$('.btn-quick-checkout').on('click', function (e) {
