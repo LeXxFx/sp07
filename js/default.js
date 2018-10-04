@@ -36,8 +36,8 @@ var Main = function () {
     var collapser = function () {
         jQuery('.show_more').on('click', '.btn', function () {
             var btn = jQuery(this);
-            var titleInit = 'Подробнее';
-            var titleCollapsed = 'Свернуть';
+            var titleInit = 'пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ';
+            var titleCollapsed = 'пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ';
             if (!btn.hasClass('collapsed')) {
                 if (btn.data('title-init')) {
                     titleInit = btn.data('title-init');

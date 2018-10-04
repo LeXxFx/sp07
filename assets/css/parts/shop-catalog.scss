@@ -1,12 +1,13 @@
 .catalog {
     margin-bottom: 45px;
     .catalog__list {
-        margin-right: -5px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
         .catalog__item {
             position: relative;
             border: 1px solid #e5e5e5;
-            float: left;
-            width: 20%;
+            flex: 0 0 20%;
             height: 350px;
             margin: -1px 0 0 -1px;
             >a {
@@ -130,7 +131,7 @@
     .catalog {
         .catalog__list {
             .catalog__item {
-                width: 25%;
+                flex: 0 0 25%;
             }
         }
     }
@@ -140,7 +141,7 @@
     .catalog {
         .catalog__list {
             .catalog__item {
-                width: 33%;
+                flex: 0 0 33.333%;
                 .photo {
                     span {
                         margin: -17px 0 0 -80px;
@@ -164,7 +165,7 @@
     .catalog {
         .catalog__list {
             .catalog__item {
-                width: 50%;
+                flex: 0 0 50%;
                 .name {
                     margin-top: -95px;
                 }
@@ -178,7 +179,7 @@
         .catalog__list {
             margin: 0;
             .catalog__item {
-                width: 100%;
+                flex: 0 0 100%;
                 margin: -1px 0 0 0;
                 &:not(.slick-slide) {
                     float: none;

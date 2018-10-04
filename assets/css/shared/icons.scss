@@ -83,4 +83,19 @@
     width: 18px;
     height: 18px;
   }
+  &-top-search {
+    background-position: 0 -231px;
+    width: 26px;
+    height: 26px;
+  }
+  &-top-info {
+    background-position: -60px -231px;
+    width: 26px;
+    height: 26px;
+  }
+  &-top-mobile {
+    background-position: -32px -232px;
+    width: 21px;
+    height: 24px;
+  }
 }

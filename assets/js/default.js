@@ -1,13 +1,21 @@
 ﻿var Main = function () {
 
-	var runGoTop = function () {
-		jQuery('#gotop').on('click', function (e) {
-			jQuery("html, body").animate({
-				scrollTop: 0
-			}, "slow");
-			e.preventDefault();
-		});
-	};
+    var runGoTop = function () {
+        $(window).scroll(function () {
+            if ($(this).scrollTop() > 500) {
+                $('#scrollTop').fadeIn()
+            } else {
+                $('#scrollTop').fadeOut()
+            }
+        });
+
+        $('#scrollTop').on('click', function (e) {
+            $("html, body").animate({
+                scrollTop: 0
+            }, "slow");
+            e.preventDefault();
+        });
+    };
 
 	var searchBox = function () {
 		$('.col-search .search-input .form-control').on("keyup", function (e) {
