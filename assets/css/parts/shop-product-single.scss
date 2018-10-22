@@ -484,14 +484,10 @@
   }
   .catalog__list {
     .catalog__item {
-      margin: 0 0 0 -1px;
+      margin: 0;
     }
     &.slick-slider {
       padding: 0 100px;
-      .slick-list {
-        border-right: 1px solid #e5e5e5;
-        border-left: 1px solid #e5e5e5;
-      }
     }
   }
 }
