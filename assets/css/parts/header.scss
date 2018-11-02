@@ -1,5 +1,7 @@
 .header {
-    background: url(../images/bg_header.jpg) no-repeat center 0 / cover;
+    &-inner {
+        background: url(../images/bg_header.jpg) no-repeat center 0 / cover;
+    }
     &__top {
         @include flexbox();
         align-items: stretch;

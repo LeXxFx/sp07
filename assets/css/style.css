@@ -486,7 +486,7 @@ blockquote:before {
   }
 }
 
-.header {
+.header-inner {
   background: url(../images/bg_header.jpg) no-repeat center 0/cover;
 }
 
