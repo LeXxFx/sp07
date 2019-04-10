@@ -38,6 +38,7 @@ article {
         background: $primary-color;
         color: #fff;
         border: 1px solid $primary-color;
+
         &:hover,
         &:focus {
             background: darken($primary-color, 10%);
@@ -45,11 +46,13 @@ article {
             color: #fff;
         }
     }
+
     &-primary {
         background: $second-color;
         color: $text-color;
         border: 1px solid $second-color;
         font-weight: bold;
+
         &:hover,
         &:focus {
             background: darken($second-color, 10%);
@@ -70,6 +73,7 @@ article {
     border-top: 1px solid $text-color;
     text-align: center;
     margin-top: 50px;
+
     .btn {
         color: $text-color;
         background: #fff;
@@ -83,14 +87,17 @@ article {
         top: -1px;
         border-top: none;
         display: inline-block;
+
         &:hover {
             background: darken(#fff, 2%);
         }
+
         &.collapsed {
             i {
                 transform: rotate(0deg);
             }
         }
+
         i {
             margin: 0 0 0 7px;
             display: inline-block;
@@ -108,16 +115,20 @@ article {
     z-index: 1;
     background: none;
     border: none;
+
     &.slick-prev {
         left: 15px;
+
         &:hover {
             .icon {
                 background-position: -25px -141px;
             }
         }
     }
+
     &.slick-next {
         right: 15px;
+
         &:hover {
             .icon {
                 background-position: -40px -141px;
@@ -128,6 +139,7 @@ article {
 
 div.loading {
     position: relative;
+
     &:after {
         content: "";
         position: absolute;
@@ -138,6 +150,7 @@ div.loading {
         background: rgba(255, 255, 255, 0.44);
         z-index: 10;
     }
+
     >.spinner {
         z-index: 20;
         display: block;
@@ -168,6 +181,7 @@ span {
         color: #9c0000 !important;
         font-size: 13px !important;
     }
+
     &.req {
         color: #a00808 !important;
         font-size: 18px !important;
@@ -189,11 +203,13 @@ textarea {
         border: 1px solid #cfcfcf;
         border-radius: 1px;
         box-shadow: none;
+
         &:focus {
             background: #fff;
             border: 1px solid #abc5e3;
             box-shadow: none;
         }
+
         &.is_required {
             border: 1px solid #9c0000;
         }
@@ -208,6 +224,7 @@ blockquote {
     position: relative;
     border: none;
     background: none;
+
     &:before {
         content: "";
         position: absolute;
